@@ -10,7 +10,7 @@ Original file is located at
 """
 
 !pip install rdflib
-github_storage = "https://raw.githubusercontent.com/FacultadInformatica-LinkedData/Curso2025-2026/tree/master/Assignment4"
+github_storage = "https://raw.githubusercontent.com/FacultadInformatica-LinkedData/Curso2025-2026/refs/heads/master/Assignment4"
 
 """Importamos example3.rdf en nuestro grafo"""
 
