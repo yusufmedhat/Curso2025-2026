@@ -1,0 +1,38 @@
+@prefix ex:   <http://example.org/schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+###########
+# RDFS schema (lightweight)
+###########
+
+ex:ClassRoom    a rdfs:Class .
+ex:Table        a rdfs:Class .
+ex:Sensor       a rdfs:Class .
+ex:Measurement  a rdfs:Class .
+
+ex:contains        a rdfs:Property ; rdfs:domain ex:ClassRoom ; rdfs:range ex:Table .
+ex:hasOwner        a rdfs:Property ; rdfs:domain ex:Table     ; rdfs:range xsd:string .
+ex:hasName         a rdfs:Property ; rdfs:domain ex:Sensor    ; rdfs:range xsd:string .
+ex:installedOn     a rdfs:Property ; rdfs:domain ex:Sensor    ; rdfs:range ex:Table .
+ex:hasMeasurement  a rdfs:Property ; rdfs:domain ex:Sensor    ; rdfs:range ex:Measurement .
+ex:hasTemperature  a rdfs:Property ; rdfs:domain ex:Measurement ; rdfs:range xsd:decimal .
+ex:atTime          a rdfs:Property ; rdfs:domain ex:Measurement ; rdfs:range xsd:dateTime .
+
+###########
+# ABox (instances)
+###########
+
+ex:ClassRoom03   a ex:ClassRoom .
+ex:Table3        a ex:Table .
+
+ex:Sensor347     a ex:Sensor ;
+                 ex:hasName "Sensor347" ;
+                 ex:installedOn ex:Table3 ;
+                 ex:hasMeasurement ex:Measurement8432 .
+
+ex:Measurement8432 a ex:Measurement ;
+                   ex:hasTemperature "29"^^xsd:decimal ;
+                   ex:atTime "2022-09-12T12:01:12"^^xsd:dateTime .
+
+ex:ClassRoom03 ex:contains ex:Table3 .
