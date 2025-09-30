@@ -1,1 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<title>Requisitos de la aplicación — MoviSalud Madrid</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+ body {font-family: system-ui, sans-serif; line-height:1.5; margin: 2rem; max-width: 1000px;}
+ h1,h2 {margin-top:1.25rem}
+ ul {margin-left:1.25rem}
+ code, pre {background:#f6f8fa; padding:.25rem .5rem; border-radius:4px}
+ .mockup {border:1px solid #ddd; padding:1rem; border-radius:8px; background:#fafafa; margin:.5rem 0}
+</style>
+</head>
+<body>
+<h1>MoviSalud Madrid — Requisitos de la aplicación</h1>
 
+<section>
+  <h2>Visión</h2>
+  <p>Aplicación web que recomienda zonas y rutas ciclables con menor riesgo histórico y mejor calidad del aire, combinando estaciones de BiciMAD, estaciones de calidad del aire y datos de accidentalidad.</p>
+</section>
+
+<section>
+  <h2>Usuarios objetivo</h2>
+  <ul>
+    <li>Personas que se desplazan en bicicleta o BiciMAD.</li>
+    <li>Ayuntamiento/ONGs interesadas en seguridad vial y salud.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Casos de uso</h2>
+  <ol>
+    <li><strong>Buscar zona segura y saludable</strong>: introducir punto A o usar geolocalización; la app muestra estaciones BiciMAD cercanas y un índice combinado (accidentes/aire).</li>
+    <li><strong>Explorar mapa de calor</strong>: heatmap de accidentalidad por horario y día de la semana.</li>
+    <li><strong>Comparativa por distrito</strong>: ranking por índice de seguridad/salud.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Datos y vocabularios</h2>
+  <ul>
+    <li><strong>BiciMAD estaciones</strong>: <code>wgs84_pos:lat/long</code>, <code>schema:address</code>, enlaces a OSM/Wikidata.</li>
+    <li><strong>Calidad del aire</strong>: <code>sosa:Observation</code>, <code>sosa:FeatureOfInterest</code>, contaminantes (NO<sub>2</sub>, O<sub>3</sub>, PM…); ubicación con <code>wgs84_pos</code>.</li>
+    <li><strong>Accidentes</strong>: <code>schema:Event</code> o clase propia <code>road:Accident</code> con <code>time:TemporalEntity</code>.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Requisitos funcionales (RF)</h2>
+  <ul>
+    <li><strong>RF1</strong>: Visualizar mapa con estaciones BiciMAD y estaciones de calidad del aire.</li>
+    <li><strong>RF2</strong>: Mostrar heatmap de accidentalidad filtrable por año/mes/día/hora.</li>
+    <li><strong>RF3</strong>: Calcular un <em>Índice MoviSalud</em> por celda/distrito (ponderación configurable).</li>
+    <li><strong>RF4</strong>: Sugerir la estación BiciMAD más cercana con mejor índice en un radio dado.</li>
+    <li><strong>RF5</strong>: Exportar resultados (CSV/GeoJSON) y proveer endpoint SPARQL si publicáis RDF.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Requisitos no funcionales (RNF)</h2>
+  <ul>
+    <li><strong>RNF1</strong>: Datos normalizados en RDF con vocabularios estándar (SOSA/SSN, WGS84, Schema.org, Time, GeoSPARQL opcional).</li>
+    <li><strong>RNF2</strong>: Código y datos versionados en GitHub; CI opcional para validación RDF (ShEx/SHACL).</li>
+    <li><strong>RNF3</strong>: Cumplir condiciones de reutilización y citar origen/fecha de actualización.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Mock-ups (bocetos de interfaz)</h2>
+  <div class="mockup">
+    <h3>Página principal</h3>
+    <p>Barra de búsqueda (dirección), mapa base, capas con checkboxes: <em>Estaciones BiciMAD</em>, <em>Estaciones Aire</em>, <em>Heatmap Accidentes</em>. Panel derecho con tarjeta de la estación seleccionada y su índice MoviSalud.</p>
+  </div>
+  <div class="mockup">
+    <h3>Comparativa por distrito</h3>
+    <p>Tabla ordenable: distrito | índice | accidentes/1000 hab | distancia media a estación BiciMAD | estaciones de aire cercanas.</p>
+  </div>
+</section>
+
+</body>
+</html>
