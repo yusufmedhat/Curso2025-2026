@@ -1,3 +1,3 @@
 # Members of the group
-*Name; GitHub user*
+##Name; GitHub user##
 Isabel Juárez Montalbán; isabel-jmontalban
