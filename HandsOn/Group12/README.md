@@ -2,7 +2,7 @@
 
 ## Group members
 - **Name:** Fernando Delgado  
-- **GitHub user:** @gonzalofdez
+- **GitHub user:** @fernan9976
 
 ## Description
 This repository contains the materials for **Hands-On 1** of the **Linked Data and Semantic Web** course.
@@ -29,3 +29,4 @@ The goal is to select one or more datasets that will be transformed into **RDF**
 | Ontology conceptualization | Chowlk |
 | Ontology development | Protégé |
 | Ontology evaluation | OWL Validator, OOPS! Pitfall Scanner, Reasoner (HermiT / Pellet) |
+
