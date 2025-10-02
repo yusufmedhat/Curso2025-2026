@@ -3,6 +3,9 @@
 **Group members**
 - Paulina Loew — GitHub: @paulinaloew
 - Diego Ortega — GitHub: @diego-ortega-mar
+- Dmytro Skorbyashchenskyy - GitHub: @Dimaschine353
+- Leon Müller - GitHub: @BLemonG
+- Mario Nguyen - GitHub: @user1223644
 
 **Selected Dataset**
 - Arbolado en parques y zonas verdes de Madrid (Tree inventory in Madrid parks)
