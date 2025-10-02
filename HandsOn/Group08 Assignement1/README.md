@@ -4,7 +4,7 @@
 
 **Members**:  
 
-Hugo Núñez Búa (210199): 
+Hugo Núñez Búa (210199): HugoXP9
 
 Zhen Jiang (220074): zzzzzz913
 
@@ -12,4 +12,4 @@ Laura Nguyen (250861): NgLaura28
 
 Giovana Yixin Qiu (200228): giovana1544
 
-Huangkai Chen ():
+Huangkai Chen (220238): UPMchk
