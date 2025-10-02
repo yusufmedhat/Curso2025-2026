@@ -22,7 +22,7 @@
       <em>BiciMAD stations</em>, <em>Air Quality monitoring</em>, and <em>Traffic Accidents</em> —
       to support healthier and safer mobility decisions in Madrid.
       The app will show citizens where to find the nearest bike station,
-      the air quality conditions in that area, and the historical accident risk,
+      the air quality conditions in that area, and the areas´s accident history,
       producing a combined <em>MoviSalud Index</em> to recommend the best travel options.
     </p>
   </section>
@@ -31,7 +31,7 @@
     <h2>2. Scope</h2>
     <ul>
       <li><strong>In:</strong> Visualization of bike stations, air quality stations, and accident hotspots; calculation of the MoviSalud Index; map and tabular exploration; export of results.</li>
-      <li><strong>Out:</strong> Real-time routing, user authentication, mobile native app development, integration of private mobility data.</li>
+      <li><strong>Out:</strong> Real-time routing, user authentication, native movile app development, integration of private mobility data.</li>
     </ul>
   </section>
 
@@ -39,8 +39,8 @@
     <h2>3. Actors & Use Cases</h2>
     <ul>
       <li><strong>Actor:</strong> Citizen looking for a healthy and safe biking option.</li>
-      <li><strong>UC1:</strong> Search for available bike stations nearby and check the MoviSalud Index of each option.</li>
-      <li><strong>UC2:</strong> Visualize air quality and accident density per district.</li>
+      <li><strong>UC1:</strong> Search for nearby available bike stations and check the MoviSalud Index of each option.</li>
+      <li><strong>UC2:</strong> Visualize air quality and accident density by district.</li>
       <li><strong>UC3:</strong> Compare districts based on health and safety indicators.</li>
       <li><strong>UC4:</strong> Export selected data (CSV/GeoJSON) for further analysis.</li>
     </ul>
@@ -51,7 +51,7 @@
     <ol>
       <li><strong>FR1:</strong> Visualize a map combining BiciMAD bike stations and air quality stations.</li>
       <li><strong>FR2:</strong> Show a heatmap of traffic accidents, filterable by year, month, day, and time.</li>
-      <li><strong>FR3:</strong> Compute a <em>MoviSalud Index</em> for each district/cell, weighting air quality, accident data, and bike availability.</li>
+      <li><strong>FR3:</strong> Compute a <em>MoviSalud Index</em> for each district/cell by weighting air quality, accident data, and bike availability.</li>
       <li><strong>FR4:</strong> Suggest the closest bike station with the best MoviSalud Index within a given radius.</li>
       <li><strong>FR5:</strong> Export results in CSV or GeoJSON format and optionally provide a SPARQL endpoint for RDF queries.</li>
     </ol>
@@ -60,7 +60,7 @@
   <section>
     <h2>5. Non-Functional Requirements (NFR)</h2>
     <ul>
-      <li><strong>NFR1:</strong> Data normalized into RDF using standard vocabularies (SOSA/SSN, WGS84, Schema.org, Time, GeoSPARQL optional).</li>
+      <li><strong>NFR1:</strong> Data normalized into RDF using standard vocabularies such as SOSA/SSN, WGS84, Schema.org, Time and optionally GeoSPARQL.</li>
       <li><strong>NFR2:</strong> Code and data versioned in GitHub; optional CI for RDF validation (ShEx/SHACL).</li>
       <li><strong>NFR3:</strong> Respect license conditions and always cite data source and update date.</li>
       <li><strong>NFR4:</strong> Web app accessible (WCAG AA compliance) and responsive for desktop/tablet/mobile.</li>
