@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>System Requirements – Urban Mobility</title>
+  <meta name="description" content="HTML spec for functional and non-functional requirements of an urban mobility routing application.">
+  <style>
+    :root{
+      --bg: #0b1220;
+      --panel: #111a2b;
+      --muted: #7d8aaa;
+      --text: #e9eef9;
+      --accent: #5eead4; /* teal */
+      --border: #1f2b44;
+      --chip: #1b2336;
+    }
+    html,body{height:100%}
+    body{margin:0; font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial; background: radial-gradient(1200px 700px at 10% -10%, #16233b 0%, transparent 60%), radial-gradient(1200px 700px at 100% 0%, #0f1a2d 0%, transparent 60%), var(--bg); color:var(--text); line-height:1.55}
+    .container{display:grid; grid-template-columns: 280px 1fr; gap:24px; max-width:1180px; margin:32px auto; padding:0 16px}
+    header{grid-column:1/-1; background: linear-gradient(135deg, rgba(94,234,212,.12), rgba(96,165,250,.12)); border:1px solid var(--border); border-radius:18px; padding:24px}
+    header h1{margin:0 0 6px; font-size: clamp(22px, 3.2vw, 36px)}
+    header p{margin:0; color:var(--muted)}
+    .badges{margin-top:14px; display:flex; gap:8px; flex-wrap:wrap}
+    .badge{background: var(--chip); border:1px solid var(--border); padding:6px 10px; border-radius:999px; font-size:12px}
+
+    nav{position:sticky; top:16px; height:fit-content; background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:14px}
+    nav h3{margin:0 0 8px; font-size:14px; color:var(--muted); text-transform:uppercase; letter-spacing:.12em}
+    nav a{display:block; padding:8px 10px; border-radius:10px; color:var(--text); text-decoration:none; font-size:14px; border:1px solid transparent}
+    nav a:hover{background:#0f1729; border-color:var(--border)}
+    nav .sub{margin-left:10px; font-size:13px; color:var(--muted)}
+
+    section{background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:22px; margin-bottom:18px}
+    h2{margin:6px 0 12px; font-size: clamp(18px, 2.2vw, 24px)}
+    .group-title{display:flex; align-items:center; gap:10px}
+    .group-title .chip{font-size:12px; background:var(--chip); border:1px solid var(--border); padding:4px 8px; border-radius:999px; color:var(--muted)}
+    ol.requirements{margin:0; padding-left:20px; display:grid; gap:12px}
+    .req{background: linear-gradient(0deg, rgba(255,255,255,.02), rgba(255,255,255,0)); border:1px solid var(--border); padding:14px 14px 14px 12px; border-radius:12px}
+    .req strong{font-weight:700; margin-right:6px; color:var(--accent)}
+
+    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+    @media (max-width: 940px){.container{grid-template-columns:1fr} nav{position:static} .grid-2{grid-template-columns:1fr}}
+
+    footer{grid-column:1/-1; color:var(--muted); text-align:center; padding:22px 0 48px}
+
+    @media print{body{background:#fff; color:#111} header,nav,section{border-color:#ddd; background:#fff} .badge,.chip{background:#f6f8fa; border-color:#e5e7eb; color:#111}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>System Requirements – Urban Mobility</h1>
+      <p>Routing, interactive mapping, accessibility and standards-based data integration.</p>
+      <div class="badges">
+        <span class="badge">⚡ ≤ 3s search</span>
+        <span class="badge">🧭 Multi-criteria sorting</span>
+        <span class="badge">🔗 RDF & Linked Data</span>
+        <span class="badge">📄 CSV export</span>
+      </div>
+    </header>
+
+    <nav aria-label="Table of contents">
+      <h3>Contents</h3>
+      <a href="#fr">Functional Requirements</a>
+      <a class="sub" href="#fr-routing">• Routing & Results</a>
+      <a class="sub" href="#fr-maps">• Maps & Geolocation</a>
+      <a class="sub" href="#fr-data">• Data & Standards</a>
+      <a href="#nfr">Non-functional Requirements</a>
+    </nav>
+
+    <main>
+      <!-- Functional Requirements -->
+      <section id="fr">
+        <div class="group-title">
+          <h2>Functional Requirements</h2>
+          <span class="chip">Version 1.0</span>
+        </div>
+
+        <article id="fr-routing">
+          <h3>🔎 Routing & Results</h3>
+          <ol class="requirements">
+            <li class="req"><strong>FR1:</strong> The system must allow the user to enter an origin and a destination.</li>
+            <li class="req"><strong>FR2:</strong> The system must return optimal combinations of transport (metro, tram, funicular, etc.).</li>
+            <li class="req"><strong>FR7:</strong> Provide route sorting by fewest transfers and fewest stops.</li>
+          </ol>
+        </article>
+
+        <article id="fr-maps">
+          <h3>🗺️ Maps & Geolocation</h3>
+          <ol class="requirements">
+            <li class="req"><strong>FR3:</strong> Generate interactive maps displaying all stations.</li>
+            <li class="req"><strong>FR4:</strong> Highlight stations near the user using geolocation.</li>
+          </ol>
+        </article>
+
+        <article id="fr-data">
+          <h3>📦 Data & Standards</h3>
+          <ol class="requirements">
+            <li class="req"><strong>FR5:</strong> Allow export of data in CSV format.</li>
+            <li class="req"><strong>FR6:</strong> Ensure compliance with RDF and Linked Data standards.</li>
+          </ol>
+        </article>
+      </section>
+
+      <!-- Non-functional Requirements -->
+      <section id="nfr">
+        <div class="group-title">
+          <h2>Non-functional Requirements</h2>
+          <span class="chip">System Quality</span>
+        </div>
+        <div class="grid-2">
+          <div>
+            <ol class="requirements">
+              <li class="req"><strong>NFR1 – Performance:</strong> Route search response time must not exceed 3 seconds.</li>
+              <li class="req"><strong>NFR2 – Usability:</strong> The interface must be intuitive and easy to use.</li>
+              <li class="req"><strong>NFR3 – Scalability:</strong> The system must be scalable to integrate new datasets (e.g., buses).</li>
+              <li class="req"><strong>NFR4 – Constraints:</strong> Multi-criteria sorting must also respect the 3-second response constraint.</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © Urban Mobility project · Requirements (HTML)
+    </footer>
+  </div>
+
+</body>
+</html>
