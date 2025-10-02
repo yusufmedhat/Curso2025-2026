@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Application - Museums of Madrid Explorer</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; background-color: #fff3e0; }
+    h1, h2 { color: #e65100; }
+    h3 { margin-top: 1.2em; }
+    ul { margin-left: 20px; }
+    .mockup-wrap { margin-top: 16px; display: inline-block; border: 1px solid #ff8c00; border-radius: 6px; background: #fff; padding: 8px; }
+    .caption { font-size: 0.95rem; color: #5c4033; margin-top: 6px; }
+  </style>
+</head>
+<body>
+  <h1>Application - Museums of Madrid Explorer</h1>
+  <h2>General Description</h2>
+  <p>Museums of Madrid Explorer is a web application guiding users through Madrid’s iconic museums like the Prado and Reina Sofía. It offers interactive maps with general info of the museum.</p>
+  <h2>Objectives</h2>
+  <ul>
+    <li>Display an interactive map of Madrid’s museums for easy navigation.</li>
+    <li>Visualize curated highlights and exhibit details for each museum.</li>
+    <li>Provide real-time updates on exhibitions, ticket prices, and hours.</li>
+  </ul>
+<h2>Requirements</h2>
+  <h3>Functional Requirements</h3>
+  <ul>
+    <li><strong>FR1:</strong> Display an interactive map with museum locations and key details.</li>
+    <li><strong>FR2:</strong> Filter museums by type, proximity, or exhibition themes.</li>
+    <li><strong>FR3:</strong> Allow offline access to museum guides and exportable itineraries.</li>
+  </ul>
+  <h3>Non-functional Requirements</h3>
+  <ul>
+    <li><strong>NFR1:</strong> Ensure a responsive and accessible interface compatible with desktop devices.</li>
+    <li><strong>NFR2:</strong> Support multilingual content for at least English, Spanish, and French.</li>
+    <li><strong>NFR3:</strong> Implement automatic updates for museum data every week.</li>
+  </ul>
+  <h2>Mockup</h2>
+<ul>
+  <li><strong>Screen 1:</strong> Interactive map of Madrid with pinned museum locations, color-coded by type (e.g., art, history).</li>
+  <li><strong>Screen 2:</strong> Gallery view showcasing key exhibits with images and brief descriptions, filterable by theme or museum.</li>
+  <li><strong>Screen 3:</strong> Itinerary planner displaying suggested routes, schedules, and notifications for upcoming exhibitions.</li>
+</ul>
+  <div class="mockup-wrap" role="img" aria-label="Illustrative mockup of a Madrid map with interactive museum markers showing pop-up information on hover">
+    <svg width="420" height="280" viewBox="0 0 420 280" xmlns="http://www.w3.org/2000/svg">
+      <style>
+        .marker { cursor: pointer; }
+        .popup { display: none; }
+        .marker:hover + .popup { display: block; }
+      </style>
+      <rect x="0" y="0" width="420" height="280" fill="#ffffff" stroke="#ff8c00"/>
+      <path d="M50,80 Q100,40 180,60 Q260,50 330,90 Q370,140 340,200 Q280,240 200,230 Q130,210 80,160 Z"
+            fill="#fff3e0" stroke="#e65100" stroke-width="2"/>
+      <circle class="marker" cx="155" cy="120" r="7" fill="#e65100" stroke="#5c4033">
+        <title>Prado Museum</title>
+      </circle>
+      <g class="popup">
+        <rect x="110" y="80" width="140" height="60" rx="6" ry="6" fill="#fff3e0" stroke="#e65100" filter="url(#shadow)"/>
+        <text x="120" y="100" font-size="12" fill="#e65100" font-weight="bold">Prado Museum</text>
+        <text x="120" y="120" font-size="10" fill="#5c4033">Centro District</text>
+      </g>
+      <circle class="marker" cx="205" cy="100" r="7" fill="#e65100" stroke="#5c4033">
+        <title>Reina Sofía Museum</title>
+      </circle>
+      <g class="popup">
+        <rect x="160" y="60" width="140" height="60" rx="6" ry="6" fill="#fff3e0" stroke="#e65100" filter="url(#shadow)"/>
+        <text x="170" y="80" font-size="12" fill="#e65100" font-weight="bold">Reina Sofía Museum</text>
+        <text x="170" y="100" font-size="10" fill="#5c4033">Centro District</text>
+      </g>
+      <circle class="marker" cx="245" cy="150" r="7" fill="#e65100" stroke="#5c4033">
+        <title>Thyssen-Bornemisza</title>
+      </circle>
+      <g class="popup">
+        <rect x="200" y="110" width="140" height="60" rx="6" ry="6" fill="#fff3e0" stroke="#e65100" filter="url(#shadow)"/>
+        <text x="210" y="130" font-size="12" fill="#e65100" font-weight="bold">Thyssen-Bornemisza</text>
+        <text x="210" y="150" font-size="10" fill="#5c4033">Centro District</text>
+      </g>
+      <rect x="15" y="15" width="170" height="60" rx="8" ry="8" fill="#fff3e0" stroke="#e65100"/>
+      <text x="25" y="32" font-size="13" fill="#e65100" font-weight="bold">Legend</text>
+      <circle cx="30" cy="50" r="6" fill="#e65100" stroke="#5c4033"/>
+      <text x="45" y="54" font-size="12" fill="#5c4033">Museum (Hover for Info)</text>
+      <rect x="200" y="15" width="205" height="26" rx="6" ry="6" fill="#e65100" opacity="0.08"/>
+      <text x="205" y="33" font-size="13" fill="#e65100">MadridMuseums — Map View</text>
+      <defs>
+        <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="2" dy="2" stdDeviation="2" flood-color="#ff8c00"/>
+        </filter>
+      </defs>
+    </svg>
+  </div>
+  <ul><p class="caption"><em>Initial mockup — Interactive map with hover pop-ups.</em></p></ul>
+</body>
+</html>
