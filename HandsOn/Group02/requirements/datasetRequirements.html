@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dataset Requirements</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+        }
+        .requirement {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .requirement h2 {
+            color: #34495e;
+            margin-top: 0;
+            font-size: 1.1em;
+        }
+        .requirement p {
+            margin: 10px 0 0 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dataset Requirements</h1>
+        
+        <div class="requirement">
+            <h2>R1. Data are in one of the selected smart city domains</h2>
+            <p>This dataset belongs to the "Economy & Tourism" domain, which is one of the smart city domains since tourism directly impacts urban planning, mobility, and local economy. It supports smart city goals by promoting sustainable tourism and linking cultural, social, and environmental aspects.</p>
+        </div>
+
+        <div class="requirement">
+            <h2>R2. Data are available as a CSV file</h2>
+            <p>The open data portal of Barcelona Diputación provides the agenda in CSV format.</p>
+        </div>
+
+        <div class="requirement">
+            <h2>R3. Data have an open license so they can be published</h2>
+            <p>The Diputación de Barcelona open data portal uses an open license (CC BY 4.0), which allows reuse, publication, and sharing as long as attribution is given. Therefore, the dataset can be republished for academic or public use.</p>
+        </div>
+
+        <div class="requirement">
+            <h2>R4. Data can be easily linked with generic real-world entities (e.g., locations)</h2>
+            <p>The dataset contains information about different tourist activities, these activities have different information referring real-world institutions, contact information, location information, URLs... which are easy to model and link. For example, the field "Organitzadors" can be matched with a Wikidata URI of the given institution, making the dataset easily linkable.</p>
+        </div>
+    </div>
+</body>
+</html>
