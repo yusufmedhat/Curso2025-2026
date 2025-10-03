@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <title>Análisis de Datos – BeSafe (Alerta Ambiental)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <style>
+    body{font-family:Arial,sans-serif;line-height:1.5;margin:2rem;max-width:1000px}
+    h1,h2{color:#2c3e50;margin-top:1.25rem}
+    table{border-collapse:collapse;width:100%;margin:16px 0}
+    th, td{border:1px solid #ccc;padding:8px;text-align:left}
+    th{background:#f5f5f5}
+    .section{margin-bottom:20px}
+    .table-container{overflow-x:auto}
+    .ok{color:green;font-weight:bold}
+    .partial{color:orange;font-weight:bold}
+  </style>
+</head>
+<body>
+  <h1>Análisis de los Datos – BeSafe (Alerta Ambiental)</h1>
+
+  <!-- Sección de Datos -->
+  <section class="section">
+    <h2>1. Análisis de los Datos</h2>
+    <p><strong>Descripción de los datasets:</strong> Los datasets utilizados en esta aplicación incluyen datos meteorológicos, episodios de contaminación por ozono y calidad del aire medida en tiempo real. A continuación se presenta un análisis de los principales atributos de cada dataset:</p>
+    
+    <!-- Datos meteorológicos -->
+    <h3>Datos meteorológicos (Tiempo real / Acumulado)</h3>
+    <table>
+      <tr><th>Campos principales</th><td>Fecha, estación, contaminante, magnitud (temperatura, humedad, etc.), valor de medición.</td></tr>
+      <tr><th>Rango de valores</th><td>Temperatura: -10ºC a 45ºC; Velocidad del viento: 0 m/s a 25 m/s.</td></tr>
+      <tr><th>Observaciones</th><td>Validación con código "V", datos horarios.</td></tr>
+    </table>
+
+    <!-- Episodios de ozono -->
+    <h3>Episodios de alta contaminación por ozono</h3>
+    <table>
+      <tr><th>Campos principales</th><td>Fecha de inicio, hora de inicio, fecha de fin, hora de fin, episodio, escenario, medida tomada.</td></tr>
+      <tr><th>Rango de valores</th><td>Escenario: "INFORMACIÓN A LA POBLACIÓN" o "ALERTA".</td></tr>
+      <tr><th>Observaciones</th><td>Información temporal sobre picos de ozono y medidas adoptadas.</td></tr>
+    </table>
+
+    <!-- Calidad del aire -->
+    <h3>Calidad del aire (Datos horarios desde 2001)</h3>
+    <table>
+      <tr><th>Campos principales</th><td>Estación, contaminante (NO₂, O₃, PM10), valor, unidad, fecha y hora.</td></tr>
+      <tr><th>Rango de valores</th><td>NO₂: 0 a 200 µg/m³ dependiendo de la contaminación.</td></tr>
+      <tr><th>Observaciones</th><td>Datos horarios con validación "V".</td></tr>
+    </table>
+  </section>
+
+  <!-- Sección de Licencia -->
+  <section class="section">
+    <h2>2. Análisis de la Licencia</h2>
+    <p><strong>Publicador:</strong> El dataset es publicado por la Dirección General de Sostenibilidad y Control Ambiental del Ayuntamiento de Madrid.</p>
+    <p><strong>Licencia:</strong> Los datasets están disponibles bajo la <a href="https://datos.madrid.es/portal/site/egob/menuitem.2292f9e0349f91f9b2e4b284f1a5a0a/?vgnextoid=98e5e3ef9c32f310VgnVCM2000000c205a0aRCRD">Licencia de reutilización del Ayuntamiento de Madrid</a>, lo que permite su uso, distribución y modificación en proyectos educativos y no comerciales.</p>
+  </section>
+
+  <!-- Sección de Estrategia de Nombres -->
+  <section class="section">
+    <h2>3. Estrategia de Nombres de Recursos</h2>
+    <p>Para facilitar la organización y el acceso a los datos y recursos generados, hemos definido la siguiente estrategia de nombres de recursos:</p>
+    
+    <h3>Formato de URIs</h3>
+    <div class="table-container">
+      <table>
+        <tr><th>Estaciones</th><td><code>http://group10.linkeddata.es/resource/station/{codigo_estacion}</code></td></tr>
+        <tr><th>Medidores de contaminación</th><td><code>http://group10.linkeddata.es/resource/measurement/{codigo_medicion}</code></td></tr>
+        <tr><th>Ontología</th><td><code>http://group10.linkeddata.es/ontology/{clase}</code></td></tr>
+      </table>
+    </div>
+
+    <h3>Negociación de Contenido</h3>
+    <ul>
+      <li><code>text/html</code> para vistas de usuario (navegadores).</li>
+      <li><code>application/rdf+xml</code> para representar los datos en formato RDF/XML.</li>
+      <li><code>application/json-ld</code> para representar los datos en formato JSON-LD.</li>
+    </ul>
+
+    <h3>Patrones y Estructura</h3>
+    <ul>
+      <li>Las URIs serán <strong>descriptivas</strong> y cortas (ej. <code>station/28079004</code> para la estación "Plaza Elíptica").</li>
+      <li>El dominio será <code>http://group10.linkeddata.es</code>.</li>
+    </ul>
+  </section>
+
+</body>
+</html>
