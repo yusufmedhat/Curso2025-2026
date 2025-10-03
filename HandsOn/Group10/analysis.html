@@ -26,34 +26,40 @@
     
     <!-- Datos meteorológicos -->
     <h3>Datos meteorológicos (Tiempo real / Acumulado)</h3>
-    <table>
-      <tr><th>Campos principales</th><td>Fecha, estación, contaminante, magnitud (temperatura, humedad, etc.), valor de medición.</td></tr>
-      <tr><th>Rango de valores</th><td>Temperatura: -10ºC a 45ºC; Velocidad del viento: 0 m/s a 25 m/s.</td></tr>
-      <tr><th>Observaciones</th><td>Validación con código "V", datos horarios.</td></tr>
-    </table>
+    <div class="table-container">
+      <table>
+        <tr><th>Campos principales</th><td>PROVINCIA, MUNICIPIO, ESTACION, MAGNITUD, PUNTO_MUESTREO, AÑO, MES, DÍA, y 24 columnas de medición por hora (H01..H24) con validación (V).</td></tr>
+        <tr><th>Rango de valores</th><td>Temperatura: -10ºC a 45ºC; Velocidad del viento: 0 m/s a 25 m/s. Valores de contaminación en µg/m³.</td></tr>
+        <tr><th>Observaciones</th><td>Datos horarios, validación con "V" en las mediciones de cada hora.</td></tr>
+      </table>
+    </div>
 
     <!-- Episodios de ozono -->
     <h3>Episodios de alta contaminación por ozono</h3>
-    <table>
-      <tr><th>Campos principales</th><td>Fecha de inicio, hora de inicio, fecha de fin, hora de fin, episodio, escenario, medida tomada.</td></tr>
-      <tr><th>Rango de valores</th><td>Escenario: "INFORMACIÓN A LA POBLACIÓN" o "ALERTA".</td></tr>
-      <tr><th>Observaciones</th><td>Información temporal sobre picos de ozono y medidas adoptadas.</td></tr>
-    </table>
+    <div class="table-container">
+      <table>
+        <tr><th>Campos principales</th><td>PROVINCIA, MUNICIPIO, ESTACION, MAGNITUD, PUNTO_MUESTREO, AÑO, MES, DÍA, y 24 columnas de medición por hora (H01..H24) con validación (V).</td></tr>
+        <tr><th>Rango de valores</th><td>Escenario: "INFORMACIÓN A LA POBLACIÓN" o "ALERTA".</td></tr>
+        <tr><th>Observaciones</th><td>Contiene episodios de contaminación por ozono y las medidas adoptadas (comunicaciones, recomendaciones).</td></tr>
+      </table>
+    </div>
 
     <!-- Calidad del aire -->
     <h3>Calidad del aire (Datos horarios desde 2001)</h3>
-    <table>
-      <tr><th>Campos principales</th><td>Estación, contaminante (NO₂, O₃, PM10), valor, unidad, fecha y hora.</td></tr>
-      <tr><th>Rango de valores</th><td>NO₂: 0 a 200 µg/m³ dependiendo de la contaminación.</td></tr>
-      <tr><th>Observaciones</th><td>Datos horarios con validación "V".</td></tr>
-    </table>
+    <div class="table-container">
+      <table>
+        <tr><th>Campos principales</th><td>PROVINCIA, MUNICIPIO, ESTACION, MAGNITUD, PUNTO_MUESTREO, AÑO, MES, DÍA, y 24 columnas de medición por hora (H01..H24) con validación (V).</td></tr>
+        <tr><th>Rango de valores</th><td>NO₂: 0 a 200 µg/m³, O₃: 0 a 180 µg/m³, PM10: 0 a 150 µg/m³.</td></tr>
+        <tr><th>Observaciones</th><td>Datos horarios con validación "V". Para las mediciones de cada hora, se tiene un código de validación que indica si los datos son confiables.</td></tr>
+      </table>
+    </div>
   </section>
 
   <!-- Sección de Licencia -->
   <section class="section">
     <h2>2. Análisis de la Licencia</h2>
     <p><strong>Publicador:</strong> El dataset es publicado por la Dirección General de Sostenibilidad y Control Ambiental del Ayuntamiento de Madrid.</p>
-    <p><strong>Licencia:</strong> Los datasets están disponibles bajo la <a href="https://datos.madrid.es/portal/site/egob/menuitem.2292f9e0349f91f9b2e4b284f1a5a0a/?vgnextoid=98e5e3ef9c32f310VgnVCM2000000c205a0aRCRD">Licencia de reutilización del Ayuntamiento de Madrid</a>, lo que permite su uso, distribución y modificación en proyectos educativos y no comerciales.</p>
+    <p><strong>Licencia:</strong> Los datasets están disponibles bajo la <a href="http://datos.madrid.es/egob/catalogo/aviso-legal">Licencia de reutilización del Ayuntamiento de Madrid</a>, lo que permite su uso, distribución y modificación en proyectos educativos y no comerciales.</p>
   </section>
 
   <!-- Sección de Estrategia de Nombres -->
