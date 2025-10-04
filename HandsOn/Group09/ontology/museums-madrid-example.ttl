@@ -1,0 +1,87 @@
+@prefix mm: <http://data.example.org/madrid/museos#> .
+@prefix mmi: <http://data.example.org/madrid/museos/resource/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+mmi:6017808 rdf:type mm:Museum ;
+    mm:name "Casa Museo Fuente del Rey" ;
+    mm:descriptionEntity "Fundación AMYC - Fran Daurel  Este museo,  situado en Aravaca y conocido tambi�n como Casa - Museo Fuente del Rey. Fundaci�n AMYC, ofrece al visitante una colecci�n de m�s de 250 obras entre pinturas, dibujos y esculturas (198 pinturas, 37 esculturas y 27 dibujos) realizadas desde mediados del siglo XIX hasta principios del XXI. Se exponen piezas de grandes artistas modernistas e impresionistas como Sorolla, Mariano Fortuny, Nonell, Rusi�ol, Ram�n Casas, Mir, Rendir, Gargallo, Joseph Llimona, Joan Mir�, Salvador Dal�, Tapies, Anglada Camarasa o Torres Garc�a, entre otros. La colecci�n est� formada por los fondos privados del coleccionista y mecenas Francisco Daurella y se muestra en lo que fue su casa. Los m�s de 3000 metros cuadrados del edificio as� como su jard�n, han sido rehabilitados para poder acoger las obras en el que es el primer museo de la capital dedicado en exclusiva al arte catal�n." ;
+    mm:schedule "De lunes a viernes de 10:00 a 19:00 horas. Visitas guiadas concertadas Agosto cerrado" ;
+    mm:equipment "" ;
+    mm:transport "Consulta los siguientes enlaces:" ;
+    mm:description "" ;
+    mm:accessibility "3" ;
+    mm:contentURL <http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=5c1260101310f210VgnVCM1000000b205a0aRCRD> ;
+    mm:phone "913 579 116" ;
+    mm:fax "" ;
+    mm:email "info@fundaciofrandaurel.com" ;
+    mm:type "/contenido/entidadesYorganismos/FundacionesCulturales" ;
+    mm:xCoordinate 434663 ;
+    mm:yCoordinate 4478596 ;
+    mm:latitude 40.45546866305681 ;
+    mm:longitude -3.7705716814130965 ;
+    mm:hasAddress [
+        rdf:type mm:Address ;
+        mm:streetName "FUENTE DEL REY" ;
+        mm:streetClass "CALLE" ;
+        mm:numType "V" ;
+        mm:num "11" ;
+        mm:floor "" ;
+        mm:door "" ;
+        mm:stairs "" ;
+        mm:orientation "" ;
+        mm:locality "MADRID" ;
+        mm:province "MADRID" ;
+        mm:postalCode "28023"
+    ] ;
+    mm:hasBarrio [
+        rdf:type mm:Barrio ;
+        mm:barrioCode "7" ;
+        mm:barrioName "ARAVACA"
+    ] ;
+    mm:hasDistrict [
+        rdf:type mm:District ;
+        mm:districtCode "9" ;
+        mm:districtName "MONCLOA-ARAVACA"
+    ] .
+
+mmi:4847190 rdf:type mm:Museum ;
+    mm:name "Casa Museo Lope de Vega" ;
+    mm:descriptionEntity "'Mi casilla, mi quietud, mi g&amp;uuml;ertecillo y estudio'. As� define su casa F�lix Lope de Vega (1562-1635) en una carta dirigida a un amigo. Situada en pleno centro hist�rico, en el Barrio de las Letras, la Casa Museo Lope de Vega se ubica en el edificio donde el escritor vivi� sus �ltimos 25 a�os. La recreaci�n de ambientes, cuyo objetivo es que se respire la presencia de Lope, evoca la vida cotidiana del Siglo de Oro y nos acerca a su intimidad. El equipamiento de la casa incorpora obras de arte, mobiliario, enseres y ediciones bibliogr�ficas vinculadas al literato y su tiempo." ;
+    mm:schedule "De martes a domingo, de 10 a 18 horas.  Cerrado los lunes, d�as 1 y 6 de enero, 1 de mayo, 9 de noviembre y 24, 25 y 31 de diciembre." ;
+    mm:equipment "" ;
+    mm:transport "Metro: Ant�n Mart�n (l�nea 1), Sevilla (l�nea 2), Sol (l�neas 1, 2 y 3)." ;
+    mm:description "" ;
+    mm:accessibility "0,4" ;
+    mm:contentURL <http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=4eff8c46145e8110VgnVCM2000000c205a0aRCRD> ;
+    mm:phone "914 299 216" ;
+    mm:fax "" ;
+    mm:email "casamuseolopedevega@madrid.org" ;
+    mm:type "/contenido/entidadesYorganismos/Museos" ;
+    mm:xCoordinate 440825 ;
+    mm:yCoordinate 4473983 ;
+    mm:latitude 40.41436862259971 ;
+    mm:longitude -3.6974667215860615 ;
+    mm:hasAddress [
+        rdf:type mm:Address ;
+        mm:streetName "CERVANTES" ;
+        mm:streetClass "CALLE" ;
+        mm:numType "V" ;
+        mm:num "11" ;
+        mm:floor "" ;
+        mm:door "" ;
+        mm:stairs "" ;
+        mm:orientation "" ;
+        mm:locality "MADRID" ;
+        mm:province "MADRID" ;
+        mm:postalCode "28014"
+    ] ;
+    mm:hasBarrio [
+        rdf:type mm:Barrio ;
+        mm:barrioCode "3" ;
+        mm:barrioName "CORTES"
+    ] ;
+    mm:hasDistrict [
+        rdf:type mm:District ;
+        mm:districtCode "1" ;
+        mm:districtName "CENTRO"
+    ] .

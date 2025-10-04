@@ -1,0 +1,157 @@
+@prefix mm: <http://data.example.org/madrid/museos#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+
+mm:Ontology rdf:type owl:Ontology ;
+    rdfs:comment "Ontology for Museums and Cultural Sites in Madrid" .
+
+mm:Museum rdf:type owl:Class ;
+    rdfs:label "Museum" .
+
+mm:name rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Museum ;
+    rdfs:range xsd:string .
+
+mm:descriptionEntity rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Museum ;
+    rdfs:range xsd:string .
+
+mm:schedule rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Museum ;
+    rdfs:range xsd:string .
+
+mm:equipment rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Museum ;
+    rdfs:range xsd:string .
+
+mm:transport rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Museum ;
+    rdfs:range xsd:string .
+
+mm:description rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Museum ;
+    rdfs:range xsd:string .
+
+mm:accessibility rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Museum ;
+    rdfs:range xsd:string .
+
+mm:contentURL rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Museum ;
+    rdfs:range xsd:anyURI .
+
+mm:phone rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Museum ;
+    rdfs:range xsd:string .
+
+mm:fax rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Museum ;
+    rdfs:range xsd:string .
+
+mm:email rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Museum ;
+    rdfs:range xsd:string .
+
+mm:type rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Museum ;
+    rdfs:range xsd:string .
+
+mm:hasAddress rdf:type owl:ObjectProperty ;
+    rdfs:domain mm:Museum ;
+    rdfs:range mm:Address .
+
+mm:Address rdf:type owl:Class ;
+    rdfs:label "Address" .
+
+mm:streetName rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Address ;
+    rdfs:range xsd:string .
+
+mm:streetClass rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Address ;
+    rdfs:range xsd:string .
+
+mm:numType rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Address ;
+    rdfs:range xsd:string .
+
+mm:num rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Address ;
+    rdfs:range xsd:string .
+
+mm:floor rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Address ;
+    rdfs:range xsd:string .
+
+mm:door rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Address ;
+    rdfs:range xsd:string .
+
+mm:stairs rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Address ;
+    rdfs:range xsd:string .
+
+mm:orientation rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Address ;
+    rdfs:range xsd:string .
+
+mm:locality rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Address ;
+    rdfs:range xsd:string .
+
+mm:province rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Address ;
+    rdfs:range xsd:string .
+
+mm:postalCode rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Address ;
+    rdfs:range xsd:string .
+
+mm:hasBarrio rdf:type owl:ObjectProperty ;
+    rdfs:domain mm:Museum ;
+    rdfs:range mm:Barrio .
+
+mm:Barrio rdf:type owl:Class ;
+    rdfs:label "Barrio" .
+
+mm:barrioCode rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Barrio ;
+    rdfs:range xsd:string .
+
+mm:barrioName rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Barrio ;
+    rdfs:range xsd:string .
+
+mm:hasDistrict rdf:type owl:ObjectProperty ;
+    rdfs:domain mm:Museum ;
+    rdfs:range mm:District .
+
+mm:District rdf:type owl:Class ;
+    rdfs:label "District" .
+
+mm:districtCode rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:District ;
+    rdfs:range xsd:string .
+
+mm:districtName rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:District ;
+    rdfs:range xsd:string .
+
+mm:xCoordinate rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Museum ;
+    rdfs:range xsd:integer .
+
+mm:yCoordinate rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Museum ;
+    rdfs:range xsd:integer .
+
+mm:latitude rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Museum ;
+    rdfs:range xsd:double .
+
+mm:longitude rdf:type owl:DatatypeProperty ;
+    rdfs:domain mm:Museum ;
+    rdfs:range xsd:double .
