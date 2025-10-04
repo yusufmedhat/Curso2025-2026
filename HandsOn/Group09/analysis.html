@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dataset Analysis for Museums of Madrid Explorer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dataset Analysis for Museums of Madrid Explorer</h1>
+
+    <h2>1. Dataset Analysis</h2>
+    <p>This section analyzes the dataset used for the Museums of Madrid Explorer application, focusing on its schema, quantities, and value ranges. The dataset is sourced from the Madrid City Council's open data portal and contains information about museums in Madrid.</p>
+
+    <h3>Schema Analysis</h3>
+    <p>The dataset is structured as RDF data in Turtle syntax, as shown in <code>museums-madrid-example.ttl</code>. It follows an ontology defined in <code>museums-madrid.ttl</code>. The main components of the schema are:</p>
+    <ul>
+        <li><strong>Classes</strong>:
+            <ul>
+                <li><code>mm:Museum</code>: Represents a museum entity.</li>
+                <li><code>mm:Address</code>: Represents the address of a museum.</li>
+                <li><code>mm:Barrio</code>: Represents the neighborhood (barrio) of a museum.</li>
+                <li><code>mm:District</code>: Represents the district of a museum.</li>
+            </ul>
+        </li>
+        <li><strong>Properties</strong>:
+            <ul>
+                <li><code>mm:name</code>, <code>mm:descriptionEntity</code>, <code>mm:schedule</code>, <code>mm:equipment</code>, <code>mm:transport</code>, <code>mm:description</code>, <code>mm:accessibility</code>, <code>mm:contentURL</code>, <code>mm:phone</code>, <code>mm:fax</code>, <code>mm:email</code>, <code>mm:type</code>, <code>mm:xCoordinate</code>, <code>mm:yCoordinate</code>, <code>mm:latitude</code>, <code>mm:longitude</code>: Datatype properties for museum details.</li>
+                <li><code>mm:hasAddress</code>, <code>mm:hasBarrio</code>, <code>mm:hasDistrict</code>: Object properties linking museums to their address, barrio, and district.</li>
+                <li>Address-related properties: <code>mm:streetName</code>, <code>mm:streetClass</code>, <code>mm:numType</code>, <code>mm:num</code>, <code>mm:floor</code>, <code>mm:door</code>, <code>mm:stairs</code>, <code>mm:orientation</code>, <code>mm:locality</code>, <code>mm:province</code>, <code>mm:postalCode</code>.</li>
+                <li>Barrio-related properties: <code>mm:barrioCode</code>, <code>mm:barrioName</code>.</li>
+                <li>District-related properties: <code>mm:districtCode</code>, <code>mm:districtName</code>.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Quantities and Value Ranges</h3>
+    <p>The dataset contains entries for multiple museums, with two examples provided (Casa Museo Fuente del Rey and Casa Museo Lope de Vega). Key observations:</p>
+    <ul>
+        <li><strong>Number of Entries</strong>: The sample dataset includes two museum instances, but the full dataset likely contains more, covering major museums like Prado, Reina Sofía, and Thyssen-Bornemisza, as referenced in <code>applicationRequirements.html</code>.</li>
+        <li><strong>Value Ranges</strong>:
+            <ul>
+                <li><code>mm:name</code>: String, e.g., "Casa Museo Fuente del Rey", "Casa Museo Lope de Vega".</li>
+                <li><code>mm:descriptionEntity</code>: String, detailed text describing the museum’s collection or history (100–500 words).</li>
+                <li><code>mm:schedule</code>: String, human-readable schedules, e.g., "De lunes a viernes de 10:00 a 19:00 horas. Visitas guiadas concertadas Agosto cerrado".</li>
+                <li><code>mm:accessibility</code>: String, values like "3" or "0,4", likely indicating accessibility levels (exact scale unclear without further documentation).</li>
+                <li><code>mm:latitude</code>, <code>mm:longitude</code>: Double, e.g., 40.45546866305681, -3.7705716814130965, representing geographic coordinates in Madrid.</li>
+                <li><code>mm:xCoordinate</code>, <code>mm:yCoordinate</code>: Integer, e.g., 434663, 4478596, likely UTM coordinates.</li>
+                <li><code>mm:postalCode</code>: String, five-digit codes, e.g., "28023", "28014".</li>
+            </ul>
+        </li>
+        <li><strong>Data Completeness</strong>: Some fields like <code>mm:equipment</code>, <code>mm:description</code>, <code>mm:floor</code>, <code>mm:door</code>, <code>mm:stairs</code>, <code>mm:orientation</code>, and <code>mm:fax</code> are often empty, indicating optional or incomplete data.</li>
+    </ul>
+
+    <h2>2. Licensing Analysis</h2>
+    <p>The dataset is sourced from the Madrid City Council’s open data portal, as referenced in <code>datasetRequirements.html</code>. The analysis of the licensing is as follows:</p>
+    <ul>
+        <li><strong>Publisher and Rightsholder</strong>: The Madrid City Council is the publisher and rightsholder of the dataset, as it is hosted on their official open data portal.</li>
+        <li><strong>License</strong>: According to <code>datasetRequirements.html</code>, the dataset is released under an open license (e.g., CC-BY or public domain), which permits redistribution and publication for the Museums of Madrid Explorer application.</li>
+        <li><strong>Proposed License for Generated Dataset</strong>: The generated Linked Data dataset will adopt the Creative Commons Attribution 4.0 International (CC-BY 4.0) license to ensure compatibility with the original dataset’s open license and to allow reuse while requiring attribution to the Madrid City Council.</li>
+    </ul>
+
+    <h2>3. Resource Naming Strategy</h2>
+    <p>The resource naming strategy for the ontology and generated Linked Data is defined to ensure consistency, scalability, and compatibility with Linked Data principles. The strategy is as follows:</p>
+    <ul>
+        <li><strong>URI Domain</strong>: <code>http://data.example.org/madrid/</code> will be used as the base domain for the ontology and data, following the example in <code>museums-madrid-example.ttl</code>.</li>
+        <li><strong>Ontology URI</strong>: The ontology is defined at <code>http://data.example.org/madrid/museos#</code>, as seen in the provided <code>museums-madrid.ttl</code>.</li>
+        <li><strong>Resource URI Pattern</strong>:
+            <ul>
+                <li>Museums: <code>http://data.example.org/madrid/museos/resource/{museumID}</code>, where <code>{museumID}</code> is a unique identifier (e.g., <code>mmi:6017808</code> for Casa Museo Fuente del Rey).</li>
+                <li>Classes: <code>http://data.example.org/madrid/museos#{className}</code>, e.g., <code>mm:Museum</code>, <code>mm:Address</code>.</li>
+                <li>Properties: <code>http://data.example.org/madrid/museos#{propertyName}</code>, e.g., <code>mm:name</code>, <code>mm:hasAddress</code>.</li>
+            </ul>
+        </li>
+        <li><strong>Content Negotiation</strong>: The URIs will support content negotiation to deliver data in multiple formats:
+            <ul>
+                <li>RDF/Turtle (default): <code>text/turtle</code></li>
+                <li>RDF/XML: <code>application/rdf+xml</code></li>
+                <li>JSON-LD: <code>application/ld+json</code></li>
+                <li>HTML: <code>text/html</code> for human-readable representations.</li>
+            </ul>
+        </li>
+        <li><strong>Path Structure</strong>:
+            <ul>
+                <li>Ontology: <code>/madrid/museos#</code></li>
+                <li>Data instances: <code>/madrid/museos/resource/{museumID}</code></li>
+            </ul>
+        </li>
+        <li><strong>Identifier Pattern</strong>: Museum identifiers will use the existing IDs from the dataset (e.g., <code>6017808</code>, <code>4847190</code>) to maintain consistency with the source data.</li>
+        <li><strong>Reusability</strong>: The URIs are designed to be dereferenceable, allowing external systems to access and link to the museum data. The use of <code>geo:</code> properties (e.g., <code>mm:latitude</code>, <code>mm:longitude</code>) ensures compatibility with standard geospatial vocabularies.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The dataset satisfies the requirements for the Museums of Madrid Explorer application, with a well-defined schema and open licensing. The resource naming strategy ensures that the generated Linked Data is consistent, accessible, and reusable, aligning with the principles of Linked Data and the needs of the application.</p>
+
+</body>
+</html>
