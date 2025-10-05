@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Requirements Evaluation - Datasets</title>
+  <style>
+    body{font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; line-height:1.6; margin:24px; color:#111}
+    header{border-bottom:1px solid #ddd; margin-bottom:18px}
+    h1{font-size:1.6rem}
+    h2{font-size:1.15rem; margin-top:18px}
+    .ok{color:green}
+    .partial{color:orange}
+    .no{color:#c0392b}
+    pre{background:#f7f7f7;padding:10px;border-radius:6px;overflow:auto}
+    footer{margin-top:28px;font-size:0.9rem;color:#555;border-top:1px solid #eee;padding-top:12px}
+    ul{margin:8px 0 8px 20px}
+    .dataset{background:#fafafa;border:1px solid #eee;padding:12px;border-radius:8px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Requirements Evaluation for Selected Datasets</h1>
+    <p>Document: <strong>datasetRequirements.html</strong> — Directory: <strong>requirements/</strong></p>
+    <p>Generated on: <em>October 2, 2025</em></p>
+  </header>
+
+  <section>
+    <h2>Datasets Overview</h2>
+
+    <p>Three databases have been analyzed, all provided by the same data source. Their purpose and main structure are:</p>
+
+    <div class="dataset">
+      <strong>1) Upcoming Events</strong>
+      <ul>
+        <li>Content: list of scheduled events (name, date/time, category, etc.).</li>
+        <li>Geolocation: includes <em>latitude</em> and <em>longitude</em> for each event.</li>
+        <li>Format: CSV.</li>
+        <li>License: open and suitable for publication.</li>
+        <li>Documentation: available.</li>
+      </ul>
+    </div>
+
+    <div class="dataset">
+      <strong>2) Car Parking Lots</strong>
+      <ul>
+        <li>Content: list of parking facilities (name, capacity, characteristics, etc.).</li>
+        <li>Geolocation: includes <em>latitude</em> and <em>longitude</em>.</li>
+        <li>Format: CSV.</li>
+        <li>License: open and suitable for publication.</li>
+        <li>Documentation: available.</li>
+      </ul>
+    </div>
+
+    <div class="dataset">
+      <strong>3) Public Bike Stations</strong>
+      <ul>
+        <li>Content: locations of public bike stations (station ID, capacity, status, etc.).</li>
+        <li>Geolocation: includes <em>latitude</em> and <em>longitude</em>.</li>
+        <li>Format: CSV.</li>
+        <li>License: open and suitable for publication.</li>
+        <li>Documentation: not available.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Evaluation Against Requirements (R1–R6)</h2>
+
+    <h3>R1 — Data in the <em>smart cities</em> domain <span class="ok">(Satisfied)</span></h3>
+    <p>All three datasets contain information typical of smart cities: public events, vehicle parking, and bike-sharing stations. These types of data are commonly used in urban mobility, planning, and citizen services, therefore R1 is satisfied.</p>
+
+    <h3>R2 — Available in CSV format <span class="ok">(Satisfied)</span></h3>
+    <p>All datasets are delivered in CSV, therefore R2 is satisfied.</p>
+
+    <h3>R3 — Open license (publishable) <span class="ok">(Satisfied)</span></h3>
+    <p>The files have an open license that allows republication and reuse. </p>
+
+    <h3>R4 — Easily linkable with real-world entities (locations) <span class="ok">(Satisfied)</span></h3>
+    <p>The presence of latitude/longitude in all three datasets and locality/municipality fields allow linking records between them and with external sources (e.g., street maps, statistical codes, or cadastral data).</p>
+
+    <h3>R5 — Documentation exists (optional) <span class="ok">(Satisfied, optional)</span></h3>
+    <p>The datasets 1 and 2 include documentation and a data dictionary; we can generate the third dataset documentation ourselves </p>
+
+    <h3>R6 — Data from multiple sources (optional) <span class="no">(Not satisfied)</span></h3>
+    <p>Currently, all three datasets come from the same source. Although the content is diverse (events, car parkings, bike stations), the optional requirement of multiple independent data sources is not satisfied. This may limit schema diversity, cross-validation, and robustness against provider-specific errors.</p>
+  </section>
+
+
+  <footer>
+    <p>Conclusion: the datasets meet the mandatory requirements R1–R4 and the optional requirement R5. They do not meet optional requirement R6 because they originate from the same source.</p>
+  </footer>
+</body>
+</html>
