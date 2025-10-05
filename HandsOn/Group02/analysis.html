@@ -6,37 +6,83 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
             line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
         }
-        h1, h2, h3 {
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
             color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #34495e;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+        .section {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            color: #34495e;
+            margin-top: 0;
+            font-size: 1.1em;
+        }
+        .section h3 {
+            margin-top: 15px;
+        }
+        .section p {
+            margin: 10px 0 0 0;
+        }
+        .section ul {
+            margin: 10px 0 0 0;
         }
         table {
             border-collapse: collapse;
             width: 100%;
-            margin-bottom: 20px;
+            margin: 15px 0;
+            background-color: white;
         }
         table, th, td {
             border: 1px solid #bdc3c7;
         }
-        th, td {
+        th {
+            background-color: #3498db;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        td {
             padding: 8px;
             text-align: left;
         }
         img {
             max-width: 100%;
             height: auto;
-            margin-bottom: 20px;
-        }
-        .section {
-            margin-bottom: 40px;
+            margin: 15px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
     </style>
 </head>
 <body>
-
-    <h1>Barcelona Activities Dataset – Analysis</h1>
+    <div class="container">
+        <h1>Barcelona Activities Dataset – Analysis</h1>
 
     <div class="section">
         <h2>Dataset OpenRefine Manipulation</h2>
@@ -107,10 +153,10 @@
             <tr><td>Tipo</td><td>Payment type</td><td>string</td></tr>
             <tr><td>Anuncio</td><td>Additional announcement</td><td>string</td></tr>
         </table>
-    </div>
+        </div>
 
-    <div class="section">
-        <h2>Data Analysis</h2>
+        <div class="section">
+            <h2>Data Analysis</h2>
 
         <h3>Seasonality</h3>
         <img src="resources/mes.png" alt="Histogram of activities by month">
@@ -131,10 +177,8 @@
         <p>This license allows copying, redistribution, remixing, transformation, and commercial use, provided proper credit is given. Derived datasets should maintain the same licensing principles.</p>
     </div>
 
-    <div class="section">
-        <h2>Resource Naming Strategy</h2>
-
-        <h3>Base URI</h3>
+        <div class="section">
+            <h2>Resource Naming Strategy</h2>        <h3>Base URI</h3>
         <p>http://data.barcelona.cat/actividades/</p>
 
         <h3>Main Resource Types and URI Templates</h3>
@@ -149,10 +193,11 @@
         </table>
 
         <h3>Actividad Resource Properties</h3>
-        <p><strong>Literal properties:</strong> Título, Descripción, Fecha_inicio, Fecha_fin, Duración_horas, Días, Precio, Aforo, Tipo, Anuncio, Inscripción, Etiquetas</p>
-        <p><strong>Object properties:</strong> Organizadores → Organizador, Nombre_del_sitio / Localización_evento → Lugar, Nombre_del_municipio / Código_municipio → Municipio, Categoría → Categoría</p>
-        <p><strong>Optional multimedia / URLs:</strong> Enlace_web_evento, Foto_evento</p>
-    </div>
+            <p><strong>Literal properties:</strong> Título, Descripción, Fecha_inicio, Fecha_fin, Duración_horas, Días, Precio, Aforo, Tipo, Anuncio, Inscripción, Etiquetas</p>
+            <p><strong>Object properties:</strong> Organizadores → Organizador, Nombre_del_sitio / Localización_evento → Lugar, Nombre_del_municipio / Código_municipio → Municipio, Categoría → Categoría</p>
+            <p><strong>Optional multimedia / URLs:</strong> Enlace_web_evento, Foto_evento</p>
+        </div>
 
+    </div>
 </body>
 </html>
