@@ -1,65 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Dataset Requirements — Group08</title>
+  <meta charset="UTF-8">
+  <title>Dataset Requirements - Group08</title>
   <style>
-    body {font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; max-width: 900px;}
-    table {border-collapse: collapse; width: 100%;}
-    th, td {border: 1px solid #ccc; padding: 8px; text-align: left;}
-    th {background-color: #f3f3f3;}
+    body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.5; max-width: 800px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 1em; }
+    th, td { border: 1px solid #ccc; padding: 8px; }
+    th { background-color: #f3f3f3; }
   </style>
 </head>
 <body>
-  <h1>Dataset Requirements — Group 08</h1>
+  <h1>Dataset Requirements - Group 08</h1>
 
   <h2>Selected Datasets</h2>
-  <ol>
-    <li><strong>Air Quality in Barcelona</strong> — measurements of air pollutants across monitoring stations in the city.</li>
-    <li><strong>Traffic Street Sections with Weather Forecast</strong> — traffic intensity and weather conditions in real time with 15-minute predictions.</li>
-    <li><strong>Parking Service for Bikes in Barcelona</strong> — geolocated public bike parking facilities and their capacities.</li>
-  </ol>
+  <ul>
+    <li><strong>Air quality in Barcelona</strong> – measurements of different pollutants by monitoring stations.</li>
+    <li><strong>Traffic and weather information</strong> – real-time traffic intensity and weather conditions with short-term forecast.</li>
+    <li><strong>Bike parking service</strong> – locations and details of public bicycle parking spots in the city.</li>
+  </ul>
 
-  <h2>Evaluation of Requirements</h2>
-
+  <h2>Requirements Check</h2>
   <table>
     <tr><th>Requirement</th><th>Description</th><th>Fulfilled</th></tr>
     <tr>
-      <td><strong>R1</strong></td>
-      <td>All datasets belong to smart city domains: air quality (environment), traffic (mobility), and bike parking (sustainable transport).</td>
+      <td>R1</td>
+      <td>All datasets are in smart city domains (mobility, air quality, sustainability).</td>
       <td>✅</td>
     </tr>
     <tr>
-      <td><strong>R2</strong></td>
-      <td>Each dataset is available in CSV format, downloaded from the Open Data BCN portal.</td>
+      <td>R2</td>
+      <td>All datasets are available as CSV files from the Open Data BCN portal.</td>
       <td>✅</td>
     </tr>
     <tr>
-      <td><strong>R3</strong></td>
-      <td>All datasets are distributed under the Creative Commons Attribution 4.0 International (CC BY 4.0) license, allowing reuse and publication.</td>
+      <td>R3</td>
+      <td>Each dataset has an open license (CC BY 4.0) that allows reuse and publication.</td>
       <td>✅</td>
     </tr>
     <tr>
-      <td><strong>R4</strong></td>
-      <td>Datasets include spatial information (latitude, longitude, district, or street name) and can be linked with DBpedia, Wikidata, or GeoNames resources.</td>
+      <td>R4</td>
+      <td>Data include location information (coordinates, streets, or districts) that can be linked to other datasets.</td>
       <td>✅</td>
     </tr>
     <tr>
-      <td><strong>R5</strong></td>
-      <td>Documentation is provided for all datasets in the Open Data BCN portal, including field descriptions and update frequency.</td>
-      <td>✅ (Optional)</td>
+      <td>R5</td>
+      <td>Documentation is available on the Open Data BCN portal.</td>
+      <td>✅ (optional)</td>
     </tr>
     <tr>
-      <td><strong>R6</strong></td>
-      <td>The traffic dataset integrates two data sources (traffic + weather), while the others come from single sources.</td>
-      <td>✅ (Partially)</td>
+      <td>R6</td>
+      <td>The traffic dataset mixes traffic and weather data (two data sources).</td>
+      <td>✅ (optional)</td>
     </tr>
   </table>
 
-  <h2>Conclusions</h2>
+  <h2>Conclusion</h2>
   <p>
-    The selected datasets fulfill all mandatory requirements (R1–R4) and partially satisfy optional ones (R5–R6).  
-    Together they cover complementary aspects of urban life — environmental quality, mobility, and infrastructure — forming an ideal foundation for building a smart city application that explores the relationship between traffic, pollution, and sustainable transport.
+    All mandatory requirements (R1–R4) are fulfilled.  
+    The optional ones (R5–R6) are also covered in some cases.  
+    These datasets are suitable for Linked Data transformation and for developing a simple smart city web application.
   </p>
 </body>
 </html>
