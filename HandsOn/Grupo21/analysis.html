@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Hands-On 2 · Análisis, Licencias y Estrategia de URIs · Grupo 21</title>
+    <title>Hands-On · Analyse Data Set · Road Safety in Madrid</title>
     <style>
         :root {
             --fg: #0b132b;
             --muted: #666;
             --bg: #fff;
-            --acc: #2a9d8f;
+            --acc: #2a9d8f
         }
 
         html,
@@ -41,7 +41,7 @@
         }
 
         h3 {
-            margin: 1.4rem 0 .4rem;
+            margin: 1rem 0 .3rem;
             font-size: 1.1rem
         }
 
@@ -53,28 +53,15 @@
             color: var(--muted)
         }
 
+        .box {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 1rem
+        }
+
         .grid {
             display: grid;
             gap: 1rem
-        }
-
-        @media (min-width:900px) {
-            .grid-2 {
-                grid-template-columns: 1fr 1fr
-            }
-        }
-
-        code,
-        pre {
-            background: #f6f8fa;
-            border: 1px solid #eee;
-            border-radius: 6px;
-            padding: .2rem .4rem
-        }
-
-        pre {
-            padding: .9rem;
-            overflow: auto
         }
 
         table {
@@ -95,28 +82,11 @@
             background: #fafafa
         }
 
-        .box {
+        code {
+            background: #f6f8fa;
             border: 1px solid #eee;
-            border-radius: 10px;
-            padding: 1rem
-        }
-
-        .ok {
-            color: #2a9d8f;
-            font-weight: 600
-        }
-
-        .warn {
-            color: #e76f51;
-            font-weight: 600
-        }
-
-        .todo {
-            background: #fffceb;
-            border: 1px solid #ffe08a;
-            padding: .4rem .6rem;
             border-radius: 6px;
-            display: inline-block
+            padding: .1rem .35rem
         }
 
         footer {
@@ -131,581 +101,414 @@
 
 <body>
     <header>
-        <div class="muted">Curso 2025–2026 · Hands-On / Group21</div>
-        <h1>Análisis de datos, licencias y estrategia de URIs</h1>
-        <p class="muted">Documento para la entrega Hands-On 2: análisis de datasets, licenciamiento y estrategia de
-            nombres para Linked Data.</p>
+        <div class="muted">Academic Year 2025–2026 · Group 21</div>
+        <h1>Analyse Data Set · Road Safety in Madrid</h1>
+        <p class="muted">Concise analysis of three CSV datasets used in this project (schema, quantities, value ranges,
+            and units), plus licensing information.</p>
     </header>
 
     <main class="grid">
-        <!-- ===================== 1) ANALYSE DATA SET (ACTUALIZADO) ===================== -->
-        <section id="analyse-data-set">
-            <h2>1) Analyse Data Set</h2>
-            <p>Este proyecto usa tres datasets urbanos de Madrid: <strong>BiciMAD (estaciones)</strong>, <strong>Calidad
-                    del aire (última hora)</strong> y <strong>Fallecidos en accidentes de tráfico (últimos 10
-                    años)</strong>. A continuación se analiza su <em>schema</em>, cantidades y rangos de valores,
-                calidad y posibilidades de integración.</p>
 
-            <!-- 1.1 BICIMAD -->
-            <div class="box">
-                <h3>1.1 BiciMAD – Estaciones</h3>
-                <p><strong>Archivo:</strong> <code>bikestationbicimad_csv.csv</code> · <strong>Tema:</strong>
-                    Infraestructura de estaciones del sistema BiciMAD en Madrid.</p>
-                <h4>Estructura y campos principales</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Campo</th>
-                            <th>Tipo</th>
-                            <th>Descripción</th>
-                            <th>Ejemplo</th>
-                            <th>Rango / Observaciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>FID</td>
-                            <td>Entero</td>
-                            <td>Identificador interno (fila)</td>
-                            <td>0</td>
-                            <td>0 – 608</td>
-                        </tr>
-                        <tr>
-                            <td>Shape</td>
-                            <td>Texto</td>
-                            <td>Tipo de geometría</td>
-                            <td>Point</td>
-                            <td>Valores {Point}</td>
-                        </tr>
-                        <tr>
-                            <td>IdStation</td>
-                            <td>Entero</td>
-                            <td>Identificador de estación</td>
-                            <td>1406</td>
-                            <td>1406 – 2368</td>
-                        </tr>
-                        <tr>
-                            <td>Activate</td>
-                            <td>Entero</td>
-                            <td>Indicador de estación activa (1 activo / 0 inactiva)</td>
-                            <td>1</td>
-                            <td>Valores [0, 1]</td>
-                        </tr>
-                        <tr>
-                            <td>Address</td>
-                            <td>Texto</td>
-                            <td>Dirección de la estación</td>
-                            <td>Calle Miguel Moya nº 1,</td>
-                            <td>Texto (606 valores distintos)</td>
-                        </tr>
-                        <tr>
-                            <td>DockBikes</td>
-                            <td>Entero</td>
-                            <td>Bicicletas ancladas (ocupando base)</td>
-                            <td>15</td>
-                            <td>0 – 27</td>
-                        </tr>
-                        <tr>
-                            <td>FreeBases</td>
-                            <td>Entero</td>
-                            <td>Anclajes libres disponibles</td>
-                            <td>12</td>
-                            <td>0 – 31</td>
-                        </tr>
-                        <tr>
-                            <td>PosicionST</td>
-                            <td>Texto</td>
-                            <td>Cadena con longitud y latitud</td>
-                            <td>-3.7056899999999997 40.4204</td>
-                            <td>Cadena 'lon lat' (espacio separado)</td>
-                        </tr>
-                        <tr>
-                            <td>Ligth</td>
-                            <td>Entero</td>
-                            <td>Semáforo de disponibilidad (0/1/2)</td>
-                            <td>2</td>
-                            <td>Valores [0, 1, 2, 3]</td>
-                        </tr>
-                        <tr>
-                            <td>Name</td>
-                            <td>Texto</td>
-                            <td>Nombre de la estación</td>
-                            <td>2 - Metro Callao</td>
-                            <td>Texto (609 valores distintos)</td>
-                        </tr>
-                        <tr>
-                            <td>NoAvailabl</td>
-                            <td>Entero</td>
-                            <td>Indicador de no disponible</td>
-                            <td>0</td>
-                            <td>Valores [0, 1]</td>
-                        </tr>
-                        <tr>
-                            <td>number</td>
-                            <td>Entero</td>
-                            <td>Número de estación (visible en tótem)</td>
-                            <td>2</td>
-                            <td>1 – 611</td>
-                        </tr>
-                        <tr>
-                            <td>TotalBases</td>
-                            <td>Entero</td>
-                            <td>Total de anclajes de la estación</td>
-                            <td>27</td>
-                            <td>0 – 43</td>
-                        </tr>
-                        <tr>
-                            <td>POINT_X</td>
-                            <td>Decimal</td>
-                            <td>Longitud (WGS84) con coma decimal</td>
-                            <td>-3,70569</td>
-                            <td>-3.784627 – -3.577654</td>
-                        </tr>
-                        <tr>
-                            <td>POINT_Y</td>
-                            <td>Decimal</td>
-                            <td>Latitud (WGS84) con coma decimal</td>
-                            <td>40,4204</td>
-                            <td>40.332546 – 40.515720</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h4>Análisis de datos</h4>
-                <ul>
-                    <li><strong>Cantidad:</strong> 609 registros (estaciones).</li>
-                    <li><strong>Rangos válidos:</strong> POINT_Y ≈ 40.4 (Madrid), POINT_X ≈ -3.7.</li>
-                    <li><strong>Calidad:</strong> buena; PosicionST detectada erróneamente como fecha; puede
-                        normalizarse a texto coordenado.</li>
-                    <li><strong>Preprocesado recomendado:</strong> convertir POINT_X/Y a float, dividir PosicionST en
-                        lat/lon.</li>
-                </ul>
-                <h4>Esquema conceptual</h4>
-                <p>Entidad <code>BikeStation</code> con atributos <em>id, name, address, coordinates, dock_count,
-                        bikes_available, status</em>, vinculada a <code>Place</code> (municipio/distrito).</p>
-            </div>
+        <!-- LICENSING -->
+        <section class="box" id="licensing">
+            <h2>Licensing</h2>
+            <p><strong>Dataset Responsible:</strong> Dirección General de Contratación y Servicios — Subdirección
+                General de Estadística</p>
+            <p><strong>Publisher (Editor):</strong> Ayuntamiento de Madrid</p>
+            <p><strong>Place:</strong> Madrid</p>
+            <p><strong>License (Legal Notice):</strong>
+                <a href="https://datos.madrid.es/egob/catalogo/aviso-legal" target="_blank"
+                    rel="noopener">https://datos.madrid.es/egob/catalogo/aviso-legal</a>
+            </p>
 
-            <!-- 1.2 AIRE -->
-            <div class="box">
-                <h3>1.2 Índice de Calidad del Aire – Última hora</h3>
-                <p><strong>Archivo:</strong> <code>ica-ultima-hora.csv</code> · <strong>Tema:</strong> Lecturas horarias
-                    del índice de calidad del aire (ICA) y contaminante dominante por estación.</p>
-                <h4>Estructura y campos principales</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Campo</th>
-                            <th>Tipo</th>
-                            <th>Descripción</th>
-                            <th>Ejemplo</th>
-                            <th>Rango / Observaciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>cod_estacion</td>
-                            <td>Entero</td>
-                            <td>Código único de la estación de calidad del aire</td>
-                            <td>1022001</td>
-                            <td>1022001 – 99999989</td>
-                        </tr>
-                        <tr>
-                            <td>nombre</td>
-                            <td>Texto</td>
-                            <td>Nombre de la estación</td>
-                            <td>EL CIEGO</td>
-                            <td>Texto (619 valores distintos)</td>
-                        </tr>
-                        <tr>
-                            <td>tipo</td>
-                            <td>Texto</td>
-                            <td>Tipo o clasificación de la estación (urbana, suburbana, etc.)</td>
-                            <td>TRAFICO</td>
-                            <td>Texto (3 valores distintos)</td>
-                        </tr>
-                        <tr>
-                            <td>latitud</td>
-                            <td>Decimal</td>
-                            <td>Latitud geográfica (WGS84)</td>
-                            <td>42.51833</td>
-                            <td>27.76365 – 43.68627</td>
-                        </tr>
-                        <tr>
-                            <td>longitud</td>
-                            <td>Decimal</td>
-                            <td>Longitud geográfica (WGS84)</td>
-                            <td>-2.61944</td>
-                            <td>-17.92167 – 4.32389</td>
-                        </tr>
-                        <tr>
-                            <td>activa</td>
-                            <td>Entero</td>
-                            <td>Indicador de estación activa (1) o inactiva (0)</td>
-                            <td>True</td>
-                            <td>False – True</td>
-                        </tr>
-                        <tr>
-                            <td>fecha</td>
-                            <td>Fecha-hora</td>
-                            <td>Momento de la medición (fecha y hora)</td>
-                            <td>2025-09-30T07:00:00</td>
-                            <td>ISO 8601 (Europe/Madrid)</td>
-                        </tr>
-                        <tr>
-                            <td>indice</td>
-                            <td>Decimal</td>
-                            <td>Índice de calidad del aire (ICA)</td>
-                            <td>1.0</td>
-                            <td>0.0 – 20.0</td>
-                        </tr>
-                        <tr>
-                            <td>debido_a</td>
-                            <td>Texto</td>
-                            <td>Contaminante predominante que determina el ICA</td>
-                            <td>O3</td>
-                            <td>Texto (5 valores distintos)</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h4>Análisis de datos</h4>
-                <ul>
-                    <li><strong>Cantidad:</strong> 615 estaciones aproximadamente, con una observación horaria cada una.
-                    </li>
-                    <li><strong>Cobertura geográfica:</strong> estaciones distribuidas por toda España (latitud 27.76° –
-                        43.68°, longitud -17.92° – 4.32°).</li>
-                    <li><strong>Variables:</strong> índice horario de calidad del aire (ICA) y contaminante predominante
-                        de la hora (<code>debido_a</code>).</li>
-                    <li><strong>Calidad:</strong> homogénea, aunque existen valores nulos y estaciones inactivas
-                        (<code>activa = 0</code>); los valores de <code>indice</code> pueden ser 0 o nulos si no se
-                        dispone de datos válidos.</li>
-                    <li><strong>Rangos típicos:</strong> <code>indice</code> entre 0 y 20 en este CSV (0–150
-                        equivalentes a escala de calidad muy buena–mala).</li>
-                    <li><strong>Preprocesado recomendado:</strong>
-                        <ul>
-                            <li>Filtrar filas con <code>indice</code> nulo o igual a -1 (sin medición).</li>
-                            <li>Verificar la consistencia de coordenadas (<code>latitud</code> y <code>longitud</code>)
-                                en rango nacional.</li>
-                            <li>Homogeneizar formato de fechas (<code>fecha</code>) en ISO 8601 y zona horaria
-                                Europe/Madrid.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Fuente:</strong> Ministerio para la Transición Ecológica y el Reto Demográfico (MITECO)
-                        —
-                        Red Española de Calidad del Aire, datos publicados bajo licencia <strong>CC BY 4.0</strong>.
-                    </li>
-                </ul>
-
-                <h4>Esquema conceptual</h4>
-                <p>
-                    Entidad <code>AirQualityStation</code> (estación fija de la red de calidad del aire) y
-                    <code>AirObservation</code> (medición horaria asociada).
-                    Relación 1:N — cada estación genera múltiples observaciones con atributos:
-                    <em>cod_estacion, tipo, latitud, longitud, activa, fecha, indice, debido_a</em>.
-                </p>
-            </div>
-
-            <!-- 1.3 ACCIDENTES -->
-            <div class="box">
-                <h3>1.3 Fallecidos en accidentes de tráfico (últimos 10 años)</h3>
-                <p><strong>Archivo:</strong> <code>muertos_en_accidentes_de_trafico_en_los_ultimos_10_años.csv</code> ·
-                    <strong>Tema:</strong> Estadística anual de fallecimientos por accidente de tráfico a nivel
-                    regional.
-                </p>
-                <h4>Estructura y campos principales</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Año</th>
-                            <th>Periodo</th>
-                            <th>Víctimas mortales</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Año</td>
-                            <td>Entero</td>
-                            <td>Año de referencia</td>
-                            <td>2024</td>
-                            <td>2015–2025</td>
-                        </tr>
-                        <tr>
-                            <td>Periodo</td>
-                            <td>Texto</td>
-                            <td>Mes</td>
-                            <td>Agosto</td>
-                            <td>Uno de: Enero…Diciembre</td>
-                        </tr>
-                        <tr>
-                            <td>Víctimas mortales</td>
-                            <td>Entero</td>
-                            <td>Número de fallecidas (a 24 h)</td>
-                            <td>132</td>
-                            <td>&ge; 0</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <h4>Análisis de datos (derivado del CSV)</h4>
-                <ul>
-                    <li><strong>Estructura:</strong> el conjunto contiene tres columnas — <em>Año</em>, <em>Periodo</em>
-                        y <em>Víctimas mortales</em> —
-                        con observaciones mensuales desde octubre de 2015 hasta septiembre de 2025.</li>
-
-                    <li><strong>Formato del archivo:</strong> CSV con separador <code>;</code> y campos entre comillas
-                        dobles (<code>" "</code>).
-                        Las líneas con <code>;;</code> marcan el inicio de los metadatos.</li>
-
-                    <li><strong>Tipos de datos:</strong>
-                        <ul>
-                            <li><em>Año</em> → entero (<code>int</code>).</li>
-                            <li><em>Periodo</em> → texto (<code>string</code>), representa el mes.</li>
-                            <li><em>Víctimas mortales</em> → entero (<code>int</code>), número de fallecidos en
-                                accidentes de tráfico.</li>
-                        </ul>
-                    </li>
-
-                    <li><strong>Rango temporal:</strong> 2015–2025 (10 años completos y parte de 2025).</li>
-
-                    <li><strong>Rango de valores:</strong> <code>Víctimas mortales ≥ 0</code>, con mínimos de 30 (abril
-                        2020, confinamiento) y máximos de 132 (agosto 2024).</li>
-
-                    <li><strong>Frecuencia temporal:</strong> mensual.</li>
-
-                    <li><strong>Limpieza recomendada:</strong>
-                        <ul>
-                            <li>Eliminar filas vacías o líneas de metadatos (<code>;;</code>).</li>
-                            <li>Convertir <em>Víctimas mortales</em> a tipo entero.</li>
-                            <li>Ordenar cronológicamente por <em>Año</em> y <em>Periodo</em>.</li>
-                            <li>Homogeneizar nombres de meses si se requiere análisis temporal.</li>
-                        </ul>
-                    </li>
-
-                    <li><strong>Notas:</strong> los datos representan las víctimas mortales registradas <em>24 horas
-                            después del accidente</em>.</li>
-                </ul>
-
-            </div>
-
-            <!-- 1.4 INTEGRACIÓN -->
-            <h3>1.4 Análisis global e integración</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Dataset</th>
-                        <th>Entidad</th>
-                        <th>Dimensión común</th>
-                        <th>Posible enlace RDF</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>BiciMAD</td>
-                        <td>BikeStation</td>
-                        <td>Ubicación</td>
-                        <td><code>geo:lat</code>, <code>geo:long</code>, <code>schema:address</code></td>
-                    </tr>
-                    <tr>
-                        <td>Calidad del aire</td>
-                        <td>AirQualityStation / AirObservation</td>
-                        <td>Ubicación + Tiempo</td>
-                        <td><code>geo:lat</code>, <code>geo:long</code>, <code>time:inXSDDateTime</code></td>
-                    </tr>
-                    <tr>
-                        <td>Accidentes</td>
-                        <td>TrafficFatalitiesStat</td>
-                        <td>Región</td>
-                        <td><code>ex:refPlace</code> → <code>Place</code></td>
-                    </tr>
-                </tbody>
-            </table>
+            <h3>Our License (derived dataset)</h3>
+            <p>This project’s derived dataset and documentation are released under
+                <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.
+            </p>
             <ul>
-                <li><strong>Geo-vínculo:</strong> asociar cada <em>BikeStation</em> con la <em>AirQualityStation</em>
-                    más cercana (vecino más próximo por lat/lon).</li>
-                <li><strong>Temporal:</strong> correlacionar <code>last_update</code> (BiciMAD) con
-                    <code>datetime</code> (ICA) para análisis por hora.
+                <li><strong>Attribution:</strong> Credit “City of Madrid — Dirección General de Contratación y
+                    Servicios, Subdirección General de Estadística (original data)” and “Group 21 (derived dataset)”,
+                    include links to the license and legal notice, and indicate any modifications.</li>
+                <li><strong>Reuse:</strong> Sharing and adaptation (including commercial use) permitted under CC BY 4.0.
                 </li>
-                <li><strong>Contexto:</strong> conectar agregados de accidentes a <code>Place</code> (Madrid / provincia
-                    / municipio).</li>
             </ul>
 
-            <!-- 1.5 CALIDAD -->
-            <h3>1.5 Calidad de datos y preprocesamiento</h3>
+        </section>
+
+        <!-- DATASET 1: RADARS -->
+        <section class="box" id="dataset-radars">
+            <h2>DATASET 1 · Speed Cameras (Radars) — City of Madrid</h2>
+            <p><strong>Summary:</strong> Inventory of speed cameras (mostly fixed) with location, road/PK, direction,
+                lane and posted speed limit. Useful to provide speed-control context when interpreting accident rates.
+            </p>
+
+            <h3>Schema (main fields)</h3>
             <table>
                 <thead>
                     <tr>
-                        <th>Aspecto</th>
-                        <th>BiciMAD</th>
-                        <th>Calidad del aire</th>
-                        <th>Accidentes</th>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Completitud</td>
-                        <td>Alta</td>
-                        <td>Media–Alta</td>
-                        <td>Alta</td>
+                        <td>Nº RADAR</td>
+                        <td>integer/string</td>
+                        <td>Radar identifier.</td>
                     </tr>
                     <tr>
-                        <td>Valores atípicos</td>
-                        <td>Coordenadas fuera de rango</td>
-                        <td>ICA = -1 / nulos</td>
-                        <td>Valores 0 en áreas pequeñas</td>
+                        <td>Ubicacion</td>
+                        <td>string</td>
+                        <td>Descriptive location (e.g., “M-30, entrance A-1, P.K. 0+500”).</td>
                     </tr>
                     <tr>
-                        <td>Coordenadas</td>
-                        <td>Sí</td>
-                        <td>Sí (a veces no)</td>
-                        <td>No aplica (agregado)</td>
+                        <td>Carretera o vial</td>
+                        <td>string</td>
+                        <td>Main road or tunnel (e.g., M-30).</td>
                     </tr>
                     <tr>
-                        <td>Limpieza</td>
-                        <td>Normalizar texto/fechas</td>
-                        <td>Filtrar nulos/validar horas</td>
-                        <td>Homologar códigos territoriales</td>
+                        <td>PK</td>
+                        <td>string</td>
+                        <td>Kilometric point (e.g., <code>0+500</code>).</td>
                     </tr>
                     <tr>
-                        <td>Escala temporal</td>
-                        <td>Minutos</td>
-                        <td>Horas</td>
-                        <td>Años</td>
+                        <td>Sentido</td>
+                        <td>string</td>
+                        <td>Traffic direction (e.g., inner/outer carriageway).</td>
                     </tr>
                     <tr>
-                        <td>Escala espacial</td>
-                        <td>Puntos (estaciones)</td>
-                        <td>Puntos (estaciones)</td>
-                        <td>Regiones</td>
+                        <td>Tipo</td>
+                        <td>string</td>
+                        <td>Camera type (Fixed, Section, Traffic-light).</td>
+                    </tr>
+                    <tr>
+                        <td>Carril</td>
+                        <td>string</td>
+                        <td>Affected lane(s) (e.g., “Fixed lane 4”, “All”).</td>
+                    </tr>
+                    <tr>
+                        <td>Longitud inicio tramo / Latitud inicio tramo</td>
+                        <td>float</td>
+                        <td>Start point of a section control (WGS84), if applicable.</td>
+                    </tr>
+                    <tr>
+                        <td>X (WGS84)</td>
+                        <td>float</td>
+                        <td>Easting in meters (UTM/ETRS89 Zone 30 by range).</td>
+                    </tr>
+                    <tr>
+                        <td>Y (WGS84)</td>
+                        <td>float</td>
+                        <td>Northing in meters (UTM/ETRS89 Zone 30 by range).</td>
+                    </tr>
+                    <tr>
+                        <td>Longitud</td>
+                        <td>float</td>
+                        <td>Longitude (WGS84, decimal degrees).</td>
+                    </tr>
+                    <tr>
+                        <td>Latitud</td>
+                        <td>float</td>
+                        <td>Latitude (WGS84, decimal degrees).</td>
+                    </tr>
+                    <tr>
+                        <td>Velocidad límite</td>
+                        <td>integer</td>
+                        <td>Speed limit at location (km/h).</td>
+                    </tr>
+                    <tr>
+                        <td>Responsable</td>
+                        <td>string</td>
+                        <td>Responsible body (e.g., DGP / City Council).</td>
                     </tr>
                 </tbody>
             </table>
 
-            <!-- 1.6 CONCLUSIONES -->
-            <h3>1.6 Conclusiones</h3>
-            <ul>
-                <li>Datasets <strong>complementarios</strong> (movilidad, medioambiente y seguridad vial) con buena base
-                    para integración semántica.</li>
-                <li>Estructuras claras con identificadores, cuantitativas y <em>geo</em> bien definidas; rangos
-                    estables.</li>
-                <li>El grafo RDF resultante será de tamaño medio (≈ 1k–1.5k triples de ejemplo) y adecuado para
-                    consultas SPARQL de demostración.</li>
-            </ul>
+            <h3>Quantities & Value Ranges</h3>
+            <p><strong>Volume:</strong> several dozen cameras across the city.</p>
+            <p><strong>Coordinates (Madrid expected):</strong> WGS84 lat ≈ 40.33–40.52; lon ≈ −3.78 to −3.57. UTM/ETRS89
+                (EPSG:25830) X ≈ 438,000–456,000; Y ≈ 4,442,000–4,505,000 (meters).</p>
+            <p><strong>Speed limit:</strong> 30–90 km/h.</p>
         </section>
 
-        <!-- ===================== 2) LICENCIAS (PLACEHOLDER; PUEDES COMPLETAR) ===================== -->
-        <section>
-            <h2>2) Análisis de licenciamiento</h2>
-            <p><strong>Fuentes indicadas:</strong> Google Dataset Search (BiciMAD estaciones, Calidad del aire –
-                estaciones, Accidentes de tráfico).</p>
-            <p class="todo"><strong>Pendiente:</strong> Confirmar la URL concreta de cada portal y su licencia (p.ej.,
-                CC BY 4.0). Incluir en README y metadatos RDF (<code>dcterms:license</code>,
-                <code>dcterms:source</code>).
-            </p>
-            <p><strong>Propuesta para nuestros datos derivados:</strong> Publicar la ontología y RDF bajo <strong>CC BY
-                    4.0</strong> con atribución a las fuentes originales.</p>
-        </section>
+        <!-- DATASET 2: POPULATION -->
+        <section class="box" id="dataset-population">
+            <h2>DATASET 2 · Population by District and Neighbourhood (Annual)</h2>
+            <p><strong>Summary:</strong> Annual resident population for Madrid’s administrative units. Used to normalize
+                accident counts into rates per 100,000 inhabitants.</p>
 
-        <!-- ===================== 3) ESTRATEGIA DE URIS (RESUMEN) ===================== -->
-        <section>
-            <h2>3) Estrategia de nombres de recursos (URIs)</h2>
-            <pre><code>Ontología: https://curso2025-2026.github.io/HandsOn/Group21/ontology#
-Datos:     https://curso2025-2026.github.io/HandsOn/Group21/resource/</code></pre>
+            <h3>Schema (main fields)</h3>
             <table>
                 <thead>
                     <tr>
-                        <th>Tipo</th>
-                        <th>Patrón</th>
-                        <th>Ejemplo</th>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Clase</td>
-                        <td>.../ontology#BikeStation</td>
-                        <td>…/ontology#BikeStation</td>
+                        <td>fecha</td>
+                        <td>date/string</td>
+                        <td>Reference date (e.g., “1 de enero de 2024”).</td>
                     </tr>
                     <tr>
-                        <td>Propiedad</td>
-                        <td>.../ontology#hasDockCount</td>
-                        <td>…/ontology#hasDockCount</td>
+                        <td>cod_municipio</td>
+                        <td>string</td>
+                        <td>Municipality code (Madrid = 28079).</td>
                     </tr>
                     <tr>
-                        <td>Instancia BikeStation</td>
-                        <td>.../resource/bikestation/{id}</td>
-                        <td>…/resource/bikestation/123</td>
+                        <td>municipio</td>
+                        <td>string</td>
+                        <td>Municipality name.</td>
                     </tr>
                     <tr>
-                        <td>Instancia AirStation</td>
-                        <td>.../resource/airstation/{code}</td>
-                        <td>…/resource/airstation/M01</td>
+                        <td>cod_distrito</td>
+                        <td>integer</td>
+                        <td>District code (1–21).</td>
                     </tr>
                     <tr>
-                        <td>Observación ICA</td>
-                        <td>.../resource/airobs/{code}/{yyyyMMddTHH}</td>
-                        <td>…/resource/airobs/M01/2025-10-03T14</td>
+                        <td>distrito</td>
+                        <td>string</td>
+                        <td>District name.</td>
                     </tr>
                     <tr>
-                        <td>Indicador siniestros</td>
-                        <td>.../resource/traffic-fatalities/{place}/{year}</td>
-                        <td>…/resource/traffic-fatalities/ES-MAD/2024</td>
+                        <td>cod_barrio</td>
+                        <td>integer</td>
+                        <td>Neighbourhood code (within its district).</td>
+                    </tr>
+                    <tr>
+                        <td>barrio</td>
+                        <td>string</td>
+                        <td>Neighbourhood name.</td>
+                    </tr>
+                    <tr>
+                        <td>num_personas</td>
+                        <td>integer</td>
+                        <td>Total residents.</td>
+                    </tr>
+                    <tr>
+                        <td>num_personas_hombres</td>
+                        <td>integer</td>
+                        <td>Male residents.</td>
+                    </tr>
+                    <tr>
+                        <td>num_personas_mujeres</td>
+                        <td>integer</td>
+                        <td>Female residents.</td>
                     </tr>
                 </tbody>
             </table>
+
+            <h3>Quantities & Value Ranges</h3>
+            <p><strong>Coverage:</strong> ≈131 neighbourhoods × years; 21 districts × years.</p>
+            <p><strong>Population:</strong> integer ≥ 0; from thousands (neighbourhoods) to hundreds of thousands
+                (districts).</p>
         </section>
 
-        <!-- ===================== 4) ONTOLOGÍA (RESUMEN) ===================== -->
-        <section>
-            <h2>4) Ontología ligera (resumen)</h2>
-            <div class="grid grid-2">
-                <div class="box">
-                    <h3>Clases</h3>
-                    <ul>
-                        <li><code>ex:BikeStation</code></li>
-                        <li><code>ex:AirQualityStation</code></li>
-                        <li><code>ex:AirObservation</code></li>
-                        <li><code>ex:Place</code></li>
-                        <li><code>ex:TrafficFatalitiesStat</code></li>
-                    </ul>
-                </div>
-                <div class="box">
-                    <h3>Propiedades (dominio → rango)</h3>
-                    <ul>
-                        <li><code>ex:stationId</code> (<em>BikeStation</em> → xsd:string)</li>
-                        <li><code>wgs84_pos:lat</code>, <code>wgs84_pos:long</code> (<em>Bike/AirStation</em> →
-                            xsd:decimal)</li>
-                        <li><code>ex:hasDockCount</code> (<em>BikeStation</em> → xsd:integer)</li>
-                        <li><code>ex:status</code> (<em>BikeStation</em> → xsd:string)</li>
-                        <li><code>ex:nearestAirQualityStation</code> (<em>BikeStation</em> → <em>AirQualityStation</em>)
-                        </li>
-                        <li><code>ex:observedAt</code> (<em>AirObservation</em> → xsd:dateTime)</li>
-                        <li><code>ex:observedAtStation</code> (<em>AirObservation</em> → <em>AirQualityStation</em>)
-                        </li>
-                        <li><code>ex:icaValue</code> (<em>AirObservation</em> → xsd:integer)</li>
-                        <li><code>ex:predominantPollutant</code> (<em>AirObservation</em> → xsd:string)</li>
-                        <li><code>ex:refPlace</code> (<em>Bike/Air/Traffic</em> → <em>Place</em>)</li>
-                        <li><code>ex:year</code> (<em>TrafficFatalitiesStat</em> → xsd:gYear)</li>
-                        <li><code>ex:numberOfFatalities</code> (<em>TrafficFatalitiesStat</em> → xsd:integer)</li>
-                    </ul>
-                </div>
-            </div>
-            <p class="muted">La ontología completa irá en <code>/ontology/group21-ontology.ttl</code> y un ejemplo en
-                <code>/ontology/group21-example.ttl</code>.
-            </p>
+        <!-- DATASET 3: ACCIDENTS -->
+        <section class="box" id="dataset-accidents">
+            <h2>DATASET 3 · Traffic Accidents — City of Madrid (Per Involved Person)</h2>
+            <p><strong>Summary:</strong> Microdata per person involved in each accident: date/time, location, district,
+                contributing factors, and injury severity.</p>
+
+            <h3>Schema (main fields)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>num_expediente</td>
+                        <td>string</td>
+                        <td>Accident case ID (shared by all persons in the same crash).</td>
+                    </tr>
+                    <tr>
+                        <td>fecha</td>
+                        <td>date</td>
+                        <td>Date of accident (<code>DD/MM/YYYY</code>).</td>
+                    </tr>
+                    <tr>
+                        <td>hora</td>
+                        <td>time</td>
+                        <td>Time of accident (<code>H:MM:SS</code>).</td>
+                    </tr>
+                    <tr>
+                        <td>localizacion</td>
+                        <td>string</td>
+                        <td>Intersection or street segment.</td>
+                    </tr>
+                    <tr>
+                        <td>numero</td>
+                        <td>string/integer</td>
+                        <td>Street number / position.</td>
+                    </tr>
+                    <tr>
+                        <td>cod_distrito</td>
+                        <td>integer</td>
+                        <td>District code.</td>
+                    </tr>
+                    <tr>
+                        <td>distrito</td>
+                        <td>string</td>
+                        <td>District name.</td>
+                    </tr>
+                    <tr>
+                        <td>tipo_accidente</td>
+                        <td>string</td>
+                        <td>Collision type (e.g., head-on, side, run-over).</td>
+                    </tr>
+                    <tr>
+                        <td>estado_meteorológico</td>
+                        <td>string</td>
+                        <td>Weather (clear, rain, fog…).</td>
+                    </tr>
+                    <tr>
+                        <td>tipo_vehiculo</td>
+                        <td>string</td>
+                        <td>Vehicle class (car, moped, motorcycle, VMP…).</td>
+                    </tr>
+                    <tr>
+                        <td>tipo_persona</td>
+                        <td>string</td>
+                        <td>Role (driver, passenger, pedestrian…).</td>
+                    </tr>
+                    <tr>
+                        <td>rango_edad</td>
+                        <td>string</td>
+                        <td>Age band (e.g., “30–34”).</td>
+                    </tr>
+                    <tr>
+                        <td>sexo</td>
+                        <td>string</td>
+                        <td>Sex.</td>
+                    </tr>
+                    <tr>
+                        <td>cod_lesividad</td>
+                        <td>integer</td>
+                        <td>Injury code.</td>
+                    </tr>
+                    <tr>
+                        <td>lesividad</td>
+                        <td>string</td>
+                        <td>Injury description (e.g., “No medical care”, “Serious injury”, “Fatality”).</td>
+                    </tr>
+                    <tr>
+                        <td>coordenada_x_utm</td>
+                        <td>float</td>
+                        <td>Easting (UTM/ETRS89 Zone 30, meters).</td>
+                    </tr>
+                    <tr>
+                        <td>coordenada_y_utm</td>
+                        <td>float</td>
+                        <td>Northing (UTM/ETRS89 Zone 30, meters).</td>
+                    </tr>
+                    <tr>
+                        <td>positiva_alcohol</td>
+                        <td>string</td>
+                        <td>Alcohol positive test (Y/N).</td>
+                    </tr>
+                    <tr>
+                        <td>positiva_droga</td>
+                        <td>string</td>
+                        <td>Drug positive test (Y/N).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Quantities & Value Ranges</h3>
+            <p><strong>Volume:</strong> tens of thousands of rows per year (persons). Time range 00:00–23:59.</p>
+            <p><strong>Coordinates (UTM/ETRS89 Z30):</strong> X ≈ 438,000–456,000; Y ≈ 4,442,000–4,505,000 (meters).</p>
+            <p><strong>Severity:</strong> coded (e.g., 0–14) plus textual labels.</p>
         </section>
 
-        <!-- ===================== 5) CHECKLIST ===================== -->
-        <section>
-            <h2>5) Checklist</h2>
+        <!-- INTEGRATION -->
+        <section class="box" id="integration">
+            <h2>Minimal Integration Across Datasets</h2>
             <ul>
-                <li><span class="ok">✓</span> Análisis de datos (schema, rangos, calidad) completado.</li>
-                <li><span class="ok">✓</span> Estrategia de URIs definida.</li>
-                <li><span class="ok">✓</span> Diseño de ontología ligera.</li>
-                <li><span class="warn">→</span> Confirmar licencias exactas de cada fuente y documentarlas.</li>
-                <li><span class="warn">→</span> Ajustar nombres de columnas si difieren en vuestros CSV reales.</li>
+                <li><strong>Rate per 100,000 inhabitants</strong> (year × district/neighbourhood):
+                    <code>rate = (accidents or victims / population) × 100,000</code>.
+                </li>
+                <li><strong>Speed-control context:</strong> compare rates in areas <em>with</em> vs <em>without</em> a
+                    speed camera; if installation date exists, run a before/after comparison.</li>
+                <li><strong>Keys:</strong> temporal join by <em>year</em> (derived from <code>fecha</code>), spatial
+                    join by <em>cod_distrito / distrito</em> (and <em>cod_barrio / barrio</em> where used). Optionally
+                    use geometry to compute distance from accident to nearest camera.</li>
             </ul>
         </section>
+
+        <!-- RANGES & UNITS SUMMARY -->
+        <section class="box" id="ranges">
+            <h2>Ranges & Units (Summary)</h2>
+            <ul>
+                <li><strong>Speed limit (radars):</strong> 30–90 <em>km/h</em>.</li>
+                <li><strong>Population:</strong> persons (integer ≥ 0).</li>
+                <li><strong>Accidents:</strong> counts (event or involved person).</li>
+                <li><strong>Coordinates:</strong> UTM/ETRS89 Zone 30 (meters) and WGS84 (decimal degrees) where
+                    provided.</li>
+            </ul>
+        </section>
+
+
+
+        
+        <!-- RESOURCE NAMING STRATEGY -->
+        <section class="box" id="resource-naming-strategy">
+            <h2>Resource Naming Strategy</h2>
+            <h4>Domain:</h4>
+            <p><strong>https://www.roadsafetydata.com/</strong></p>
+            <p>The URIs are divided into two types:</p>
+            <ul>
+                <li>URIs for defining the ontology</li>
+                <li>URIs for defining the initialized resources</li>
+            </ul>
+
+            <h4>Ontology URIs</h4>
+            <p>All custom ontology URIs begin with: <strong>https://www.roadsafetydata.com/ontology#</strong></p>
+            <p>Example classes:</p>
+            <ul>
+                <li>Accident</li>
+                <li>Radar</li>
+                <li>District</li>
+                <li>Population</li>
+            </ul>
+            <p>Example object properties:</p>
+            <ul>
+                <li>hasRadar</li>
+                <li>takesPlaceIn</li>
+                <li>hasPopulation</li>
+            </ul>
+            <p>Example datatype properties:</p>
+            <ul>
+                <li>hasAccidentDate</li>
+                <li>hasVehicleType</li>
+                <li>hasSeverity</li>
+                <li>hasPopulationCount</li>
+            </ul>
+
+            <h4>Resource URIs</h4>
+            <p>Resource URIs should follow the format:</p>
+            <ul>
+                <li>General Format: <code>https://www.roadsafetydata.com/resource/Accident/{num_expedient}</code></li>
+                <li>Specific Example: <code>https://www.roadsafetydata.com/resource/Accident/2025S000056</code></li>
+                <li>Other Examples:
+                    <ul>
+                        <li><code>https://www.roadsafetydata.com/resource/Radar/M-30_EntradA1</code></li>
+                        <li><code>https://www.roadsafetydata.com/resource/District/Chamartín</code></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
     </main>
 
     <footer>
-        Grupo 21 · Curso 2025–2026 — Hands-On 2 (Linked Data generation).
+        Group 21 · Academic Year 2025–2026 — Hands-On (Linked Data generation).
     </footer>
 </body>
 
