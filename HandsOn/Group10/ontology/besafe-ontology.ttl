@@ -2,21 +2,29 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+
 
 #namespace del proyecto BeSafe
 @prefix besafe: <http://besafe.org/ns/ambiental#> . 
 @prefix vocab: <http://datos.gob.es/recurso/sector-publico/organizacion/local/ayuntamiento#> . # Para Estaciones (Opcional)
 
 
-#ontologia
-besafe:
+# Ontología
+@prefix dct: <http://purl.org/dc/terms/> .
+
+<http://besafe.org/ns/ambiental> 
     a owl:Ontology ;
     rdfs:label "Ontología Ambiental BeSafe"@es ;
-    owl:versionInfo "1.0" ;
-    rdfs:comment "Ontología para la integración de datos de calidad del aire, meteorología y episodios de contaminación de Madrid (Requisitos FR1-FR5)."@es .
+    rdfs:comment "Ontología para la integración de datos de calidad del aire, meteorología y episodios de contaminación de Madrid (Requisitos FR1–FR5)."@es ;
+    dct:creator "Group10" ;
+    dct:created "2025-10-05"^^xsd:date ;
+    dct:license <http://datos.madrid.es/egob/catalogo/aviso-legal> ;
+    owl:versionInfo "1.0" .
 
 
-clases(conceptos principales)
+### Clases principales
+
 besafe:Estacion
     a owl:Class ;
     rdfs:label "Estación de Medición"@es ;
@@ -56,17 +64,24 @@ besafe:codigoEstacion
     rdfs:label "código de estación"@es ;
     rdfs:domain besafe:Estacion ;
     rdfs:range xsd:integer .
+
+besafe:nombreEstacion
+    a owl:DatatypeProperty ;
+    rdfs:label "nombre de la estación"@es ;
+    rdfs:domain besafe:Estacion ;
+    rdfs:range xsd:string .
     
 besafe:fechaHora
     a owl:DatatypeProperty ;
     rdfs:label "fecha y hora"@es ;
     rdfs:comment "Combinación de AÑO, MES, DIA y Hxx."@es ;
+    rdfs:domain besafe:MedicionHoraria ;
     rdfs:range xsd:dateTime .
 
 besafe:magnitud
     a owl:DatatypeProperty ;
     rdfs:label "magnitud medida"@es ;
-    rdfs:comment "Contaminante (12=NO2) o variable meteo (81=Temp)."@es ;
+    rdfs:comment "Contaminante (p. ej., 8=NO2, 12=O3) o variable meteo (81=Temperatura)."@es ;
     rdfs:domain besafe:MedicionHoraria ;
     rdfs:range xsd:string .
 
@@ -75,7 +90,15 @@ besafe:valor
     rdfs:label "valor medido"@es ;
     rdfs:comment "El valor numérico de la medición (columna Hxx)."@es ;
     rdfs:domain besafe:MedicionHoraria ;
-    rdfs:range xsd:float .
+    rdfs:range xsd:decimal .
+
+besafe:unidad
+    a owl:DatatypeProperty ;
+    rdfs:label "unidad"@es ;
+    rdfs:comment "Unidad de la medida (p. ej., µg/m³, mg/m³, °C)."@es ;
+    rdfs:domain besafe:MedicionHoraria ;
+    rdfs:range xsd:string .
+
     
 besafe:validacion
     a owl:DatatypeProperty ;
