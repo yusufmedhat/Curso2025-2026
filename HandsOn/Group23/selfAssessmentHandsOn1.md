@@ -1,7 +1,7 @@
 # Self Assessment - Hands-On 1
 
 ## Grupo
-- Group13
+- Group23
 - Dataset: Calidad del aire en Madrid (mediciones en tiempo real)
 
 ## Evaluación
