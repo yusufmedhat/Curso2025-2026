@@ -19,10 +19,10 @@
 - [x] Uses the .ttl extension
 - [x] Is serialized in the Turtle format
 - [x] Follows the resource naming strategy
-- [ ] Contains at least one class
-- [ ] Contains at least one object property (where the value of the property is a resource)
+- [x] Contains at least one class
+- [x] Contains at least one object property (where the value of the property is a resource)
 - [x] Contains at least one datatype property (where the value of the property is a string literal, usually typed)
-- [ ] Defines the domain of all the properties (the origin of the property)
+- [x] Defines the domain of all the properties (the origin of the property)
 - [ ] Defines the range of all the properties (the destination of the property)
 - [ ] Defines all class names starting with a capital letter
 - [x] Defines all property names starting with a non-capital letter
@@ -53,7 +53,7 @@
 
 ### Missing or incomplete elements:
 
-1. **Ontology definition file**: While there are data files (.ttl), a proper ontology file defining the schema is missing. This file should include:
+1. **On the Ontology definition file**:
    - Class definitions (e.g., Event, Location, etc.)
    - Property definitions with explicit domains and ranges
    - Object properties linking resources
@@ -63,8 +63,6 @@
 
 ### Recommendations:
 
-Create a separate ontology file (e.g., `madrid-events-ontology.ttl`) that defines:
 - Classes like `mdo:Event`, `mdo:Location`, `mdo:EventType`
 - Object properties like `mdo:hasLocation` with proper domain and range
 - Datatype properties with explicit domains and ranges
-- Consider reusing vocabularies like Schema.org for better interoperability
