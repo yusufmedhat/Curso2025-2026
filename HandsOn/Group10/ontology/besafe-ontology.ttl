@@ -1,0 +1,97 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+#namespace del proyecto BeSafe
+@prefix besafe: <http://besafe.org/ns/ambiental#> . 
+@prefix vocab: <http://datos.gob.es/recurso/sector-publico/organizacion/local/ayuntamiento#> . # Para Estaciones (Opcional)
+
+
+#ontologia
+besafe:
+    a owl:Ontology ;
+    rdfs:label "Ontología Ambiental BeSafe"@es ;
+    owl:versionInfo "1.0" ;
+    rdfs:comment "Ontología para la integración de datos de calidad del aire, meteorología y episodios de contaminación de Madrid (Requisitos FR1-FR5)."@es .
+
+
+clases(conceptos principales)
+besafe:Estacion
+    a owl:Class ;
+    rdfs:label "Estación de Medición"@es ;
+    rdfs:comment "Punto geográfico de muestreo de contaminantes o datos meteorológicos."@es .
+
+besafe:MedicionHoraria
+    a owl:Class ;
+    rdfs:label "Medición Horaria"@es ;
+    rdfs:comment "Un valor medido de una magnitud (ej. NO2, O3 o Temp) en una hora específica."@es .
+
+besafe:EpisodioContaminacion
+    a owl:Class ;
+    rdfs:label "Episodio de Contaminación"@es ;
+    rdfs:comment "Activación de un escenario de protocolo por alta contaminación (O3/NO2)."@es .
+
+
+#relaciones
+#relación:Medicion -> Estacion (Clave de unión: código_estación)
+besafe:tieneLugarEn
+    a owl:ObjectProperty ;
+    rdfs:label "tiene lugar en"@es ;
+    rdfs:domain besafe:MedicionHoraria ;
+    rdfs:range besafe:Estacion .
+
+#relación:Medicion -> Episodio (Clave de unión: solape temporal)
+besafe:solapaConEpisodio
+    a owl:ObjectProperty ;
+    rdfs:label "solapa con episodio"@es ;
+    rdfs:comment "Indica si el momento de la medición coincide temporalmente con un episodio activo."@es ;
+    rdfs:domain besafe:MedicionHoraria ;
+    rdfs:range besafe:EpisodioContaminacion .
+
+
+#atributos
+besafe:codigoEstacion
+    a owl:DatatypeProperty ;
+    rdfs:label "código de estación"@es ;
+    rdfs:domain besafe:Estacion ;
+    rdfs:range xsd:integer .
+    
+besafe:fechaHora
+    a owl:DatatypeProperty ;
+    rdfs:label "fecha y hora"@es ;
+    rdfs:comment "Combinación de AÑO, MES, DIA y Hxx."@es ;
+    rdfs:range xsd:dateTime .
+
+besafe:magnitud
+    a owl:DatatypeProperty ;
+    rdfs:label "magnitud medida"@es ;
+    rdfs:comment "Contaminante (12=NO2) o variable meteo (81=Temp)."@es ;
+    rdfs:domain besafe:MedicionHoraria ;
+    rdfs:range xsd:string .
+
+besafe:valor
+    a owl:DatatypeProperty ;
+    rdfs:label "valor medido"@es ;
+    rdfs:comment "El valor numérico de la medición (columna Hxx)."@es ;
+    rdfs:domain besafe:MedicionHoraria ;
+    rdfs:range xsd:float .
+    
+besafe:validacion
+    a owl:DatatypeProperty ;
+    rdfs:label "validez de dato"@es ;
+    rdfs:comment "Indica si el dato es Válido (V) o nulo/invalidado (N) - Requisito NFR3."@es ;
+    rdfs:domain besafe:MedicionHoraria ;
+    rdfs:range xsd:string .
+
+besafe:escenario
+    a owl:DatatypeProperty ;
+    rdfs:label "escenario protocolo"@es ;
+    rdfs:domain besafe:EpisodioContaminacion ;
+    rdfs:range xsd:string .
+
+besafe:medidaAplicada
+    a owl:DatatypeProperty ;
+    rdfs:label "medida aplicada"@es ;
+    rdfs:domain besafe:EpisodioContaminacion ;
+    rdfs:range xsd:string .

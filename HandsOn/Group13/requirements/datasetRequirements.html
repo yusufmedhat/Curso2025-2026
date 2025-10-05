@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dataset Requirements Assessment</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2em; }
+        h1 { color: #23527c; }
+        h2 { color: #2d6a4f; }
+        table { border-collapse: collapse; width: 100%; margin-top: 1em; margin-bottom: 2em; }
+        th, td { border: 1px solid #ccc; padding: 0.6em; text-align: left; }
+        th { background-color: #f5f5f5; }
+        .yes { color: green; font-weight: bold; }
+        .partial { color: orange; font-weight: bold; }
+        .no { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Requirements Assessment for Selected Datasets</h1>
+    <p>
+        This document assesses whether two selected datasets meet the requirements for use in smart city projects. Requirements R1–R4 are mandatory; R5–R6 are optional and are discussed for each dataset.
+    </p>
+
+    <h2>Dataset 1: Censo de animales domésticos por distrito</h2>
+    <ul>
+        <li><strong>Title:</strong> Censo de animales domésticos por distrito</li>
+        <li><strong>Source:</strong> Comunidad Autónoma de Madrid, Colegio Oficial de Veterinarios de Madrid</li>
+        <li><strong>Sector:</strong> Salud (Health)</li>
+        <li><strong>Coverage:</strong> Districts of Madrid</li>
+        <li><strong>Time range:</strong> 01/01/2014 – 31/12/2024</li>
+    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Requirement</th>
+                <th>Description</th>
+                <th>Satisfied?</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>R1</td>
+                <td>Data are in a smart city domain.</td>
+                <td class="yes">Yes</td>
+                <td>Urban health and pet demographics.</td>
+            </tr>
+            <tr>
+                <td>R2</td>
+                <td>Data are available as a CSV file.</td>
+                <td class="yes">Yes</td>
+                <td>CSV format confirmed.</td>
+            </tr>
+            <tr>
+                <td>R3</td>
+                <td>Data have an open license for publication.</td>
+                <td class="yes">Yes</td>
+                <td>Open license confirmed.</td>
+            </tr>
+            <tr>
+                <td>R4</td>
+                <td>Data can be linked with real-world entities (e.g., locations).</td>
+                <td class="yes">Yes</td>
+                <td>District-level data enables linkage to locations.</td>
+            </tr>
+            <tr>
+                <td>R5 <em>(optional)</em></td>
+                <td>Documentation exists for the data.</td>
+                <td class="yes">Yes</td>
+                <td>Descriptive metadata and documentation available.</td>
+            </tr>
+            <tr>
+                <td>R6 <em>(optional)</em></td>
+                <td>Data comes from multiple sources.</td>
+                <td class="yes">Yes</td>
+                <td>Multiple institutions involved.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Dataset 2: Accidentes de tráfico de la ciudad de Madrid</h2>
+    <ul>
+        <li><strong>Title:</strong> Accidentes de tráfico de la ciudad de Madrid</li>
+        <li><strong>Source:</strong> Policía Municipal de Madrid</li>
+        <li><strong>Sector:</strong> Urban mobility and safety</li>
+        <li><strong>Coverage:</strong> City of Madrid</li>
+        <li><strong>Time range:</strong> 2010–2018 (with structure change in 2019+)</li>
+    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Requirement</th>
+                <th>Description</th>
+                <th>Satisfied?</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>R1</td>
+                <td>Data are in a smart city domain.</td>
+                <td class="yes">Yes</td>
+                <td>Traffic accidents: urban mobility and safety.</td>
+            </tr>
+            <tr>
+                <td>R2</td>
+                <td>Data are available as a CSV file.</td>
+                <td class="yes">Yes</td>
+                <td>CSV format confirmed via portal.</td>
+            </tr>
+            <tr>
+                <td>R3</td>
+                <td>Data have an open license for publication.</td>
+                <td class="yes">Yes</td>
+                <td>Open license confirmed via portal.</td>
+            </tr>
+            <tr>
+                <td>R4</td>
+                <td>Data can be linked with real-world entities (e.g., locations).</td>
+                <td class="yes">Yes</td>
+                <td>City-level data, some location linkage possible (not by neighborhood).</td>
+            </tr>
+            <tr>
+                <td>R5 <em>(optional)</em></td>
+                <td>Documentation exists for the data.</td>
+                <td class="yes">Yes</td>
+                <td>Associated documentation available.</td>
+            </tr>
+            <tr>
+                <td>R6 <em>(optional)</em></td>
+                <td>Data comes from multiple sources.</td>
+                <td class="no">No</td>
+                <td>Mainly from Policía Municipal. Not aggregated from multiple sources.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Summary</h2>
+    <p>
+        Both datasets fully satisfy all mandatory requirements (R1–R4) for use in smart city applications. The first dataset ("Censo de animales domésticos por distrito") also satisfies both optional requirements (R5 and R6). The second dataset ("Accidentes de tráfico de la ciudad de Madrid") provides documentation (R5) but does not aggregate data from multiple sources (R6).
+    </p>
+    <p>
+        These datasets together offer valuable insights into urban health, demographics, and safety for the city of Madrid.
+    </p>
+</body>
+</html>
