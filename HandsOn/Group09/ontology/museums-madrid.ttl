@@ -82,11 +82,6 @@ ns:longitude a owl:DatatypeProperty ;
     rdfs:domain ns:Museum ;
     rdfs:range xsd:double .
 
-ns:name a owl:DatatypeProperty ;
-    rdfs:label "name" ;
-    rdfs:domain ns:Museum ;
-    rdfs:range xsd:string .
-
 ns:phone a owl:DatatypeProperty ;
     rdfs:label "phone" ;
     rdfs:domain ns:Museum ;
