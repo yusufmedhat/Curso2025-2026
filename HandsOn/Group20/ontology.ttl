@@ -1,0 +1,70 @@
+@prefix mod: <https://w3id.org/mod#> .
+@prefix ns: <http://www.owl-ontologies.com/ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ns: a owl:Ontology ;
+    mod:createdWith <https://chowlk.linkeddata.es/> .
+
+ns:hasAddress a owl:DatatypeProperty ;
+    rdfs:label "has address" .
+
+ns:hasArea a owl:DatatypeProperty ;
+    rdfs:label "has area" .
+
+ns:hasAreaCode a owl:DatatypeProperty ;
+    rdfs:label "has area code" .
+
+ns:hasCatCode a owl:DatatypeProperty ;
+    rdfs:label "has cat code" .
+
+ns:hasCategory a owl:DatatypeProperty ;
+    rdfs:label "has category" .
+
+ns:hasCountry a owl:DatatypeProperty ;
+    rdfs:label "has country" .
+
+ns:hasEmail a owl:DatatypeProperty ;
+    rdfs:label "has email" .
+
+ns:hasFamily a owl:DatatypeProperty ;
+    rdfs:label "has family" .
+
+ns:hasId a owl:DatatypeProperty ;
+    rdfs:label "has id" .
+
+ns:hasLatitude a owl:DatatypeProperty ;
+    rdfs:label "has latitude" .
+
+ns:hasLocation a owl:ObjectProperty ;
+    rdfs:label "has location" ;
+    rdfs:domain ns:Parking ;
+    rdfs:range ns:Location .
+
+ns:hasLongitude a owl:DatatypeProperty ;
+    rdfs:label "has longitude" .
+
+ns:hasName a owl:DatatypeProperty ;
+    rdfs:label "has name" .
+
+ns:hasState a owl:DatatypeProperty ;
+    rdfs:label "has state" .
+
+ns:hasTown a owl:DatatypeProperty ;
+    rdfs:label "has town" .
+
+ns:hasType a owl:DatatypeProperty ;
+    rdfs:label "has type" .
+
+ns:hasURLIcon a owl:DatatypeProperty ;
+    rdfs:label "has u r l icon" .
+
+ns:isEMTParking a owl:DatatypeProperty ;
+    rdfs:label "is e m t parking" .
+
+ns:Location a owl:Class ;
+    rdfs:label "Location" .
+
+ns:Parking a owl:Class ;
+    rdfs:label "Parking" .
+
