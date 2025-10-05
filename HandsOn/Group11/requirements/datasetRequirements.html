@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dataset Requirements Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0 auto;
+            max-width: 800px;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .requirement {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .status {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .fulfilled {
+            color: green;
+        }
+        .not-fulfilled {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dataset Requirements Analysis</h1>
+    
+    <h2>Selected Datasets:</h2>
+    <ul>
+        <li>206974-0-agenda-eventos-culturales-100.csv</li>
+        <li>212504-0-agenda-actividades-deportes.csv</li>
+        <li>datos-abiertos(Sheet1).csv</li>
+    </ul>
+
+    <h2>Requirements Analysis:</h2>
+
+    <div class="requirement">
+        <h3>R1. Dataset is in the smart cities domain</h3>
+        <p>The selected datasets are firmly within the smart cities domain, covering three important aspects of urban life:</p>
+        <ul>
+            <li>Cultural events in Madrid</li>
+            <li>Sports activities and events</li>
+            <li>Innovation and entrepreneurship events</li>
+        </ul>
+        <p>These datasets contribute to citizen engagement, event planning, and city service delivery, which are key components of smart city initiatives.</p>
+        <p class="status fulfilled">✓ Requirement Fulfilled</p>
+    </div>
+
+    <div class="requirement">
+        <h3>R2. Dataset is available as CSV</h3>
+        <p>All three datasets are provided in CSV format:</p>
+        <ul>
+            <li>206974-0-agenda-eventos-culturales-100.csv</li>
+            <li>212504-0-agenda-actividades-deportes.csv</li>
+            <li>datos-abiertos(Sheet1).csv</li>
+        </ul>
+        <p>The data is properly structured in tabular format with consistent encoding and clear column headers.</p>
+        <p>The datasets come from Madrid's official data sources, as evidenced by the file identifiers and content.</p>
+        <p class="status fulfilled">✓ Requirement Fulfilled</p>
+    </div>
+
+    <div class="requirement">
+        <h3>R3. Data in the dataset comes with open license</h3>
+        <p>The datasets are sourced from Madrid's open data portal, as indicated by their identifiers in the filenames. While explicit license information is not included in the CSV files themselves, they are subject to Madrid city's open data license as they are official city data.</p>
+        <p>Recommendation: Include explicit license information in the documentation.</p>
+        <p class="status fulfilled">✓ Requirement Fulfilled</p>
+    </div>
+
+    <div class="requirement">
+        <h3>R4. Your dataset uses resource naming strategy</h3>
+        <p>The datasets mostly follow a consistent and descriptive naming strategy:</p>
+        <ul>
+            <li><strong>206974-0-agenda-eventos-culturales-100.csv</strong>: Clear identifier and descriptive name indicating cultural events content</li>
+            <li><strong>212504-0-agenda-actividades-deportes.csv</strong>: Clear identifier and descriptive name indicating sports activities content</li>
+            <li><strong>datos-abiertos(Sheet1).csv</strong>: Generic name that could be improved to better describe its content</li>
+        </ul>
+        <p>Recommendation: Rename the third file to follow the same descriptive naming pattern as the others.</p>
+        <p class="status fulfilled">✓ Requirement Partially Fulfilled</p>
+    </div>
+
+    <div class="requirement">
+        <h3>R5. Documentation includes the original sources of data (optional)</h3>
+        <p>The datasets include some source information:</p>
+        <ul>
+            <li>File names contain numerical identifiers that reference their source in the Madrid open data portal</li>
+            <li>However, explicit documentation of the original sources could be improved</li>
+        </ul>
+        <p>Recommendation: Add explicit documentation linking to the original data sources in the Madrid open data portal.</p>
+        <p class="status">⚠ Optional Requirement - Partially Implemented</p>
+    </div>
+
+    <div class="requirement">
+        <h3>R6. Resource identification uses URIs (optional)</h3>
+        <p>Current resource identification:</p>
+        <ul>
+            <li>Resources are identified by file names and internal IDs</li>
+            <li>No explicit URI scheme has been implemented</li>
+        </ul>
+        <p>Recommendation: Implement a proper URI structure for resource identification.</p>
+        <p class="status">⚠ Optional Requirement - Not Implemented</p>
+    </div>
+
+</body>
+</html>
