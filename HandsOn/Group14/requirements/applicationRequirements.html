@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>applicationRequirements — Aplicación ficticia Calidad del Aire</title>
+</head>
+<body>
+  <h1>Requisitos de la aplicación</h1>
+  <p>Este documento ofrece un esquema general de la aplicación que se construirá sobre los datasets “Calidad del aire — Ayuntamiento de Madrid” y "Ubicaciones de Estaciones de Control".</p>
+
+  <h2>Requisitos a cumplir</h2>
+  <ul>
+    <li><strong>R1:</strong> La aplicación pertenece al dominio smart city (medio ambiente).</li>
+    <li><strong>R2:</strong> Usará datos en formato CSV disponibles en el portal.</li>
+    <li><strong>R3:</strong> Los datos tienen licencia abierta que permite su publicación.</li>
+    <li><strong>R4:</strong> Los datos están vinculados a entidades reales (estaciones con ubicación).</li>
+    <li><strong>R5:</strong> Existe documentación de apoyo para interpretar las variables.</li>
+    <li><strong>R6:</strong> Puede combinarse con otras fuentes (ej. meteorología).</li>
+  </ul>
+
+  <h2>Boceto de la interfaz de la aplicación</h2>
+  <p>La aplicación será una web sencilla que muestre estaciones de calidad del aire de Madrid, con opción de ver los valores más recientes y consultar información básica.</p>
+
+  <h3>Mock‑up: Pantalla principal</h3>
+  <pre>
++------------------------------------------------+
+|   [Buscar estación] [Filtro contaminante]      |
++------------------------------------------------+
+|              Mapa de Madrid con                |
+|              marcadores de estaciones          |
++------------------------------------------------+
+|   Clic en marcador → muestra valores básicos   |
++------------------------------------------------+
+  </pre>
+
+  <h3>Mock‑up: Ficha de estación</h3>
+  <pre>
++------------------------------+
+| Estación X                   |
++------------------------------+
+| Ubicación: Dirección         |
+| Última lectura: NO2 = 45     |
+| Contaminantes medidos: ...   |
++------------------------------+
+  </pre>
+
+  <h3>Mock‑up: Panel de alertas</h3>
+  <pre>
++------------------------------+
+| Alertas recientes            |
++------------------------------+
+| Estación Y - PM10 alto       |
+| Estación Z - NO2 alto        |
++------------------------------+
+  </pre>
+
+  <p>Este es un boceto inicial y no representa el diseño final, sino una idea general de cómo podrían organizarse las interfaces principales.</p>
+
+  <hr>
+  <p>Archivo: <em>requirements/applicationRequirements.html</em></p>
+</body>
+</html>
