@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Analysis, license & RNS.</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2em; }
+        h1 { color: #23527c; }
+        h2 { color: #2d6a4f; }
+        table { border-collapse: collapse; width: 100%; margin-top: 1em; margin-bottom: 2em; }
+        th, td { border: 1px solid #ccc; padding: 0.6em; text-align: left; }
+        th { background-color: #f5f5f5; }
+        .yes { color: green; font-weight: bold; }
+        .partial { color: orange; font-weight: bold; }
+        .no { color: red; font-weight: bold; }
+    </style>
+</head>
+<body style="font-family:system-ui; max-width:1000px; margin:40px auto; line-height:1.55">
+
+
+<h1>Analysis, license & RNS.</h1>
+
+
+<h2>1. Dataset analysis</h2>
+<p><b>Dataset:</b> Accidentalidad 2025 (Traffic accidents, City of Madrid) — Madrid Open Data portal.</p>
+<p><b>Schema: </b></p>
+<pre>num_expediente, fecha, hora, localizacion, numero, cod_distrito, distrito, tipo_accidente, estado_meteorológico, tipo_vehiculo, tipo_persona, rango_edad, sexo, cod_lesividad, lesividad, coordenada_x_utm, coordenada_y_utm, positiva_alcohol, positiva_droga</pre>
+<p><b>Notes:</b></p>
+<ul>
+    <li>
+      The dataset includes information on traffic accidents in Madrid, with fields such as accident case number, date and time, location (including UTM coordinates), district, accident type, vehicle and person type, demographics, and toxicology results. All values are stored as text.
+    </li>
+
+    <li>
+      After review, the following columns were determined to be irrelevant for our intended analysis and will be excluded: <code>estado_meteorológico</code>, <code>cod_lesividad</code>, and <code>lesividad</code>.
+    </li>
+</ul>
+
+
+<h2>2. Licensing</h2>
+<ul>
+<li><b>Portal license</b>: <a href="https://datos.madrid.es/egob/catalogo/aviso-legal">Condiciones de uso – Datos Abiertos Ayuntamiento de Madrid</a> (open-data terms that require attribution; compatible with CC-BY-style attribution).</li>
+<li>Implications: attribution required; redistribution and derivative works allowed; commercial use allowed under the portal conditions. Always include a reference to the original dataset and the portal when publishing derived data or visualizations.</li>
+</ul>
+
+<h2>3. Resource Naming Strategy</h2>
+  <p>Definition of the strategy for naming resources in the ontology and the data generated from the accident CSV.</p>
+    <ul>
+  <li><b>URI Format</b></li>
+  <p>Use dereferenceable URIs that allow access to information about the resource:</p>
+  <code>https://datos.madrid.es/ontology/Accident/{id}</code>
+
+  <li><b>URI Domain</b></li>
+  <p>Use institutional or trusted domains such as <code>datos.madrid.es</code> or <code>gob.es</code> to ensure reliability and persistence.</p>
+  
+  <li><b>Path Structure</b></li>
+  <p>Organize resources hierarchically by type and year if applicable:</p>
+  <code>https://datos.madrid.es/ontology/Accident/2025/ID12345</code>
+  
+  <li><b>URI patterns</b></li>
+  <table>
+    <thead>
+      <tr>
+        <th>Resource Type</th>
+        <th>URI Pattern</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Accident</td>
+        <td>/Accident/{year}/{id}</td>
+      </tr>
+      <tr>
+        <td>Vehicle</td>
+        <td>/Vehicle/{id}</td>
+      </tr>
+      <tr>
+        <td>Person</td>
+        <td>/Person/{id}</td>
+      </tr>
+      <tr>
+        <td>District</td>
+        <td>/District/{id}</td>
+      </tr>
+      
+      
+    </tbody>
+  </table>
+</ul>
+
+
+</body>
+</html>
