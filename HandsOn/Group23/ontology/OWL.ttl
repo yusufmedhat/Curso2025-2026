@@ -1,0 +1,38 @@
+@prefix mod: <https://w3id.org/mod#> .
+@prefix ns: <http://www.owl-ontologies.com/ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ns: a owl:Ontology ;
+    mod:createdWith <https://chowlk.linkeddata.es/> .
+
+ns:Municipalityxsd a ns:Station,
+        owl:NamedIndividual .
+
+ns:Pollutant a owl:Class ;
+    rdfs:label "Pollutant" .
+
+ns:Provincexsd a ns:Station,
+        owl:NamedIndividual .
+
+ns:hasDateTimexsd a ns:Measurement,
+        owl:NamedIndividual .
+
+ns:hasPollutant a owl:ObjectProperty ;
+    rdfs:label "has pollutant" .
+
+ns:hasStation a owl:ObjectProperty ;
+    rdfs:label "has station" .
+
+ns:hasValuexsd a ns:Measurement,
+        owl:NamedIndividual .
+
+ns:isValidatedxsd a ns:Measurement,
+        owl:NamedIndividual .
+
+ns:Station a owl:Class ;
+    rdfs:label "Station" .
+
+ns:Measurement a owl:Class ;
+    rdfs:label "Measurement" .
+

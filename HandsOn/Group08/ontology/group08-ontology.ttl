@@ -1,0 +1,70 @@
+@prefix : <http://group08.linkeddata.es/ontology/BCNData#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+### CLASSES
+:Station a rdfs:Class ;
+  rdfs:label "Station"@en ;
+  rdfs:comment "Air quality monitoring station."@en .
+
+:TrafficSection a rdfs:Class ;
+  rdfs:label "Traffic Section"@en ;
+  rdfs:comment "Street section where traffic data are measured."@en .
+
+:BikeParking a rdfs:Class ;
+  rdfs:label "Bike Parking"@en ;
+  rdfs:comment "Public bicycle parking facility."@en .
+
+:Observation a rdfs:Class ;
+  rdfs:label "Observation"@en ;
+  rdfs:comment "Generic measurement or observation."@en .
+
+:WeatherCondition a rdfs:Class ;
+  rdfs:label "Weather Condition"@en ;
+  rdfs:comment "Weather data related to traffic or pollution."@en .
+
+### PROPERTIES
+:hasValue a rdfs:Property ;
+  rdfs:domain :Observation ;
+  rdfs:range xsd:decimal ;
+  rdfs:label "has value"@en .
+
+:hasUnit a rdfs:Property ;
+  rdfs:domain :Observation ;
+  rdfs:range rdfs:Literal ;
+  rdfs:label "has unit"@en .
+
+:timestamp a rdfs:Property ;
+  rdfs:domain :Observation ;
+  rdfs:range xsd:dateTime ;
+  rdfs:label "timestamp"@en .
+
+:measuredAt a rdfs:Property ;
+  rdfs:domain :Observation ;
+  rdfs:range :Station ;
+  rdfs:label "measured at"@en .
+
+:hasWeather a rdfs:Property ;
+  rdfs:domain :TrafficSection ;
+  rdfs:range :WeatherCondition ;
+  rdfs:label "has weather"@en .
+
+:locatedIn a rdfs:Property ;
+  rdfs:domain rdfs:Resource ;
+  rdfs:range rdfs:Literal ;
+  rdfs:label "located in"@en .
+
+:lat a rdfs:Property ;
+  rdfs:domain rdfs:Resource ;
+  rdfs:range xsd:decimal ;
+  rdfs:label "latitude"@en .
+
+:lon a rdfs:Property ;
+  rdfs:domain rdfs:Resource ;
+  rdfs:range xsd:decimal ;
+  rdfs:label "longitude"@en .
+
+:capacity a rdfs:Property ;
+  rdfs:domain :BikeParking ;
+  rdfs:range xsd:integer ;
+  rdfs:label "capacity"@en .
