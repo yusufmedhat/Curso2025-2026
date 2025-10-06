@@ -1,24 +1,31 @@
-# Self-assessment — Hands-on 1
+# Hands-on Assignment 1 – Self Assessment  
+**Group 08**
 
-**Group**: GroupXX  
-**Date**: 2025-10-02
+## ✅ Checklist
 
-## Deliverables checklist
-- [x] `README.md` with members (placeholders if needed).
-- [x] CSVs in `csv/` (samples included) and a script for full downloads.
-- [x] `requirements/datasetRequirements.html` with the R1–R6 evaluation.
-- [x] `requirements/applicationRequirements.html` with requirements and mockups.
-- [x] This self-assessment document.
+### The “README.md” file
+- [x] Includes the names and GitHub users of all the members of the group.
 
-## Degree of compliance
-- **R1–R4**: Satisfied for the three selected datasets (smart city domain, CSV, open license CC BY 4.0, linkable using geography/IDs).
-- **R5** (documentation): Satisfied — dataset pages describe fields and resources.
-- **R6** (multiple sources): Satisfied — three sources combined (air, traffic, Bicing).
+### The "csv" directory
+- [x] Contains three CSV files:  
+  1. Air quality in Barcelona  
+  2. Traffic street sections with weather forecast  
+  3. Bike parking service in Barcelona  
+- [x] The CSV files belong to smart city domains (environment, mobility, and sustainability).
 
-## Decisions and rationale
-- We chose **Barcelona** because Open Data BCN offers high-quality, continuous releases, with **CSV** downloads and clear **CC BY 4.0** licensing.
-- The three domains (air, traffic, Bicing) complement each other for a citizen use case (“healthy route”).
+### The "datasetRequirements.html" file
+- [x] Identifies the licenses of all selected datasets (CC BY 4.0 from Open Data BCN).  
+- [x] Identifies entities that can be linked with other datasets, such as coordinates, districts, and street names.  
+- [x] Mentions possible external entities to link with, like DBpedia, Wikidata, or GeoNames (for locations and administrative areas).
 
-## Limitations and future work
-- Full CSVs are large; we version **samples** and provide a download script.
-- Future: normalize segment identifiers, enrich with neighborhood/district boundaries, and deploy an RDF graph + SPARQL endpoint.
+### The "applicationRequirements.html" file
+- [x] Includes a short description of the application user interface (map-based with layers for air, traffic, and bikes).
+
+---
+
+## 💬 Comments on the self-assessment
+All required deliverables have been created and uploaded correctly.  
+The datasets fulfill the mandatory requirements (R1–R4), and the application proposal is consistent with them.  
+We could improve by adding small visual mock-ups of the interface in future assignments.  
+
+Overall, the group successfully completed Hands-on 1 and prepared the data for RDF transformation in the next step.
