@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Analysis</title>
+</head>
+<body>
+
+    <h1>Data Analysis</h1>
+
+    <h2>1. General Description </h2>
+    <p>
+        The dataset contains the names of various parks, gardens and green zones and the name of trees in them.
+        There are 3 columns, the first column has the name of the parks or green zones, the second one has the names of the trees
+        and the third one has the amount of trees in each park or green zone. A more detailed description below:
+    </p>
+
+    <ul>
+      <li><strong>Number of lines with relevant data (parks, tree names, etc.):</strong> 274</li>
+      <li><strong>Number of lines without relevant data:</strong> 34</li>
+      <li><strong>Number of columns:</strong> 3</li>
+      <li><strong>Number of different parks, gardens and green zones:</strong> 24</li>
+      <li><strong>Number of different tree species:</strong> 103</li>
+      <li><strong>Range of values in "Cantidad 2024" column:</strong> 1 (min) – 6200 (max)</li>
+    </ul>
+
+    <h2>2. Data Schema</h2>
+
+    <table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>Column</th>
+            <th>Description</th>
+            <th>Data Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>NOMBRE PARQUE</td>
+            <td>Name of the park, garden, or green zone</td>
+            <td>Text</td>
+        </tr>
+        <tr>
+            <td>ESPECIE</td>
+            <td>Scientific name of the tree species</td>
+            <td>Text</td>
+        </tr>
+        <tr>
+            <td>UNIDADES 2024</td>
+            <td>Number of trees of that species in a specific park</td>
+            <td>Integer</td>
+        </tr>
+    </tbody>
+    </table>
+
+    <h2>3. Data issues</h2>
+    <ul>
+      <li>34 rows are empty or do not contain relevant data.</li>
+    </ul>
+
+    <h2>4. Licensing of the Data Source</h2>
+
+    <ul>
+      <li><strong>Publisher:</strong> Ayuntamiento de Madrid.</li>
+      <li><strong>Rightsholder:</strong> Dirección General de Gestión del Agua y Zonas Verdes.</li>
+      <li><strong>Original license:</strong> There is no specific license but reuse is allowed under the terms of the Ayuntamiento de Madrid legal notice. </li>
+    </ul>
+
+    <p>
+     For this dataset we will use the <strong>CC BY 4.0</strong> license. 
+     This ensures that the data can be reused by others, while giving attribution to the creators: 
+     Ayuntamiento de Madrid and Dirección General de Gestión del Agua y Zonas Verdes.
+    </p>
+
+    <h2>5. Resource Naming Strategy</h2>
+
+     <p>
+      For the generated Linked Data, each resource will have a unique URI following these conventions:
+    </p>
+
+    <ul>
+      <li><strong>URI form:</strong> Slash URIs (/) are used for everything.
+      <li><strong>Domain:</strong> https://group17.project/</li>
+      <li><strong>Base path for resources:</strong> /madrid-parks/</li>
+      <li><strong>Prefix: web="https://group17.project/madrid-parks"</strong></li>
+      <li><strong>Park resources:</strong> web/park/ + park name (e.g., https://group17.project/madrid-parks/park/Retiro)</li>
+      <li><strong>Tree species resources:</strong> web/tree/ + scientific name (e.g., https://group17.project/madrid-parks/tree/Quercus_robur)</li>
+      <li><strong>Ontology classes and properties:</strong> web/ontology/ + class or property name (e.g., https://group17.project/madrid-parks/ontology/hasTree)</li>
+      <li><strong>Content negotiation:</strong> URIs can be prepared to serve both HTML and RDF representations.</li>
+    </ul>
+
+</body>
+</html>

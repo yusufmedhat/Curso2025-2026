@@ -1,0 +1,94 @@
+@prefix : <http://madridfluye.oeg-upm.net/ontology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+
+<http://madridfluye.oeg-upm.net/ontology/> rdf:type owl:Ontology ;
+    owl:versionIRI <http://madridfluye.oeg-upm.net/ontology/1.0.0> ;
+    rdfs:comment "Ontología para el proyecto Madrid Fluye, que modela aparcamientos, estaciones de BiciMAD y mediciones de tráfico en Madrid."@es ;
+    rdfs:label "Ontología Madrid Fluye"@en .
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://madridfluye.oeg-upm.net/ontology/Parking
+:Parking rdf:type owl:Class ;
+    rdfs:subClassOf schema:Place ;
+    rdfs:label "Aparcamiento"@es ,
+               "Parking"@en ;
+    rdfs:comment "Representa un aparcamiento público municipal en Madrid."@es .
+
+###  http://madridfluye.oeg-upm.net/ontology/BikeStation
+:BikeStation rdf:type owl:Class ;
+    rdfs:subClassOf schema:Place ;
+    rdfs:label "Estación de BiciMAD"@es ,
+               "BiciMAD Station"@en ;
+    rdfs:comment "Representa una estación del sistema de bicicletas públicas BiciMAD."@es .
+
+###  http://madridfluye.oeg-upm.net/ontology/TrafficMeasurement
+:TrafficMeasurement rdf:type owl:Class ;
+    rdfs:label "Medición de Tráfico"@es ,
+               "Traffic Measurement"@en ;
+    rdfs:comment "Representa una medición de la intensidad media diaria de tráfico para una zona y periodo concretos."@es .
+
+
+#################################################################
+#    Datatype Properties
+#################################################################
+
+### http://madridfluye.oeg-upm.net/ontology/totalDocks
+:totalDocks rdf:type owl:DatatypeProperty ;
+    rdfs:domain :BikeStation ;
+    rdfs:range xsd:integer ;
+    rdfs:label "Anclajes totales"@es ,
+               "Total docks"@en .
+               
+### http://madridfluye.oeg-upm.net/ontology/availableDocks
+:availableDocks rdf:type owl:DatatypeProperty ;
+    rdfs:domain :BikeStation ;
+    rdfs:range xsd:integer ;
+    rdfs:label "Anclajes disponibles"@es ,
+               "Available docks"@en .
+
+### http://madridfluye.oeg-upm.net/ontology/trafficIntensity
+:trafficIntensity rdf:type owl:DatatypeProperty ;
+    rdfs:domain :TrafficMeasurement ;
+    rdfs:range xsd:integer ;
+    rdfs:label "Intensidad de tráfico"@es ,
+               "Traffic intensity"@en .
+
+### http://madridfluye.oeg-upm.net/ontology/forZone
+:forZone rdf:type owl:DatatypeProperty ;
+    rdfs:domain :TrafficMeasurement ;
+    rdfs:range xsd:string ;
+    rdfs:label "Para la zona"@es ,
+               "For zone"@en .
+               
+### http://madridfluye.oeg-upm.net/ontology/forYear
+:forYear rdf:type owl:DatatypeProperty ;
+    rdfs:domain :TrafficMeasurement ;
+    rdfs:range xsd:gYear ;
+    rdfs:label "Para el año"@es ,
+               "For year"@en .
+               
+### http://madridfluye.oeg-upm.net/ontology/forMonth
+:forMonth rdf:type owl:DatatypeProperty ;
+    rdfs:domain :TrafficMeasurement ;
+    rdfs:range xsd:string ;
+    rdfs:label "Para el mes"@es ,
+               "For month"@en .
+
+#################################################################
+#    Reusing External Properties
+#################################################################
+
+# We will reuse the following properties from well-known vocabularies:
+# - schema:name (for names of Parkings and BikeStations)
+# - schema:address (for addresses of BikeStations)
+# - geo:lat (for latitude)
+# - geo:long (for longitude)
