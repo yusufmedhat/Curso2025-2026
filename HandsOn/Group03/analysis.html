@@ -35,102 +35,53 @@
 
   <section id="license">
     <h2>2. Licencia de la(s) fuente(s) de datos</h2>
-    <p>Indique aquí la licencia exacta del dataset (incluya identificador SPDX si es posible):</p>
+    <p>La fuente de datos proviene del Ayuntamiento de Madrid</p>
     <table>
-      <tr><th>Dataset</th><th>Licencia</th><th>Enlace</th></tr>
+      <tr><th>Dataset</th><th>Licencia</th><th>"https://datos.madrid.es/portal/site/egob/menuitem.3efdb29b813ad8241e830cc2a8a409a0/?vgnextoid=108804d4aab90410VgnVCM100000171f5a0aRCRD&vgnextchannel=b4c412b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextfmt=default"</th></tr>
       <tr>
-        <td>Nombre del dataset</td>
-        <td>CC BY 4.0 (SPDX: <code>CC-BY-4.0</code>)</td>
-        <td><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons BY 4.0</a></td>
+      <td>Licencia de Reutilización de la Información del Sector Público (RISP)</td>
+      <td><a href="https://datos.madrid.es/egob/catalogo/aviso-legal" target="_blank" rel="noopener">Aviso legal de datos.madrid.es</a></td>
       </tr>
     </table>
-    <p class="small">Notas: si la licencia impone restricciones (p. ej. no comercial, compartir igual), indícalo aquí y las implicaciones para redistribución y derivados.</p>
-  </section>
+    <h3>Condiciones principales</h3>
+  <ul>
+    <li>Se autoriza la reutilización de los datos con fines <strong>comerciales y no comerciales</strong>, siempre que no implique una actividad administrativa pública.</li>
+    <li>Debe <strong>citarse la fuente</strong> como: “Origen de los datos: Ayuntamiento de Madrid”.</li>
+    <li>Debe indicarse la <strong>fecha de la última actualización</strong> cuando esté disponible.</li>
+    <li>No se puede <strong>desnaturalizar el sentido de la información</strong> ni sugerir apoyo o patrocinio por parte del Ayuntamiento.</li>
+    <li>Se debe conservar la información y metadatos originales sobre las condiciones de reutilización.</li>
+    <li>Está prohibida la <strong>reidentificación de personas</strong> en datos anonimizados.</li>
+  </ul>
 
-  <section id="analyses">
-    <h2>3. Análisis realizados</h2>
-    <p>Listado de los análisis ejecutados sobre la(s) fuente(s) de datos, con metodología breve y resultados principales.</p>
+  <h3>Exclusión de responsabilidad</h3>
+  <p>El Ayuntamiento de Madrid no se hace responsable del uso o interpretaciones que los reutilizadores realicen sobre los datos, ni de los posibles daños o perjuicios derivados de dicho uso.</p>
 
-    <h3>3.1 Limpieza y preprocesado</h3>
-    <p>Operaciones realizadas:</p>
-    <ul>
-      <li>Normalización de columnas (unificar nombres y tipos).</li>
-      <li>Imputación de valores faltantes: estrategia (mediana / forward-fill / eliminar).</li>
-      <li>Filtrado de registros inválidos.</li>
-    </ul>
+  <h3>Cesión de derechos</h3>
+  <p>El Ayuntamiento concede una <strong>cesión gratuita y no exclusiva</strong> de los derechos de propiedad intelectual sobre los documentos y datos reutilizables, permitiendo su reproducción, distribución, comunicación pública o transformación para todo el mundo y durante el plazo máximo permitido por la Ley.</p>
 
-    <h3>3.2 Análisis exploratorio (EDA)</h3>
-    <p>Resumen de pasos y hallazgos:</p>
-    <ul>
-      <li>Distribución de la variable <code>foo</code>: media = X, mediana = Y, outliers detectados.</li>
-      <li>Correlaciones: <code>foo</code> correlaciona con <code>bar</code> (r = 0.67).</li>
-    </ul>
+  <p class="small">Referencia legal: Ley 37/2007, de 16 de noviembre, sobre reutilización de la información del sector público (BOE-A-2007-19814).</p>
+</section>
+<h1>Análisis de Calidad del Aire en Madrid</h1>
 
-    <h3>3.3 Modelado / Transformaciones</h3>
-    <p>Modelos o transformaciones aplicadas, métricas y parámetros clave.</p>
-    <ul>
-      <li>Modelo: Regresión logística (hiperparámetros: C=1.0)</li>
-      <li>Métricas: AUC = 0.82, precisión = 0.78</li>
-    </ul>
+<h2>Análisis estaciones</h2>
+  
+<p>Se ha analizado todas las estaciones distinguiendo qué gases tienen marcados, la zona en la que se encuentra, tipo de calle y otros parámetros relevantes. Por ejemplo, la estación con código <strong>28079004</strong>, correspondiente a <strong>Plaza de España</strong>, ubicada en una zona de <em>urbana tráfico</em>, presenta marcados valores de NO2 y BTX, mientras que otros contaminantes como SO2 y PM2.5 muestran valores más bajos.</p>
 
-    <h3>3.4 Resultados completos & artefactos</h3>
-    <p>Archivos generados (tablas, figuras, modelos serializados):</p>
-    <table>
-      <tr><th>Archivo</th><th>Descripción</th><th>Ruta</th></tr>
-      <tr><td>eda_summary.csv</td><td>Resumen estadístico por variable</td><td><code>/data/processed/eda_summary.csv</code></td></tr>
-      <tr><td>model.pkl</td><td>Modelo final entrenado</td><td><code>/models/model.pkl</code></td></tr>
-      <tr><td>fig_histogram.png</td><td>Histograma de la variable principal</td><td><code>/reports/fig_histogram.png</code></td></tr>
-    </table>
-  </section>
+<p>La ubicación geográfica de la estación se encuentra en <strong>longitud -3.7122567</strong> y <strong>latitud 40.4238823</strong>, con una altitud de 637 metros, lo que puede influir en la dispersión de los contaminantes. Este análisis permite identificar las zonas con mayor carga contaminante y su relación con el tipo de vía, facilitando la planificación.
 
-  <section id="naming">
-    <h2>4. Estrategia de nombrado de recursos</h2>
-    <p>Convenciones para nombres de archivos, carpetas y recursos que deben seguir los miembros del grupo. Esto facilita rastreabilidad y automatización.</p>
 
-    <h3>4.1 Principios</h3>
-    <ul>
-      <li>Legibilidad: usar <strong>minúsculas</strong> y guiones bajos para separar palabras (<code>dataset_raw.csv</code>).</li>
-      <li>Fechas en formato ISO: <code>YYYYMMDD</code> (ej.: <code>20251007</code>).</li>
-      <li>Versionado semántico cuando aplique: <code>v1.0.0</code>.</li>
-      <li>Evitar espacios y caracteres especiales.</li>
-    </ul>
 
-    <h3>4.2 Convenciones (ejemplos)</h3>
-    <table>
-      <tr><th>Tipo</th><th>Formato</th><th>Ejemplo</th></tr>
-      <tr><td>Dataset crudo</td><td><code>{nombre_dataset}_raw_{YYYYMMDD}.csv</code></td><td><code>weather_raw_20251007.csv</code></td></tr>
-      <tr><td>Dataset procesado</td><td><code>{nombre_dataset}_processed_v{MAJOR}.{MINOR}.{PATCH}.parquet</code></td><td><code>weather_processed_v1.0.0.parquet</code></td></tr>
-      <tr><td>Modelos</td><td><code>{modelo}_{featset}_v{semver}.pkl</code></td><td><code>clf_temp_hist_v0.2.1.pkl</code></td></tr>
-      <tr><td>Reportes</td><td><code>report_{tema}_{YYYYMMDD}.html</code></td><td><code>report_eda_20251007.html</code></td></tr>
-    </table>
+<h2>2. Observaciones Generales</h2>
+<p>Debido al análisis que hemos llevado a cabo hemos llegado a las siguientes conclusiones:</p>
+<ul>
+  <li>Las estaciones en zonas de tráfico intenso presentan niveles más altos de NO2 y BTX.</li>
+  <li>Las zonas suburbanas o parques muestran niveles bajos de contaminantes, siendo más seguras para población sensible.</li>
+  <li>PM10 y PM2.5 tienden a aumentar en avenidas y plazas grandes, especialmente cerca de intersecciones concurridas.</li>
+  <li>O3 es más alto en zonas abiertas y suburbanas debido a la fotoconversión y menor tráfico.</li>
+</ul>
 
-    <h3>4.3 Rutas recomendadas</h3>
-    <ul>
-      <li><code>/data/raw/</code> — datos sin tocar</li>
-      <li><code>/data/processed/</code> — datos listos para análisis</li>
-      <li><code>/models/</code> — modelos entrenados</li>
-      <li><code>/reports/</code> — resultados y gráficos</li>
-    </ul>
-  </section>
 
-  <section id="reproducibility">
-    <h2>5. Reproducibilidad</h2>
-    <p>Cómo reproducir los análisis:</p>
-    <ol>
-      <li>Instalar dependencias: <code>pip install -r requirements.txt</code> o usar <code>environment.yml</code>.</li>
-      <li>Ejecutar script de preprocesado: <code>python src/preprocess.py --input data/raw/weather_raw_20251007.csv --output data/processed/weather_processed_v1.0.0.parquet</code></li>
-      <li>Ejecutar notebooks o scripts de análisis: <code>jupyter nbconvert --execute reports/EDA.ipynb --to html --output reports/report_eda_20251007.html</code></li>
-    </ol>
-    <p class="small">Incluya comandos exactos, versión de Python y hashes de paquetes si se requiere alta reproducibilidad.</p>
-  </section>
-
-  <section id="contact">
-    <h2>6. Contacto</h2>
-    <p>Responsable del análisis: Nombre Apellido — <a href="mailto:responsable@ejemplo.org">responsable@ejemplo.org</a></p>
-  </section>
-
-  <footer>
-    <p>Última actualización: 2025-10-07 — Archivo generado por el equipo de datos.</p>
-  </footer>
 </body>
 </html>
+
+
