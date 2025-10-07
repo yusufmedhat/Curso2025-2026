@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Análisis del conjunto de datos — Grupo 03</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;line-height:1.6;margin:2rem;max-width:900px;color:#111}
+    header{border-bottom:1px solid #ddd;padding-bottom:1rem;margin-bottom:1rem}
+    h1{margin:0 0 .2rem}
+    h2{margin-top:1.25rem}
+    pre, code{background:#f6f8fa;padding:.2rem .4rem;border-radius:4px}
+    .meta{font-size:.95rem;color:#555}
+    .badge{display:inline-block;padding:.15rem .5rem;border-radius:4px;border:1px solid #ddd;background:#fafafa;margin-right:.4rem;font-size:.9rem}
+    table{border-collapse:collapse;width:100%;margin-top:.5rem}
+    th,td{border:1px solid #eee;padding:.5rem;text-align:left}
+    .small{font-size:.92rem;color:#444}
+    footer{margin-top:2rem;border-top:1px solid #eee;padding-top:1rem;color:#666;font-size:.9rem}
+  </style>
+</head>
+<body>
+  
+
+  <section id="dataset">
+    <h2>1. Descripción de la(s) fuente(s) de datos</h2>
+    <p>Breve descripción de la(s) fuente(s): origen, responsables, formato, versión y alcance.</p>
+    <ul>
+      <li><strong>Fuente:</strong> Nombre del dataset o API</li>
+      <li><strong>URL:</strong> <a href="https://datos.comunidad.madrid/dataset/calidad_aire_estaciones" target="_blank" rel="noopener">https://datos.comunidad.madrid/dataset/calidad_aire_estaciones</a></li>
+      <li><strong>Formato:</strong> CSV </li>
+      <li><strong>Fecha de extracción:</strong> 30-Sep-2025</li>
+      <li><strong>Contacto / propietario:</strong> nombre@organizacion.org</li>
+    </ul>
+  </section>
+
+  <section id="license">
+    <h2>2. Licencia de la(s) fuente(s) de datos</h2>
+    <p>Indique aquí la licencia exacta del dataset (incluya identificador SPDX si es posible):</p>
+    <table>
+      <tr><th>Dataset</th><th>Licencia</th><th>Enlace</th></tr>
+      <tr>
+        <td>Nombre del dataset</td>
+        <td>CC BY 4.0 (SPDX: <code>CC-BY-4.0</code>)</td>
+        <td><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons BY 4.0</a></td>
+      </tr>
+    </table>
+    <p class="small">Notas: si la licencia impone restricciones (p. ej. no comercial, compartir igual), indícalo aquí y las implicaciones para redistribución y derivados.</p>
+  </section>
+
+  <section id="analyses">
+    <h2>3. Análisis realizados</h2>
+    <p>Listado de los análisis ejecutados sobre la(s) fuente(s) de datos, con metodología breve y resultados principales.</p>
+
+    <h3>3.1 Limpieza y preprocesado</h3>
+    <p>Operaciones realizadas:</p>
+    <ul>
+      <li>Normalización de columnas (unificar nombres y tipos).</li>
+      <li>Imputación de valores faltantes: estrategia (mediana / forward-fill / eliminar).</li>
+      <li>Filtrado de registros inválidos.</li>
+    </ul>
+
+    <h3>3.2 Análisis exploratorio (EDA)</h3>
+    <p>Resumen de pasos y hallazgos:</p>
+    <ul>
+      <li>Distribución de la variable <code>foo</code>: media = X, mediana = Y, outliers detectados.</li>
+      <li>Correlaciones: <code>foo</code> correlaciona con <code>bar</code> (r = 0.67).</li>
+    </ul>
+
+    <h3>3.3 Modelado / Transformaciones</h3>
+    <p>Modelos o transformaciones aplicadas, métricas y parámetros clave.</p>
+    <ul>
+      <li>Modelo: Regresión logística (hiperparámetros: C=1.0)</li>
+      <li>Métricas: AUC = 0.82, precisión = 0.78</li>
+    </ul>
+
+    <h3>3.4 Resultados completos & artefactos</h3>
+    <p>Archivos generados (tablas, figuras, modelos serializados):</p>
+    <table>
+      <tr><th>Archivo</th><th>Descripción</th><th>Ruta</th></tr>
+      <tr><td>eda_summary.csv</td><td>Resumen estadístico por variable</td><td><code>/data/processed/eda_summary.csv</code></td></tr>
+      <tr><td>model.pkl</td><td>Modelo final entrenado</td><td><code>/models/model.pkl</code></td></tr>
+      <tr><td>fig_histogram.png</td><td>Histograma de la variable principal</td><td><code>/reports/fig_histogram.png</code></td></tr>
+    </table>
+  </section>
+
+  <section id="naming">
+    <h2>4. Estrategia de nombrado de recursos</h2>
+    <p>Convenciones para nombres de archivos, carpetas y recursos que deben seguir los miembros del grupo. Esto facilita rastreabilidad y automatización.</p>
+
+    <h3>4.1 Principios</h3>
+    <ul>
+      <li>Legibilidad: usar <strong>minúsculas</strong> y guiones bajos para separar palabras (<code>dataset_raw.csv</code>).</li>
+      <li>Fechas en formato ISO: <code>YYYYMMDD</code> (ej.: <code>20251007</code>).</li>
+      <li>Versionado semántico cuando aplique: <code>v1.0.0</code>.</li>
+      <li>Evitar espacios y caracteres especiales.</li>
+    </ul>
+
+    <h3>4.2 Convenciones (ejemplos)</h3>
+    <table>
+      <tr><th>Tipo</th><th>Formato</th><th>Ejemplo</th></tr>
+      <tr><td>Dataset crudo</td><td><code>{nombre_dataset}_raw_{YYYYMMDD}.csv</code></td><td><code>weather_raw_20251007.csv</code></td></tr>
+      <tr><td>Dataset procesado</td><td><code>{nombre_dataset}_processed_v{MAJOR}.{MINOR}.{PATCH}.parquet</code></td><td><code>weather_processed_v1.0.0.parquet</code></td></tr>
+      <tr><td>Modelos</td><td><code>{modelo}_{featset}_v{semver}.pkl</code></td><td><code>clf_temp_hist_v0.2.1.pkl</code></td></tr>
+      <tr><td>Reportes</td><td><code>report_{tema}_{YYYYMMDD}.html</code></td><td><code>report_eda_20251007.html</code></td></tr>
+    </table>
+
+    <h3>4.3 Rutas recomendadas</h3>
+    <ul>
+      <li><code>/data/raw/</code> — datos sin tocar</li>
+      <li><code>/data/processed/</code> — datos listos para análisis</li>
+      <li><code>/models/</code> — modelos entrenados</li>
+      <li><code>/reports/</code> — resultados y gráficos</li>
+    </ul>
+  </section>
+
+  <section id="reproducibility">
+    <h2>5. Reproducibilidad</h2>
+    <p>Cómo reproducir los análisis:</p>
+    <ol>
+      <li>Instalar dependencias: <code>pip install -r requirements.txt</code> o usar <code>environment.yml</code>.</li>
+      <li>Ejecutar script de preprocesado: <code>python src/preprocess.py --input data/raw/weather_raw_20251007.csv --output data/processed/weather_processed_v1.0.0.parquet</code></li>
+      <li>Ejecutar notebooks o scripts de análisis: <code>jupyter nbconvert --execute reports/EDA.ipynb --to html --output reports/report_eda_20251007.html</code></li>
+    </ol>
+    <p class="small">Incluya comandos exactos, versión de Python y hashes de paquetes si se requiere alta reproducibilidad.</p>
+  </section>
+
+  <section id="contact">
+    <h2>6. Contacto</h2>
+    <p>Responsable del análisis: Nombre Apellido — <a href="mailto:responsable@ejemplo.org">responsable@ejemplo.org</a></p>
+  </section>
+
+  <footer>
+    <p>Última actualización: 2025-10-07 — Archivo generado por el equipo de datos.</p>
+  </footer>
+</body>
+</html>
