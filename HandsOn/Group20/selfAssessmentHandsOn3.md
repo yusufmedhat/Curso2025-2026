@@ -4,7 +4,7 @@
 
 #### 📄 `operations.json`
 - [x] Includes the operations performed over the data for fixing and transforming them
-> [Open operations.json]()
+> [Open operations.json](./openrefine/operations.json)
 
 ---
 
@@ -16,4 +16,4 @@
 - [x] Has every class in the ontology related to a resource described in it
 - [x] Has every column trimmed, properly encoded and related to a property in the ontology
 - [x] Has every property in the ontology related to a column in it
-> [Open parkings-updated.csv]()
+> [Open parkings-updated.csv](./csv/parkings-updated.csv)
