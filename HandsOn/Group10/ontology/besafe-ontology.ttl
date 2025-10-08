@@ -118,3 +118,12 @@ besafe:medidaAplicada
     rdfs:label "medida aplicada"@es ;
     rdfs:domain besafe:EpisodioContaminacion ;
     rdfs:range xsd:string .
+
+
+
+## Properties a borrar:
+## - Validación
+## - solapaConEpisodio (no la veo en ningún .csv)
+
+## Cambiar los nombres de episodio contaminación a episodio ozono y medida aplicada a medida población
+## Se puede si no editar directamente los .csv según la ontología o viceversa
