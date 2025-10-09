@@ -39,6 +39,19 @@
   <p><strong>File format:</strong> CSV</p>
   <p><strong>License:</strong> <a href="https://datos.madrid.es/portal/site/egob/menuitem.3efdb29b813ad8241e830cc2a8a409a0/?vgnextoid=108804d4aab90410VgnVCM100000171f5a0aRCRD&vgnextchannel=b4c412b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextfmt=default" target="_blank">Open Data License – Ayuntamiento de Madrid</a></p>
 
+    <p><strong>Entities in the selected dataset that can be linked with other datasets:</strong></p>
+  <ul>
+    <li><code>PROVINCIA</code>, <code>MUNICIPIO</code>, and <code>ESTACION</code> identify the monitoring stations and can be linked to geographical datasets or station metadata (e.g., coordinates, district names).</li>
+    <li><code>ANO</code>, <code>MES</code>, and <code>DIA</code> provide a temporal reference that allows linking with meteorological or traffic datasets collected on the same dates.</li>
+  </ul>
+
+    <p><strong>Entities in other datasets that can be linked to this dataset:</strong></p>
+  <ul>
+    <li>Air quality station metadata datasets (linked via <code>ESTACION</code> or <code>PUNTO_MUESTREO</code>).</li>
+    <li>Meteorological data (linked via <code>ANO</code>, <code>MES</code>, and <code>DIA</code>).</li>
+    <li>Traffic intensity datasets for Madrid (linked via <code>MUNICIPIO</code> and temporal fields).</li>
+  </ul>
+
   <h2>Requirement Evaluation</h2>
   <table>
     <tr>
