@@ -24,11 +24,15 @@ class Report:
         return True
 
     def namespace_is_correct_class(self, entity):
+        if entity is None:
+            return False
         if "http://oeg.fi.upm.es/def/people#" not in entity:
             return False
         return True
 
     def namespace_is_correct_instance(self, entity):
+        if entity is None:
+            return False
         if "http://oeg.fi.upm.es/resource/person/" not in entity:
             return False
         return True
