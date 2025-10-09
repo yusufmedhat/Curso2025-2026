@@ -1,0 +1,267 @@
+@prefix : <http://movemadrid.org/def/base#> ./> .
+@prefix @base <http: <http://movemadrid.org/def/base#> .#> .
+@prefix @prefix mm: <http://movemadrid.org/def/base#> .#> .
+@prefix @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .#> .
+@prefix @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .#> .
+@prefix @prefix owl: <http://www.w3.org/2002/07/owl#> .#> .
+@prefix @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .#> .
+@prefix @prefix schema: <https://schema.org/> .#> .
+@prefix <http: <http://movemadrid.org/def/base#> a owl:Ontology .#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix mod: <https://w3id.org/mod#> .
+@prefix mm: <http://www.owl-ontologies.com/mm#> .
+@prefix schema: <http://www.owl-ontologies.com/schema#> .
+@base <http://movemadrid.org/def/base#> ./> .
+
+<http://movemadrid.org/def/base#> ./> rdf:type owl:Ontology ;
+			mod:createdWith <https://chowlk.linkeddata.es/> .
+
+#################################
+#    Object Properties
+#################################
+
+## mm:eventFacility
+mm:eventFacility rdf:type owl:ObjectProperty ;
+		rdfs:domain mm:Event ;
+		rdfs:range mm:Facility ;
+		rdfs:label "event facility" .
+
+## mm:hasFacility
+mm:hasFacility rdf:type owl:ObjectProperty ;
+		rdfs:domain mm:Barrio ;
+		rdfs:range mm:Facility ;
+		rdfs:label "has facility" .
+
+## mm:hasBarrio
+mm:hasBarrio rdf:type owl:ObjectProperty ;
+		rdfs:domain mm:District ;
+		rdfs:range mm:Barrio ;
+		rdfs:label "has barrio" .
+
+## mm:hasCarParking
+mm:hasCarParking rdf:type owl:ObjectProperty ;
+		rdfs:domain mm:Barrio ;
+		rdfs:range mm:CarParking ;
+		rdfs:label "has car parking" .
+
+## mm:inDistrict
+mm:inDistrict rdf:type owl:ObjectProperty ;
+		rdfs:domain mm:Barrio ;
+		rdfs:range mm:District ;
+		rdfs:label "in district" .
+
+## mm:hasBicycleParking
+mm:hasBicycleParking rdf:type owl:ObjectProperty ;
+		rdfs:domain mm:Barrio ;
+		rdfs:range mm:BicycleParking ;
+		rdfs:label "has bicycle parking" .
+
+#################################
+#    Data Properties
+#################################
+
+## mm:eventTitle
+mm:eventTitle rdf:type owl:DatatypeProperty ;
+		rdfs:domain mm:Event ;
+		rdfs:range xsd:string ;
+		rdfs:label "event title" .
+
+## mm:audienceType
+mm:audienceType rdf:type owl:DatatypeProperty ;
+		rdfs:domain mm:Event ;
+		rdfs:range xsd:string ;
+		rdfs:label "audience type" .
+
+## mm:eventDescription
+mm:eventDescription rdf:type owl:DatatypeProperty ;
+		rdfs:domain mm:Event ;
+		rdfs:range xsd:string ;
+		rdfs:label "event description" .
+
+## mm:eventCost
+mm:eventCost rdf:type owl:DatatypeProperty ;
+		rdfs:domain mm:Event ;
+		rdfs:range xsd:string ;
+		rdfs:label "event cost" .
+
+## mm:startsOnDate
+mm:startsOnDate rdf:type owl:DatatypeProperty ;
+		rdfs:domain mm:Event ;
+		rdfs:range xsd:date ;
+		rdfs:label "starts on date" .
+
+## mm:endsOnDate
+mm:endsOnDate rdf:type owl:DatatypeProperty ;
+		rdfs:domain mm:Event ;
+		rdfs:range xsd:date ;
+		rdfs:label "ends on date" .
+
+## mm:startsAtTime
+mm:startsAtTime rdf:type owl:DatatypeProperty ;
+		rdfs:domain mm:Event ;
+		rdfs:range xsd:time ;
+		rdfs:label "starts at time" .
+
+## mm:eventLink
+mm:eventLink rdf:type owl:DatatypeProperty ;
+		rdfs:domain mm:Event ;
+		rdfs:range xsd:anyURI ;
+		rdfs:label "event link" .
+
+## schema:name
+schema:name rdf:type owl:DatatypeProperty ;
+		rdfs:domain mm:Facility ;
+		rdfs:range xsd:string ;
+		rdfs:label "name" .
+
+## mm:facilityLink
+mm:facilityLink rdf:type owl:DatatypeProperty ;
+		rdfs:domain mm:Facility ;
+		rdfs:range xsd:anyURI ;
+		rdfs:label "facility link" .
+
+## schema:latitude
+schema:latitude rdf:type owl:DatatypeProperty ;
+		rdfs:domain mm:Facility ;
+		rdfs:range xsd:decimal ;
+		rdfs:label "latitude" .
+
+## schema:longitude
+schema:longitude rdf:type owl:DatatypeProperty ;
+		rdfs:domain mm:Facility ;
+		rdfs:range xsd:decimal ;
+		rdfs:label "longitude" .
+
+## mm:facilityAddressNumber
+mm:facilityAddressNumber rdf:type owl:DatatypeProperty ;
+		rdfs:domain mm:Facility ;
+		rdfs:range xsd:string ;
+		rdfs:label "facility address number" .
+
+## mm:barrioPostalCode
+mm:barrioPostalCode rdf:type owl:DatatypeProperty ;
+		rdfs:domain mm:Barrio ;
+		rdfs:range xsd:string ;
+		rdfs:label "barrio postal code" .
+
+## schema:name
+schema:name rdf:type owl:DatatypeProperty ;
+		rdfs:domain mm:CarParking ;
+		rdfs:range xsd:string ;
+		rdfs:label "name" .
+
+## mm:carParkingSchedule
+mm:carParkingSchedule rdf:type owl:DatatypeProperty ;
+		rdfs:domain mm:CarParking ;
+		rdfs:range xsd:string ;
+		rdfs:label "car parking schedule" .
+
+## mm:carParkingDescription
+mm:carParkingDescription rdf:type owl:DatatypeProperty ;
+		rdfs:domain mm:CarParking ;
+		rdfs:range xsd:string ;
+		rdfs:label "car parking description" .
+
+## mm:carParkingAddressNumber
+mm:carParkingAddressNumber rdf:type owl:DatatypeProperty ;
+		rdfs:domain mm:CarParking ;
+		rdfs:range xsd:string ;
+		rdfs:label "car parking address number" .
+
+## schema:latitude
+schema:latitude rdf:type owl:DatatypeProperty ;
+		rdfs:domain mm:CarParking ;
+		rdfs:range xsd:decimal ;
+		rdfs:label "latitude" .
+
+## schema:longitude
+schema:longitude rdf:type owl:DatatypeProperty ;
+		rdfs:domain mm:CarParking ;
+		rdfs:range xsd:decimal ;
+		rdfs:label "longitude" .
+
+## mm:carParkingPhone
+mm:carParkingPhone rdf:type owl:DatatypeProperty ;
+		rdfs:domain mm:CarParking ;
+		rdfs:range xsd:string ;
+		rdfs:label "car parking phone" .
+
+## mm:carParkingEmail
+mm:carParkingEmail rdf:type owl:DatatypeProperty ;
+		rdfs:domain mm:CarParking ;
+		rdfs:range xsd:string ;
+		rdfs:label "car parking email" .
+
+## mm:carParkingLink
+mm:carParkingLink rdf:type owl:DatatypeProperty ;
+		rdfs:domain mm:CarParking ;
+		rdfs:range xsd:anyURI ;
+		rdfs:label "car parking link" .
+
+## schema:latitude
+schema:latitude rdf:type owl:DatatypeProperty ;
+		rdfs:domain mm:BicycleParking ;
+		rdfs:range xsd:decimal ;
+		rdfs:label "latitude" .
+
+## schema:longitude
+schema:longitude rdf:type owl:DatatypeProperty ;
+		rdfs:domain mm:BicycleParking ;
+		rdfs:range xsd:decimal ;
+		rdfs:label "longitude" .
+
+## mm:bicycleParkingState
+mm:bicycleParkingState rdf:type owl:DatatypeProperty ;
+		rdfs:domain mm:BicycleParking ;
+		rdfs:range xsd:string ;
+		rdfs:label "bicycle parking state" .
+
+## mm:bicycleParkingModel
+mm:bicycleParkingModel rdf:type owl:DatatypeProperty ;
+		rdfs:domain mm:BicycleParking ;
+		rdfs:range xsd:string ;
+		rdfs:label "bicycle parking model" .
+
+#################################
+#    Classes
+#################################
+
+## mm:Event
+mm:Event rdf:type owl:Class ;
+	rdfs:label "Event" .
+
+## mm:Facility
+mm:Facility rdf:type owl:Class ;
+	rdfs:label "Facility" .
+
+## mm:Barrio
+mm:Barrio rdf:type owl:Class ;
+	rdfs:label "Barrio" .
+
+## mm:CarParking
+mm:CarParking rdf:type owl:Class ;
+	rdfs:label "Car Parking" .
+
+## mm:District
+mm:District rdf:type owl:Class ;
+	rdfs:label "District" .
+
+## mm:BicycleParking
+mm:BicycleParking rdf:type owl:Class ;
+	rdfs:label "Bicycle Parking" .
+
+#################################
+#    Instances
+#################################
+
+#################################
+#    General Axioms
+#################################
+

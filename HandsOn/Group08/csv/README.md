@@ -1,16 +1,34 @@
-# CSV — Sources and downloading
+# CSV — Sources and links
 
-This directory contains **sample** slices of the datasets (≤20 rows). To download the latest full CSVs, use `../scripts/fetch_data.sh`.
+## Air quality
+Source: Open Data BCN
 
-## Official sources (Open Data BCN)
+Name: Air quality data from the measure stations of the city of Barcelona
 
-- **Air quality (station-level, Barcelona)**  
-  Dataset page and monthly CSV resources (CC BY 4.0).
+Description: This dataset contains data of the contaminants measured in the stations of the city of Barcelona. The update is carried out in intervals of one hour indicating whether the value is validated or not. The data of three days prior to the current one is also displayed.
 
-- **Traffic status by segments (TRAMS), Barcelona**  
-  Dataset page and monthly CSV resources (CC BY 4.0).
+Link: https://opendata-ajuntament.barcelona.cat/data/en/dataset/qualitat-aire-detall-bcn
 
-- **Bicing stations, Barcelona**  
-  Dataset page and CSV/historical resources (CC BY 4.0).
+License: Creative Commons Attribution 4.0
 
-> Check the portal page to copy the **resource UUID** for the month you need if you edit the script.
+## Traffic state
+Source: Open Data BCN
+
+Name: Traffic state information in the city of Barcelona by sections. Real time data, in relation to average time and 15 minute prediction.
+
+Description: Traffic street sections of the city of Barcelona information with his actual weather, in relation to the actual weather and the predicted weather in 15 minutes.
+
+Link: https://opendata-ajuntament.barcelona.cat/data/en/dataset/itineraris
+
+License: Creative Commons Attribution 4.0
+
+## Parking service for bikes
+Source: Open Data BCN
+
+Name: Parking service for bikes in the city of Barcelona
+
+Description: Parking service for bikes in the city of Barcelona.
+
+Link: https://opendata-ajuntament.barcelona.cat/data/en/dataset/aparcaments-servei-bicis
+
+License: Creative Commons Attribution 4.0

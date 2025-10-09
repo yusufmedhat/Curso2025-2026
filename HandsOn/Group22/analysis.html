@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dataset Analysis - Accidentes de Tráfico Madrid</title>
+    <meta name="description" content="Análisis del dataset de accidentes de tráfico de Madrid para generación de Linked Data, incluyendo licencia y estrategia de nombres de recursos.">
+</head>
+<body>
+    <h1>Dataset Analysis - Accidentes de Tráfico Madrid</h1>
+
+    <h2>1. Análisis del Dataset</h2>
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Columna</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>num_expediente</strong></td>
+                <td>Identificador único del accidente.</td>
+            </tr>
+            <tr>
+                <td><strong>fecha</strong></td>
+                <td>Fecha del accidente (DD/MM/YYYY).</td>
+            </tr>
+            <tr>
+                <td><strong>hora</strong></td>
+                <td>Hora del accidente (HH:MM:ss, 24H).</td>
+            </tr>
+            <tr>
+                <td><strong>localizacion</strong></td>
+                <td>Dirección donde ocurrió el accidente.</td>
+            </tr>
+            <tr>
+                <td><strong>numero</strong></td>
+                <td>Número de calle o ubicación dentro de la calle.</td>
+            </tr>
+            <tr>
+                <td><strong>cod_distrito</strong></td>
+                <td>Código del distrito donde ocurrió el accidente.</td>
+            </tr>
+            <tr>
+                <td><strong>distrito</strong></td>
+                <td>Nombre del distrito de Madrid.</td>
+            </tr>
+            <tr>
+                <td><strong>tipo_accidente</strong></td>
+                <td>Tipo de colisión (e.g., lateral, frontal, obstáculo).</td>
+            </tr>
+            <tr>
+                <td><strong>estado_meteorológico</strong></td>
+                <td>Condiciones del clima al momento del accidente.</td>
+            </tr>
+            <tr>
+                <td><strong>tipo_vehiculo</strong></td>
+                <td>Tipo de vehículo implicado (Turismo, Ciclomotor, etc.).</td>
+            </tr>
+            <tr>
+                <td><strong>tipo_persona</strong></td>
+                <td>Rol de la persona implicada (Conductor, Pasajero, Peatón).</td>
+            </tr>
+            <tr>
+                <td><strong>rango_edad</strong></td>
+                <td>Grupo de edad de la persona implicada.</td>
+            </tr>
+            <tr>
+                <td><strong>sexo</strong></td>
+                <td>Sexo de la persona implicada.</td>
+            </tr>
+            <tr>
+                <td><strong>cod_lesividad</strong></td>
+                <td>Código de gravedad de la lesión (puede estar vacío).</td>
+            </tr>
+            <tr>
+                <td><strong>lesividad</strong></td>
+                <td>Descripción de la lesión.</td>
+            </tr>
+            <tr>
+                <td><strong>coordenada_x_utm</strong></td>
+                <td>Coordenada X UTM para georreferenciación.</td>
+            </tr>
+            <tr>
+                <td><strong>coordenada_y_utm</strong></td>
+                <td>Coordenada Y UTM para georreferenciación.</td>
+            </tr>
+            <tr>
+                <td><strong>positiva_alcohol</strong></td>
+                <td>Si la persona dio positivo en alcohol (S/N).</td>
+            </tr>
+            <tr>
+                <td><strong>positiva_droga</strong></td>
+                <td>Si la persona dio positivo en drogas (S/N).</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Ranges and Quantities of Interest</h3>
+    <ul>
+        <li>num_expediente: Cada accidente tiene un identificador único.</li>
+        <li>Distrito: Se cubren los distritos de Madrid donde ocurrieron los accidentes.</li>
+        <li>Tipo de accidente: Incluye colisión lateral, frontal, choque contra obstáculo, alcance, etc.</li>
+        <li>Tipo de vehículo: Turismo, Ciclomotor, Motocicleta, Maquinaria de obras.</li>
+        <li>Rango de edad: Desde menores de 18 hasta mayores de 60, incluyendo desconocidos.</li>
+        <li>Sexo: Hombre, Mujer, Desconocido.</li>
+        <li>Alcohol y droga: Valores S/N.</li>
+    </ul>
+
+    <h2>2. Licensing of the Data Source</h2>
+    <p>El dataset es publicado por el <a href="https://datos.madrid.es">Ayuntamiento de Madrid</a>, y el titular de los derechos es el mismo.</p>
+    <p>El dataset está disponible bajo una <a href="https://datos.madrid.es/portal/site/egob/menuitem.3efdb29b813ad8241e830cc2a8a409a0/?vgnextoid=108804d4aab90410VgnVCM100000171f5a0aRCRD&vgnextchannel=b4c412b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextfmt=default">licencia abierta</a>, permitiendo reutilización comercial y no comercial.</p>
+<p>Para el dataset generado, se utilizará la misma licencia abierta para asegurar compatibilidad y cumplimiento.</p>
+
+    <h2>3. Resource Naming Strategy</h2>
+    <p><strong>Domain</strong>: https://smartaccidents.es/</p>
+    <p><strong>Path</strong>: accidente/</p>
+    <ul>
+        <li><strong>Ontology</strong>: ontology/
+            <ul>
+                <li>Class: Accidente, Persona, Vehiculo, Distrito</li>
+                <li>Property: [ontologyName]/[propertyName]</li>
+            </ul>
+        </li>
+        <li><strong>Data</strong>: resource/
+            <ul>
+                <li>Accidente: accidente/[num_expediente]</li>
+                <li>Persona: persona/[num_expediente]-[n]</li>
+                <li>Vehículo: vehiculo/[num_expediente]-[n]</li>
+                <li>Distrito: distrito/[nombre_distrito]</li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>
