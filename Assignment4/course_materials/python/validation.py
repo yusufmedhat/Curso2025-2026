@@ -62,7 +62,7 @@ class Report:
                 error = True
                 return
             if self.namespace_is_correct_class(i):
-                print("ERROR: The namespace is correct for " + str(i))
+                print("The namespace is correct for " + str(i))
             else:
                 self.add_to_report("ERROR: The namespace is not correct for " + str(i))
                 error = True
