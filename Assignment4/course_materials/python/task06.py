@@ -72,4 +72,4 @@ for s, p, o in g:
 
 # Validation. Do not remove
 r.validate_task_06_04(g)
-r.save_report()
+r.save_report("_Task_06")
