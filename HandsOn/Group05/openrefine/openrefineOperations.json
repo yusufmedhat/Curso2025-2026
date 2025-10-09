@@ -1,1 +1,358 @@
-
+[
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "qualitat_aire",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Bona"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Buena"
+      }
+    ],
+    "description": "Editar celdas en masa en columna qualitat_aire"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "qualitat_aire",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Pobra"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Pobre"
+      }
+    ],
+    "description": "Editar celdas en masa en columna qualitat_aire"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "qualitat_o3",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Bona"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Buena"
+      }
+    ],
+    "description": "Editar celdas en masa en columna qualitat_o3"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "qualitat_pm10",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Bona"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Buena"
+      }
+    ],
+    "description": "Editar celdas en masa en columna qualitat_pm10"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "qualitat_pm10",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Pobra"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Pobre"
+      }
+    ],
+    "description": "Editar celdas en masa en columna qualitat_pm10"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "text",
+          "name": "nom_cabina",
+          "columnName": "nom_cabina",
+          "query": "",
+          "mode": "text",
+          "caseSensitive": false,
+          "invert": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "baseColumnName": "longitud",
+    "expression": "join ([coalesce(cells['longitud'].value,''),coalesce(cells['latitud'].value,'')],', ')",
+    "onError": "keep-original",
+    "newColumnName": "coordinates",
+    "columnInsertIndex": 6,
+    "description": "Crear la columna coordinates en el índice 6 basada en la columna longitud usando la expresión join ([coalesce(cells['longitud'].value,''),coalesce(cells['latitud'].value,'')],', ')"
+  },
+  {
+    "op": "core/column-reorder",
+    "columnNames": [
+      "nom_cabina",
+      "qualitat_aire",
+      "codi_dtes",
+      "zqa",
+      "codi_eoi",
+      "coordinates",
+      "hora_o3",
+      "qualitat_o3",
+      "valor_o3",
+      "hora_no2",
+      "qualitat_no2",
+      "valor_no2",
+      "hora_pm10",
+      "qualitat_pm10",
+      "valor_pm10",
+      "generat",
+      "dateTime"
+    ],
+    "description": "Reorganizar columnas"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "text",
+          "name": "nom_cabina",
+          "columnName": "nom_cabina",
+          "query": "",
+          "mode": "text",
+          "caseSensitive": false,
+          "invert": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "nom_cabina",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Barcelona - Ciutadella"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Ciutadella"
+      }
+    ],
+    "description": "Editar celdas en masa en columna nom_cabina"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "text",
+          "name": "nom_cabina",
+          "columnName": "nom_cabina",
+          "query": "",
+          "mode": "text",
+          "caseSensitive": false,
+          "invert": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "nom_cabina",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Barcelona - Eixample"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Eixample"
+      }
+    ],
+    "description": "Editar celdas en masa en columna nom_cabina"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "text",
+          "name": "nom_cabina",
+          "columnName": "nom_cabina",
+          "query": "",
+          "mode": "text",
+          "caseSensitive": false,
+          "invert": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "nom_cabina",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Barcelona - Gràcia"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Gràcia"
+      }
+    ],
+    "description": "Editar celdas en masa en columna nom_cabina"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "text",
+          "name": "nom_cabina",
+          "columnName": "nom_cabina",
+          "query": "",
+          "mode": "text",
+          "caseSensitive": false,
+          "invert": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "nom_cabina",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Barcelona - Palau Reial"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Palau Reial"
+      }
+    ],
+    "description": "Editar celdas en masa en columna nom_cabina"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "text",
+          "name": "nom_cabina",
+          "columnName": "nom_cabina",
+          "query": "",
+          "mode": "text",
+          "caseSensitive": false,
+          "invert": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "nom_cabina",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Barcelona - Poblenou"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Poblenou"
+      }
+    ],
+    "description": "Editar celdas en masa en columna nom_cabina"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "text",
+          "name": "nom_cabina",
+          "columnName": "nom_cabina",
+          "query": "",
+          "mode": "text",
+          "caseSensitive": false,
+          "invert": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "nom_cabina",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Barcelona - Sants"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Sants"
+      }
+    ],
+    "description": "Editar celdas en masa en columna nom_cabina"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "text",
+          "name": "nom_cabina",
+          "columnName": "nom_cabina",
+          "query": "",
+          "mode": "text",
+          "caseSensitive": false,
+          "invert": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "nom_cabina",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Barcelona - Vall Hebron"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Vall Hebron"
+      }
+    ],
+    "description": "Editar celdas en masa en columna nom_cabina"
+  }
+]
