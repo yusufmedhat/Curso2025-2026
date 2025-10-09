@@ -1,0 +1,48 @@
+@prefix trafico: <https://datos.madrid.es/ontology#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex: <https://datos.madrid.es/resources#> .
+
+# Sample Accident
+ex:accidente2025S000056 a trafico:Accidente ;
+    trafico:fecha "2025-01-01"^^xsd:date ;
+    trafico:hora "00:49:00"^^xsd:time ;
+    trafico:tipoAccidente "Colisión fronto-lateral" ;
+    trafico:estadoMeteorologico "Despejado" ;
+    trafico:ubicadoEn ex:distritoCHAMARTIN ;
+    trafico:tienePersona ex:persona2025S000056_1, ex:persona2025S000056_2, ex:persona2025S000056_3 ;
+    trafico:tieneVehiculo ex:vehiculo2025S000056_1, ex:vehiculo2025S000056_2, ex:vehiculo2025S000056_3 ;
+    rdfs:comment "Accidente múltiple en Chamartín con tres personas y tres vehículos involucrados." .
+
+# Sample Persons
+ex:persona2025S000056_1 a trafico:Persona ;
+    trafico:rangoEdad "De 30 a 34 años" ;
+    trafico:sexo "Hombre" ;
+    trafico:positivaAlcohol false ;
+    trafico:positivaDroga false .
+
+ex:persona2025S000056_2 a trafico:Persona ;
+    trafico:rangoEdad "De 40 a 44 años" ;
+    trafico:sexo "Hombre" ;
+    trafico:positivaAlcohol false ;
+    trafico:positivaDroga false .
+
+ex:persona2025S000056_3 a trafico:Persona ;
+    trafico:rangoEdad "De 40 a 44 años" ;
+    trafico:sexo "Mujer" ;
+    trafico:positivaAlcohol false ;
+    trafico:positivaDroga false .
+
+# Sample Vehicles
+ex:vehiculo2025S000056_1 a trafico:Vehiculo ;
+    trafico:tipoVehiculo "Ciclomotor" .
+
+ex:vehiculo2025S000056_2 a trafico:Vehiculo ;
+    trafico:tipoVehiculo "Turismo" .
+
+ex:vehiculo2025S000056_3 a trafico:Vehiculo ;
+    trafico:tipoVehiculo "Turismo" .
+
+# Sample District
+ex:distritoCHAMARTIN a trafico:Distrito ;
+    rdfs:label "Chamartín, Madrid" .
