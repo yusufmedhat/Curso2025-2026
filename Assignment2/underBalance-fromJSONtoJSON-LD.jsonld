@@ -1,0 +1,36 @@
+{
+    "@context": {
+        "fullName": "http://schema.org/name",
+        "hometown": "http://schema.org/addressLocality",
+        "age": "http://schema.org/age",
+        "almaMater": "http://schema.org/almaMater",
+        "parents": "http://schema.org/parent",
+        "subjects": "http://schema.org/course"
+    },
+    "@type": "Person",
+    "fullName": "Gabriel Olmedilla Barrientos",
+    "hometown": "Madrid",
+    "age": 22,
+    "almaMater": "Universidad Politecnica de Madrid",
+    "parents": [
+        "Javier",
+        "Belen"
+    ],
+    "subjects": [
+        {
+            "name": "WebSemdntica",
+            "teachers": [
+                " Raul Garcia Castro",
+                "Oscar Corcho Garcia"
+            ],
+            "description": "Learning the concepts of WebSem."
+        },
+        {
+            "name": "TFG",
+            "teachers": [
+                "Teacher"
+            ],
+            "description": "The student has to design, plan, document and present a project."
+        }
+    ]
+}
