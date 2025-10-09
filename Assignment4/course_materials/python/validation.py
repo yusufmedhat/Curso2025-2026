@@ -168,8 +168,9 @@ class Report:
         else:
             self.add_to_report("TASK 6.4 OK")
 
-    def save_report(self):
-        with open("report_result.txt", "w", encoding="utf-8") as f:
+    def save_report(self, task):
+        report_name = "report_result" + task + ".txt"
+        with open(report_name, "w", encoding="utf-8") as f:
             f.write(self.report)
 
     def validate_07_01(self, result, task):
