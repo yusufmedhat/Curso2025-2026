@@ -125,7 +125,7 @@ class Report:
             self.add_to_report("ERROR: Asun has an incorrect namespace")
             error = True
         if not self.namespace_is_correct_instance(raul):
-            self.add_to_report("RERROR: aul has an incorrect namespace")
+            self.add_to_report("ERROR: Raul has an incorrect namespace")
             error = True
         # check all individuals have their properties
         oscar_properties = []
