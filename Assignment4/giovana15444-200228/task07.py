@@ -45,7 +45,7 @@ for c in sorted(classes, key=lambda x: str(x)):
 
 # TO DO
 # Visualize the results
-result = [] #dictionary of tuples
+
 for r in result:
   print(r)
 
