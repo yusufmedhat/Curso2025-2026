@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Barcelona Activities Dataset Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #34495e;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+        .section {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            color: #34495e;
+            margin-top: 0;
+            font-size: 1.1em;
+        }
+        .section h3 {
+            margin-top: 15px;
+        }
+        .section p {
+            margin: 10px 0 0 0;
+        }
+        .section ul {
+            margin: 10px 0 0 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+            background-color: white;
+        }
+        table, th, td {
+            border: 1px solid #bdc3c7;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        td {
+            padding: 8px;
+            text-align: left;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 15px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Barcelona Activities Dataset – Analysis</h1>
+
+    <div class="section">
+        <h2>Dataset OpenRefine Manipulation</h2>
+
+        <h3>1. Translation of Column Names</h3>
+        <p>The dataset originally contained column names in Catalan. We translated them into Spanish to improve readability and ensure the schema is consistent with the local context (Barcelona).</p>
+        <p><strong>Example translations:</strong></p>
+        <ul>
+            <li>“Títol” → “Título”</li>
+            <li>“Data” → “Fecha”</li>
+            <li>“Ubicació” → “Ubicación”</li>
+        </ul>
+
+        <h3>2. Data Clustering and Cleaning</h3>
+        <p>OpenRefine’s clustering functions were used to detect inconsistent or duplicated values in textual fields (e.g., activity names, location names, categories). Both <strong>key collision</strong> and <strong>nearest neighbor</strong> methods were applied to unify variations of the same entity.</p>
+        <p><strong>Example:</strong> “Museo Picasso” and “Museu Picasso” were merged into one consistent value.</p>
+
+        <h3>3. Column Cleaning and Refinement</h3>
+        <p>Columns were analyzed and removed or modified to improve clarity:</p>
+        <ul>
+            <li><strong>Removed duplicated columns:</strong> “Temas”, “Etiquetas”, “Relación con el punto”, “Pie de imagen”, “Observaciones”</li>
+            <li><strong>Removed empty columns:</strong> “Colaboradores”, “Correo de contacto”</li>
+            <li><strong>Removed irrelevant columns:</strong> “Categorías”</li>
+        </ul>
+        <p><strong>Column adjustments:</strong></p>
+        <ul>
+            <li>Moved “Público” values into “Dirección” and deleted “Público”</li>
+            <li>Renamed: “Documentación” → “Localización evento”, “Localización” → “Localización organizadores”</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Final Dataset Schema (Barcelona Activities)</h2>
+        <table>
+            <tr><th>Field</th><th>Description</th><th>Type</th></tr>
+            <tr><td>ID</td><td>Unique identifier of the activity</td><td>integer/string</td></tr>
+            <tr><td>Título</td><td>Title of the activity</td><td>string</td></tr>
+            <tr><td>Descripción</td><td>Short description</td><td>text</td></tr>
+            <tr><td>Fecha_inicio</td><td>Start date and time</td><td>datetime (YYYY-MM-DD HH:MM:SS)</td></tr>
+            <tr><td>Fecha_fin</td><td>End date and time</td><td>datetime (YYYY-MM-DD HH:MM:SS)</td></tr>
+            <tr><td>Organizadores</td><td>Organizers</td><td>string</td></tr>
+            <tr><td>Enlace_web_evento</td><td>Link to event webpage</td><td>URL</td></tr>
+            <tr><td>Teléfono</td><td>Telephone of the organization</td><td>integer</td></tr>
+            <tr><td>Nombre_del_sitio</td><td>Venue or place name</td><td>string</td></tr>
+            <tr><td>Dirección</td><td>Street address</td><td>string</td></tr>
+            <tr><td>Código_postal</td><td>Postal code</td><td>integer</td></tr>
+            <tr><td>Nombre_del_municipio</td><td>City name</td><td>string</td></tr>
+            <tr><td>Localización_organizadores</td><td>Organizer’s coordinates</td><td>pair<float,float></td></tr>
+            <tr><td>Enlace_web_organizadores</td><td>Organizer’s website</td><td>URL</td></tr>
+            <tr><td>Código_municipio</td><td>Municipality code</td><td>integer</td></tr>
+            <tr><td>Duración_horas</td><td>Duration of activity</td><td>integer</td></tr>
+            <tr><td>Comarca</td><td>Region name</td><td>string</td></tr>
+            <tr><td>Días</td><td>Number of days</td><td>integer</td></tr>
+            <tr><td>Categoría</td><td>Activity category</td><td>string</td></tr>
+            <tr><td>Código_comarca</td><td>Region code</td><td>integer</td></tr>
+            <tr><td>Localización_evento</td><td>Event location</td><td>string</td></tr>
+            <tr><td>Teléfono_asistencia</td><td>Assistance phone</td><td>integer</td></tr>
+            <tr><td>Teléfono_aforamiento_fax</td><td>Fax number</td><td>integer</td></tr>
+            <tr><td>Inscripción</td><td>Registration details</td><td>string/email</td></tr>
+            <tr><td>URL_municipio</td><td>Municipality webpage</td><td>URL</td></tr>
+            <tr><td>Código_URL_municipio</td><td>Municipality webpage code</td><td>URL/ID</td></tr>
+            <tr><td>Foto_organizador</td><td>Organizer’s image</td><td>URL</td></tr>
+            <tr><td>Foto_evento</td><td>Event image</td><td>URL</td></tr>
+            <tr><td>Censo</td><td>Census/registration number</td><td>integer</td></tr>
+            <tr><td>Precio</td><td>Price</td><td>integer</td></tr>
+            <tr><td>Aforo</td><td>Maximum attendance capacity</td><td>integer</td></tr>
+            <tr><td>Etiquetas</td><td>Tags or keywords</td><td>string</td></tr>
+            <tr><td>Tipo</td><td>Payment type</td><td>string</td></tr>
+            <tr><td>Anuncio</td><td>Additional announcement</td><td>string</td></tr>
+        </table>
+        </div>
+
+        <div class="section">
+            <h2>Data Analysis</h2>
+
+        <h3>Seasonality</h3>
+        <img src="resources/mes.png" alt="Histogram of activities by month">
+        <p>The graph shows a concentration of activities between July and October, peaking in October. Early months show lower activity.</p>
+
+        <h3>Price Distribution</h3>
+        <img src="resources/precios.png" alt="Histogram of prices">
+        <p>Most activities are priced between €0 and €20, with secondary peaks at €40 and €100. Average price: €35.68.</p>
+
+        <h3>Organizer Frequency</h3>
+        <img src="resources/organizadores.png" alt="Activities per organizer">
+        <p>The most active organizers are “Consorci del Patrimoni de Sitges” (41 activities) and “Turismo Vivencial” (27 activities). Paid activities represent 60.26% of the dataset.</p>
+    </div>
+
+    <div class="section">
+        <h2>Licensing of the Data Source</h2>
+        <p>The dataset corresponds to the Tourism Agenda of Activities, published by the <strong>Diputació Provincial de Barcelona</strong>. It is licensed under <strong>Creative Commons Attribution 4.0 International (CC BY 4.0)</strong>.</p>
+        <p>This license allows copying, redistribution, remixing, transformation, and commercial use, provided proper credit is given. Derived datasets should maintain the same licensing principles.</p>
+    </div>
+
+        <div class="section">
+            <h2>Resource Naming Strategy</h2>        <h3>Base URI</h3>
+        <p>http://data.barcelona.cat/actividades/</p>
+
+        <h3>Main Resource Types and URI Templates</h3>
+        <table>
+            <tr><th>Resource Type</th><th>URI Template</th><th>Description</th></tr>
+            <tr><td>Actividad</td><td>BASE/actividad/{ID}</td><td>Individual activity</td></tr>
+            <tr><td>Organizador</td><td>BASE/organizador/{ID}</td><td>Organization responsible for the activity</td></tr>
+            <tr><td>Lugar/Venue</td><td>BASE/lugar/{ID}</td><td>Physical venue</td></tr>
+            <tr><td>Municipio</td><td>BASE/municipio/{Código_municipio}</td><td>City or municipality</td></tr>
+            <tr><td>Comarca/Region</td><td>BASE/comarca/{Código_comarca}</td><td>Administrative region</td></tr>
+            <tr><td>Categoría de actividad</td><td>BASE/categoria/{nombre_categoria}</td><td>Type or category of the activity</td></tr>
+        </table>
+
+        <h3>Actividad Resource Properties</h3>
+            <p><strong>Literal properties:</strong> Título, Descripción, Fecha_inicio, Fecha_fin, Duración_horas, Días, Precio, Aforo, Tipo, Anuncio, Inscripción, Etiquetas</p>
+            <p><strong>Object properties:</strong> Organizadores → Organizador, Nombre_del_sitio / Localización_evento → Lugar, Nombre_del_municipio / Código_municipio → Municipio, Categoría → Categoría</p>
+            <p><strong>Optional multimedia / URLs:</strong> Enlace_web_evento, Foto_evento</p>
+        </div>
+
+    </div>
+</body>
+</html>

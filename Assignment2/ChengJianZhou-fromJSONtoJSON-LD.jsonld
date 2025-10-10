@@ -1,0 +1,118 @@
+{
+  "@context": {
+    "res": "https://www.example.org/resources#",
+    "prop": "https://www.example.org/properties#",
+    "people": "prop:people",
+    "sub": "prop:subject",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "fullName": "people:fullName",
+    "hometown": "people:hometown",
+    "age": "people:age",
+    "almaMater": "people:almaMater",
+    "parents": "people:parents",
+    "subjects": "people:subjects",
+    "name": "people:name",
+    "role": "people:role",
+    "subject": "sub:subject",
+    "teachers": "sub:teachers",
+    "description": "sub:description"
+  },
+
+  "@id": "res:chengjianzhou",
+  "@type": "people:Person",
+  "fullName": "ChengJian Zhou",
+  "hometown": "Ocaña",
+  "age": 20,
+  "almaMater": "ETS Ingenieros Informáticos, Universidad Politécnica de Madrid",
+
+  "parents": [
+    { "@id": "res:p01", "@type": "people:Parent", "name": "Xiaoliang Zhou", "role": "Madre" },
+    { "@id": "res:p02", "@type": "people:Parent", "name": "Weilai Zhu", "role": "Padre" }
+  ],
+
+  "subjects": [
+    {
+      "@id": "res:s01",
+      "@type": "sub:Subject",
+      "subject": "Semantic Web, Linked Data and Knowledge Graphs",
+      "teachers": [
+        { "@id": "res:t01", "@type": "people:Person", "name": "Oscar Corcho García" }
+      ],
+      "description": "Semantic Web, Linked Data and Knowledge Graphs"
+    },
+    {
+      "@id": "res:s02",
+      "@type": "sub:Subject",
+      "subject": "Algoritmica numérica",
+      "teachers": [
+        { "@id": "res:t02", "@type": "people:Person", "name": "Julio Setién" }
+      ],
+      "description": "Algoritmica numérica."
+    },
+    {
+      "@id": "res:s03",
+      "@type": "sub:Subject",
+      "subject": "Estructura de Computadores",
+      "teachers": [
+        { "@id": "res:t03", "@type": "people:Person", "name": "Santiago Rodríguez" }
+      ],
+      "description": "Estructura de Computadores."
+    },
+    {
+      "@id": "res:s04",
+      "@type": "sub:Subject",
+      "subject": "Inteligencia artificial",
+      "teachers": [
+        { "@id": "res:t04", "@type": "people:Person", "name": "Asunción Gómez Pérez" }
+      ],
+      "description": "Inteligencia artificial."
+    },
+    {
+      "@id": "res:s05",
+      "@type": "sub:Subject",
+      "subject": "Matemática Discreta I",
+      "teachers": [
+        { "@id": "res:t05", "@type": "people:Person", "name": "Jesús Martínez Mateo" }
+      ],
+      "description": "Matemática Discreta I."
+    },
+    {
+      "@id": "res:s06",
+      "@type": "sub:Subject",
+      "subject": "Procesadores de Lenguajes",
+      "teachers": [
+        { "@id": "res:t06", "@type": "people:Person", "name": "Aurora Pérez" }
+      ],
+      "description": "Procesadores de Lenguajes."
+    },
+    {
+      "@id": "res:s07",
+      "@type": "sub:Subject",
+      "subject": "Programación para Sistemas",
+      "teachers": [
+        { "@id": "res:t07", "@type": "people:Person", "name": "José Crespo" }
+      ],
+      "description": "Programación para Sistemas."
+    },
+    {
+      "@id": "res:s08",
+      "@type": "sub:Subject",
+      "subject": "Seguridad de las Tecnologías de la Información",
+      "teachers": [
+        { "@id": "res:t08", "@type": "people:Person", "name": "Ni idea" }
+      ],
+      "description": "Seguridad de las Tecnologías de la Información."
+    },
+    {
+      "@id": "res:s09",
+      "@type": "sub:Subject",
+      "subject": "Sistemas Operativos",
+      "teachers": [
+        { "@id": "res:t09", "@type": "people:Person", "name": "Francisco Rosales García" }
+      ],
+      "description": "Sistemas Operativos."
+    }
+  ]
+}
