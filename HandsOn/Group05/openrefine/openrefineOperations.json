@@ -85,82 +85,6 @@
       "facets": [],
       "mode": "row-based"
     },
-    "columnName": "qualitat_pm10",
-    "expression": "value",
-    "edits": [
-      {
-        "from": [
-          "Pobra"
-        ],
-        "fromBlank": false,
-        "fromError": false,
-        "to": "Pobre"
-      }
-    ],
-    "description": "Editar celdas en masa en columna qualitat_pm10"
-  },
-  {
-    "op": "core/column-addition",
-    "engineConfig": {
-      "facets": [
-        {
-          "type": "text",
-          "name": "nom_cabina",
-          "columnName": "nom_cabina",
-          "query": "",
-          "mode": "text",
-          "caseSensitive": false,
-          "invert": false
-        }
-      ],
-      "mode": "row-based"
-    },
-    "baseColumnName": "longitud",
-    "expression": "join ([coalesce(cells['longitud'].value,''),coalesce(cells['latitud'].value,'')],', ')",
-    "onError": "keep-original",
-    "newColumnName": "coordinates",
-    "columnInsertIndex": 6,
-    "description": "Crear la columna coordinates en el índice 6 basada en la columna longitud usando la expresión join ([coalesce(cells['longitud'].value,''),coalesce(cells['latitud'].value,'')],', ')"
-  },
-  {
-    "op": "core/column-reorder",
-    "columnNames": [
-      "nom_cabina",
-      "qualitat_aire",
-      "codi_dtes",
-      "zqa",
-      "codi_eoi",
-      "coordinates",
-      "hora_o3",
-      "qualitat_o3",
-      "valor_o3",
-      "hora_no2",
-      "qualitat_no2",
-      "valor_no2",
-      "hora_pm10",
-      "qualitat_pm10",
-      "valor_pm10",
-      "generat",
-      "dateTime"
-    ],
-    "description": "Reorganizar columnas"
-  },
-  {
-    "op": "core/mass-edit",
-    "engineConfig": {
-      "facets": [
-        {
-          "type": "text",
-          "name": "nom_cabina",
-          "columnName": "nom_cabina",
-          "query": "",
-          "mode": "text",
-          "caseSensitive": false,
-          "invert": false
-        }
-      ],
-      "mode": "row-based"
-    },
     "columnName": "nom_cabina",
     "expression": "value",
     "edits": [
@@ -178,17 +102,7 @@
   {
     "op": "core/mass-edit",
     "engineConfig": {
-      "facets": [
-        {
-          "type": "text",
-          "name": "nom_cabina",
-          "columnName": "nom_cabina",
-          "query": "",
-          "mode": "text",
-          "caseSensitive": false,
-          "invert": false
-        }
-      ],
+      "facets": [],
       "mode": "row-based"
     },
     "columnName": "nom_cabina",
@@ -208,17 +122,7 @@
   {
     "op": "core/mass-edit",
     "engineConfig": {
-      "facets": [
-        {
-          "type": "text",
-          "name": "nom_cabina",
-          "columnName": "nom_cabina",
-          "query": "",
-          "mode": "text",
-          "caseSensitive": false,
-          "invert": false
-        }
-      ],
+      "facets": [],
       "mode": "row-based"
     },
     "columnName": "nom_cabina",
@@ -238,17 +142,7 @@
   {
     "op": "core/mass-edit",
     "engineConfig": {
-      "facets": [
-        {
-          "type": "text",
-          "name": "nom_cabina",
-          "columnName": "nom_cabina",
-          "query": "",
-          "mode": "text",
-          "caseSensitive": false,
-          "invert": false
-        }
-      ],
+      "facets": [],
       "mode": "row-based"
     },
     "columnName": "nom_cabina",
@@ -268,17 +162,7 @@
   {
     "op": "core/mass-edit",
     "engineConfig": {
-      "facets": [
-        {
-          "type": "text",
-          "name": "nom_cabina",
-          "columnName": "nom_cabina",
-          "query": "",
-          "mode": "text",
-          "caseSensitive": false,
-          "invert": false
-        }
-      ],
+      "facets": [],
       "mode": "row-based"
     },
     "columnName": "nom_cabina",
@@ -298,17 +182,7 @@
   {
     "op": "core/mass-edit",
     "engineConfig": {
-      "facets": [
-        {
-          "type": "text",
-          "name": "nom_cabina",
-          "columnName": "nom_cabina",
-          "query": "",
-          "mode": "text",
-          "caseSensitive": false,
-          "invert": false
-        }
-      ],
+      "facets": [],
       "mode": "row-based"
     },
     "columnName": "nom_cabina",
@@ -328,17 +202,7 @@
   {
     "op": "core/mass-edit",
     "engineConfig": {
-      "facets": [
-        {
-          "type": "text",
-          "name": "nom_cabina",
-          "columnName": "nom_cabina",
-          "query": "",
-          "mode": "text",
-          "caseSensitive": false,
-          "invert": false
-        }
-      ],
+      "facets": [],
       "mode": "row-based"
     },
     "columnName": "nom_cabina",
@@ -354,5 +218,29 @@
       }
     ],
     "description": "Editar celdas en masa en columna nom_cabina"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "qualitat_aire",
+    "newColumnName": "calidad_aire",
+    "description": "Renombra la columna qualitat_aire a calidad_aire"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "qualitat_o3",
+    "newColumnName": "calidad_o3",
+    "description": "Renombra la columna qualitat_o3 a calidad_o3"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "qualitat_no2",
+    "newColumnName": "calidad_no2",
+    "description": "Renombra la columna qualitat_no2 a calidad_no2"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "qualitat_pm10",
+    "newColumnName": "calidad_pm10",
+    "description": "Renombra la columna qualitat_pm10 a calidad_pm10"
   }
 ]
