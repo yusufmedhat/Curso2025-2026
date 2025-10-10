@@ -1,0 +1,32 @@
+@prefix :      <https://data.group14.org/ontology/> .
+@prefix ex:    <https://data.group14.org/id/> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+ex:station/28079004 a :Station ;
+  :stationId "28079004" ;
+  :stationName "28079" ;
+  :locatedAt ex:location/28079004 .
+ex:location/28079004 a :Location .
+
+ex:station/28079008 a :Station ;
+  :stationId "28079008" ;
+  :stationName "28079" ;
+  :locatedAt ex:location/28079008 .
+ex:location/28079008 a :Location .
+
+ex:measurement/8b9cd36b a :Measurement ;
+  :measurementId "8b9cd36b" ;
+  :observedAt "28079"^^xsd:dateTime ;
+  :observedParameter "28" ;
+  :observedValue "79.0"^^xsd:decimal ;
+  :observedUnit "11" ;
+  :measuredAtStation ex:station/28079004 .
+
+ex:measurement/9b0a6cc3 a :Measurement ;
+  :measurementId "9b0a6cc3" ;
+  :observedAt "28079"^^xsd:dateTime ;
+  :observedParameter "28" ;
+  :observedValue "79.0"^^xsd:decimal ;
+  :observedUnit "11" ;
+  :measuredAtStation ex:station/28079004 .

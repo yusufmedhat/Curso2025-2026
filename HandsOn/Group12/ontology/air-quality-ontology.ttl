@@ -1,0 +1,64 @@
+@prefix aq:  <http://linkeddata.airqualitymadrid.org/ontology/airquality#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://linkeddata.airqualitymadrid.org/ontology/airquality>
+    a owl:Ontology ;
+    rdfs:label "Air Quality Ontology for Madrid"@en ;
+    rdfs:comment "Lightweight ontology to represent air-quality measurements from Madrid stations."@en .
+
+########## Classes ##########
+
+aq:Station     a owl:Class ; rdfs:label "Air Quality Station"@en .
+aq:Measurement a owl:Class ; rdfs:label "Air Quality Measurement"@en .
+
+########## Object properties ##########
+
+aq:hasStation a owl:ObjectProperty ;
+    rdfs:domain aq:Measurement ;
+    rdfs:range  aq:Station ;
+    rdfs:label  "has station"@en .
+
+########## Data properties ##########
+
+aq:latitude a owl:DatatypeProperty ;
+    rdfs:domain aq:Station ;
+    rdfs:range  xsd:float ;
+    rdfs:label  "latitude"@en .
+
+aq:longitude a owl:DatatypeProperty ;
+    rdfs:domain aq:Station ;
+    rdfs:range  xsd:float ;
+    rdfs:label  "longitude"@en .
+
+aq:stationName a owl:DatatypeProperty ;
+    rdfs:domain aq:Station ;
+    rdfs:range  xsd:string ;
+    rdfs:label  "station name"@en .
+
+aq:stationCode a owl:DatatypeProperty ;
+    rdfs:domain aq:Station ;
+    rdfs:range  xsd:string ;
+    rdfs:label  "station code"@en .
+
+aq:pollutant a owl:DatatypeProperty ;
+    rdfs:domain aq:Measurement ;
+    rdfs:range  xsd:string ;
+    rdfs:label  "pollutant"@en .
+
+aq:value a owl:DatatypeProperty ;
+    rdfs:domain aq:Measurement ;
+    rdfs:range  xsd:float ;
+    rdfs:label  "value"@en .
+
+aq:unit a owl:DatatypeProperty ;
+    rdfs:domain aq:Measurement ;
+    rdfs:range  xsd:string ;
+    rdfs:label  "unit"@en .
+
+aq:timestamp a owl:DatatypeProperty ;
+    rdfs:domain aq:Measurement ;
+    rdfs:range  xsd:dateTime ;
+    rdfs:label  "timestamp"@en .
