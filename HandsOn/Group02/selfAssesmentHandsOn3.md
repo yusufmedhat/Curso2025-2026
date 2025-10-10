@@ -18,7 +18,8 @@
 - [X] The dataset was successfully imported into OpenRefine  
 - [X] The data was analyzed to detect inconsistencies and missing values  
 - [X] Clustering methods (key collision and nearest neighbor) were used to merge similar entries  
-- [X] Text normalization and whitespace trimming were applied  
+- [X] Text normalization and whitespace trimming were applied
+- [X] The columns were reconciliated, linking them with their correponding wikidata entries
 - [X] The dataset is now ready for RDF generation
 
 **General requirements:**
