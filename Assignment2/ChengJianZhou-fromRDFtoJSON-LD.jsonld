@@ -1,0 +1,42 @@
+{
+  "@context": {
+    "ex": "http://example.org/instances/",
+    "voc": "http://example.org/vocab/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "contains": "voc:contains",
+    "hasOwner": "voc:hasOwner",
+    "hasName": "voc:hasName",
+    "hasMeasurement": "voc:hasMeasurement",
+    "hasTemperature": "voc:hasTemperature",
+    "atTime": "voc:atTime",
+    "includes": "voc:includes"
+  },
+
+  "@id": "ex:Class01",
+  "@type": "voc:Classroom",
+  "includes": [
+    { "@id": "ex:Sensor029" },
+    { "@id": "ex:Computer101" }
+  ],
+
+  "Sensor029": {
+    "@id": "ex:Sensor029",
+    "@type": "voc:Sensor",
+    "hasMeasurement": {
+      "@id": "ex:Measurement8401",
+      "@type": "voc:Measurement",
+      "hasTemperature": 29,
+      "atTime": "2010-06-12T12:00:12" 
+    }
+  },
+
+  "Computer101": {
+    "@id": "ex:Computer101",
+    "@type": "voc:Device",
+    "hasOwner": {
+      "@id": "ex:User10A",
+      "@type": "voc:User",
+      "hasName": "Pedro"
+    }
+  }
+}
