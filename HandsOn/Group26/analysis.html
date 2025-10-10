@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dataset Analysis</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      line-height: 1.6;
+      background-color: #fafafa;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    section {
+      margin-bottom: 2em;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 1em;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    code {
+      background-color: #eee;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dataset Analysis</h1>
+
+  <section id="dataset-analysis">
+    <h2>1. Dataset Analysis</h2>
+    <p>
+      This section provides an overview of the selected dataset, including its source,
+      structure, main attributes, and general characteristics. It summarizes the initial
+      exploration performed using <strong>OpenRefine</strong>.
+    </p>
+
+    <ul>
+      <li><strong>Dataset title:</strong> <!-- Nombre del dataset --> </li>
+      <li><strong>Source:</strong> <!-- URL o fuente del CSV --> </li>
+      <li><strong>Format:</strong> CSV </li>
+      <li><strong>Number of rows:</strong> <!-- número aproximado --> </li>
+      <li><strong>Number of columns:</strong> <!-- número de columnas --> </li>
+    </ul>
+
+    <h3>Main attributes</h3>
+    <table>
+      <tr>
+        <th>Column name</th>
+        <th>Data type</th>
+        <th>Description / Example</th>
+      </tr>
+      <tr>
+        <td>H01</td>
+        <td>String</td>
+        <td>...</td>
+      </tr>
+      <tr>
+        <td>V01</td>
+        <td>Integer</td>
+        <td>...</td>
+      </tr>
+      <!-- Añadir más columnas si quieres -->
+    </table>
+
+    <h3>Preliminary observations</h3>
+    <p>
+      <!-- Aquí puedes comentar cosas como valores nulos, inconsistencias, tipos de datos detectados, etc. -->
+      <!-- Ejemplo: Some columns contain missing values or encoded categories (H01, V01). -->
+    </p>
+  </section>
+
+  <section id="license">
+    <h2>2. Dataset License</h2>
+    <p>
+      <!-- Aquí indicarás la licencia, su URL, y si permite redistribución y modificación. -->
+    </p>
+  </section>
+
+  <section id="naming-strategy">
+    <h2>3. Resource Naming Strategy</h2>
+    <p>
+      <!-- Aquí describirás cómo se formarán los URIs -->
+    </p>
+    <pre>
+Base URI: http://example.org/dataset/
+Entities: http://example.org/dataset/{EntityName}/{ID}
+Properties: http://example.org/ontology/{propertyName}
+    </pre>
+  </section>
+</body>
+</html>
