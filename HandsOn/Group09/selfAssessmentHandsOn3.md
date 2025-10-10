@@ -14,7 +14,6 @@
 - [x] Fixed errors and standardized values
 - [x] Removed duplicates and irrelevant data
 - [x] Applied transformations to facilitate RDF generation
-- [x] Updated analysis based on new findings
 
 **Deliverables:**
 
