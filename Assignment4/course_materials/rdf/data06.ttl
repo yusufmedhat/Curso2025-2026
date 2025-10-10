@@ -30,17 +30,20 @@
 :Asun a :FullProfessor ;
       rdfs:label "Asun";
       :hasHomePage "http://www.oeg-upm.net/" ;
+      :knows :Rocky;
       :hasColleague :Raul .
 
 :Oscar a :AssociateProfessor ;
        rdfs:label "Oscar";
        :hasName "Oscar Corcho García" ;
        :ownsPet :Fantasma;
+       :knows :Fantasma;
        :hasColleague :Asun .
 
 :Raul a :InterimAssociateProfessor ;
        rdfs:label "Raul";
        :hasColleague :Asun;
+       :knows :Rocky;
        :ownsPet :Rocky .
 
 :Rocky a :Animal;
@@ -48,5 +51,6 @@
        rdfs:label "Rocky" .
 
 :Fantasma a :Animal;
+       :knows :Rocky;
        rdfs:label "Fantasma" .
 
