@@ -6,6 +6,14 @@
 ## Miembros
 - Javier de la Luna Jiménez (@javierlj04)
 
+- Manuel Bravo Roig (Manuel8R)
+
+- Andrés Voronovskyy (a-skyy)
+
+- Tonybingfeng Lin (tony07122004)
+
+- Roberto Alaminos Beneitez (ralaminos)
+
 ## 1. Qué hicimos bien
 - Seleccionamos un dataset relevante sobre accidentes de tráfico que cumple con los requisitos R1-R4.
 - Organizamos correctamente la estructura de carpetas en GitHub (`csv/`, `requirements/`).

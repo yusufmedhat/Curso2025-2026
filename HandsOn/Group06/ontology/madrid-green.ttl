@@ -1,0 +1,109 @@
+@prefix mg:      <https://w3id.org/Group06/madrid-green/ontology#> .
+@prefix :        <https://w3id.org/Group06/madrid-green/ontology#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schema:  <http://schema.org/> .
+@prefix wgs84:   <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix geo:     <http://www.opengis.net/ont/geosparql#> .
+@prefix dwc:     <http://rs.tdwg.org/dwc/terms/> .
+
+#################################################################
+# Ontology header
+#################################################################
+
+<https://w3id.org/Group06/madrid-green/ontology> a owl:Ontology ;
+  dcterms:title "Madrid Green Ontology (Group06)"@en ;
+  dcterms:description "A lightweight ontology for trees in Madrid’s parks and green zones. It defines Tree, Park/GreenZone and Species, with core relationships and data properties."@en ;
+  dcterms:creator "Group06" ;
+  dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+  owl:versionInfo "1.0" ;
+  owl:versionIRI <https://w3id.org/Group06/madrid-green/ontology/1.0> .
+
+#################################################################
+# Classes
+#################################################################
+
+mg:GreenZone a owl:Class ;
+  rdfs:label "Green zone"@en ;
+  rdfs:comment "A public green area within Madrid (e.g., park, garden)."@en ;
+  rdfs:subClassOf schema:Place .
+
+mg:Park a owl:Class ;
+  rdfs:label "Park"@en ;
+  rdfs:comment "A public park in Madrid."@en ;
+  rdfs:subClassOf mg:GreenZone , schema:Park .
+
+mg:Tree a owl:Class ;
+  rdfs:label "Tree"@en ;
+  rdfs:comment "An individual tree located in a Madrid green zone."@en ;
+  rdfs:subClassOf schema:Thing .
+
+mg:Species a owl:Class ;
+  rdfs:label "Species"@en ;
+  rdfs:comment "A biological species (or taxon) used to type trees."@en ;
+  rdfs:subClassOf schema:Taxon .
+
+#################################################################
+# Object properties
+#################################################################
+
+mg:inZone a owl:ObjectProperty ;
+  rdfs:label "in zone"@en ;
+  rdfs:comment "Relates a tree to the green zone it belongs to."@en ;
+  rdfs:domain mg:Tree ;
+  rdfs:range mg:GreenZone .
+
+mg:hasSpecies a owl:ObjectProperty ;
+  rdfs:label "has species"@en ;
+  rdfs:comment "Relates a tree to its species."@en ;
+  rdfs:domain mg:Tree ;
+  rdfs:range mg:Species .
+
+mg:hasGeometry a owl:ObjectProperty ;
+  rdfs:label "has geometry"@en ;
+  rdfs:comment "Associates a green zone with a geometry (GeoSPARQL)."@en ;
+  rdfs:domain mg:GreenZone ;
+  rdfs:range geo:Geometry ;
+  rdfs:subPropertyOf geo:hasGeometry .
+
+#################################################################
+# Datatype properties
+#################################################################
+
+mg:heightM a owl:DatatypeProperty ;
+  rdfs:label "height (m)"@en ;
+  rdfs:comment "Tree height in meters."@en ;
+  rdfs:domain mg:Tree ;
+  rdfs:range xsd:decimal .
+
+mg:diameterCm a owl:DatatypeProperty ;
+  rdfs:label "diameter at breast height (cm)"@en ;
+  rdfs:comment "DBH in centimeters (approx. 1.3 m above ground)."@en ;
+  rdfs:domain mg:Tree ;
+  rdfs:range xsd:decimal .
+
+mg:plantedOn a owl:DatatypeProperty ;
+  rdfs:label "planted on"@en ;
+  rdfs:comment "Planting date of the tree (if known)."@en ;
+  rdfs:domain mg:Tree ;
+  rdfs:range xsd:date .
+
+# Species naming (you can reuse DwC directly; we alias with subPropertyOf)
+mg:scientificName a owl:DatatypeProperty ;
+  rdfs:label "scientific name"@en ;
+  rdfs:comment "Species’ scientific (Latin) name."@en ;
+  rdfs:domain mg:Species ;
+  rdfs:range xsd:string ;
+  rdfs:subPropertyOf dwc:scientificName .
+
+mg:commonName a owl:DatatypeProperty ;
+  rdfs:label "common name"@en ;
+  rdfs:comment "Species’ vernacular/common name (language-tagged)."@en ;
+  rdfs:domain mg:Species ;
+  rdfs:range rdf:langString ;
+  rdfs:subPropertyOf dwc:vernacularName .
+
+
