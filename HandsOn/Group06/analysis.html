@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Data Analysis and Licensing — Group06</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px auto; max-width: 900px; line-height: 1.5; }
+    h1, h2 { margin-top: 1.4em; }
+    table { border-collapse: collapse; width: 100%; margin: 15px 0; }
+    th, td { border: 1px solid #999; padding: 6px; text-align: left; }
+    th { background: #f4f4f4; }
+  </style>
+</head>
+<body>
+
+<h1>Group 06 — Data Analysis and Licensing</h1>
+
+<h2>1. Analysis of the Datasets</h2>
+
+<h3>Dataset 1: Arbolado en parques y zonas verdes de Madrid</h3>
+<p><strong>Source:</strong> Ayuntamiento de Madrid, datos.madrid.es
+  <br><strong>URL:</strong>
+  <a href="https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=0101507f09436610VgnVCM2000001f4a900aRCRD">
+    Arbolado en parques y zonas verdes</a></p>
+
+<table>
+  <tr><th>Attribute</th><th>Description</th><th>Example / Value Range</th></tr>
+  <tr><td>NOMBRE PARQUE</td><td>Name of the park or green area.</td><td>jardines del buen retiro, parque madrid rio, etc.</td></tr>
+  <tr><td>ESPECIE</td><td>Species of the tree (scientific name).</td><td>Aesculus hippocastanum, Platanus hispanica, etc.</td></tr>
+  <tr><td>UNIDADES 2024</td><td>Number of trees of this species in the park (for year 2024).</td><td>Integer values, between 1 and 6200.</td></tr>
+</table>
+
+<p><strong>Data characteristics:</strong> The dataset contains around 308 records, each representing the number of trees of a specific species in a given park.
+  Values are integers, and textual fields such as park names and species names are complete and consistent.
+  The data is linkable: parks can be connected to geospatial datasets, and species names can be linked to external resources such as Wikidata or DBpedia.
+</p>
+
+
+
+<h3>Dataset 2: Inventario de zonas verdes</h3>
+<p><strong>Source:</strong> Ayuntamiento de Madrid, datos.madrid.es
+  <br><strong>URL:</strong>
+  <a href="https://datos.madrid.es/sites/v/index.jsp?vgnextoid=79c6adbb460dd510VgnVCM2000001f4a900aRCRD">
+    Inventario de zonas verdes</a></p>
+
+<table>
+  <tr><th>Attribute</th><th>Description</th><th>Example / Value Range</th></tr>
+  <tr><td>Distrito</td><td>Administrative district of Madrid.</td><td>centro, arganzuela, latina, etc. (21 districts total)</td></tr>
+  <tr><td>Subepígrafe</td><td>Category or type of green zone.</td><td>zonas verdes (all entries)</td></tr>
+  <tr><td>Apartado</td><td>Main category of the green area</td><td>parques y jardines, zonas forestales</td></tr>
+  <tr><td>Número de archivo</td><td>Reference number in municipal records.</td><td>Numeric values (e.g. 300)</td></tr>
+  <tr><td>Naturaleza del inmueble</td><td>Legal nature of the area (public/private, municipal, etc.).</td><td>urbana (all entries)</td></tr>
+  <tr><td>Situación Destino</td><td>Location or address of the green area.</td><td>Street names or descriptive addresses</td></tr>
+  <tr><td>Destino</td><td>Detailed destination or usage description.</td><td>dotacional servicios colectivos zonas verdes, (sector los coronales), ...</td></tr>
+  <tr><td>Solar</td><td>Area of the green zone in square meters.</td><td>Numeric values, e.g., 1500, 32000</td></tr>
+</table>
+
+<p><strong>Data characteristics:</strong> The dataset includes 1,632 municipal green zones, one record per area.
+  Each record contains the district, main category (<em>apartado</em>), urban nature (<em>naturaleza del inmueble</em>), location (<em>situación destino</em>), intended use (<em>destino</em>), and area in square meters (<em>solar</em>).
+  Values are mostly textual, except for the area.
+  The data is linkable: districts and green zone types can be mapped to geospatial vocabularies or external linked datasets, and textual descriptions enable alignment with municipal and open data resources.
+</p>
+
+
+<h2>2. Licensing Analysis</h2>
+
+<p><strong>Publisher:</strong> Ayuntamiento de Madrid — Portal de Datos Abiertos (<a href="https://datos.madrid.es">datos.madrid.es</a>)</p>
+<p><strong>Rightsholder:</strong> Ayuntamiento de Madrid</p>
+
+<p><strong>License:</strong> Datos abiertos del Ayuntamiento de Madrid —
+  <a href="https://datos.madrid.es/egob/catalogo/aviso-legal">Condiciones de uso</a>, compatible with <b>Creative Commons Attribution 4.0 (CC BY 4.0)</b>.</p>
+
+<p><strong>License implications:</strong></p>
+<ul>
+  <li>Reuse, modification, and redistribution are permitted.</li>
+  <li>Attribution to the source (Ayuntamiento de Madrid) is required.</li>
+  <li>Commercial use is allowed if attribution is maintained.</li>
+</ul>
+
+<p><strong>License for generated dataset:</strong>
+  The new linked dataset generated from these sources will also be released under <b>CC BY 4.0</b> to maintain license compatibility.</p>
+
+
+<h2>3. Resource Naming Strategy</h2>
+
+<p>
+  All resources will be identified using stable HTTP URIs, following a simple slash-based pattern.
+  URIs will provide both human-readable (HTML) and machine-readable (RDF) representations using content negotiation.
+</p>
+
+<p><strong>Base namespace:</strong><br>
+  <code>https://example.org/group06/</code>
+</p>
+
+<p><strong>URI patterns:</strong></p>
+<ul>
+  <li>Ontology terms: <code>https://example.org/group06/def/{Term}</code></li>
+  <li>Municipal green zones: <code>https://example.org/group06/zone/{zoneId}</code></li>
+  <li>Trees in parks: <code>https://example.org/group06/tree/{treeId}</code></li>
+  <li>Districts: <code>https://example.org/group06/district/{districtName}</code></li>
+</ul>
+
+<p>
+  For example, a tree in Parque del Retiro could have the URI:
+  <code>https://example.org/group06/tree/12345</code>,
+  and the corresponding green zone:
+  <code>https://example.org/group06/zone/678</code>.
+</p>
+
+<p>
+  These URIs are designed to be permanent. If a resource moves, HTTP redirects will maintain accessibility and avoid breaking links.
+</p>
+
+<h2>4. Ontology design</h2>
+
+<p>
+  We provide a lightweight ontology tailored to our datasets, reusing standard vocabularies:
+</p>
+
+<ul>
+  <li><strong>Reuse:</strong> <code>schema:address</code> </li>
+  <li><strong>Core classes:</strong> <code>ex:GreenZone</code>, <code>ex:Tree</code>, <code>ex:District</code>, <code>ex:Species</code></li>
+  <li><strong>Object properties:</strong> <code>ex:locatedIn</code>, <code>ex:hasTree</code>, <code>ex:hasSpecies</code></li>
+  <li><strong>Datatype properties:</strong> <code>ex:zoneId</code>, <code>ex:parkName</code>, <code>ex:category</code>, <code>ex:nature</code>, <code>ex:intendedUse</code>, <code>ex:area</code>, <code>ex:treeCount</code></li>
+</ul>
+
+</body>
+</html>

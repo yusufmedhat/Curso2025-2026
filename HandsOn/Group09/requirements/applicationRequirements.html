@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Application - Museums of Madrid Explorer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      line-height: 1.6;
+      background-color: #ffffff;
+      color: #000000;
+    }
+    h1, h2, h3, h4 {
+      color: #000000;
+      margin-top: 1em;
+    }
+    ul {
+      margin-left: 20px;
+      margin-bottom: 1em;
+      padding-left: 0;
+    }
+    p {
+      margin-bottom: 1em;
+    }
+    .screen {
+      width: 420px;
+      margin: 20px auto;
+      padding: 15px;
+    }
+    .screen h2 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    /* Map */
+    .map {
+      position: relative;
+      width: 100%;
+      height: 280px;
+      border: 1px solid #000;
+      background: #f5f5f5;
+    }
+    .pin {
+      position: absolute;
+      width: 16px; 
+      height: 16px;
+      border-radius: 50%;
+      background: #000;
+      transform: translate(-50%, -50%);
+    }
+    .label {
+      position: absolute;
+      font-size: 12px;
+      text-align: center;
+      transform: translate(-50%, 0);
+    }
+    /* Gallery */
+    .gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+    .card {
+      width: 200px;
+      text-align: center;
+      padding: 10px;
+      border: 1px solid #000;
+      background: #f9f9f9;
+    }
+    .card h3 {
+      margin: 5px 0;
+    }
+    .card p {
+      margin: 0;
+      font-size: 14px;
+    }
+    /* Itinerary */
+    .route {
+      list-style: none;
+      padding-left: 0;
+    }
+    .route li {
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Application - Museums of Madrid Explorer</h1>
+
+  <h2>Description</h2>
+  <p><strong>Museums of Madrid Explorer</strong> is a web application guiding users through Madrid’s museums like the Prado and Reina Sofía. It offers an interactive map and general information for each museum.</p>
+
+  <h2>Objectives</h2>
+  <ul>
+    <li>Display an interactive map of Madrid’s museums.</li>
+    <li>Visualize highlights and exhibit details.</li>
+    <li>Provide real-time updates on exhibitions, tickets, and hours.</li>
+  </ul>
+
+  <h2>Requirements</h2>
+  <h3>Functional Requirements</h3>
+  <ul>
+    <li><strong>FR1:</strong> Show an interactive map with museum locations.</li>
+    <li><strong>FR2:</strong> Filter museums by type or proximity.</li>
+    <li><strong>FR3:</strong> Allow offline access to guides and itineraries.</li>
+  </ul>
+
+  <h3>Non-functional Requirements</h3>
+  <ul>
+    <li><strong>NFR1:</strong> Responsive and accessible interface.</li>
+    <li><strong>NFR2:</strong> Multilingual support (English, Spanish, French).</li>
+    <li><strong>NFR3:</strong> Automatic weekly data updates.</li>
+  </ul>
+
+  <h2>Mockups</h2>
+
+  <p><strong>Screen 1:</strong> Interactive map with museum locations.</p>
+  <div class="screen screen-map">
+    <h2>Madrid Museums Map</h2>
+    <div class="map">
+      <div class="pin" style="top: 40%; left: 30%;"></div>
+      <div class="label" style="top: 42%; left: 30%;">Prado Museum</div>
+
+      <div class="pin" style="top: 50%; left: 60%;"></div>
+      <div class="label" style="top: 52%; left: 60%;">Reina Sofía</div>
+
+      <div class="pin" style="top: 70%; left: 45%;"></div>
+      <div class="label" style="top: 72%; left: 45%;">Thyssen-Bornemisza</div>
+    </div>
+  </div>
+
+  <p><strong>Screen 2:</strong> Gallery of exhibits.</p>
+  <div class="screen screen-gallery">
+    <h2>Exhibit Gallery</h2>
+    <div class="gallery">
+      <div class="card">
+        <h3>Prado Exhibit</h3>
+        <p>Renaissance paintings and Spanish masters.</p>
+      </div>
+      <div class="card">
+        <h3>Reina Sofía Exhibit</h3>
+        <p>Modern history collections and war artifacts.</p>
+      </div>
+    </div>
+  </div>
+
+  <p><strong>Screen 3:</strong> Itinerary planner.</p>
+  <div class="screen screen-itinerary">
+    <h2>Itinerary Planner</h2>
+    <ul class="route">
+      <li><strong>10:00 - Prado Museum:</strong> Guided tour of Renaissance paintings.</li>
+      <li><strong>12:30 - Reina Sofía:</strong> Modern art exhibition.</li>
+      <li><strong>15:00 - Thyssen-Bornemisza:</strong> Impressionist collection.</li>
+    </ul>
+  </div>
+
+</body>
+</html>

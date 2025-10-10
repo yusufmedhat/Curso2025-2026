@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dataset Requirements Analysis - AirViz Madrid</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      line-height: 1.6;
+      background-color: #ffffff; /* Fondo blanco */
+      color: #000000; /* Texto negro */
+    }
+    h1, h2 {
+      color: #000000; /* Títulos en negro */
+    }
+    h3 {
+      margin-top: 1.2em;
+      color: #000000;
+    }
+    ul { 
+      margin-left: 20px; 
+    }
+    table { 
+      border-collapse: collapse; 
+      width: 100%; 
+      margin-top: 16px; 
+    }
+    th, td { 
+      border: 1px solid #ccc; 
+      padding: 8px; 
+      text-align: left; 
+      color: #000000; 
+    }
+    th { 
+      background-color: #f2f2f2; /* Fondo gris claro para encabezados */
+    }
+  </style>
+</head>
+<body>
+  <h1>Dataset Requirements Analysis</h1>
+
+  <p>This document analyzes whether the selected datasets for the <strong>AirViz Madrid</strong> application satisfy the defined requirements (R1–R6).</p>
+
+  <h2>Mandatory Requirements (R1–R4)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Requirement</th>
+        <th>Description</th>
+        <th>Dataset Satisfaction</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>R1</td>
+        <td>Data are in one of the selected smart city domains.</td>
+        <td>[x] The selected datasets belong to the air quality and urban monitoring domain, which is part of the smart city domains.</td>
+      </tr>
+      <tr>
+        <td>R2</td>
+        <td>Data are available as a CSV file.</td>
+        <td>[x] All datasets are provided in CSV format, ensuring ease of use for processing and visualization.</td>
+      </tr>
+      <tr>
+        <td>R3</td>
+        <td>Data have an open license so they can be published.</td>
+        <td>[x] The datasets are released under open licenses (e.g., CC-BY or public domain), allowing redistribution and publication in the AirViz Madrid platform.</td>
+      </tr>
+      <tr>
+        <td>R4</td>
+        <td>Data can be easily linked with generic real-world entities (e.g., locations).</td>
+        <td>[x] The datasets include geographic coordinates (latitude and longitude) and standardized identifiers, making it straightforward to link them with real-world locations in Madrid.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Optional Requirements (R5–R6)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Requirement</th>
+        <th>Description</th>
+        <th>Degree of Satisfaction</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>R5</td>
+        <td>Documentation exists for the data.</td>
+        <td>Partial: Some datasets provide detailed documentation including variable descriptions and data collection methods. Others have minimal metadata, requiring additional exploration to fully understand the content.</td>
+      </tr>
+      <tr>
+        <td>R6</td>
+        <td>Data can come from multiple data sources.</td>
+        <td>Partial: While the core dataset comes from a single open data portal (Madrid City Council), additional external datasets (e.g., meteorological data) could be linked. Integration across multiple sources is possible but not fully implemented in the current selection.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Conclusion</h2>
+  <p>The selected datasets fully satisfy all mandatory requirements (R1–R4), making them suitable for the AirViz Madrid application. The optional requirements (R5–R6) are only partially satisfied, but with minor additional effort, full compliance could be achieved, especially in terms of documentation and multi-source integration.</p>
+</body>
+</html>

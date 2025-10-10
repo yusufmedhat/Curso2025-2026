@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Dataset Requirements Assessment (R1–R6)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    :root{--ok:#1b8f3a;--warn:#b58900;--fail:#c62828;--muted:#666;}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.5;margin:2rem;max-width:1100px}
+    header h1{margin:0 0 .25rem}
+    header p{color:var(--muted);margin:.25rem 0 1.5rem}
+    .legend{display:flex;gap:1rem;margin:.5rem 0 1rem}
+    .dot{display:inline-block;width:.75rem;height:.75rem;border-radius:50%;margin-right:.4rem;vertical-align:middle}
+    .ok{color:var(--ok)} .warn{color:var(--warn)} .fail{color:var(--fail)}
+    section{border:1px solid #e6e6e6;border-radius:12px;padding:1rem 1.25rem;margin:1rem 0}
+    h2{margin:.25rem 0 .75rem}
+    h3{margin:1rem 0 .25rem}
+    .req{display:grid;grid-template-columns:9rem 1fr;gap:.5rem 1rem;padding:.75rem;border:1px solid #eee;border-radius:10px;margin:.5rem 0}
+    .req b{white-space:nowrap}
+    .status{font-weight:700}
+    .status.ok{color:var(--ok)}
+    .status.warn{color:var(--warn)}
+    .status.fail{color:var(--fail)}
+    footer{margin-top:2rem;color:var(--muted);font-size:.95rem}
+    .muted{color:var(--muted)}
+    a{color:inherit}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Assessment of Selected Datasets vs. Requirements R1–R6</h1>
+    <div class="legend">
+      <span><span class="dot ok" style="background:var(--ok)"></span>Meets</span>
+      <span><span class="dot warn" style="background:var(--warn)"></span>Partially meets / Discuss</span>
+      <span><span class="dot fail" style="background:var(--fail)"></span>Does not meet</span>
+    </div>
+  </header>
+
+  <section id="requirements">
+    <h2>Requirements Summary</h2>
+    <ul>
+      <li><b>R1:</b> Data are in one of the selected smart city domains (<a href="https://ciudadesabiertas.es/vocabularios/" target="_blank" rel="noopener">Ciudades Abiertas catalog</a>).</li>
+      <li><b>R2:</b> Data are available as a CSV file.</li>
+      <li><b>R3:</b> Data have an open license so they can be published.</li>
+      <li><b>R4:</b> Data can be easily linked with generic real-world entities (e.g., locations).</li>
+      <li><b>R5 (optional):</b> Documentation exists for the data.</li>
+      <li><b>R6 (optional):</b> Data can come from multiple data sources.</li>
+    </ul>
+  </section>
+
+  <section id="datasets">
+    <h2>Datasets Evaluated</h2>
+
+    <!-- DATASET 1 -->
+    <article>
+      <h3>Dataset 1 — <a href="https://datos.gob.es/en/catalogo/l01080193-transportes-de-la-ciudad-de-barcelona" target="_blank" rel="noopener">Transportes de la ciudad de Barcelona</a> <span class="muted">(Ayuntamiento de Barcelona)</span></h3>
+      <p><b>Description:</b> Public transports (metro, Renfe, FGC, funicular, cable car, tramcar, etc.) in Barcelona. Provides CSV and XML distributions; license CC BY 4.0.</p>
+      <div class="req">
+        <b>R1 (mandatory)</b>
+        <div><span class="status ok">Meets</span> — Falls under Smart City “Transporte” domain.</div>
+
+        <b>R2 (mandatory)</b>
+        <div><span class="status ok">Meets</span> — CSV distribution is available for download.</div>
+
+        <b>R3 (mandatory)</b>
+        <div><span class="status ok">Meets</span> — Licensed under CC BY 4.0 (open & reusable with attribution).</div>
+
+        <b>R4 (mandatory)</b>
+        <div><span class="status ok">Meets</span> — Records include stop/line identifiers and location attributes, enabling linkage to places.</div>
+
+        <b>R5 (optional)</b>
+        <div><span class="status warn">Partially meets</span> — Catalog metadata exists, but detailed field-level documentation is limited.</div>
+
+        <b>R6 (optional)</b>
+        <div><span class="status warn">Partially meets</span> — Curated by the city portal; mainly a single source though it references multiple operators.</div>
+      </div>
+    </article>
+
+    <!-- DATASET 2 -->
+    <article>
+      <h3>Dataset 2 — <a href="https://data.renfe.com/dataset/estaciones-rodalies-barcelona/resource/e3969f12-aff2-468e-9b82-a65a6dd1a0d3" target="_blank" rel="noopener">Estaciones Rodalies Barcelona</a> <span class="muted">(RENFE)</span></h3>
+      <p><b>Description:</b> List of Rodalies stations in Barcelona with identifiers, names and geolocation; CSV and XLSX distributions; license CC BY 4.0.</p>
+      <div class="req">
+        <b>R1 (mandatory)</b>
+        <div><span class="status ok">Meets</span> — Public transport stations are part of the Smart City transportation domain.</div>
+
+        <b>R2 (mandatory)</b>
+        <div><span class="status ok">Meets</span> — CSV distribution provided by RENFE portal.</div>
+
+        <b>R3 (mandatory)</b>
+        <div><span class="status ok">Meets</span> — Licensed under CC BY 4.0.</div>
+
+        <b>R4 (mandatory)</b>
+        <div><span class="status ok">Meets</span> — Includes latitude and longitude fields for easy linkage to locations.</div>
+
+        <b>R5 (optional)</b>
+        <div><span class="status ok">Meets</span> — Includes a clear data dictionary describing fields.</div>
+
+        <b>R6 (optional)</b>
+        <div><span class="status warn">Partially meets</span> — Data is from RENFE, a single operator, not multiple sources.</div>
+      </div>
+    </article>
+
+    <!-- DATASET 3 -->
+    <article>
+      <h3>Dataset 3 — <a href="https://datos.gob.es/en/catalogo/l01080193-funiculares-en-la-ciudad-de-barcelona" target="_blank" rel="noopener">Funiculares en la ciudad de Barcelona</a> <span class="muted">(Ayuntamiento de Barcelona)</span></h3>
+      <p><b>Description:</b> Funicular assets for Barcelona; CSV and JSON distributions; license CC BY 4.0.</p>
+      <div class="req">
+        <b>R1 (mandatory)</b>
+        <div><span class="status ok">Meets</span> — Falls within transport domain.</div>
+
+        <b>R2 (mandatory)</b>
+        <div><span class="status ok">Meets</span> — CSV distribution available.</div>
+
+        <b>R3 (mandatory)</b>
+        <div><span class="status ok">Meets</span> — Licensed under CC BY 4.0.</div>
+
+        <b>R4 (mandatory)</b>
+        <div><span class="status ok">Meets</span> — Includes names and locations, allowing linkage to places.</div>
+
+        <b>R5 (optional)</b>
+        <div><span class="status warn">Partially meets</span> — Catalog metadata exists; limited additional documentation.</div>
+
+        <b>R6 (optional)</b>
+        <div><span class="status warn">Partially meets</span> — Municipal dataset; no indication of multiple sources.</div>
+      </div>
+    </article>
+  </section>
+
+  <section id="summary">
+    <h2>Compliance Summary</h2>
+    <ul>
+      <li><b>Dataset 1:</b> R1–R4 met / R5–R6 partially met.</li>
+      <li><b>Dataset 2:</b> R1–R4 met / R5 met / R6 partially met.</li>
+      <li><b>Dataset 3:</b> R1–R4 met / R5–R6 partially met.</li>
+      <li><b>Dataset 4:</b> R1–R4 met / R5–R6 met.</li>
+    </ul>
+  </section>
+
+  <section id="matches">
+    <h2>Entities linked across datasets</h2>
+    <ul>
+      <li><b>Rodalies stations (RENFE Barcelona):</b> <code>Dirección</code> ↔ 
+          <b>Funicular dataset:</b> <code>addresses_road_name + addresses_start_street_number</code> ↔ 
+          <b>Railway transport dataset (Barcelona):</b> <code>ADRECA</code></li>
+    </ul>
+  </section>
+</body>
+</html>

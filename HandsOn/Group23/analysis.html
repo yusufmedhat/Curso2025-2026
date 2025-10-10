@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hands-On 2: Analysis</title>
+</head>
+<body>
+  <h1>Hands-On 2: Analysis</h1>
+
+  <h2>1. Dataset Analysis</h2>
+  <p>
+    The source file is a semicolon-separated CSV (<code>;</code>) with 56 columns and 126 rows.<br>
+    <b>Columns:</b> PROVINCIA, MUNICIPIO, ESTACION, MAGNITUD, PUNTO_MUESTREO, ANO, MES, DIA, H01–H24, V01–V24.
+  </p>
+  <ul>
+    <li><b>PROVINCIA:</b> Province code (constant 28 = Madrid)</li>
+    <li><b>MUNICIPIO:</b> Municipality code (constant 79 = Madrid city)</li>
+    <li><b>ESTACION:</b> Station code (23 possible values)</li>
+    <li><b>MAGNITUD:</b> Pollutant or measured magnitude code (11 different types)</li>
+    <li><b>PUNTO_MUESTREO:</b> Sampling point identifier (e.g., 28079011_12_8)</li>
+    <li><b>ANO/MES/DIA:</b> Measurement date (e.g., 2025/10/05)</li>
+    <li><b>H01–H24:</b> Hourly numeric concentration values</li>
+    <li><b>V01–V24:</b> Validation codes (V = valid, N = null/unavailable)</li>
+  </ul>
+  <p><b>Value ranges:</b> Hourly concentration values range from 0.0 to 102.0. Validation codes are “V” or “N”.</p>
+
+  <h2>2. Licensing Analysis</h2>
+  <h3>Official Source</h3>
+  <ul>
+    <li><b>Publisher:</b> Madrid City Council (Ayuntamiento de Madrid)</li>
+    <li><b>Dataset:</b> "Air Quality Data of the City of Madrid - Real Time"</li>
+    <li><b>URL:</b> <a href="https://datos.madrid.es/portal/site/egob/menuitem.c05c1f1a4e8c2c0e70e70e70a8a409a0/?vgnextoid=4ff14e51d3b1b410VgnVCM2000000c205a0aRCRD">Open Data Portal</a></li>
+  </ul>
+
+  <h3>License – To Be Clarified</h3>
+  <p><b>Note:</b> The dataset’s specific page does not explicitly show the license. According to the general conditions of the datos.madrid.es portal, the dataset falls under the Spanish public sector information reuse terms.</p>
+
+  <h3>Proposed License for the Linked Data Version</h3>
+  <p><b>Creative Commons Attribution 4.0 International (CC BY 4.0)</b>. This license is compatible with open data policies commonly used by Spanish public administrations and allows reuse with attribution.</p>
+
+  <h2>3. Resource Naming Strategy</h2>
+  <ul>
+    <li>Ontology: <code>http://madrid-airquality.es/ontology#</code></li>
+    <li>Station: <code>http://madrid-airquality.es/station/{station}</code></li>
+    <li>Measurement: <code>http://madrid-airquality.es/measurement/{sampling_point}/{datetime}</code></li>
+    <li>Pollutant: <code>http://madrid-airquality.es/pollutant/{magnitude}</code></li>
+  </ul>
+
+  <h2>Technical Notes</h2>
+  <ul>
+    <li>The CSV file only contains data for the current day, the dataset is updated in real time. A new file is generated each day with the corresponding daily measurements.</li>
+    <li>Hours marked as “N” correspond to time slots that have not yet been measured or validated at the time of download.</li>
+  </ul>
+</body>
+</html>
