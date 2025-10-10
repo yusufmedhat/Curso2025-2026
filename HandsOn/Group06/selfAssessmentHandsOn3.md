@@ -10,7 +10,7 @@
 - [X] Redundant, incomplete, or inconsistent records were removed or corrected.  
 - [X] Transformations were applied to standardize values (e.g., capitalization, formats, delimiters).  
 - [X] Columns were split, merged, or reformatted when necessary.  
-- [X] The cleaned data is ready to be used for RDF generation.  
+- [X] The cleaned data is ready to be used for RDF generation  
 
 **The deliverables:**
 
