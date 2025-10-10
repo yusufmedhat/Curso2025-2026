@@ -1,0 +1,89 @@
+@prefix : <http://data.barcelona.cat/actividades/> .
+@prefix att: <http://data.barcelona.cat/att/> .
+@prefix base: <http://data.barcelona.cat/actividades/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix mod: <https://w3id.org/mod#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rel: <http://data.barcelona.cat/rel/> .
+@prefix schema: <https://schema.org/> .
+@prefix url: <http://data.barcelona.cat/url/> .
+
+: a owl:Ontology ;
+    dc:creator "Adrian Francisco Lopez Garcia",
+        "Dorsa Soleimani Kourani",
+        "Javier Sanchez Peligros",
+        "Juan Pedro Marques Haro" ;
+    dc:title "SAREF group02" ;
+    owl:versionInfo "1.0" ;
+    mod:createdWith <https://chowlk.linkeddata.es/> .
+
+att:Precio a owl:DatatypeProperty ;
+    rdfs:label "precio" .
+
+att:aforo a owl:DatatypeProperty ;
+    rdfs:label "aforo" .
+
+att:anuncio a owl:DatatypeProperty ;
+    rdfs:label "anuncio" .
+
+att:descripcion a owl:DatatypeProperty ;
+    rdfs:label "descripcion" .
+
+att:duracionH a owl:DatatypeProperty ;
+    rdfs:label "duracion h" .
+
+att:fechaFin a owl:DatatypeProperty ;
+    rdfs:label "fecha fin" .
+
+att:fechaInicio a owl:DatatypeProperty ;
+    rdfs:label "fecha inicio" .
+
+att:inscripcion a owl:DatatypeProperty ;
+    rdfs:label "inscripcion" .
+
+att:numDias a owl:DatatypeProperty ;
+    rdfs:label "num dias" .
+
+att:tipo a owl:DatatypeProperty ;
+    rdfs:label "tipo" .
+
+att:titulo a owl:DatatypeProperty ;
+    rdfs:label "titulo" .
+
+rel:isContained a owl:ObjectProperty ;
+    rdfs:label "is contained" .
+
+rel:isHosted a owl:ObjectProperty ;
+    rdfs:label "is hosted" .
+
+rel:placed a owl:ObjectProperty ;
+    rdfs:label "placed" .
+
+rel:typeOf a owl:ObjectProperty ;
+    rdfs:label "type of" .
+
+url:Comarca a owl:Class ;
+    rdfs:label "Comarca" .
+
+url:Municipio a owl:Class ;
+    rdfs:label "Municipio" .
+
+url:Organizador a owl:Class ;
+    rdfs:label "Organizador" .
+
+dc:creator a owl:AnnotationProperty .
+
+dc:title a owl:AnnotationProperty .
+
+base:Actividad a owl:Class ;
+    rdfs:label "Actividad" .
+
+base:Categoria a owl:Class ;
+    rdfs:label "Categoria" .
+
+owl:versionInfo a owl:AnnotationProperty .
+
+schema:Place a owl:Class ;
+    rdfs:label "Place" .
+

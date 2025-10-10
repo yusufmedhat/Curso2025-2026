@@ -1,0 +1,101 @@
+@prefix trafico: <https://datos.madrid.es/ontology#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+# Ontology Metadata
+<https://datos.madrid.es/ontology>
+    a owl:Ontology ;
+    rdfs:label "Ontología de Accidentes de Tráfico de Madrid" ;
+    rdfs:comment "Ontología ligera para representar accidentes de tráfico, personas y vehículos involucrados en Madrid." ;
+    owl:versionInfo "1.1" .
+
+# Clases
+trafico:Accidente a owl:Class ;
+    rdfs:label "Accidente" ;
+    rdfs:comment "Registro de un accidente de tráfico, incluyendo fecha, hora, ubicación y personas/vehículos implicados." .
+
+trafico:Persona a owl:Class ;
+    rdfs:label "Persona" ;
+    rdfs:comment "Persona implicada en un accidente, con información de edad, sexo y consumo de alcohol/drogas." .
+
+trafico:Vehiculo a owl:Class ;
+    rdfs:label "Vehículo" ;
+    rdfs:comment "Vehículo implicado en un accidente de tráfico." .
+
+trafico:Distrito a owl:Class ;
+    rdfs:label "Distrito" ;
+    rdfs:comment "Distrito de Madrid donde ocurrió el accidente." .
+
+# Propiedades
+trafico:tienePersona a owl:ObjectProperty ;
+    rdfs:domain trafico:Accidente ;
+    rdfs:range trafico:Persona ;
+    rdfs:label "Persona involucrada" ;
+    rdfs:comment "Relaciona un accidente con las personas implicadas." .
+
+trafico:tieneVehiculo a owl:ObjectProperty ;
+    rdfs:domain trafico:Accidente ;
+    rdfs:range trafico:Vehiculo ;
+    rdfs:label "Vehículo involucrado" ;
+    rdfs:comment "Relaciona un accidente con los vehículos implicados." .
+
+trafico:ubicadoEn a owl:ObjectProperty ;
+    rdfs:domain trafico:Accidente ;
+    rdfs:range trafico:Distrito ;
+    rdfs:label "Distrito del accidente" ;
+    rdfs:comment "Distrito de Madrid donde ocurrió el accidente." .
+
+trafico:fecha a owl:DatatypeProperty ;
+    rdfs:domain trafico:Accidente ;
+    rdfs:range xsd:date ;
+    rdfs:label "Fecha del accidente" ;
+    rdfs:comment "Fecha en la que ocurrió el accidente." .
+
+trafico:hora a owl:DatatypeProperty ;
+    rdfs:domain trafico:Accidente ;
+    rdfs:range xsd:time ;
+    rdfs:label "Hora del accidente" ;
+    rdfs:comment "Hora exacta del accidente." .
+
+trafico:tipoAccidente a owl:DatatypeProperty ;
+    rdfs:domain trafico:Accidente ;
+    rdfs:range xsd:string ;
+    rdfs:label "Tipo de accidente" ;
+    rdfs:comment "Tipo de colisión o accidente registrado." .
+
+trafico:estadoMeteorologico a owl:DatatypeProperty ;
+    rdfs:domain trafico:Accidente ;
+    rdfs:range xsd:string ;
+    rdfs:label "Estado meteorológico" ;
+    rdfs:comment "Condiciones climáticas durante el accidente (e.g., Despejado, Lluvia, Niebla)." .
+
+trafico:rangoEdad a owl:DatatypeProperty ;
+    rdfs:domain trafico:Persona ;
+    rdfs:range xsd:string ;
+    rdfs:label "Rango de edad" ;
+    rdfs:comment "Grupo de edad de la persona implicada." .
+
+trafico:sexo a owl:DatatypeProperty ;
+    rdfs:domain trafico:Persona ;
+    rdfs:range xsd:string ;
+    rdfs:label "Sexo" ;
+    rdfs:comment "Sexo de la persona implicada." .
+
+trafico:tipoVehiculo a owl:DatatypeProperty ;
+    rdfs:domain trafico:Vehiculo ;
+    rdfs:range xsd:string ;
+    rdfs:label "Tipo de vehículo" ;
+    rdfs:comment "Tipo de vehículo implicado en el accidente." .
+
+trafico:positivaAlcohol a owl:DatatypeProperty ;
+    rdfs:domain trafico:Persona ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "Positivo alcohol" ;
+    rdfs:comment "Indica si la persona dio positivo en alcohol (true/false)." .
+
+trafico:positivaDroga a owl:DatatypeProperty ;
+    rdfs:domain trafico:Persona ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "Positivo droga" ;
+    rdfs:comment "Indica si la persona dio positivo en drogas (true/false)." .

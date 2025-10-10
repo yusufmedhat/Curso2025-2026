@@ -1,0 +1,76 @@
+@prefix ex:   <http://group24.linkeddata.es/ontology/> .
+@prefix res:  <http://group24.linkeddata.es/resource/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+#################################################################
+# Example datasets (metadata shells)
+#################################################################
+
+<http://group24.linkeddata.es/dataset/trees-madrid-2024> a dcat:Dataset ;
+  dct:title "Urban Tree Inventory — Green Areas, Districts of Madrid (2024)"@en .
+
+<http://group24.linkeddata.es/dataset/no2-es-annual> a dcat:Dataset ;
+  dct:title "Average Atmospheric Pollution — NO2 (Spain, annual aggregates)"@en .
+
+<http://group24.linkeddata.es/dataset/expenditure-es> a dcat:Dataset ;
+  dct:title "Environmental Protection Expenditure — Spain (Total Industry)"@en .
+
+#################################################################
+# Canonical observed properties (reused from ontology)
+#################################################################
+
+# res:prop/NO2, res:prop/TreeCount, res:prop/Expenditure
+# are defined in the ontology. We reuse them here.
+
+#################################################################
+# Example 1: Madrid district + tree observation
+#################################################################
+
+# District example
+res:district/MAD-Centro a ex:District ;
+  ex:label "Centro District, Madrid"@en .
+
+# Tree species observation
+res:observation/tree/MAD-Centro-LigustrumJaponicum a ex:TreeObservation ;
+  ex:featureOfInterest res:district/MAD-Centro ;
+  ex:observedProperty <http://group24.linkeddata.es/resource/prop/TreeCount> ;
+  ex:value "2605"^^xsd:decimal ;
+  ex:unit "number of trees" ;
+  ex:resultTime "2024-12-31"^^xsd:date ;
+  ex:year "2024"^^xsd:gYear ;
+  ex:concept "Ligustrum japonicum trees in Centro district" ;
+  ex:inDataset <http://group24.linkeddata.es/dataset/trees-madrid-2024> .
+
+#################################################################
+# Example 2: Spain NO2 annual observation
+#################################################################
+
+res:area/ES a ex:Area ;
+  ex:label "Spain"@en .
+
+res:observation/no2/ES-annual-2024 a ex:NO2Observation ;
+  ex:featureOfInterest res:area/ES ;
+  ex:observedProperty <http://group24.linkeddata.es/resource/prop/NO2> ;
+  ex:value "27.3"^^xsd:decimal ;
+  ex:unit "µg/m³ (annual average)" ;
+  ex:resultTime "2024-12-31"^^xsd:date ;
+  ex:year "2024"^^xsd:gYear ;
+  ex:concept "Average atmospheric pollution — NO2" ;
+  ex:inDataset <http://group24.linkeddata.es/dataset/no2-es-annual> .
+
+#################################################################
+# Example 3: Environmental protection expenditure (national total)
+#################################################################
+
+res:expenditure/ES-total-2019 a ex:ExpenditureRecord ;
+  ex:featureOfInterest res:area/ES ;
+  ex:observedProperty <http://group24.linkeddata.es/resource/prop/Expenditure> ;
+  ex:value "12485071"^^xsd:decimal ;
+  ex:unit "EUR" ;
+  ex:year "2019"^^xsd:gYear ;
+  ex:concept "Total industry environmental protection expenditure"@en ;
+  ex:dataStatus "OK" ;
+  ex:inDataset <http://group24.linkeddata.es/dataset/expenditure-es> .

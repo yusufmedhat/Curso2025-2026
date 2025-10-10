@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Parking Finder Application — Requirements & UI Mockups</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; line-height: 1.55; color:#0f172a; }
+    h1 { font-size: 24px; }
+    h2 { font-size: 18px; margin-top: 24px; }
+    ul { margin-left: 18px; }
+    .mockup { border:1px solid #cbd5e1; border-radius:8px; padding:12px; margin:12px 0; background:#f8fafc; }
+    pre { font-size: 13px; line-height: 1.4; background:#e2e8f0; padding:8px; border-radius:4px; overflow:auto; }
+    .note { font-size: 13px; color:#334155; }
+  </style>
+</head>
+<body>
+  <h1>Parking Finder Application — Requirements and UI Mockups</h1>
+
+  <h2>1. Application Overview</h2>
+  <p>The application will leverage the <em>Aparcamientos EMT</em> dataset to allow users to search for and locate parking lots in Madrid. Users will be able to filter by type of parking lot (e.g., rotation, residents, park-and-ride), view results on a map or list, and explore parking details.</p>
+
+  <h2>2. Functional Requirements</h2>
+  <ul>
+    <li><strong>Search by type:</strong> Users can select parking lot categories (rotation, residents, park-and-ride, etc.).</li>
+    <li><strong>Search by location:</strong> Users can enter an address or use geolocation to find nearby parking lots.</li>
+    <li><strong>Filter options:</strong> Filters for availability of residents-only, rotation, 24h, electric charging stations, etc.</li>
+    <li><strong>Map view:</strong> Display parking lots on a map with markers based on coordinates (<code>lat,long</code>).</li>
+    <li><strong>List view:</strong> Display parking lots in a scrollable list with name, address, type, and distance.</li>
+    <li><strong>Detail view:</strong> Each parking lot shows address, type, capacity, opening hours, and a link to EMT page.</li>
+    <li><strong>Favorites:</strong> Users can save favorite parking lots for quick access.</li>
+    <li><strong>Attribution:</strong> The app must show attribution to EMT open data (CC‑BY license).</li>
+  </ul>
+
+  <h2>3. Non-Functional Requirements</h2>
+  <ul>
+    <li><strong>Performance:</strong> Fast search and filtering (under 2s for results).</li>
+    <li><strong>Usability:</strong> Clear interface, mobile-friendly layout, accessible color contrast.</li>
+    <li><strong>Scalability:</strong> Ability to add additional datasets (traffic, occupancy sensors) in the future.</li>
+    <li><strong>Internationalization:</strong> Support for Spanish (default) and English.</li>
+  </ul>
+
+  <h2>4. User Interface Description</h2>
+  <p>The user interface will have three main sections:</p>
+  <ol>
+    <li><strong>Home/Search Screen:</strong> Search bar, type filter dropdown, location input, and quick access buttons.</li>
+    <li><strong>Results Screen:</strong> Map view with pins for parking lots and a toggle for list view.</li>
+    <li><strong>Detail Screen:</strong> Displays details of the selected parking lot with options to save as favorite.</li>
+  </ol>
+
+  <h2>5. UI Mockups (ASCII wireframes)</h2>
+
+  <div class="mockup">
+    <h3>Home/Search Screen</h3>
+    <pre>
+  +-------------------------------------------------+
+  |  Parking Finder                                 |
+  +-------------------------------------------------+
+  | Search: [ Address or place  ____________ ] [🔍] |
+  | Type:   [ Rotation ▼ ] [ Residents ▼ ] [✔️]    |
+  | [ Use my location ]                            |
+  +-------------------------------------------------+
+  | [ Find Parking ]                                |
+  +-------------------------------------------------+
+    </pre>
+  </div>
+
+  <div class="mockup">
+    <h3>Results Screen</h3>
+    <pre>
+  +-------------------------------------------------+
+  | Map View (with pins at lat/long)                |
+  |                                                 |
+  |   📍 Argüelles Parking                          |
+  |   📍 Plaza de España                            |
+  |                                                 |
+  +-------------------------------------------------+
+  | Toggle: [Map View] [List View]                  |
+  +-------------------------------------------------+
+  | List View Example:                              |
+  | - Argüelles | C. Princesa, 10 | Rotation        |
+  | - Pza. España | Pza. España | Residents         |
+  +-------------------------------------------------+
+    </pre>
+  </div>
+
+  <div class="mockup">
+    <h3>Detail Screen</h3>
+    <pre>
+  +-------------------------------------------------+
+  | Parking Lot: Argüelles                          |
+  | Address: C. Princesa, 10                        |
+  | Type: Rotation                                  |
+  | Capacity: 500                                   |
+  | Opening Hours: 24h                              |
+  | [ Save as Favorite ]  [ Open in Maps ]          |
+  +-------------------------------------------------+
+  | Attribution: Data © EMT Open Data (CC-BY)       |
+  +-------------------------------------------------+
+    </pre>
+  </div>
+
+  <footer class="note">
+    <p><strong>Note:</strong> These are conceptual mock-ups to illustrate the UI flow. Final designs will use modern UI components and responsive layouts.</p>
+  </footer>
+</body>
+</html>
