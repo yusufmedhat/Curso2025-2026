@@ -1,0 +1,19 @@
+Hierarchy OK
+TASK 6.1 OK
+ERROR: hasColleague has an incorrect domain or range
+ERROR IN TASK 6.2
+ERROR: hasColleague has an incorrect domain or range
+ERROR IN TASK 6.2
+ERROR: hasColleague has an incorrect domain or range
+ERROR IN TASK 6.2
+ERROR: hasColleague has an incorrect domain or range
+ERROR IN TASK 6.2
+TASK 6.2 OK
+ERROR: One of the individuals is missing its correct label! I cannot retrieve it
+ERROR: Oscar has an incorrect namespace
+ERROR: Asun has an incorrect namespace
+ERROR: Raul has an incorrect namespace
+ERROR: One of the individuals has the wrong number of properties
+ERROR IN TASK 6.3
+TASK 6.3 OK
+TASK 6.4 OK
