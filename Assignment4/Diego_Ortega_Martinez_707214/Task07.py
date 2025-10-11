@@ -7,12 +7,12 @@ url = 'https://raw.githubusercontent.com/FacultadInformatica-LinkedData/Curso202
 urllib.request.urlretrieve(url, 'validation.py')
 github_storage = "https://raw.githubusercontent.com/FacultadInformatica-LinkedData/Curso2025-2026/master/Assignment4/course_materials"
 #%%
-from validation import Report
+from Assignment4.Diego_Ortega_Martinez_707214.validation import Report
 #%% md
 # First let's read the RDF file
 #%%
-from rdflib import Graph, Namespace, Literal
-from rdflib.namespace import RDF, RDFS
+from rdflib import Graph, Namespace
+
 # Do not change the name of the variables
 g = Graph()
 g.namespace_manager.bind('ns', Namespace("http://somewhere#"), override=False)
