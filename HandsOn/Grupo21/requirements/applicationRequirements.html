@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Application Requirements — MoviSalud Madrid</title>
+  <title>Application Requirements — SafeRoad España</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     body { font-family: system-ui, sans-serif; line-height: 1.6; margin: 2rem; max-width: 1000px; }
@@ -13,94 +12,93 @@
   </style>
 </head>
 <body>
-  <h1>Application Requirements — MoviSalud Madrid</h1>
+  <h1>Application Requirements — SafeRoad España</h1>
 
   <section>
     <h2>1. Summary</h2>
     <p>
-      The proposed application, <strong>MoviSalud Madrid</strong>, integrates three open datasets —
-      <em>BiciMAD stations</em>, <em>Air Quality monitoring</em>, and <em>Traffic Accidents</em> —
-      to support healthier and safer mobility decisions in Madrid.
-      The app will show citizens where to find the nearest bike station,
-      the air quality conditions in that area, and the historical accident risk,
-      producing a combined <em>MoviSalud Index</em> to recommend the best travel options.
+      The proposed application, <strong>SafeRoad España</strong>, integrates three open datasets —
+      <em>Traffic Accident Statistics</em>, <em>Population Data</em>, and <em>Fixed Traffic Radars</em> —
+      to analyze and visualize the relationship between accident frequency, population density, and radar presence across Spain.
+      The goal is to provide insights into how traffic radars may contribute to reducing accident rates and improving road safety.
     </p>
   </section>
 
   <section>
     <h2>2. Scope</h2>
     <ul>
-      <li><strong>In:</strong> Visualization of bike stations, air quality stations, and accident hotspots; calculation of the MoviSalud Index; map and tabular exploration; export of results.</li>
-      <li><strong>Out:</strong> Real-time routing, user authentication, mobile native app development, integration of private mobility data.</li>
+      <li><strong>In:</strong> Visualization of accident density per municipality, radar locations, and population-based normalization (accidents per 10,000 inhabitants); generation of safety indicators and maps.</li>
+      <li><strong>Out:</strong> Real-time accident prediction, individual vehicle tracking, or closed data sources.</li>
     </ul>
   </section>
 
   <section>
     <h2>3. Actors & Use Cases</h2>
     <ul>
-      <li><strong>Actor:</strong> Citizen looking for a healthy and safe biking option.</li>
-      <li><strong>UC1:</strong> Search for available bike stations nearby and check the MoviSalud Index of each option.</li>
-      <li><strong>UC2:</strong> Visualize air quality and accident density per district.</li>
-      <li><strong>UC3:</strong> Compare districts based on health and safety indicators.</li>
-      <li><strong>UC4:</strong> Export selected data (CSV/GeoJSON) for further analysis.</li>
+      <li><strong>Actor:</strong> Researcher, policymaker, or citizen interested in road safety analysis.</li>
+      <li><strong>UC1:</strong> Visualize accident density and radar distribution on an interactive map.</li>
+      <li><strong>UC2:</strong> Compare accident rates normalized by population for different provinces or municipalities.</li>
+      <li><strong>UC3:</strong> Identify municipalities with high accident rates and no nearby radars.</li>
+      <li><strong>UC4:</strong> Export aggregated results for further statistical or RDF-based analysis.</li>
     </ul>
   </section>
 
   <section>
     <h2>4. Functional Requirements (FR)</h2>
     <ol>
-      <li><strong>FR1:</strong> Visualize a map combining BiciMAD bike stations and air quality stations.</li>
-      <li><strong>FR2:</strong> Show a heatmap of traffic accidents, filterable by year, month, day, and time.</li>
-      <li><strong>FR3:</strong> Compute a <em>MoviSalud Index</em> for each district/cell, weighting air quality, accident data, and bike availability.</li>
-      <li><strong>FR4:</strong> Suggest the closest bike station with the best MoviSalud Index within a given radius.</li>
-      <li><strong>FR5:</strong> Export results in CSV or GeoJSON format and optionally provide a SPARQL endpoint for RDF queries.</li>
+      <li><strong>FR1:</strong> Display a national map combining radar locations and accident data.</li>
+      <li><strong>FR2:</strong> Calculate accident rate per capita using population data (accidents per 10,000 inhabitants).</li>
+      <li><strong>FR3:</strong> Compute a <em>Safety Index</em> per municipality, considering accident density, radar coverage, and population.</li>
+      <li><strong>FR4:</strong> Highlight municipalities with above-average accident rates and low radar density.</li>
+      <li><strong>FR5:</strong> Allow exporting results as CSV or provide RDF/SPARQL endpoint access for linked data queries.</li>
     </ol>
   </section>
 
   <section>
     <h2>5. Non-Functional Requirements (NFR)</h2>
     <ul>
-      <li><strong>NFR1:</strong> Data normalized into RDF using standard vocabularies (SOSA/SSN, WGS84, Schema.org, Time, GeoSPARQL optional).</li>
-      <li><strong>NFR2:</strong> Code and data versioned in GitHub; optional CI for RDF validation (ShEx/SHACL).</li>
-      <li><strong>NFR3:</strong> Respect license conditions and always cite data source and update date.</li>
-      <li><strong>NFR4:</strong> Web app accessible (WCAG AA compliance) and responsive for desktop/tablet/mobile.</li>
+      <li><strong>NFR1:</strong> All datasets converted into RDF using vocabularies such as GeoSPARQL, Schema.org, and DCTerms.</li>
+      <li><strong>NFR2:</strong> Data hosted and versioned in GitHub; optional SHACL validation of RDF consistency.</li>
+      <li><strong>NFR3:</strong> Respect open data license attribution and ensure source citation for each dataset.</li>
+      <li><strong>NFR4:</strong> Accessible and responsive web interface for desktop and mobile users.</li>
     </ul>
   </section>
 
   <section>
     <h2>6. Data Requirements</h2>
     <ul>
-      <li><strong>BiciMAD dataset:</strong> Station ID, name, latitude, longitude, available bikes, docks.</li>
-      <li><strong>Air Quality dataset:</strong> Station ID, coordinates, pollutant concentrations (NO₂, PM₁₀, O₃), timestamp.</li>
-      <li><strong>Traffic Accidents dataset:</strong> Accident ID, date, time, district, location (coordinates), number of fatalities.</li>
-      <li><strong>Linking strategy:</strong> Join on geographic proximity (lat/lon within buffer, or district attribute).</li>
+      <li><strong>Accidentalidad dataset:</strong> Municipality, date, type of accident, fatalities, coordinates.</li>
+      <li><strong>Población dataset:</strong> Municipality, total population, year.</li>
+      <li><strong>Radares dataset:</strong> Radar ID, coordinates, road section, municipality.</li>
+      <li><strong>Linking strategy:</strong> Match datasets by municipality name or INE code; optional geographic proximity for radar–accident links.</li>
     </ul>
   </section>
 
   <section>
     <h2>7. Mock-ups</h2>
     <div class="mockup">
-      <h3>Home / Map view</h3>
-      <p>Interactive map with checkboxes: <em>BiciMAD stations</em>, <em>Air Quality stations</em>, <em>Accident Heatmap</em>. Panel shows MoviSalud Index of the selected station.</p>
+      <h3>Home / Map View</h3>
+      <p>Interactive map showing radar locations (icons) and accident density (heatmap). Hovering over a municipality displays the Safety Index.</p>
     </div>
     <div class="mockup">
-      <h3>District Comparison</h3>
-      <p>Sortable table: District | MoviSalud Index | Accidents per 1000 inhabitants | Avg. distance to bike stations | Nearby air stations.</p>
+      <h3>Municipality Comparison</h3>
+      <p>Sortable table: Municipality | Safety Index | Accidents per 10k inhabitants | Number of radars | Population.</p>
     </div>
     <div class="mockup">
       <h3>Detail View</h3>
-      <p>Card with details of a selected bike station: address, available bikes, current air quality, accident risk level, recommended action.</p>
+      <p>Card view for a selected municipality: accident trend over time, radar presence, population, and risk level.</p>
     </div>
   </section>
 
   <section>
     <h2>8. Acceptance Criteria</h2>
     <ul>
-      <li><strong>FR1:</strong> Given BiciMAD and air quality datasets, when the map is loaded, then both types of stations appear with distinct markers.</li>
-      <li><strong>FR2:</strong> Given 10 years of accident data, when the user filters by year=2023, then only accidents of 2023 are displayed in the heatmap.</li>
-      <li><strong>FR3:</strong> Given pollutant and accident data, when the MoviSalud Index is computed, then values are normalized (0–100) and displayed per district.</li>
-      <li><strong>FR4:</strong> Given a user location, when searching within 1 km radius, then the system returns the closest BiciMAD station with the best MoviSalud Index.</li>
+      <li><strong>FR1:</strong> When loading the map, all radars and accidents appear with distinct markers or layers.</li>
+      <li><strong>FR2:</strong> When filtering by year 2025, only the corresponding accident data are displayed.</li>
+      <li><strong>FR3:</strong> When computing the Safety Index, values are normalized (0–100) and shown per municipality.</li>
+      <li><strong>FR4:</strong> When exporting data, CSV or RDF files reflect the same aggregated indicators shown in the interface.</li>
     </ul>
   </section>
 </body>
 </html>
+

@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Data Analysis – Madrid Open Data Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <style>
+    body{font-family:Arial,sans-serif;line-height:1.6;margin:2rem;max-width:1100px;background:#f9f9f9}
+    h1,h2{color:#2c3e50;margin-top:1.5rem}
+    h3{color:#34495e;margin-top:1.2rem}
+    table{border-collapse:collapse;width:100%;margin:16px 0;background:white}
+    th, td{border:1px solid #ddd;padding:10px;text-align:left;vertical-align:top}
+    th{background:#3498db;color:white;font-weight:bold}
+    .section{background:white;padding:25px;margin:20px 0;border-radius:8px;box-shadow:0 2px 5px rgba(0,0,0,0.1)}
+    .table-container{overflow-x:auto}
+    code{background:#f4f4f4;padding:2px 6px;border-radius:3px;font-family:monospace}
+    ul{line-height:1.8}
+    a{color:#3498db;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .info-box{background:#e8f4f8;border-left:4px solid #3498db;padding:15px;margin:15px 0}
+  </style>
+</head>
+<body>
+  <h1>Data Analysis – Madrid Open Data Project</h1>
+  <p><strong>Group:</strong> Group 11</p>
+  <p><strong>Date:</strong> October 5th, 2025</p>
+
+  <section class="section">
+    <h2>1. Data Source Analysis</h2>
+    <p><strong>General Description:</strong> Hands on 11. Below is a detailed analysis of each dataset including schema, dimensions, and characteristics.</p>
+
+    <p><strong>Dataset URLs:</strong></p>
+    <ol>
+      <li>Dataset 1: <a href="https://datos.madrid.es/sites/v/index.jsp?vgnextoid=6c0b6d01df986410VgnVCM2000000c205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD"> Click here</a></li>
+      <li>Dataset 2: <a href="https://datos.madrid.es/sites/v/index.jsp?vgnextoid=b802209e501cb410VgnVCM1000000b205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD">Click here</a></li>
+      <li>Dataset 3: <a href="https://datos.madrid.es/sites/v/index.jsp?vgnextoid=f8228c3de0603610VgnVCM2000001f4a900aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD">Click here</a></li>
+    </ol>
+
+    <!-- Dataset 1 -->
+    <h3>1.1. Dataset 1:Actividades Culturales y de Ocio Municipal en los próximos 100 días</h3>
+    <div class="table-container">
+      <table>
+        <tr>
+          <th>General Description</th>
+          <td>
+            List of cultural and leisure activities scheduled to take place in the next 100 days and/or currently taking place in municipal centers. You can find activities at cultural centers, sociocultural centers, youth centers, libraries, senior centers, museums, district councils, etc.
+          </td>
+        </tr>
+        <tr>
+          <th>Dimensions</th>
+          <td>
+            <strong>Number of records:</strong> 1.001 <br/>
+            <strong>Number of columns:</strong> 29
+          </td>
+        </tr>
+        <tr>
+          <th>Available formats</th>
+          <td>CSV, JSON, XML RDF, GEO</td>
+        </tr>
+        <tr>
+          <th>File size</th>
+          <td>1.180KB(CSV)</td>
+        </tr>
+        <tr>
+          <th>Update frequency</th>
+          <td>100 days</td>
+        </tr>
+      </table>
+    </div>
+
+    <h4>1.1.1. Data Schema - Dataset 1</h4>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Field Name</th>
+            <th>Data Type</th>
+            <th>Description</th>
+            <th>Example Values</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ID-EVENTO</td>
+            <td>Integer</td>
+            <td>Event identifier code</td>
+            <td>50012054, 12306355, 50077686, ...</td>
+          </tr>
+          <tr>
+            <td>NAME</td>
+            <td>String</td>
+            <td>Name of event</td>
+            <td>"100 Libros juntas", "Ábrete Sésamo", "Aprendiendo juegos de rol: 'La llamada de Chtulhu'", ...</td>
+          </tr>
+          <tr>
+            <td>DATE</td>
+            <td>Date (xsd:dateTime)</td>
+            <td>Measurement date</td>
+            <td>2025-10-05 10:00:00, 2025-10-06 11:30:00, ...</td>
+          </tr>
+          <tr>
+            <td>NOMBRE-INSTALACION</td>
+            <td>String</td>
+            <td>Name of the place where the event takes place</td>
+            <td>"Centro Cultural San Francisco La Prensa (Carabanchel)", Centro Cultural San Francisco La Prensa (Carabanchel), ...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>1.1.2. Value Ranges - Dataset 1</h4>
+    <ul>
+      <li><strong>ID-EVENTO:</strong> 00000000 - 50100000</li>
+      <li><strong>NAME:</strong> 1 - 500</li>
+      <li><strong>DATE:</strong> 2025-06-20 00:00:00, 2025-12-12, 00:00:00</li>
+      <li><strong>NOMBRE-INSTALACION:</strong> 1 - 1000</li>
+    </ul>
+
+    <!-- Dataset 2 -->
+    <h3>1.2. Dataset 2: Agenda de actividades deportivas</h3>
+    <div class="table-container">
+      <table>
+        <tr>
+          <th>General Description</th>
+          <td>
+            The "Sports Activities Agenda" dataset provides information on sports activities held in the city of Madrid. It specifically indicates the event, date, time, location (including the district), type of activity, and a URL with further information, if available.
+          </td>
+        </tr>
+        <tr>
+          <th>Dimensions</th>
+          <td>
+            <strong>Number of records:</strong> 18 <br/>
+            <strong>Number of columns:</strong> 29
+          </td>
+        </tr>
+        <tr>
+          <th>Available formats</th>
+          <td>CSV, JSON, XML, RDF, GEO</td>
+        </tr>
+        <tr>
+          <th>File size</th>
+          <td>15KB</td>
+        </tr>
+        <tr>
+          <th>Update frequency</th>
+          <td>MONTHLY</td>
+        </tr>
+      </table>
+    </div>
+
+    <h4>1.2.1. Data Schema - Dataset 2</h4>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Field Name</th>
+            <th>Data Type</th>
+            <th>Description</th>
+            <th>Example Values</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ID-EVENTO</td>
+            <td>Integer</td>
+            <td>Event identifier code</td>
+            <td>12546355, 12546355, ...</td>
+          </tr>
+          <tr>
+            <td>NAME</td>
+            <td>String</td>
+            <td>Name of the event</td>
+            <td>Actividades en el centro juvenil 'Ouka Leele'., Jornada de parkour, ...</td>
+          </tr>
+          <tr>
+            <td>DATE</td>
+            <td>Date (xsd:dateTime)</td>
+            <td>Measurement date</td>
+            <td>2025-10-01 00:00:00.0, 2025-09-01 00:00:00.0, ...</td>
+          </tr>
+          <tr>
+            <td>DESCRIPTION</td>
+            <td>String</td>
+            <td>A description for the event</td>
+            <td>Descubre el equilibrio perfecto entre cuerpo y mente en nuestras clases de yoga, ...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>1.2.2. Value Ranges - Dataset 2</h4>
+    <ul>
+      <li><strong>id-evento:</strong> 11638044 - 50080936</li>
+      <li><strong>Name:</strong> 1 - 1000</li>
+      <li><strong>DATE:</strong> 2025-09-01 00:00:00.0 - 2025-10-18 00:00:00.0</li>
+      <li><strong>DESCRIPTION:</strong> 1000 - 100000</li>
+    </ul>
+
+    <!-- Dataset 3 -->
+    <h3>1.3. Dataset 3: Agenda de Innovación</h3>
+    <div class="table-container">
+      <table>
+        <tr>
+          <th>General Description</th>
+          <td>
+            The Subdirectorate General for Innovation is the unit of the Madrid City Council that promotes and facilitates the activity of high-potential innovators and startups in the city. One of its main objectives is to facilitate these stakeholders' contact with universities, large companies, and investors, and to build bridges with innovation ecosystems in Spain, Europe, and Latin America.
+          </td>
+        </tr>
+        <tr>
+          <th>Dimensions</th>
+          <td>
+            <strong>Number of records:</strong> 479 <br/>
+            <strong>Number of columns:</strong> 10
+          </td>
+        </tr>
+        <tr>
+          <th>Available formats</th>
+          <td>CSV</td>
+        </tr>
+        <tr>
+          <th>File size</th>
+          <td>190KB</td>
+        </tr>
+        <tr>
+          <th>Update frequency</th>
+          <td>MONTHLY</td>
+        </tr>
+      </table>
+    </div>
+
+    <h4>1.3.1. Data Schema - Dataset 3</h4>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Field Name</th>
+            <th>Data Type</th>
+            <th>Description</th>
+            <th>Example Values</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>EVENTO</td>
+            <td>STRING</td>
+            <td>Event name (identifier)</td>
+            <td>"Transformación digital de la movilidad", "El Futuro del E-Commerce es el I-Commerce", ...</td>
+          </tr>
+          <tr>
+            <td>TIPO</td>
+            <td>STRING</td>
+            <td>DETERMINE WHAT THE EVENT IS</td>
+            <td>Formación, Conferencia, Talle, ...</td>
+          </tr>
+          <tr>
+            <td>DATE</td>
+            <td>DATE (xsl: date)</td>
+            <td>Measurement date</td>
+            <td>25/09/2025, 31/07/2025, ...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>1.3.2. Value Ranges - Dataset 3</h4>
+    <ul>
+      <li><strong>EVENTO:</strong> 100 - 1000</li>
+      <li><strong>TIPO:</strong> 1 - 100</li>
+      <li><strong>DATE:</strong> 01/01/1970 - 25/09/2025</li>
+    </ul>
+
+    <h3>1.4. General Observations</h3>
+    <ul>
+      <li><strong>Data quality:</strong> The data in the datasets hold consistency and are up to date (until last month) so they are reliable</li>
+      <li><strong>Relationships between datasets:</strong> There are common fields between the datasets because they are calendars that save events. Because they are not the same events the contents are not the same nor similar</li>
+      <li><strong>Time zone:</strong> Europe/Madrid (UTC+1/UTC+2)</li>
+    </ul>
+  </section>
+
+  <!-- Section 2: License Analysis -->
+  <section class="section">
+    <h2>2. Licensing Analysis</h2>
+
+    <h3>2.1. Publisher Information</h3>
+    <div class="info-box">
+      <p><strong>Publisher:</strong> Madrid City Council (Ayuntamiento de Madrid)</p>
+      <p><strong>Website:</strong> <a href="https://datos.madrid.es">https://datos.madrid.es</a></p>
+      <p><strong>Contact:</strong> datos@madrid.es</p>
+    </div>
+
+    <h3>2.2. Rightsholder</h3>
+    <p>The <strong>rightsholder</strong> of the datasets published on the Madrid Open Data Portal is:</p>
+    <ul>
+      <li><strong>Entity:</strong> Madrid City Council (Ayuntamiento de Madrid)</li>
+      <li><strong>Relationship with publisher:</strong> In this case, the publisher and rightsholder are the same entity</li>
+      <li><strong>Justification:</strong> The data is generated and collected by Madrid City Council municipal services, which maintains the rights over them</li>
+    </ul>
+
+    <h3>2.3. Original Data License</h3>
+    <div class="info-box">
+      <p><strong>License:</strong> Data from the Madrid Open Data Portal is published under the <a href="http://datos.madrid.es/egob/catalogo/aviso-legal">General Terms of Use of the Open Data Portal</a></p>
+      <p><strong>License type:</strong> Similar to Creative Commons Attribution 4.0 (CC BY 4.0)</p>
+      <p><strong>Main characteristics:</strong></p>
+      <ul>
+        <li>✅ <strong>Free use:</strong> You can copy, distribute and publicly communicate the data</li>
+        <li>✅ <strong>Reuse:</strong> You can generate derivative works</li>
+        <li>✅ <strong>Commercial use:</strong> Allowed</li>
+        <li>⚠️ <strong>Mandatory attribution:</strong> You must acknowledge Madrid City Council authorship</li>
+        <li>⚠️ <strong>No warranties:</strong> Data is provided "as is", without guarantees about its accuracy</li>
+      </ul>
+    </div>
+
+    <h3>2.4. Proposed License for Generated Dataset</h3>
+    <p>For our project, we propose:</p>
+    
+    <div class="table-container">
+      <table>
+        <tr>
+          <th>Selected license</th>
+          <td><strong>Creative Commons Attribution 4.0 International (CC BY 4.0)</strong></td>
+        </tr>
+        <tr>
+          <th>License URI</th>
+          <td><code>https://creativecommons.org/licenses/by/4.0/</code></td>
+        </tr>
+        <tr>
+          <th>Justification</th>
+          <td>
+            <ul>
+              <li>Compatible with the original Madrid City Council data license</li>
+              <li>Allows maximum reuse and compatibility with other Linked Open Data datasets</li>
+              <li>Maintains the attribution requirement to the original source</li>
+              <li>Facilitates academic and commercial use</li>
+              <li>Widely recognized in the open data community</li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <h3>2.5. Attribution Statement</h3>
+    <div class="info-box">
+      <p><strong>Required attribution text:</strong></p>
+      <blockquote style="font-style:italic;border-left:3px solid #3498db;padding-left:15px;margin:10px 0">
+        "This dataset is derived from data published by Madrid City Council 
+        on its Open Data Portal (datos.madrid.es) under the General Terms of Use. 
+        The data has been transformed to RDF/Linked Data format as part of an academic project for
+        Group 11. The transformation and ontology are available under 
+        CC BY 4.0 license."
+      </blockquote>
+    </div>
+
+    <h3>2.6. License Metadata in RDF</h3>
+    <p>License metadata will be included in the RDF dataset using Dublin Core Terms and CC vocabularies:</p>
+    <pre style="background:#f4f4f4;padding:15px;border-radius:5px;overflow-x:auto"><code>@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+@prefix cc: &lt;http://creativecommons.org/ns#&gt; .
+
+&lt;http://example.org/madrid-data/dataset&gt;
+    dcterms:title "Madrid Open Data - RDF Dataset" ;
+    dcterms:description "Madrid City Council data transformed to RDF" ;
+    dcterms:publisher "Group 11" ;
+    dcterms:source &lt;https://datos.madrid.es&gt; ;
+    dcterms:license &lt;https://creativecommons.org/licenses/by/4.0/&gt; ;
+    cc:attributionName "Ayuntamiento de Madrid" ;
+    cc:attributionURL &lt;https://datos.madrid.es&gt; .</code></pre>
+  </section>
+
+  <!-- Section 3: Resource Naming Strategy -->
+  <section class="section">
+    <h2>3. Resource Naming Strategy</h2>
+
+    <h3>3.1. URI Design Principles</h3>
+    <ul>
+      <li><strong>Persistence:</strong> URIs must remain stable over time</li>
+      <li><strong>Readability:</strong> Readable URIs when possible</li>
+      <li><strong>Semantic opacity:</strong> Don't infer resource type from URI alone</li>
+      <li><strong>Consistency:</strong> Follow uniform patterns throughout the dataset</li>
+      <li><strong>Simplicity:</strong> Avoid unnecessarily complex structures</li>
+    </ul>
+
+    <h3>3.2. Base URI and Namespaces</h3>
+    <div class="table-container">
+      <table>
+        <tr>
+          <th>Base domain</th>
+          <td><code>http://group11.madrid-data.org/</code> or <code>http://eventFinder.org/madrid-data/</code></td>
+        </tr>
+        <tr>
+          <th>Ontology namespace</th>
+          <td><code>@prefix mdo: &lt;http://eventFinder.org/madrid-data/ontology#&gt;</code></td>
+        </tr>
+        <tr>
+          <th>Data namespace</th>
+          <td><code>@prefix mdr: &lt;http://eventFinder.org/madrid-data/resource/&gt;</code></td>
+        </tr>
+        <tr>
+          <th>Justification</th>
+          <td>
+            <strong>Hash (#) for ontology:</strong> Small, stable vocabulary - efficient to retrieve together<br/>
+            <strong>Slash (/) for data:</strong> Large dataset with many instances - individual retrieval needed
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <h3>3.3. URI Patterns for Resources</h3>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Resource Type</th>
+            <th>Pattern</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Event</td>
+            <td><code><code>http://eventFinder.org/madrid-data/resource/event/{id-evento}</code></td>
+            <td><code>http://eventFinder.org/madrid-data/resource/event/12546355</code></td>
+          </tr>
+          <tr>
+            <td>Date</td>
+            <td><code>http://eventFinder.org/madrid-data/resource/date/{YYYYMMDD}</code></td>
+            <td><code>http://eventFinder.org/madrid-data/resource/date/20251001</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>3.4. Identifier Construction Rules</h3>
+    <ul>
+      <li><strong>Lowercase:</strong> All paths in lowercase</li>
+      <li><strong>Hyphens:</strong> Separate words with hyphens <code>-</code> </li>
+      <li><strong>No special characters:</strong> Avoid spaces, accents, ñ, special symbols</li>
+      <li><strong>Stable identifiers:</strong> Use IDs from original dataset when they exist</li>
+      <li><strong>Normalized dates:</strong> ISO 8601 format (YYYY-MM-DD, YYYY-MM-DDTHH:MM:SS)</li>
+      <li><strong>No sensitive information:</strong> Don't include personal data in public URIs</li>
+    </ul>
+
+    <h3>3.5. Content Negotiation</h3>
+    <p>Data URIs must support content negotiation based on the HTTP <code>Accept</code> header:</p>
+    
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Accept Header</th>
+            <th>Response Format</th>
+            <th>Alternative with Extension</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>text/html</code></td>
+            <td>Readable HTML page</td>
+            <td><code>.html</code></td>
+          </tr>
+          <tr>
+            <td><code>text/turtle</code></td>
+            <td>RDF Turtle format</td>
+            <td><code>.ttl</code></td>
+          </tr>
+          <tr>
+            <td><code>application/rdf+xml</code></td>
+            <td>RDF/XML format</td>
+            <td><code>.rdf</code></td>
+          </tr>
+          <tr>
+            <td><code>application/ld+json</code></td>
+            <td>JSON-LD format</td>
+            <td><code>.jsonld</code></td>
+          </tr>
+          <tr>
+            <td><code>text/n3</code></td>
+            <td>N3 format</td>
+            <td><code>.n3</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>Implementation options:</strong></p>
+    <ul>
+      <li><strong>HTTP 303 redirects:</strong> Original URI redirects to format-specific URI</li>
+      <li><strong>Direct serving:</strong> Same URI serves different formats based on Accept header</li>
+      <li><strong>Query parameters:</strong> Alternative using <code>?format=ttl</code></li>
+    </ul>
+  </section>
+
+  <!-- Section 4: Next Steps -->
+  <section class="section">
+    <h2>4. Next Steps and Deliverables</h2>
+
+    <h3>4.1. Ontology Development</h3>
+    <p>The next phase involves creating a lightweight ontology that includes:</p>
+    <ul>
+      <li><strong>Core classes:</strong> Main entities from the datasets </li>
+      <li><strong>Properties:</strong> Relationships and attributes with defined domains and ranges</li>
+      <li><strong>Vocabulary reuse:</strong> Leverage existing vocabularies (Schema.org, SOSA, Dublin Core)</li>
+      <li><strong>Multilingual labels:</strong> rdfs:label and rdfs:comment in English and Spanish</li>
+      <li><strong>Documentation:</strong> Clear definitions for all terms</li>
+    </ul>
+
+    <h3>4.2. RDF Data Generation</h3>
+    <ul>
+      <li>Transform CSV/JSON data to RDF format</li>
+      <li>Apply the defined URI patterns</li>
+      <li>Validate RDF syntax and consistency</li>
+      <li>Generate multiple serializations (Turtle, RDF/XML, JSON-LD)</li>
+    </ul>

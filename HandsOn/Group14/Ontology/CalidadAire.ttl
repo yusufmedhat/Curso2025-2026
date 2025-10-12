@@ -1,0 +1,120 @@
+@prefix :       <https://data.group14.org/ontology/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix schema:  <http://schema.org/> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+
+
+: a rdfs:Resource ;
+  dcterms:title "Air Quality - Lightweight Ontology" ;
+  dcterms:issued "2025-10-04"^^xsd:date ;
+  dcterms:creator "Group14" .
+
+# Classes
+
+
+:Station a rdfs:Class ;
+  rdfs:label "Station" ;
+  rdfs:comment "Monitoring station that collects air quality measurements." .
+
+:Measurement a rdfs:Class ;
+  rdfs:label "Measurement" ;
+  rdfs:comment "An observation or measurement made at a Station for a specific pollutant/parameter." .
+
+:Dataset a rdfs:Class ;
+  rdfs:label "Dataset" ;
+  rdfs:comment "A published dataset (collection of measurements / station info)." .
+
+:Location a rdfs:Class ;
+  rdfs:label "Location" ;
+  rdfs:comment "Geographical location (lat/lon) associated with a Station." .
+
+
+# Properties (object & data properties) with domains and ranges#
+
+# Station identifiers and metadata
+:stationId a rdf:Property ;
+  rdfs:label "stationId" ;
+  rdfs:comment "Identifier for the monitoring station (use source id)." ;
+  rdfs:domain :Station ;
+  rdfs:range xsd:string .
+
+:stationName a rdf:Property ;
+  rdfs:label "stationName" ;
+  rdfs:domain :Station ;
+  rdfs:range xsd:string .
+
+:locatedAt a rdf:Property ;
+  rdfs:label "locatedAt" ;
+  rdfs:domain :Station ;
+  rdfs:range :Location .
+
+:hasLatitude a rdf:Property ;
+  rdfs:label "latitude" ;
+  rdfs:domain :Location ;
+  rdfs:range xsd:decimal .
+
+:hasLongitude a rdf:Property ;
+  rdfs:label "longitude" ;
+  rdfs:domain :Location ;
+  rdfs:range xsd:decimal .
+
+:administrativeArea a rdf:Property ;
+  rdfs:label "administrative area" ;
+  rdfs:domain :Station ;
+  rdfs:range xsd:string ;
+  rdfs:comment "Municipality, province or similar administrative unit." .
+
+# Measurement-level properties
+:measurementId a rdf:Property ;
+  rdfs:label "measurementId" ;
+  rdfs:domain :Measurement ;
+  rdfs:range xsd:string .
+
+:observedAt a rdf:Property ;
+  rdfs:label "observedAt" ;
+  rdfs:domain :Measurement ;
+  rdfs:range xsd:dateTime .
+
+:observedParameter a rdf:Property ;
+  rdfs:label "observedParameter" ;
+  rdfs:comment "Name or code of the pollutant/parameter, e.g., PM10, NO2." ;
+  rdfs:domain :Measurement ;
+  rdfs:range xsd:string .
+
+:observedValue a rdf:Property ;
+  rdfs:label "observedValue" ;
+  rdfs:domain :Measurement ;
+  rdfs:range xsd:decimal .
+
+:observedUnit a rdf:Property ;
+  rdfs:label "observedUnit" ;
+  rdfs:domain :Measurement ;
+  rdfs:range xsd:string .
+
+:measuredAtStation a rdf:Property ;
+  rdfs:label "measuredAtStation" ;
+  rdfs:domain :Measurement ;
+  rdfs:range :Station .
+
+# Provenance and dataset metadata
+:isPartOfDataset a rdf:Property ;
+  rdfs:label "isPartOfDataset" ;
+  rdfs:domain :Measurement ;
+  rdfs:range :Dataset .
+
+dcterms:publisher a rdf:Property ;
+  rdfs:label "publisher" .
+
+dcterms:license a rdf:Property ;
+  rdfs:label "license" .
+
+
+
+
+:stationName rdfs:subPropertyOf foaf:name .
+:locatedAt rdfs:subPropertyOf schema:location .
+:hasLatitude rdfs:subPropertyOf schema:latitude .
+:hasLongitude rdfs:subPropertyOf schema:longitude .

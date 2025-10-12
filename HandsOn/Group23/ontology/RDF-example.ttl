@@ -1,0 +1,98 @@
+@prefix : <http://madrid-airquality.es/ontology#> .
+@prefix res: <http://madrid-airquality.es/resource/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Pollutant Individuals
+:SO2 a :Pollutant ;
+    :pollutantName "Sulfur Dioxide" .
+
+:NO2 a :Pollutant ;
+    :pollutantName "Nitrogen Dioxide" .
+
+:O3 a :Pollutant ;
+    :pollutantName "Ozone" .
+
+:PM10 a :Pollutant ;
+    :pollutantName "PM10 Particles" .
+
+:CO a :Pollutant ;
+    :pollutantName "Carbon Monoxide" .
+
+:NOx a :Pollutant ;
+    :pollutantName "Nitrogen Oxides" .
+
+# Station Individuals
+res:station/28079011 a :Station ;
+    :stationId "28079011" ;
+    :provinceCode "28" ;
+    :municipalityCode "079" .
+
+res:station/28079016 a :Station ;
+    :stationId "28079016" ;
+    :provinceCode "28" ;
+    :municipalityCode "079" .
+
+res:station/28079017 a :Station ;
+    :stationId "28079017" ;
+    :provinceCode "28" ;
+    :municipalityCode "079" .
+
+# Measurement Individuals - Station 28079011
+res:measurement/M001 a :Measurement ;
+    :hasStation res:station/28079011 ;
+    :hasPollutant :NOx ;
+    :measurementValue 11 ;
+    :measurementDateTime "2025-10-02T01:00:00"^^xsd:dateTime ;
+    :validationStatus "V" .
+
+res:measurement/M002 a :Measurement ;
+    :hasStation res:station/28079011 ;
+    :hasPollutant :NOx ;
+    :measurementValue 32 ;
+    :measurementDateTime "2025-10-02T02:00:00"^^xsd:dateTime ;
+    :validationStatus "V" .
+
+res:measurement/M003 a :Measurement ;
+    :hasStation res:station/28079011 ;
+    :hasPollutant :NO2 ;
+    :measurementValue 10 ;
+    :measurementDateTime "2025-10-02T01:00:00"^^xsd:dateTime ;
+    :validationStatus "V" .
+
+# Measurement Individuals - Station 28079016
+res:measurement/M004 a :Measurement ;
+    :hasStation res:station/28079016 ;
+    :hasPollutant :NOx ;
+    :measurementValue 36 ;
+    :measurementDateTime "2025-10-02T01:00:00"^^xsd:dateTime ;
+    :validationStatus "V" .
+
+res:measurement/M005 a :Measurement ;
+    :hasStation res:station/28079016 ;
+    :hasPollutant :O3 ;
+    :measurementValue 48 ;
+    :measurementDateTime "2025-10-02T01:00:00"^^xsd:dateTime ;
+    :validationStatus "V" .
+
+# Measurement Individuals - Station 28079017
+res:measurement/M006 a :Measurement ;
+    :hasStation res:station/28079017 ;
+    :hasPollutant :NOx ;
+    :measurementValue 134 ;
+    :measurementDateTime "2025-10-02T01:00:00"^^xsd:dateTime ;
+    :validationStatus "V" .
+
+res:measurement/M007 a :Measurement ;
+    :hasStation res:station/28079017 ;
+    :hasPollutant :PM10 ;
+    :measurementValue 42 ;
+    :measurementDateTime "2025-10-02T01:00:00"^^xsd:dateTime ;
+    :validationStatus "V" .
+
+# Invalid Measurement Example
+res:measurement/M008 a :Measurement ;
+    :hasStation res:station/28079011 ;
+    :hasPollutant :CO ;
+    :measurementValue 0.3 ;
+    :measurementDateTime "2025-10-02T19:00:00"^^xsd:dateTime ;
+    :validationStatus "N" .
