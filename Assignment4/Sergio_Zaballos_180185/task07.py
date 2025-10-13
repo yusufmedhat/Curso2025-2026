@@ -1,4 +1,4 @@
-!pip install rdflib
+#!pip install rdflib
 # -*- coding: utf-8 -*-
 """Task07_2025.ipynb
 
