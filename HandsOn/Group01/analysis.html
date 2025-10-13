@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>analysis_en.html — Barcelona rail data (split by table)</title>
+<title>Metro Interactive Map — Data Analysis</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 :root{
@@ -28,15 +28,17 @@ details summary{cursor:pointer}
 </head>
 <body>
 <header>
-  <h1>Data source analysis</h1>
+  <h1>Metro Interactive Map - Data source analysis</h1>
 </header>
 <main>
 <section>
-  <h2>1) Sources & format</h2>
+  <h2>1) Sources & format - Metro Datasets</h2>
+  <p>Analysis of the two essential datasets for the interactive metro map application:</p>
 </section>
 
 <section>
 <h3>• estacions_linia</h3>
+<p><strong>Purpose:</strong> Links stations to metro lines, essential for displaying which lines pass through each station.</p>
 <p><span class="badge">Encoding: utf-8</span>
    <span class="badge">Delimiter: ,</span></p>
 <table class="matrix">
@@ -60,29 +62,8 @@ details summary{cursor:pointer}
 </section>
 
 <section>
-<h3>• estacions</h3>
-<p><span class="badge">Encoding: utf-8</span>
-   <span class="badge">Delimiter: ,</span></p>
-<table class="matrix">
-  <thead>
-    <tr>
-      <th>Column</th>
-      <th>Type</th>
-      <th>Comments / Range (rounded)</th>
-      <th>Problems</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>ID_ESTACIO</td><td>int</td><td>Unique. Not null. 100 - 10,000</td><td></td></tr>
-    <tr><td>NOM_ESTACIO</td><td>string</td><td>Unique. Not null.</td><td></td></tr>
-    <tr><td>GEOMETRY</td><td>POINT</td><td>Unique. Not null.</td><td></td></tr>
-    <tr><td>CODI_GRUP_ESTACIO</td><td>int</td><td>Unique. Not null. 6,660,100 - 6,670,000</td><td></td></tr>
-  </tbody>
-</table>
-</section>
-
-<section>
 <h3>• linies_metro</h3>
+<p><strong>Purpose:</strong> Contains metro line information including names, colors, and geometry for map display.</p>
 <p><span class="badge">Encoding: utf-8</span>
    <span class="badge">Delimiter: ,</span></p>
 <table class="matrix">
@@ -109,31 +90,6 @@ details summary{cursor:pointer}
 </section>
 
 <section>
-<h3>• corresp_parades</h3>
-<p><span class="badge">Encoding: utf-8</span>
-   <span class="badge">Delimiter: ,</span></p>
-<table class="matrix">
-  <thead>
-    <tr>
-      <th>Column</th>
-      <th>Type</th>
-      <th>Comments / Range (rounded)</th>
-      <th>Problems</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>CODI_PARADA</td><td>int</td><td>Unique. Not null. 0-10,000</td><td></td></tr>
-    <tr><td>ID_LINIA</td><td>int</td><td>Not unique. Not null. 0-110,000</td><td>Value 110,000 seems to be an error</td></tr>
-    <tr><td>CODI_LINIA</td><td>int</td><td>Not unique. Not null. 0-260</td><td></td></tr>
-    <tr><td>NOM_LINIA</td><td>string</td><td>Not unique. Not null.</td><td></td></tr>
-    <tr><td>CODI_ELEMENT_CORRESP</td><td>int</td><td>Not unique. Not null. 0-1200</td><td></td></tr>
-    <tr><td>NOM_ELEMENT_CORRESP</td><td>string</td><td>Not unique. Nullable.</td><td></td></tr>
-    <tr><td>GEOMETRY</td><td>POINT</td><td>Unique. Not null.</td><td></td></tr>
-  </tbody>
-</table>
-</section>
-
-<section>
   <h2>2)  Licensing of the data source and potential license</h2>
   <p>The datasets provided by 
      <a target="_blank" href="https://developer.tmb.cat/">Transports Metropolitans de Barcelona (TMB)</a> 
@@ -146,31 +102,49 @@ details summary{cursor:pointer}
 
 
 <section>
-  <h2>3) Resource naming strategy</h2>
-  <p>The URI design follows this pattern:</p>
+  <h2>3) Resource naming strategy for Metro Interactive Map</h2>
+  
+  <p>The URI design for the metro map application follows this pattern:</p>
 
+  <p><strong>Domain:</strong><br>
+  <code>https://data.example.org/transport/bcn/</code><br>
+  <em>(Main namespace for Barcelona transport datasets)</em></p>
+
+  <p><strong>Path:</strong><br>
+  <code>metro/</code> - metro map project identifier.</p>
+
+  <p><strong>Ontology terms path:</strong><br>
+  <code>https://data.example.org/transport/bcn/metro/ontology/</code><br>
+  <em>(Used for defining classes and properties.<br>
+  Properties follow camelCase starting with lowercase, e.g., #hasStation, #connectsTo.)</em></p>
+
+  <p><strong>Individuals path:</strong><br>
+  <code>https://data.example.org/transport/bcn/metro/resource/</code><br>
+  <em>(Used for instances of stations, lines, and their relations.)</em></p>
+
+  <h3>Naming conventions</h3>
   <ul>
-    <li><strong>Domain:</strong> <code>https://data.example.org/transport/bcn/</code></li>
-    <li><strong>Path:</strong> <code>tmb/</code> (project or dataset identifier)</li>
-    <li><strong>Ontology terms path:</strong> <code>https://data.example.org/transport/bcn/tmb/ontology/</code></li>
-    <li><strong>Individuals path:</strong> <code>https://data.example.org/transport/bcn/tmb/resource/</code></li>
+    <li>Classes use PascalCase (e.g., MetroLine, StationLine).</li>
+    <li>Properties use camelCase starting with a lowercase letter (e.g., #hasStation, #isConnectedTo).</li>
+    <li>Instances and data entities use short, readable identifiers in camelCase or lowercase, depending on local conventions.<br>
+        Examples:<br>
+        <code>https://data.example.org/transport/bcn/metro/resource/metroLine/L1</code><br>
+        <code>https://data.example.org/transport/bcn/metro/resource/station/sagradaFamilia_L2</code>
+    </li>
+    <li>All URIs are persistent and dereferenceable, ensuring long-term accessibility.</li>
   </ul>
 
-  <p><strong>Rules:</strong></p>
+  <h3>Metro-specific examples</h3>
   <ul>
-    <li>Use <code>#</code> (hash) URIs for <em>ontological terms</em> (classes and properties).</li>
-    <li>Use <code>/</code> (slash) URIs for <em>individuals</em> (instances).</li>
+    <li><strong>Metro Line ontology:</strong><br>
+      <code>https://data.example.org/transport/bcn/metro/ontology/MetroLine#hasStation</code></li>
+    <li><strong>Metro Line instance:</strong><br>
+      <code>https://data.example.org/transport/bcn/metro/resource/metroLine/L1</code></li>
+    <li><strong>Station in Line relation:</strong><br>
+      <code>https://data.example.org/transport/bcn/metro/resource/station/sagradaFamilia_L2</code></li>
   </ul>
 
-  <p><strong>Examples:</strong></p>
-  <ul>
-    <li>Ontology term:  
-      <code>https://data.example.org/transport/bcn/tmb/ontology/Station#hasLine</code></li>
-    <li>Individual:  
-      <code>https://data.example.org/transport/bcn/tmb/resource/Station/SagradaFamilia</code></li>
-  </ul>
-
-  <p>This approach ensures clear separation between ontology definitions and data instances, promotes reusability, and maintains semantic consistency across datasets.</p>
+  <p>This naming strategy supports the interactive map features by clearly identifying metro lines, stations, and their relationships, ensuring consistent integration across linked datasets and visualization layers.</p>
 </section>
 </main>
 </body>
