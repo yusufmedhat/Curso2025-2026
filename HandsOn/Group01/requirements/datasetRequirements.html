@@ -42,7 +42,7 @@
 <body>
   <header>
     <h1>Full R1–R6 Compliance — TMB Metro Datasets</h1>
-    <p>Analyzed datasets from <b>TMB</b> (Transports Metropolitans de Barcelona): stations, stations per line, interchanges, metro lines, and line sections.</p>
+    <p>Analyzed datasets from <b>TMB</b> (Transports Metropolitans de Barcelona): stations per line and metro lines.</p>
     <div class="legend">
       <span><span class="dot ok" style="background:var(--ok)"></span>Compliant</span>
       <span><span class="dot warn" style="background:var(--warn)"></span>Partial / Review</span>
@@ -67,23 +67,7 @@
     <div class="grid">
 
       <article>
-        <h3>Stations</h3>
-        <div class="kvs">
-          <div>Dataset</div><div><a href="https://developer.tmb.cat/data/estacions#estacions" target="_blank">developer.tmb.cat/data/estacions#estacions</a></div>
-          <div>Key fields</div><div><code>id_estacio</code>, <code>nom_estacio</code>, <code>lat</code>, <code>lon</code>, municipality</div>
-        </div>
-        <ul class="checks">
-          <li class="check"><span class="badge ok">R1 ✔</span> Belongs to Mobility/Transport domain.</li>
-          <li class="check"><span class="badge ok">R2 ✔</span> Provided as CSV download.</li>
-          <li class="check"><span class="badge ok">R3 ✔</span> Open license stated on the portal.</li>
-          <li class="check"><span class="badge ok">R4 ✔</span> Includes coordinates and unique station IDs for linking and geolocation.</li>
-          <li class="check"><span class="badge ok">R5 ✔</span> Full metadata and field descriptions provided.</li>
-          <li class="check"><span class="badge warn">R6 ◑</span> Single source (TMB); can be integrated with OSM or INE datasets.</li>
-        </ul>
-      </article>
-
-      <article>
-        <h3>Stations per Line</h3>
+        <h3>Stations per Line (estacions_linia)</h3>
         <div class="kvs">
           <div>Dataset</div><div><a href="https://developer.tmb.cat/data/estacions#estacions_linia" target="_blank">developer.tmb.cat/data/estacions#estacions_linia</a></div>
           <div>Key fields</div><div><code>id_estacio</code>, <code>id_linia</code>, order, direction</div>
@@ -99,23 +83,7 @@
       </article>
 
       <article>
-        <h3>Interchanges (corresp_estacions_linia)</h3>
-        <div class="kvs">
-          <div>Dataset</div><div><a href="https://developer.tmb.cat/data/corresp#corresp_estacions_linia" target="_blank">developer.tmb.cat/data/corresp#corresp_estacions_linia</a></div>
-          <div>Key fields</div><div>Pairs (<code>id_estacio</code>, <code>id_linia</code>) representing transfers.</div>
-        </div>
-        <ul class="checks">
-          <li class="check"><span class="badge ok">R1 ✔</span> Mobility/Transport domain.</li>
-          <li class="check"><span class="badge ok">R2 ✔</span> Provided as CSV.</li>
-          <li class="check"><span class="badge ok">R3 ✔</span> Open license (as on the portal).</li>
-          <li class="check"><span class="badge ok">R4 ✔</span> Linkable with station and line tables; useful for travel graph construction.</li>
-          <li class="check"><span class="badge ok">R5 ✔</span> Documentation and metadata available.</li>
-          <li class="check"><span class="badge warn">R6 ◑</span> Integrates within TMB datasets; extensible with GTFS or OSM data.</li>
-        </ul>
-      </article>
-
-      <article>
-        <h3>Metro Lines</h3>
+        <h3>Metro Lines (linies_metro)</h3>
         <div class="kvs">
           <div>Dataset</div><div><a href="https://developer.tmb.cat/data/linies#linies_metro" target="_blank">developer.tmb.cat/data/linies#linies_metro</a></div>
           <div>Key fields</div><div><code>id_linia</code>, code, name, corporate color</div>
