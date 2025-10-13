@@ -30,5 +30,3 @@ The goal is to select one or more datasets that will be transformed into **RDF**
 | Ontology development | Protégé |
 | Ontology evaluation | OWL Validator, OOPS! Pitfall Scanner, Reasoner (HermiT / Pellet) |
 
-
-dedwef
