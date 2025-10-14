@@ -1,0 +1,96 @@
+@prefix rr:    <http://www.w3.org/ns/r2rml#> .
+@prefix rml:   <http://semweb.mmlab.be/ns/rml#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ql:    <http://semweb.mmlab.be/ns/ql#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix ns:    <http://www.owl-ontologies.com/ns#> .
+@prefix ex:    <http://group20.linkeddata.es/parkings/resource/> .
+@prefix map:   <http://mapping.example.com/> .
+
+################################################################################
+# Logical Source (CSV local relativo)
+################################################################################
+map:source_csv a rml:LogicalSource ;
+  rml:source "csv/parkings-updated.csv" ;
+  rml:referenceFormulation ql:CSV .
+
+################################################################################
+# TriplesMap: ParkingTM
+################################################################################
+map:ParkingTM a rr:TriplesMap ;
+  rml:logicalSource map:source_csv ;
+  rr:subjectMap [
+    rr:template "http://group20.linkeddata.es/parkings/resource/Parking/{id}"
+  ] ;
+  rr:predicateObjectMap
+    # Tipo
+    [ rr:predicate rdf:type ; rr:object ns:Parking ] ,
+
+    # --- Datos en Parking (según tu ontología) ---
+    [ rr:predicate ns:hasId ;         rr:objectMap [ rml:reference "id" ] ] ,
+    [ rr:predicate ns:hasFamily ;     rr:objectMap [ rml:reference "family" ] ] ,
+    [ rr:predicate ns:hasName ;       rr:objectMap [ rml:reference "name" ] ] ,
+    [ rr:predicate ns:hasEmail ;      rr:objectMap [ rml:reference "email" ] ] ,
+    [ rr:predicate ns:hasAddress ;    rr:objectMap [ rml:reference "address" ] ] ,
+
+    [ rr:predicate ns:hasAreaCode ;
+      rr:objectMap [ rml:reference "areaCode" ; rr:datatype xsd:integer ]
+    ] ,
+
+    [ rr:predicate ns:hasArea ;       rr:objectMap [ rml:reference "zrea" ] ] ,
+    [ rr:predicate ns:hasCategory ;   rr:objectMap [ rml:reference "category" ] ] ,
+
+    [ rr:predicate ns:hasCategoryCode ;
+      rr:objectMap [ rml:reference "catCode" ; rr:datatype xsd:integer ]
+    ] ,
+
+    [ rr:predicate ns:hasCountry ;    rr:objectMap [ rml:reference "country" ] ] ,
+
+    [ rr:predicate ns:hasURLIcon ;
+      rr:objectMap [ rml:reference "URLIcono" ; rr:termType rr:IRI ]
+    ] ,
+
+    # Enlace a Location por id (join)
+    [ rr:predicate ns:hasLocation ;
+      rr:objectMap [
+        rr:parentTriplesMap map:LocationTM ;
+        rr:joinCondition [
+          rr:child  "id" ;
+          rr:parent "id"
+        ]
+      ]
+    ]
+.
+
+################################################################################
+# TriplesMap: LocationTM
+################################################################################
+map:LocationTM a rr:TriplesMap ;
+  rml:logicalSource map:source_csv ;
+  rr:subjectMap [
+    rr:template "http://group20.linkeddata.es/parkings/resource/Location/{id}"
+  ] ;
+  rr:predicateObjectMap
+    # Tipo
+    [ rr:predicate rdf:type ; rr:object ns:Location ] ,
+
+    # --- Datos en Location (según tu ontología) ---
+    [ rr:predicate ns:hasLongitude ;
+      rr:objectMap [ rml:reference "long" ; rr:datatype xsd:double ]
+    ] ,
+
+    [ rr:predicate ns:hasLatitude ;
+      rr:objectMap [ rml:reference "lat" ; rr:datatype xsd:double ]
+    ] ,
+
+    [ rr:predicate ns:hasState ;      rr:objectMap [ rml:reference "state" ] ] ,
+    [ rr:predicate ns:hasTown ;       rr:objectMap [ rml:reference "town" ] ] ,
+
+    # OJO: CSV debe tener true/false en minúsculas para xsd:boolean
+    [ rr:predicate ns:isEMTParking ;
+      rr:objectMap [ rml:reference "emtParking" ; rr:datatype xsd:boolean ]
+    ] ,
+
+    [ rr:predicate ns:hasType ;       rr:objectMap [ rml:reference "type" ] ]
+.

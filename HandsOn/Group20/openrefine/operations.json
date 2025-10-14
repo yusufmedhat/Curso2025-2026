@@ -765,5 +765,85 @@
     "repeat": false,
     "repeatCount": 10,
     "description": "Transforma el texto de las celdas en la columna address usando la expresión grel:value.replace(\"Pza.\", \"Plaza\")"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "emtParking",
+          "expression": "value",
+          "columnName": "emtParking",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "False",
+                "l": "False"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "emtParking",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "False"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "false"
+      }
+    ],
+    "description": "Editar celdas en masa en columna emtParking"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "emtParking",
+          "expression": "value",
+          "columnName": "emtParking",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "True",
+                "l": "True"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "emtParking",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "True"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "true"
+      }
+    ],
+    "description": "Editar celdas en masa en columna emtParking"
   }
 ]
