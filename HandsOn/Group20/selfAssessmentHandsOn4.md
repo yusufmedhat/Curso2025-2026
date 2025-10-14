@@ -20,6 +20,7 @@
 
 #### 📄 `parkings.ttl`  
 - [x] Generated from the RML mapping using RMLMapper 8.0.0  
+      "java -jar rmlmapper-8.0.0-r378-all.jar -m mapping/mapping.rml.ttl -o rdf/parkings.ttl" from 📁 `Group20` directory
 - [x] Valid RDF in Turtle syntax (validated with `riot --validate`)  
 - [x] Contains all instances of `ns:Parking` and `ns:Location`  
 - [x] Data types and IRIs correctly generated  
