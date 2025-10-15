@@ -79,3 +79,4 @@ q4 = prepareQuery('''
 
 for r in g.query(q4):
     print(r.nParkings)
+    
