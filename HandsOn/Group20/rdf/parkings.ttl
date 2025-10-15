@@ -1347,6 +1347,7 @@
 <http://group20.linkeddata.es/parkings/resource/Parking/68> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.owl-ontologies.com/ns#Parking> .
 <http://group20.linkeddata.es/parkings/resource/Parking/69> <http://www.owl-ontologies.com/ns#hasAddress> "Calle Barceló, S/n" .
 <http://group20.linkeddata.es/parkings/resource/Parking/69> <http://www.owl-ontologies.com/ns#hasArea> "Community of Madrid" .
+<http://group20.linkeddata.es/parkings/resource/Parking/69> <http://www.owl-ontologies.com/ns#hasAreaCode> "28003"^^<http://www.w3.org/2001/XMLSchema#integer> .
 <http://group20.linkeddata.es/parkings/resource/Parking/69> <http://www.owl-ontologies.com/ns#hasCategory> "General" .
 <http://group20.linkeddata.es/parkings/resource/Parking/69> <http://www.owl-ontologies.com/ns#hasCategoryCode> "001"^^<http://www.w3.org/2001/XMLSchema#integer> .
 <http://group20.linkeddata.es/parkings/resource/Parking/69> <http://www.owl-ontologies.com/ns#hasCountry> "Spain" .
