@@ -1,0 +1,52 @@
+################################################################################
+# PREFIXES
+################################################################################
+PREFIX ns:  <http://www.owl-ontologies.com/ns#>
+PREFIX ex:  <http://group20.linkeddata.es/parkings/resource/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+################################################################################
+# 1) Primeros 10 parkings (id, nombre, dirección) ordenados por id asc
+################################################################################
+SELECT ?id ?name ?address WHERE {
+  ?s a ns:Parking ;
+     ns:hasId ?id ;
+     ns:hasName ?name ;
+     ns:hasAddress ?address .
+}
+ORDER BY xsd:integer(?id)
+LIMIT 20
+
+################################################################################
+# 2) Parkings EMT=true con su código postal (primeros 10, ordenados por id)
+################################################################################
+SELECT ?id ?name ?pc ?emtParking WHERE {
+  ?s a ns:Parking ;
+     ns:hasId ?id ;
+     ns:hasName ?name ;
+     ns:hasAreaCode ?pc ;
+     ns:hasLocation ?loc .
+  ?loc ns:isEMTParking ?emtParking .
+  FILTER(?emtParking = true)
+}
+ORDER BY xsd:integer(?id)
+LIMIT 20
+
+################################################################################
+# 3) Nº total de parkings (conteo)
+#    Nota: si quieres "en Madrid" específicamente, añade:
+#      ?s ns:hasLocation ?loc . ?loc ns:hasTown "Madrid" .
+################################################################################
+SELECT (COUNT(*) AS ?nParkings) WHERE {
+  ?s a ns:Parking .
+}
+
+################################################################################
+# 4) Nº de parkings cuya dirección contiene "plaza" (case-insensitive)
+################################################################################
+SELECT (COUNT(*) AS ?nParkings) WHERE {
+  ?s a ns:Parking ;
+     ns:hasAddress ?address .
+  FILTER(CONTAINS(LCASE(STR(?address)), "plaza"))
+}
