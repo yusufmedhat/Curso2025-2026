@@ -63,7 +63,7 @@ for r in result:
 report.validate_07_1a(result)
 #%% md
 # **TASK 7.1b: Repeat the same exercise in SPARQL, returning the variables ?c (class) and ?sc (superclass)**
-#%%
+#%%#
 query = """
 PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
