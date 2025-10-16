@@ -1,3 +1,4 @@
+!pip install rdflib
 #%% md
 # **Task 06: Modifying RDF(s)**
 #%%

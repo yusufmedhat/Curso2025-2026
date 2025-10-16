@@ -1,3 +1,4 @@
+!pip install rdflib
 #%% md
 # **Task 07: Querying RDF(s)**
 #%%
