@@ -11,7 +11,7 @@ github_storage = "https://raw.githubusercontent.com/FacultadInformatica-LinkedDa
 #%%
 from rdflib import Graph, Namespace
 from rdflib.namespace import RDF, RDFS
-from Assignment4.Diego_Ortega_Martinez_707214.validation import Report
+from validation import Report
 g = Graph()
 g.namespace_manager.bind('ns', Namespace("http://somewhere#"), override=False)
 r = Report()
