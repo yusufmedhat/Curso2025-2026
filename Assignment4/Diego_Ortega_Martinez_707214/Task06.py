@@ -1,4 +1,4 @@
-!pip install rdflib
+from validation import Report
 #%% md
 # **Task 06: Modifying RDF(s)**
 #%%

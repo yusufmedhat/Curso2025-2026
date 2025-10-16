@@ -1,4 +1,4 @@
-!pip install rdflib
+from validation import Report
 #%% md
 # **Task 07: Querying RDF(s)**
 #%%
