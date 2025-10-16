@@ -7,7 +7,7 @@ url = 'https://raw.githubusercontent.com/FacultadInformatica-LinkedData/Curso202
 urllib.request.urlretrieve(url, 'validation.py')
 github_storage = "https://raw.githubusercontent.com/FacultadInformatica-LinkedData/Curso2025-2026/master/Assignment4/course_materials"
 #%%
-from Assignment4.Diego_Ortega_Martinez_707214.validation import Report
+from validation import Report
 #%% md
 # First let's read the RDF file
 #%%
