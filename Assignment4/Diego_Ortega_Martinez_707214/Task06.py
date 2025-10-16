@@ -82,20 +82,24 @@ r.validate_task_06_01(g)
 from rdflib import Literal
 from rdflib.namespace import RDF, RDFS, XSD
 
-p = ontology.hasColleague
+for prop, label, domain, range_ in [
+    (ontology.hasColleague, "hasColleague", ontology.Person, ontology.Person),
+    (ontology.hasName,      "hasName",      ontology.Person, RDFS.Literal),
+    (ontology.hasHomePage,  "hasHomePage",  ontology.FullProfessor, RDFS.Literal),
+]:
+    g.remove((prop, RDFS.domain, None))
+    g.remove((prop, RDFS.range,  None))
+    g.remove((prop, RDF.type,    None))
+    g.remove((prop, RDFS.label,  None))
 
-g.remove((p, RDFS.domain, None))
-g.remove((p, RDFS.range,  None))
-g.remove((p, RDF.type,    None))
-g.remove((p, RDFS.label,  None))
-
-g.add((p, RDF.type, RDF.Property))
-g.add((p, RDFS.label,  Literal("hasColleague", datatype=XSD.string)))
-g.add((p, RDFS.domain, ontology.Person))
-g.add((p, RDFS.range,  ontology.Person))
+    g.add((prop, RDF.type, RDF.Property))
+    g.add((prop, RDFS.label,  Literal(label, datatype=XSD.string)))
+    g.add((prop, RDFS.domain, domain))
+    g.add((prop, RDFS.range,  range_))
 
 for s, p, o in g:
     print(s, p, o)
+
 
 #%%
 # Validation. Do not remove
