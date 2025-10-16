@@ -69,24 +69,10 @@ PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX ontology: <http://oeg.fi.upm.es/def/people#>
 
-SELECT ?c (SAMPLE(?sc) AS ?sc) WHERE {
-  {
-    ?c a rdfs:Class .
-  } UNION {
-    ?c rdfs:subClassOf ?x .
-  } UNION {
-    ?x rdfs:subClassOf ?c .
-  }
-
-  FILTER(STRSTARTS(STR(?c), STR(ontology:)))
-
-  OPTIONAL {
-    ?c rdfs:subClassOf ?sc .
-    FILTER(STRSTARTS(STR(?sc), STR(ontology:)))
-  }
+SELECT ?c ?sc WHERE {
+  ?c a rdfs:Class .
+  OPTIONAL { ?c rdfs:subClassOf ?sc }
 }
-GROUP BY ?c
-ORDER BY ?c
 """
 
 for r in g.query(query):
