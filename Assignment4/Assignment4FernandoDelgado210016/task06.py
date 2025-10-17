@@ -12,24 +12,24 @@ from rdflib.namespace import RDF, RDFS
 from validation import Report
 
 g = Graph()
-g.namespace_manager.bind('ns', Namespace("http://somewhere#"), override=False)
 r = Report()
 
 # Namespaces
-ns = Namespace("http://mydomain.org#")
+peopleNS = Namespace("http://oeg.fi.upm.es/def/people#")
+ns = peopleNS  # para compatibilidad con el validador
 VCARD = Namespace("http://www.w3.org/2001/vcard-rdf/3.0/")
 FOAF = Namespace("http://xmlns.com/foaf/0.1/")
 
 # Task 6.0: Prefixes
 g.namespace_manager.bind('ontology', Namespace("http://mydomain.org#"), override=False)
-g.namespace_manager.bind('person', Namespace("http://oeg.fi.upm.es/def/people#"), override=False)
+g.namespace_manager.bind('person', peopleNS, override=False)
 
 # Task 6.1: Classes taxonomy
-Person = Namespace("http://oeg.fi.upm.es/def/people#").Person
-Professor = ns.Professor
-AssociateProfessor = ns.AssociateProfessor
-InterimAssociateProfessor = ns.InterimAssociateProfessor
-FullProfessor = ns.FullProfessor
+Person = peopleNS.Person
+Professor = peopleNS.Professor
+AssociateProfessor = peopleNS.AssociateProfessor
+InterimAssociateProfessor = peopleNS.InterimAssociateProfessor
+FullProfessor = peopleNS.FullProfessor
 
 classes = [Person, Professor, AssociateProfessor, InterimAssociateProfessor, FullProfessor]
 
@@ -97,3 +97,5 @@ r.validate_task_06_04(g)
 
 # Save report
 r.save_report("_Task_06")
+
+
