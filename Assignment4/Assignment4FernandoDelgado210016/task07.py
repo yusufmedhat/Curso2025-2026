@@ -7,72 +7,70 @@ Querying RDF(s) for Assignment 4
 # !pip install rdflib  # comentado para entrega
 
 from rdflib import Graph, Namespace
-from rdflib.namespace import RDF, RDFS, FOAF
+from rdflib.namespace import RDF, RDFS
 from validation import Report
 
+# Cargar el grafo
 g = Graph()
-
-# Namespaces
 ns = Namespace("http://oeg.fi.upm.es/def/people#")
-PERSON_NS = Namespace("http://oeg.fi.upm.es/resource/person/")
 g.namespace_manager.bind('ns', ns, override=False)
 
-# Cargar RDF
 github_storage = "https://raw.githubusercontent.com/FacultadInformatica-LinkedData/Curso2025-2026/master/Assignment4/course_materials"
 g.parse(github_storage + "/rdf/data06.ttl", format="TTL")
 
 report = Report()
 
-# ----------------------
-# Task 7.1a: RDFLib classes
-# ----------------------
+# -----------------------------------------------------
+# 7.1a: RDFLib classes
+# -----------------------------------------------------
 result = []
 for c in g.subjects(RDF.type, RDFS.Class):
     sc = g.value(subject=c, predicate=RDFS.subClassOf)
     result.append((c, sc if sc else None))
 report.validate_07_1a(result)
 
-# ----------------------
-# Task 7.1b: SPARQL
-# ----------------------
+# -----------------------------------------------------
+# 7.1b: SPARQL
+# -----------------------------------------------------
 query = """
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT ?c ?sc
 WHERE {
   ?c rdf:type rdfs:Class .
   OPTIONAL { ?c rdfs:subClassOf ?sc }
 }
 """
-for r in g.query(query):
-    print(r.c, r.sc)
 report.validate_07_1b(query, g)
 
-# ----------------------
-# Task 7.2a: Individuals of Person (RDFLib)
-# ----------------------
-# Recupera solo los individuos con el namespace correcto
-individuals = [i for i in g.subjects() if str(i).startswith(str(PERSON_NS))]
-report.validate_07_02a(individuals)
+# -----------------------------------------------------
+# 7.2a: Individuals of Person (RDFLib)
+# -----------------------------------------------------
+# incluir individuos de Person y de todas sus subclases
+individuals = set()
+for ind, t in g.subject_objects(RDF.type):
+    # comprobar si el tipo es Person o subclase de Person
+    if (t, RDFS.subClassOf, ns.Person) in g or t == ns.Person:
+        individuals.add(ind)
+report.validate_07_02a(list(individuals))
 
-# ----------------------
-# Task 7.2b: SPARQL
-# ----------------------
+# -----------------------------------------------------
+# 7.2b: SPARQL
+# -----------------------------------------------------
 query = """
-PREFIX person: <http://oeg.fi.upm.es/resource/person/>
-SELECT ?ind
+PREFIX ns: <http://oeg.fi.upm.es/def/people#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT DISTINCT ?ind
 WHERE {
-  ?ind a ?type .
-  FILTER(STRSTARTS(STR(?ind), STR(person:)))
+  ?ind rdf:type/rdfs:subClassOf* ns:Person .
 }
 """
-for r in g.query(query):
-    print(r.ind)
 report.validate_07_02b(g, query)
 
-# ----------------------
-# Task 7.3: Name and type of those who know Rocky
-# ----------------------
+# -----------------------------------------------------
+# 7.3: Name and type of those who know Rocky
+# -----------------------------------------------------
 query = """
 PREFIX ns: <http://oeg.fi.upm.es/def/people#>
 SELECT ?name ?type
@@ -82,13 +80,11 @@ WHERE {
   ?s rdf:type ?type .
 }
 """
-for r in g.query(query):
-    print(r.name, r.type)
 report.validate_07_03(g, query)
 
-# ----------------------
-# Task 7.4: Name of entities with colleague who has a dog
-# ----------------------
+# -----------------------------------------------------
+# 7.4: Name of entities with colleague who has a dog
+# -----------------------------------------------------
 query = """
 PREFIX ns: <http://oeg.fi.upm.es/def/people#>
 SELECT ?name
@@ -99,13 +95,9 @@ WHERE {
   ?x ns:hasName ?name .
 }
 """
-for r in g.query(query):
-    print(r.name)
 report.validate_07_04(g, query)
 
-# ----------------------
+# -----------------------------------------------------
 # Save report
-# ----------------------
+# -----------------------------------------------------
 report.save_report("_Task_07")
-
-
