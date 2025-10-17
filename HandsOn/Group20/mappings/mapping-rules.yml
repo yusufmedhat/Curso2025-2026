@@ -15,7 +15,7 @@ prefixes:
 mappings:
   triplesmap1:
     sources:
-      - [parkings-updated.csv~csv]   # <-- usa EXACTAMENTE el mismo nombre en ambos
+      - [parkings-updated.csv~csv]
     s: ex:Parking/$(id)
     po:
       - [a, ns:Parking]
@@ -44,7 +44,7 @@ mappings:
 
   LocationTM:
     sources:
-      - [parkings-updated.csv~csv]   # <-- igual que arriba
+      - [parkings-updated.csv~csv]
     s: ex:Location/$(id)
     po:
       - [a, ns:Location]
