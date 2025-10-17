@@ -8,12 +8,13 @@ Querying RDF(s) for Assignment 4
 
 from rdflib import Graph, Namespace
 from validation import Report
-from rdflib.namespace import RDF, RDFS
+from rdflib.namespace import RDF, RDFS, FOAF
 
 g = Graph()
-g.namespace_manager.bind('ns', Namespace("http://somewhere#"), override=False)
+ns = Namespace("http://oeg.fi.upm.es/def/people#")
+g.namespace_manager.bind('ns', ns, override=False)
 github_storage = "https://raw.githubusercontent.com/FacultadInformatica-LinkedData/Curso2025-2026/master/Assignment4/course_materials"
-g.parse(github_storage+"/rdf/data06.ttl", format="TTL")
+g.parse(github_storage + "/rdf/data06.ttl", format="TTL")
 report = Report()
 
 # 7.1a: RDFLib classes
@@ -36,15 +37,20 @@ for r in g.query(query):
 report.validate_07_1b(query, g)
 
 # 7.2a: Individuals of Person (RDFLib)
-ns = Namespace("http://oeg.fi.upm.es/def/people#")
-individuals = [i for i in g.subjects(RDF.type, ns.Person)]
+# Incluye todos los individuos de Person y sus subclases
+individuals = [i for i in g.subjects(None, None)
+               if (i, RDF.type, ns.Person) in g or
+                  (i, RDF.type, ns.Professor) in g or
+                  (i, RDF.type, ns.AssociateProfessor) in g or
+                  (i, RDF.type, ns.InterimAssociateProfessor) in g]
 report.validate_07_02a(individuals)
 
 # 7.2b: SPARQL
 query = """
+PREFIX ns: <http://oeg.fi.upm.es/def/people#>
 SELECT ?ind
 WHERE {
-  ?ind rdf:type/rdfs:subClassOf* foaf:Person .
+  ?ind rdf:type/rdfs:subClassOf* ns:Person .
 }
 """
 for r in g.query(query):
@@ -53,6 +59,7 @@ report.validate_07_02b(g, query)
 
 # 7.3: Name and type of those who know Rocky (SPARQL)
 query = """
+PREFIX ns: <http://oeg.fi.upm.es/def/people#>
 SELECT ?name ?type
 WHERE {
   ?s ns:hasColleague ns:Rocky .
@@ -66,6 +73,7 @@ report.validate_07_03(g, query)
 
 # 7.4: Name of entities with colleague who has a dog (SPARQL)
 query = """
+PREFIX ns: <http://oeg.fi.upm.es/def/people#>
 SELECT ?name
 WHERE {
   ?x ns:hasColleague ?y .
@@ -78,4 +86,5 @@ for r in g.query(query):
     print(r.name)
 report.validate_07_04(g, query)
 
+# Save report
 report.save_report("_Task_07")
