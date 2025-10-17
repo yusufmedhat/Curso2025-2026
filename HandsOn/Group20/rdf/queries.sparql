@@ -7,7 +7,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 ################################################################################
-# 1) Primeros 10 parkings (id, nombre, dirección) ordenados por id asc
+# QUERY 1 - First ten parkings (id, name and address) ordered by ascending id
+## Retrieves the first ten parking resources, returning their identifier, name and address ordered by the parking identifier in ascending order
 ################################################################################
 SELECT ?id ?name ?address WHERE {
   ?s a ns:Parking ;
