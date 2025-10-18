@@ -9,14 +9,14 @@ prefixes:
   rml: http://semweb.mmlab.be/ns/rml#
   ql:  http://semweb.mmlab.be/ns/ql#
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
-  ns:  http://www.owl-ontologies.com/ns#
-  ex:  http://group20.linkeddata.es/parkings/resource/
+  ns:  https://data.smartcitymadrid.es/ontology/parking#
+  ex:  https://data.smartcitymadrid.es/id/parking/
 
 mappings:
   triplesmap1:
     sources:
       - [parkings-updated.csv~csv]
-    s: ex:Parking/$(id)
+    s: ex:$(id)
     po:
       - [a, ns:Parking]
 
@@ -38,14 +38,13 @@ mappings:
       - [ns:hasCountry, $(country)]
       - [ns:hasURLIcon, $(URLIcono)~iri]
 
-      #IRI determinista a Location
       - p: ns:hasLocation
-        o: ex:Location/$(id)~iri
+        o: ex:$(id)/location~iri
 
   LocationTM:
     sources:
       - [parkings-updated.csv~csv]
-    s: ex:Location/$(id)
+    s: ex:$(id)/location
     po:
       - [a, ns:Location]
 
