@@ -104,40 +104,47 @@ for r in g.query(query):
 report.validate_07_02b(g, query)
 
 # ----------------------------
+# ----------------------------
 # TASK 7.3: List the name and type of those who know Oscar
 # ----------------------------
-query = prepareQuery( '''SELECT ?name ?type WHERE {
+query = prepareQuery('''SELECT ?name ?type WHERE {
             
             ?ind p:hasColleague p:Oscar .
             ?ind rdf:type ?type .
             {
-            ?ind p:hasName ?name .
+                ?ind p:hasName ?name .
             }
-            UNION{
-            ?ind rdfs:label ?name .
+            UNION {
+                ?ind rdfs:label ?name .
             }
-            } ''', initNs={"p": p, "rdf": RDF, "rdfs":RDFS})
+        }''', initNs={"p": p, "rdf": RDF, "rdfs": RDFS})
 
 for r in g.query(query):
     print(r.name, r.type)
 
 report.validate_07_03(g, query)
 
+
+# ----------------------------
 # ----------------------------
 # TASK 7.4: List the name of those entities who have a colleague or a colleague-of-colleague
 # ----------------------------
-query = prepareQuery( '''SELECT DISTINCT ?name WHERE {
-            
-            ?ind rdfs:label ?name .
-            ?ind p:hasColleague ?c1 .
-            UNION {
-                ?ind p:hasColleague ?c1 .
-                ?c1 p:hasColleague ?c2 .
-            }
-            } ''', initNs={"p": p, "rdfs":RDFS})
+query = prepareQuery('''SELECT DISTINCT ?name WHERE {
+    {
+        ?ind rdfs:label ?name .
+        ?ind p:hasColleague ?c1 .
+    }
+    UNION
+    {
+        ?ind rdfs:label ?name .
+        ?ind p:hasColleague ?c1 .
+        ?c1 p:hasColleague ?c2 .
+    }
+}''', initNs={"p": p, "rdfs": RDFS})
 
 for r in g.query(query):
     print(r.name)
 
-report.validate_07_04(g,query)
+report.validate_07_04(g, query)
+
 report.save_report("_Task_07")
