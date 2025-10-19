@@ -90,10 +90,11 @@ report.validate_07_02a(individuals)
 """**TASK 7.2b: Repeat the same exercise in SPARQL, returning the individual URIs in a variable ?ind**"""
 from rdflib.plugins.sparql import prepareQuery #para querys SPARQL
 
-query = prepareQuery( '''SELECT ?ind WHERE{
+query = prepareQuery( '''SELECT ?ind WHERE {
             ?ind rdf:type ?s .
-            ?s rdfs:subClassOf* p:Person .
-            } ''', initNs={"p":p, "rdf":RDF, "rdfs":RDFS})
+            ?s rdfs:subClassOf* ns:Person .
+            } ''', initNs={"ns": ns, "rdf": RDF, "rdfs": RDFS})
+
 
 
 for r in g.query(query):
