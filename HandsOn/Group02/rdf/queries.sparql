@@ -1,0 +1,83 @@
+PREFIX ns1: <http://data.barcelona.cat/att/>
+PREFIX ns2: <http://data.barcelona.cat/rel/>
+# Todas las actividades con su titulo, tipo, precio, fechaInicio y fechaFin con su respectivo organizador.
+SELECT ?actividad ?titulo ?tipo ?precio ?fechaInicio ?fechaFin ?organizador
+WHERE {
+  ?actividad a <http://data.barcelona.cat/actividades/Actividad> ;
+            ns1:titulo ?titulo ;
+            ns1:tipo ?tipo ;
+            ns1:Precio ?precio ;
+            ns1:fechaInicio ?fechaInicio ;
+            ns1:fechaFin ?fechaFin ;
+  			ns2:isHosted ?organizador .
+}
+ORDER BY ?fechaInicio
+
+
+
+
+
+
+# Contea las actividades gratuitas (gratuïta) y las de pago (pagament)
+
+SELECT ?tipo (COUNT(*) as ?cantidad)
+WHERE {
+  ?actividad a <http://data.barcelona.cat/actividades/Actividad> ;
+            ns1:tipo ?tipo .
+}
+GROUP BY ?tipo
+
+rel:isContained a owl:ObjectProperty ;
+    rdfs:label "is contained" ;
+    rdfs:comment "Indica que un municipio está contenido en una comarca u otra entidad territorial."@es ;
+    owl:equivalentProperty wdt:P131 .
+
+rel:isHosted a owl:ObjectProperty ;
+    rdfs:label "is hosted" .
+
+rel:placed a owl:ObjectProperty ;
+    rdfs:label "placed" .
+
+rel:typeOf a owl:ObjectProperty ;
+    rdfs:label "type of" .
+
+
+
+
+# Ver todas las relaciones utilizadas en el dataset
+
+SELECT DISTINCT ?predicado (COUNT(*) as ?uso)
+WHERE {
+  ?s ?predicado ?o .
+  FILTER(STRSTARTS(STR(?predicado), "http://data.barcelona.cat/rel/"))
+}
+GROUP BY ?predicado
+ORDER BY DESC(?uso)
+
+
+
+
+
+
+"Mapa de calor" de la oferta de actividades segun localización (tendria que funcionar cuando la relacion ns2:isContained funcione)
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ns1: <http://data.barcelona.cat/att/>
+PREFIX ns2: <http://data.barcelona.cat/rel/>
+
+SELECT ?comarca ?municipio ?organizador ?categoria
+       (COUNT(?actividad) as ?numActividades)
+       (SUM(xsd:integer(?aforo)) as ?aforoAcumulado)
+       (GROUP_CONCAT(DISTINCT ?titulo; SEPARATOR="; ") as ?ejemplosActividades)
+WHERE {
+  ?actividad a <http://data.barcelona.cat/actividades/Actividad> ;
+             ns1:titulo ?titulo ;
+             ns1:Aforo ?aforo ;
+             ns2:isHosted ?organizador ;
+             ns2:typeOf ?categoria ;
+             ns2:placed ?municipio .
+  
+  ?municipio ns2:isContained ?comarca .
+}
+GROUP BY ?comarca ?municipio ?organizador ?categoria
+HAVING (COUNT(?actividad) >= 1)
+ORDER BY ?comarca ?municipio ?organizador DESC(?numActividades)
