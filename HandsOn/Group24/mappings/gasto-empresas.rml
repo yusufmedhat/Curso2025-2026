@@ -4,26 +4,26 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix ex: <http://group24.linkeddata.es/ontology/> .
 
-<#GastoEmpresasMapping>
+<http://group24.linkeddata.es/mapping/ExpenditureMap>
   a rr:TriplesMap ;
   rml:logicalSource [
-    rml:source "../csv/gasto-de-las-empresas-en-proteccion-ambiental-total-industria-csv-updated.csv" ;
+    rml:source "csv/gasto-de-las-empresas-en-proteccion-ambiental-total-industria-csv-updated.csv" ;
     rml:referenceFormulation ql:CSV
   ] ;
 
   rr:subjectMap [
-    rr:template "http://group24.linkeddata.es/resource/gasto/{Año}" ;
+    rr:template "http://group24.linkeddata.es/resource/expenditure/{Year}" ;
     rr:class ex:ExpenditureRecord
   ] ;
 
   rr:predicateObjectMap [
     rr:predicate ex:year ;
-    rr:objectMap [ rml:reference "Año" ; rr:datatype xsd:gYear ]
+    rr:objectMap [ rml:reference "Year" ; rr:datatype xsd:gYear ]
   ] ;
 
   rr:predicateObjectMap [
     rr:predicate ex:concept ;
-    rr:objectMap [ rml:reference "Concepto" ]
+    rr:objectMap [ rml:reference "Concept" ]
   ] ;
 
   rr:predicateObjectMap [
@@ -32,6 +32,6 @@
   ] ;
 
   rr:predicateObjectMap [
-    rr:predicate ex:dataStatus ;
-    rr:objectMap [ rml:reference "Estado dato" ]
+    rr:predicate ex:inDataset ;
+    rr:object <http://group24.linkeddata.es/dataset/expenditure-es>
   ] .
