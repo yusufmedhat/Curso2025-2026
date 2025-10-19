@@ -37,7 +37,7 @@
 
     rr:predicateObjectMap [
         rr:predicate ns:description ;
-        rr:objectMap [ rml:reference "DESCRIPCION-ENTIDAD" ]
+        rr:objectMap [ rml:reference "DESCRIPCION" ]
     ] ;
 
     rr:predicateObjectMap [
