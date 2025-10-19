@@ -1,8 +1,8 @@
 ################################################################################
 # PREFIXES
 ################################################################################
-PREFIX ns:  <http://www.owl-ontologies.com/ns#>
-PREFIX ex:  <http://group20.linkeddata.es/parkings/resource/>
+PREFIX ns:  <https://data.smartcitymadrid.es/ontology/parking#>
+PREFIX ex:  <https://data.smartcitymadrid.es/id/parking/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
