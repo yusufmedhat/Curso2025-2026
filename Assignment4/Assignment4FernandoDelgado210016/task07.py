@@ -106,24 +106,24 @@ report.validate_07_02b(g, query)
 
 
 # ----------------------------
-# ----------------------------
 # TASK 7.3: List the name and type of those who know Oscar
 # ----------------------------
-query = prepareQuery('''SELECT ?name ?type WHERE {
-            
-            ?ind p:hasColleague p:Oscar .
-            ?ind rdf:type ?type .
-            {
-                ?ind p:hasName ?name .
-            }
-            UNION {
-                ?ind rdfs:label ?name .
-            }
-        }''', initNs={"p": p, "rdf": RDF, "rdfs": RDFS})
+query = prepareQuery('''
+    SELECT ?name ?type WHERE {
+        ?ind rdf:type ?type .
+        ?ind p:hasColleague p:Oscar .
+        OPTIONAL { ?ind p:hasName ?name . }
+        OPTIONAL { ?ind rdfs:label ?name . }
+    }
+''', initNs={"p": p, "rdf": RDF, "rdfs": RDFS})
 
+# Mostrar resultados
+result_7_3 = []
 for r in g.query(query):
+    result_7_3.append((r.name, r.type))
     print(r.name, r.type)
 
+# Validación
 report.validate_07_03(g, query)
 
 
