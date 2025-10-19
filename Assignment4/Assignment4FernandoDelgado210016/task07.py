@@ -65,48 +65,44 @@ for r in g.query(query):
 report.validate_07_1b(query,g)
 
 # ----------------------------
-# TASK 7.2a: List all individuals of "Person" with RDFLib (remember the subClasses)
+# TASK 7.2a: List all individuals of "Person" with RDFLib
 # ----------------------------
 p = Namespace("http://oeg.fi.upm.es/def/people#")
 
-# Variable a devolver
+# Variable a retornar
 individuals = []
 
-# Todas las subclases (transitivas) de Person + la propia Person
-subclasses = set(g.transitive_objects(p.Person, RDFS.subClassOf))  # subclases de Person
-classes = subclasses | {p.Person}
+# Obtenemos todas las subclases transitivas de Person + la propia Person
+classes = set(g.transitive_subjects(RDFS.subClassOf, p.Person)) | {p.Person}
 
-# Todos los individuos que tengan rdf:type en cualquiera de esas clases
+# Todos los individuos con rdf:type en esas clases
 individuals = sorted({s for c in classes for s in g.subjects(RDF.type, c)}, key=str)
 
-# Visualizar los resultados
+# Mostrar resultados
 for i in individuals:
     print(i)
 
-# Validación: no eliminar
+# Validación
 report.validate_07_02a(individuals)
 
-
 # ----------------------------
-# TASK 7.2b: Repeat the same exercise in SPARQL, returning the individual URIs in a variable ?ind
+# TASK 7.2b: Repeat the same in SPARQL
 # ----------------------------
 from rdflib.plugins.sparql import prepareQuery
 
-# Consulta SPARQL corregida: buscamos individuos cuya clase es Person o subclase de Person
 query = prepareQuery('''
     SELECT ?ind WHERE {
         ?ind rdf:type ?c .
         ?c rdfs:subClassOf* ns:Person .
-        FILTER (?c != ns:Person || ?c = ns:Person)
     }
 ''', initNs={"ns": p, "rdf": RDF, "rdfs": RDFS})
 
-# Visualizar resultados
 for r in g.query(query):
     print(r.ind)
 
-# Validación: no eliminar
+# Validación
 report.validate_07_02b(g, query)
+
 
 
 # ----------------------------
