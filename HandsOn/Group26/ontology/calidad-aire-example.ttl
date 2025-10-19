@@ -22,14 +22,14 @@ data:Measurement001 rdf:type owl:NamedIndividual ,
                              ont:Measurement ;
                     ont:hasValidation "V" ;
                     ont:hasValue 42.3 ;
-                    ont:measurementTime "2024-05-10T09:00:00"^^xsd:dateTime .
+                    ont:measurementHour "09" .
 
 
 ###  http://example.org/madrid-air-quality/data/NO2
 data:NO2 rdf:type owl:NamedIndividual ,
                   ont:Pollutant ;
          ont:pollutantSameAs <http://dbpedia.org/resource/Nitrogen_dioxide> ;
-         ont:pollutantCode "08" .
+         ont:pollutantCode "8" .
 
 
 ###  http://example.org/madrid-air-quality/data/SamplingPoint001
