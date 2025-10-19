@@ -1,0 +1,22 @@
+# Query 1: Count all parking facilities
+PREFIX mm: <http://movemadrid.org/def/base#>
+SELECT (COUNT(?parking) as ?totalParkings)
+WHERE {
+    ?parking a mm:CarParking .
+}
+
+# Query 2: List all districts and count of parkings in each
+PREFIX mm: <http://movemadrid.org/def/base#>
+PREFIX schema: <https://schema.org/>
+SELECT ?districtName (COUNT(?parking) as ?parkingCount)
+WHERE {
+    ?parking a mm:CarParking ;
+             mm:inDistrict ?district .
+    ?district schema:name ?districtName .
+}
+GROUP BY ?districtName
+ORDER BY DESC(?parkingCount)
+
+# Query 3: Find parking facilities with coordinates in specific area
+PREFIX mm: <http://movemadrid.org/def/base#>
+P
