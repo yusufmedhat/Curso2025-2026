@@ -138,24 +138,12 @@ r.validate_task_06_03(g)
 
 """
 
-g.add((ontology.email, RDF.type, RDF.Property))
-g.add((ontology.email, RDFS.label, Literal("email", datatype=XSD.string)))
-g.add((ontology.email, RDFS.domain, ontology.Person))
-g.add((ontology.email, RDFS.range, RDFS.Literal))
+foaf = Namespace("http://xmlns.com/foaf/0.1/")
+VCARD = Namespace("http://www.w3.org/2001/vcard-rdf/3.0/")
 
-g.add((ontology.givenName, RDF.type, RDF.Property))
-g.add((ontology.givenName, RDFS.label, Literal("givenName", datatype=XSD.string)))
-g.add((ontology.givenName, RDFS.domain, ontology.Person))
-g.add((ontology.givenName, RDFS.range, RDFS.Literal))
-
-g.add((ontology.familyName, RDF.type, RDF.Property))
-g.add((ontology.familyName, RDFS.label, Literal("familyName", datatype=XSD.string)))
-g.add((ontology.familyName, RDFS.domain, ontology.Person))
-g.add((ontology.familyName, RDFS.range, RDFS.Literal))
-
-g.add((oscar, ontology.email, Literal("ocorcho@fi.upm.es", datatype=XSD.string)))
-g.add((oscar, ontology.givenName, Literal("Oscar", datatype=XSD.string)))
-g.add((oscar, ontology.familyName, Literal("Corcho", datatype=XSD.string)))
+g.add((person.Oscar, VCARD.Given, Literal("Óscar", datatype=XSD.string)))
+g.add((person.Oscar, VCARD.Family, Literal("Corcho García",datatype=XSD.string)))
+g.add((person.Oscar, foaf.email, Literal("ocorcho@fi.upm.es",datatype=XSD.string)))
 
 # Visualize the results
 for s, p, o in g:
