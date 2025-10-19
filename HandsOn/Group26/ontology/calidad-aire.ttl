@@ -62,11 +62,11 @@ ont:hasValue rdf:type owl:DatatypeProperty ;
              rdfs:label "has value"@en .
 
 
-###  http://example.org/madrid-air-quality/ontology/measurementTime
-ont:measurementTime rdf:type owl:DatatypeProperty ;
+###  http://example.org/madrid-air-quality/ontology/measurementHour
+ont:measurementHour rdf:type owl:DatatypeProperty ;
                     rdfs:domain ont:Measurement ;
-                    rdfs:range xsd:dateTime ;
-                    rdfs:label "measurement time"@en .
+                    rdfs:range xsd:string ;
+                    rdfs:label "measurement hour (e.g., H01–H24)"@en .
 
 
 ###  http://example.org/madrid-air-quality/ontology/pollutantCode
