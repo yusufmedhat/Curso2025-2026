@@ -64,45 +64,50 @@ for r in g.query(query):
 ## Validation: Do not remove
 report.validate_07_1b(query,g)
 
-"""**TASK 7.2a: List all individuals of "Person" with RDFLib (remember the subClasses). Return the individual URIs in a list called "individuals"**
-
-"""
-
+# ----------------------------
+# TASK 7.2a: List all individuals of "Person" with RDFLib (remember the subClasses)
+# ----------------------------
 p = Namespace("http://oeg.fi.upm.es/def/people#")
-ns = Namespace("http://somewhere#")  
 
-
-# variable to return
+# Variable a devolver
 individuals = []
 
 # Todas las subclases (transitivas) de Person + la propia Person
-classes = set(g.transitive_subjects(RDFS.subClassOf, p.Person)) | {p.Person}
+subclasses = set(g.transitive_objects(p.Person, RDFS.subClassOf))  # subclases de Person
+classes = subclasses | {p.Person}
 
-# ,Todos los individuos que tengan rdf:type en cualquiera de esas clases
+# Todos los individuos que tengan rdf:type en cualquiera de esas clases
 individuals = sorted({s for c in classes for s in g.subjects(RDF.type, c)}, key=str)
 
+# Visualizar los resultados
 for i in individuals:
-  print(i)
+    print(i)
 
-# validation. Do not remove
+# Validación: no eliminar
 report.validate_07_02a(individuals)
 
-"""**TASK 7.2b: Repeat the same exercise in SPARQL, returning the individual URIs in a variable ?ind**"""
-from rdflib.plugins.sparql import prepareQuery #para querys SPARQL
 
-query = prepareQuery( '''SELECT ?ind WHERE {
-            ?ind rdf:type ?s .
-            ?s rdfs:subClassOf* ns:Person .
-            } ''', initNs={"ns": ns, "rdf": RDF, "rdfs": RDFS})
+# ----------------------------
+# TASK 7.2b: Repeat the same exercise in SPARQL, returning the individual URIs in a variable ?ind
+# ----------------------------
+from rdflib.plugins.sparql import prepareQuery
 
+# Consulta SPARQL corregida: buscamos individuos cuya clase es Person o subclase de Person
+query = prepareQuery('''
+    SELECT ?ind WHERE {
+        ?ind rdf:type ?c .
+        ?c rdfs:subClassOf* ns:Person .
+        FILTER (?c != ns:Person || ?c = ns:Person)
+    }
+''', initNs={"ns": p, "rdf": RDF, "rdfs": RDFS})
 
-
+# Visualizar resultados
 for r in g.query(query):
-  print(r.ind)
-# Visualize the results
+    print(r.ind)
 
-## Validation: Do not remove
+# Validación: no eliminar
 report.validate_07_02b(g, query)
+
 
 # ----------------------------
 # ----------------------------
