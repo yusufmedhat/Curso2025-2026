@@ -31,3 +31,13 @@ WHERE {
                    schema:streetAddress ?streetAddress ;
                    schema:postalCode ?postalCode .
 }
+
+# Query 4: Count number of Bike Parkings per District
+SELECT ?districtName (COUNT(?parking) AS ?parkingCount)
+WHERE {
+    ?parking a mm:BikeParking ;
+             mm:inDistrict ?district .
+    ?district schema:name ?districtName .
+}
+GROUP BY ?districtName
+ORDER BY DESC(?parkingCount)
