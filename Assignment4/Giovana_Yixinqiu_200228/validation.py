@@ -6,7 +6,7 @@ FOAF = Namespace("http://xmlns.com/foaf/0.1/")
 
 class Report:
     def __init__(self):
-        self.report = ""
+        self.__report = ""
 
     def domain_and_range_correspond_to_input(self, g,propertyURI,correct_domain,correct_range):
         domain = g.value(subject=propertyURI, predicate=RDFS.domain)
@@ -43,9 +43,9 @@ class Report:
             return False
         return True
 
-    def add_to_report(self, message):
+    def __add_to_report(self, message):
         print(message)
-        self.report = self.report + message + "\n"
+        self.__report = self.__report + message + "\n"
 
     def validate_task_06_01(self, g):
         error = False
@@ -58,27 +58,27 @@ class Report:
         # check namespace and existence
         for i in classes:
             if i is None:
-                self.add_to_report("ERROR: One of the classes is missing its correct label! I cannot retrieve it")
+                self.__add_to_report("ERROR: One of the classes is missing its correct label! I cannot retrieve it")
                 error = True
                 return
             if self.namespace_is_correct_class(i):
                 print("The namespace is correct for " + str(i))
             else:
-                self.add_to_report("ERROR: The namespace is not correct for " + str(i))
+                self.__add_to_report("ERROR: The namespace is not correct for " + str(i))
                 error = True
         # check class hierarchy
         if self.is_subClassOf(g, professorURI, personURI) and \
             self.is_subClassOf(g, associateProfessorURI, professorURI) and \
             self.is_subClassOf(g, interimURI, associateProfessorURI) and \
             self.is_subClassOf(g, fProfessorURI, professorURI):
-            self.add_to_report("Hierarchy OK")
+            self.__add_to_report("Hierarchy OK")
         else:
-            self.add_to_report("ERROR: Hierarchy is missing a subclassOf statement")
+            self.__add_to_report("ERROR: Hierarchy is missing a subclassOf statement")
             error = True
         if error:
-            self.add_to_report("ERROR IN TASK 6.1")
+            self.__add_to_report("ERROR IN TASK 6.1")
         else:
-            self.add_to_report("TASK 6.1 OK")
+            self.__add_to_report("TASK 6.1 OK")
 
     def validate_task_06_02(self, g):
         # check properties
@@ -91,22 +91,22 @@ class Report:
         properties = [hasColleague, hasName, hasHomePage]
         for i in properties:
             if i is None:
-                self.add_to_report("ERROR: One of the properties is missing its correct label! I cannot retrieve it")
+                self.__add_to_report("ERROR: One of the properties is missing its correct label! I cannot retrieve it")
                 error = True
                 return
         if not self.domain_and_range_correspond_to_input(g,hasColleague,personURI,personURI):
-            self.add_to_report("ERROR: hasColleague has an incorrect domain or range")
+            self.__add_to_report("ERROR: hasColleague has an incorrect domain or range")
             error = True
         if not self.domain_and_range_correspond_to_input(g,hasName,personURI,RDFS.Literal):
-            self.add_to_report("ERROR: hasName has an incorrect domain or range")
+            self.__add_to_report("ERROR: hasName has an incorrect domain or range")
             error = True
         if not self.domain_and_range_correspond_to_input(g,hasHomePage,fullProfessorURI,RDFS.Literal):
-            self.add_to_report("ERROR: hasHomePage has an incorrect domain or range")
+            self.__add_to_report("ERROR: hasHomePage has an incorrect domain or range")
             error = True
         if error:
-            self.add_to_report("ERROR IN TASK 6.2")
+            self.__add_to_report("ERROR IN TASK 6.2")
         else:
-            self.add_to_report("TASK 6.2 OK")
+            self.__add_to_report("TASK 6.2 OK")
 
     def validate_task_06_03(self, g):
         # check all individuals can be retrieved through their label
@@ -115,17 +115,17 @@ class Report:
         asun  = g.value(subject=None, predicate=RDFS.label, object=Literal("Asun", datatype=XSD.string))
         raul  = g.value(subject=None, predicate=RDFS.label, object=Literal("Raul", datatype=XSD.string))
         if oscar is None or asun is None or raul is None:
-            self.add_to_report("ERROR: One of the individuals is missing its correct label! I cannot retrieve it")
+            self.__add_to_report("ERROR: One of the individuals is missing its correct label! I cannot retrieve it")
             error = True
         # check all individuals have the correct namespace
         if not self.namespace_is_correct_instance(oscar):
-            self.add_to_report("ERROR: Oscar has an incorrect namespace")
+            self.__add_to_report("ERROR: Oscar has an incorrect namespace")
             error = True
         if not self.namespace_is_correct_instance(asun):
-            self.add_to_report("ERROR: Asun has an incorrect namespace")
+            self.__add_to_report("ERROR: Asun has an incorrect namespace")
             error = True
         if not self.namespace_is_correct_instance(raul):
-            self.add_to_report("ERROR: Raul has an incorrect namespace")
+            self.__add_to_report("ERROR: Raul has an incorrect namespace")
             error = True
         # check all individuals have their properties
         oscar_properties = []
@@ -135,17 +135,17 @@ class Report:
         for p in g.predicates(subject=asun):
             asun_properties.append(p)
         if oscar_properties is None or asun_properties is None:
-            self.add_to_report("ERROR: One of the individuals has no properties")
+            self.__add_to_report("ERROR: One of the individuals has no properties")
             error = True
         if len(oscar_properties) != 4 or len(asun_properties) != 4:
             # oscar: type, label, hasColleague, hasName.
             # asun: type, label, hasHomePage, hasColleague
-            self.add_to_report("ERROR: One of the individuals has the wrong number of properties")
+            self.__add_to_report("ERROR: One of the individuals has the wrong number of properties")
             error = True
         if error:
-            self.add_to_report("ERROR IN TASK 6.3")
+            self.__add_to_report("ERROR IN TASK 6.3")
         else:
-            self.add_to_report("TASK 6.3 OK")
+            self.__add_to_report("TASK 6.3 OK")
 
     def validate_task_06_04(self, g):
         error = False
@@ -156,42 +156,42 @@ class Report:
         for p in g.predicates(subject=oscar):
             oscar_properties.append(p)
         if oscar_properties is None:
-            self.add_to_report("ERROR: Oscar has no properties")
+            self.__add_to_report("ERROR: Oscar has no properties")
             error = True
         # do they have the correct ns?
         for i in target_properties:
             if i not in oscar_properties:
-                self.add_to_report("ERROR: One of the properties from Oscar has no correct namespace or does not exist. Please double check")
+                self.__add_to_report("ERROR: One of the properties from Oscar has no correct namespace or does not exist. Please double check")
                 error = True
         if error:
-            self.add_to_report("ERROR IN TASK 6.4")
+            self.__add_to_report("ERROR IN TASK 6.4")
         else:
-            self.add_to_report("TASK 6.4 OK")
+            self.__add_to_report("TASK 6.4 OK")
 
     def save_report(self, task):
         report_name = "report_result" + task + ".txt"
         with open(report_name, "w", encoding="utf-8") as f:
-            f.write(self.report)
+            f.write(self.__report)
 
     def validate_07_01(self, result, task):
         error = False
         if len(result) != 7:
-            self.add_to_report("ERROR: The number of classes returned is not correct")
+            self.__add_to_report("ERROR: The number of classes returned is not correct")
             error = True
         for c,sc in result:
             # Anything except Person and Animal must have a superclass
             if sc == None and "Person" not in str(c) and "Animal" not in str(c):
-                self.add_to_report("The class "+str(c)+" has no superclass")
+                self.__add_to_report("The class "+str(c)+" has no superclass")
                 error = True
             if "Person" not in str(c) and "Animal" not in str(c) \
             and "Professor" not in str(c) and "Student" not in str(c) \
             and "FullProfessor" not in str(c) and "AssociateProfessor" not in str(c) \
             and "AssociateProfessor" not in str(c) and "Instructor" not in str(c) \
             and "InterimAssociateProfessor" not in str(c):
-                self.add_to_report("ERROR: incorrect class retrieved")
+                self.__add_to_report("ERROR: incorrect class retrieved")
                 error = True
         if not error:
-            self.add_to_report(task+" OK")
+            self.__add_to_report(task+" OK")
 
     def validate_07_1a(self, result):
         self.validate_07_01(result, "TASK 7.1a")
@@ -206,14 +206,14 @@ class Report:
     def validate_07_02(self,result, task):
         error = False
         if len(result) != 3:
-            self.add_to_report("ERROR: The number of individuals returned is not correct")
+            self.__add_to_report("ERROR: The number of individuals returned is not correct")
             error = True
         for i in result:
             if "Asun" not in i and "Raul" not in i and "Oscar" not in i:
-                self.add_to_report("ERROR: The individual "+str(i)+" is not correct")
+                self.__add_to_report("ERROR: The individual "+str(i)+" is not correct")
                 error = True
         if error == False:
-            self.add_to_report(task+" OK")
+            self.__add_to_report(task+" OK")
 
 
     def validate_07_02a(self, individuals):
@@ -225,7 +225,7 @@ class Report:
         aux_dict = []
         for r in g.query(query):
             if (r.ind is None):
-                self.add_to_report("ERROR: Variable used to retrieve the individuals is not correct!")
+                self.__add_to_report("ERROR: Variable used to retrieve the individuals is not correct!")
                 error = True
             else:
                 aux_dict.append(r.ind)
@@ -235,24 +235,24 @@ class Report:
         error = False
         entities = g.query(query)
         if len(list(entities)) != 3:
-            self.add_to_report("ERROR: The number of individuals returned is not correct")
+            self.__add_to_report("ERROR: The number of individuals returned is not correct")
             error = True
         for i in entities:
             if "Asun" not in i.name and "Raul" not in i.name and "Fantasma" not in i.name:
-                self.add_to_report("ERROR: An individual returned is not correct")
+                self.__add_to_report("ERROR: An individual returned is not correct")
                 error = True
         if not error:
-            self.add_to_report("TASK 7.3 OK")
+            self.__add_to_report("TASK 7.3 OK")
 
     def validate_07_04(self, g, query):
         error = False
         entities = g.query(query)
         if len(list(entities)) != 3:
-            self.add_to_report("ERROR: The number of individuals returned is not correct")
+            self.__add_to_report("ERROR: The number of individuals returned is not correct")
             error = True
         for i in entities:
             if "Asun" not in i.name and "Raul" not in i.name and "Oscar" not in i.name:
-                self.add_to_report("ERROR: An individual returned is not correct")
+                self.__add_to_report("ERROR: An individual returned is not correct")
                 error = True
         if not error:
-            self.add_to_report("TASK 7.4 OK")
+            self.__add_to_report("TASK 7.4 OK")
