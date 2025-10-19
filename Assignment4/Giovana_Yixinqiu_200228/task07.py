@@ -35,7 +35,7 @@ report = Report()
 """
 
 # TO DO
-ns = Namespace("http://somewhere#")
+ns = Namespace("http://oeg.fi.upm.es/def/people#")
 
 result = []
 for c in g.subjects(RDF.type, RDFS.Class):
@@ -84,11 +84,18 @@ individuals = []
 
 for s in g.subjects(RDF.type, ns.Person):
     individuals.append(s)
+to_explore = [ns.Person]
+visited = set()
 
-for subclass in g.subjects(RDFS.subClassOf, ns.Person):
-    for s in g.subjects(RDF.type, subclass):
-        if s not in individuals:
-            individuals.append(s)
+while to_explore:
+    current = to_explore.pop()
+    visited.add(current)
+    for subclass in g.subjects(RDFS.subClassOf, current):
+        if subclass not in visited:
+            to_explore.append(subclass)
+        for s in g.subjects(RDF.type, subclass):
+            if s not in individuals:
+                individuals.append(s)
 
 # visualize results
 for i in individuals:
@@ -108,8 +115,11 @@ SELECT DISTINCT ?ind
 WHERE {
   { ?ind rdf:type ns:Person . }
   UNION
-  { ?sub rdfs:subClassOf ns:Person .
-    ?ind rdf:type ?sub . }
+  { ?sub1 rdfs:subClassOf ns:Person .
+    ?ind rdf:type ?sub1 . }
+  UNION
+  { ?sub2 rdfs:subClassOf ?sub1 .
+    ?ind rdf:type ?sub2 . }
 }
 """
 
@@ -124,20 +134,24 @@ report.validate_07_02b(g, query)
 
 """**TASK 7.3:  List the name and type of those who know Rocky (in SPARQL only). Use name and type as variables in the query**"""
 
-query =  """
+query = """
+PREFIX ppl:  <http://oeg.fi.upm.es/def/people#>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
 SELECT DISTINCT ?name ?type
 WHERE {
-  ?x ns:knows ?rocky .
-  ?rocky ns:name "Rocky" .
-  ?x ns:name ?name .
-  ?x rdf:type ?type .
+  ?ind rdf:type ?type .
+  FILTER EXISTS { ?ind ppl:knows ppl:Rocky . }
+  OPTIONAL { ?ind rdfs:label ?name . }
 }
 """
 
 # TO DO
 # Visualize the results
+
 for r in g.query(query):
-  print(r.name, r.type)
+    print(r.name)
 
 ## Validation: Do not remove
 report.validate_07_03(g, query)
@@ -147,25 +161,31 @@ report.validate_07_03(g, query)
 
 """**Task 7.4: List the name of those entities who have a colleague with a dog, or that have a collegue who has a colleague who has a dog (in SPARQL). Return the results in a variable called name**"""
 
-query =  """
+
+query = """
+PREFIX p:   <http://oeg.fi.upm.es/def/people#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
 SELECT DISTINCT ?name
 WHERE {
+  VALUES ?rel { p:hasColleague }
+  ?person ?rel ?mid .
+
   {
-    ?x ns:hasColleague ?y .
-    ?y ns:hasPet ?dog .
-    ?dog rdf:type ns:Dog .
-    ?x ns:name ?name .
+    ?mid p:ownsPet ?pet .
   }
   UNION
   {
-    ?x ns:hasColleague ?y .
-    ?y ns:hasColleague ?z .
-    ?z ns:hasPet ?dog .
-    ?dog rdf:type ns:Dog .
-    ?x ns:name ?name .
+    ?mid p:hasColleague ?other .
+    ?other p:ownsPet ?pet .
   }
+
+  ?pet a p:Animal .
+  ?person rdfs:label ?name .
 }
 """
+
+
 
 for r in g.query(query):
   print(r.name)
