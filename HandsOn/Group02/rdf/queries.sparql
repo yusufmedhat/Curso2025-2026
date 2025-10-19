@@ -27,21 +27,6 @@ WHERE {
 }
 GROUP BY ?tipo
 
-rel:isContained a owl:ObjectProperty ;
-    rdfs:label "is contained" ;
-    rdfs:comment "Indica que un municipio está contenido en una comarca u otra entidad territorial."@es ;
-    owl:equivalentProperty wdt:P131 .
-
-rel:isHosted a owl:ObjectProperty ;
-    rdfs:label "is hosted" .
-
-rel:placed a owl:ObjectProperty ;
-    rdfs:label "placed" .
-
-rel:typeOf a owl:ObjectProperty ;
-    rdfs:label "type of" .
-
-
 
 
 # Ver todas las relaciones utilizadas en el dataset
