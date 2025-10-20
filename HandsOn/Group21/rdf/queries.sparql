@@ -1,1 +1,40 @@
+############################################################
+# Query 1 – Accidentes por distrito y positivos en alcohol #
+############################################################
+PREFIX schema: <http://schema.org/>
+PREFIX ex: <http://example.org/traffic#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
+SELECT ?districtName 
+       (COUNT(?e) AS ?accidents) 
+       (SUM(IF(?alcohol = "S", 1, 0)) AS ?positivesAlcohol)
+WHERE {
+  ?e a schema:Event ;
+     schema:areaServed ?d .
+  OPTIONAL { ?e ex:positiveAlcohol ?alcohol }
+  OPTIONAL { ?d schema:name ?districtName }
+}
+GROUP BY ?districtName ?d
+ORDER BY DESC(?accidents)
+LIMIT 15
+
+
+#######################################################
+# Query 2 – Radares con límite ≥ 90 y coordenadas     #
+#######################################################
+PREFIX ex: <http://example.org/traffic#>
+PREFIX schema: <http://schema.org/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?camera ?name ?road (xsd:integer(?limit) AS ?limitInt) ?lat ?long
+WHERE {
+  ?camera a ex:SpeedCamera ;
+          schema:name ?name ;
+          ex:road ?road ;
+          ex:speedLimit ?limit ;
+          schema:latitude ?lat ;
+          schema:longitude ?long .
+  FILTER(xsd:integer(?limit) >= 90)
+}
+ORDER BY DESC(?limitInt)
+LIMIT 20
