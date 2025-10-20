@@ -1,6 +1,6 @@
-base: "https://raw.githubusercontent.com/paulinaloew/Curso2025-2026/main/HandsOn/Group06/"
+base: "https://raw.githubusercontent.com/paulinaloew/Curso2025-2026/master/HandsOn/Group06/"
 prefixes:
-  ex: "https://raw.githubusercontent.com/paulinaloew/Curso2025-2026/main/HandsOn/Group06/def/"
+  ex: "https://raw.githubusercontent.com/paulinaloew/Curso2025-2026/master/HandsOn/Group06/def/"
   rdf: "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   rdfs: "http://www.w3.org/2000/01/rdf-schema#"
   xsd: "http://www.w3.org/2001/XMLSchema#"
