@@ -111,27 +111,28 @@ report.validate_07_02b(g, query)
 from rdflib.plugins.sparql import prepareQuery
 from rdflib import Namespace
 
-p   = Namespace("http://oeg.fi.upm.es/def/people#")          # propiedades/clases
-per = Namespace("http://oeg.fi.upm.es/resource/person/")     # individuos
+p = Namespace("http://oeg.fi.upm.es/def/people#")
 
 query = prepareQuery('''
 SELECT DISTINCT ?name ?type WHERE {
-  # Cualquier persona relacionada con Oscar por knows/hasColleague en ambos sentidos
+  # Individuos relacionados con Oscar en ambas direcciones
   {
-    ?ind (p:hasColleague|p:knows) per:Oscar .
-  } UNION {
-    per:Oscar (p:hasColleague|p:knows) ?ind .
+    ?ind (p:hasColleague|p:knows) p:Oscar .
+  }
+  UNION
+  {
+    p:Oscar (p:hasColleague|p:knows) ?ind .
   }
 
-  # Tipo(s) del individuo
+  # Tipo del individuo
   ?ind rdf:type ?type .
 
-  # Nombre: hasName o, si no existe, rdfs:label
+  # Nombre preferido
   OPTIONAL { ?ind p:hasName ?n . }
   OPTIONAL { ?ind rdfs:label ?l . }
   BIND (COALESCE(?n, ?l) AS ?name)
 }
-''', initNs={"p": p, "per": per, "rdf": RDF, "rdfs": RDFS})
+''', initNs={"p": p, "rdf": RDF, "rdfs": RDFS})
 
 # Mostrar resultados
 for r in g.query(query):
@@ -139,7 +140,6 @@ for r in g.query(query):
 
 # Validación
 report.validate_07_03(g, query)
-
 
 # ----------------------------
 # ----------------------------
