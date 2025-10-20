@@ -1,38 +1,38 @@
 # Assignment 4 – Self assessment
 
 ### Every RDF file
-- [x] Uses the **.nt** or **.ttl** extension as required (Turtle serialization generated with RMLmapper).  
-- [x] The RDF data is serialized in **N-Triples compatible Turtle format**, validated with RDFLib and YASGUI.  
-- [x] Follows a consistent **resource naming strategy**:  
+- [✔️] Uses the **.nt** or **.ttl** extension as required (Turtle serialization generated with RMLmapper).  
+- [✔️] The RDF data is serialized in **N-Triples compatible Turtle format**, validated with RDFLib and YASGUI.  
+- [✔️] Follows a consistent **resource naming strategy**:  
   - `http://example.org/wjh/accident/{num_expediente}` for accidents  
   - `http://example.org/wjh/district/{cod_distrito}` for districts  
   - `http://example.org/wjh/accident/{id}/participant` for participants  
   - `http://example.org/wjh/accident/{id}/place` for locations  
-- [x] All **classes and properties** use URIs consistent with the ontology (`schema.org` and `example.org/traffic#`).  
+- [✔️] All **classes and properties** use URIs consistent with the ontology (`schema.org` and `example.org/traffic#`).  
 
 ---
 
 ### Every URI in the RDF files
-- [x] Every URI is **human-readable** and meaningful (e.g., `/accident/2025S000056` instead of random IDs).  
-- [x] No URI is incorrectly encoded as a string (all appear as IRIs).  
-- [x] No URI contains double slashes (`//`) other than the initial protocol (`http://`).  
+- [✔️] Every URI is **human-readable** and meaningful (e.g., `/accident/2025S000056` instead of random IDs).  
+- [✔️] No URI is incorrectly encoded as a string (all appear as IRIs).  
+- [✔️] No URI contains double slashes (`//`) other than the initial protocol (`http://`).  
 
 ---
 
 ### Every individual in the RDF files
-- [x] Every individual has a **label or name** (`schema:name`, `schema:streetAddress`, etc.) when applicable.  
-- [x] Every individual has at least one **rdf:type** triple indicating its class (e.g., `schema:Event`, `schema:Place`, `schema:Person`).  
+- [✔️] Every individual has a **label or name** (`schema:name`, `schema:streetAddress`, etc.) when applicable.  
+- [✔️] Every individual has at least one **rdf:type** triple indicating its class (e.g., `schema:Event`, `schema:Place`, `schema:Person`).  
 
 ---
 
 ### Every value in the RDF files
-- [x] All literal values are **trimmed** (no extra spaces).  
-- [x] All values are **properly encoded**:
+- [✔️] All literal values are **trimmed** (no extra spaces).  
+- [✔️] All values are **properly encoded**:
   - Dates as `xsd:date` or `xsd:dateTime` (e.g., `"2025-01-01T00:00:00Z"^^xsd:dateTime`).  
   - Booleans as `xsd:boolean` (e.g., `"true"` / `"false"`).  
   - Numeric coordinates as `xsd:integer` or `xsd:decimal`.  
-- [x] Every literal includes its **datatype**.  
-- [x] The correct datatypes are used (e.g., booleans for positive alcohol/drug tests, integers for UTM coordinates, strings for street names).  
+- [✔️] Every literal includes its **datatype**.  
+- [✔️] The correct datatypes are used (e.g., booleans for positive alcohol/drug tests, integers for UTM coordinates, strings for street names).  
 
 ---
 
