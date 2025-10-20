@@ -109,21 +109,29 @@ report.validate_07_02b(g, query)
 # TASK 7.3: List the name and type of those who know Oscar
 # ----------------------------
 from rdflib.plugins.sparql import prepareQuery
+from rdflib import Namespace
+
+p   = Namespace("http://oeg.fi.upm.es/def/people#")          # propiedades/clases
+per = Namespace("http://oeg.fi.upm.es/resource/person/")     # individuos
 
 query = prepareQuery('''
 SELECT DISTINCT ?name ?type WHERE {
-  # Personas que conocen a Oscar por cualquiera de estas propiedades y en ambos sentidos
-  ?ind (p:knows|^p:knows|p:hasColleague|^p:hasColleague) p:Oscar .
+  # Cualquier persona relacionada con Oscar por knows/hasColleague en ambos sentidos
+  {
+    ?ind (p:hasColleague|p:knows) per:Oscar .
+  } UNION {
+    per:Oscar (p:hasColleague|p:knows) ?ind .
+  }
 
   # Tipo(s) del individuo
   ?ind rdf:type ?type .
 
-  # Nombre preferido: hasName o, en su defecto, rdfs:label
+  # Nombre: hasName o, si no existe, rdfs:label
   OPTIONAL { ?ind p:hasName ?n . }
   OPTIONAL { ?ind rdfs:label ?l . }
   BIND (COALESCE(?n, ?l) AS ?name)
 }
-''', initNs={"p": p, "rdf": RDF, "rdfs": RDFS})
+''', initNs={"p": p, "per": per, "rdf": RDF, "rdfs": RDFS})
 
 # Mostrar resultados
 for r in g.query(query):
@@ -131,7 +139,6 @@ for r in g.query(query):
 
 # Validación
 report.validate_07_03(g, query)
-
 
 
 # ----------------------------
