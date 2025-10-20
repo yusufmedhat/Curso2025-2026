@@ -62,7 +62,7 @@ mm:bicycleParking-101532 rdf:type mm:BicycleParking ;
     mm:bicycleParkingLongitude "-3.65079129"^^xsd:decimal ;
     mm:bicycleParkingState "OPERATIVO"^^xsd:string ;
     mm:bicycleParkingModel "MU-51"^^xsd:string ;
-    mm:bicyleParkingNeighborhood mm:neighborhood-LA_CONCEPCION ;
+    mm:bicycleParkingNeighborhood mm:neighborhood-LA_CONCEPCION ;
     rdfs:label "Bicycle Parking: 101532" .
 
 # Neighborhood
