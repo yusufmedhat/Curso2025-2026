@@ -115,19 +115,24 @@ p = Namespace("http://oeg.fi.upm.es/def/people#")
 
 query = prepareQuery('''
 SELECT DISTINCT ?name ?type WHERE {
-  # Individuos relacionados con Oscar en ambas direcciones
+  # 1) "knows" en 1 salto (no dirigido) con Oscar -> Fantasma
   {
-    ?ind (p:hasColleague|p:knows) p:Oscar .
+    ?ind (p:knows|^p:knows) p:Oscar .
+  }
+  UNION
+  # 2) "hasColleague" en >=1 saltos (no dirigido) con Oscar -> Asun y Raul
+  {
+    ?ind (p:hasColleague|^p:hasColleague)+ p:Oscar .
   }
   UNION
   {
-    p:Oscar (p:hasColleague|p:knows) ?ind .
+    p:Oscar (p:hasColleague|^p:hasColleague)+ ?ind .
   }
 
   # Tipo del individuo
   ?ind rdf:type ?type .
 
-  # Nombre preferido
+  # Nombre: hasName o, en su defecto, rdfs:label
   OPTIONAL { ?ind p:hasName ?n . }
   OPTIONAL { ?ind rdfs:label ?l . }
   BIND (COALESCE(?n, ?l) AS ?name)
