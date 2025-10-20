@@ -1,0 +1,38 @@
+@prefix web: <http://group17.project/madrid-parks/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Observación 1
+<http://group17.project/madrid-parks/treecount/Retiro-Aesculus_hippocastanum> a web:TreeCount ;
+    web:inPark <http://group17.project/madrid-parks/park/Retiro> ;
+    web:ofSpecies <http://group17.project/madrid-parks/tree/Aesculus_hippocastanum> ;
+    web:numberOfTrees "320"^^xsd:integer .
+
+<http://group17.project/madrid-parks/park/Retiro> a web:Park ;
+    web:parkName "Jardines del Buen Retiro" .
+
+<http://group17.project/madrid-parks/tree/Aesculus_hippocastanum> a web:Species ;
+    web:scientificName "Aesculus hippocastanum" .
+
+# Observación 2
+<http://group17.project/madrid-parks/treecount/Parque_de_Oeste-Platanus_hispanica> a web:TreeCount ;
+    web:inPark <http://group17.project/madrid-parks/park/Parque_de_Oeste> ;
+    web:ofSpecies <http://group17.project/madrid-parks/tree/Platanus_hispanica> ;
+    web:numberOfTrees "850"^^xsd:integer .
+
+<http://group17.project/madrid-parks/park/Parque_de_Oeste> a web:Park ;
+    web:parkName "Parque de Oeste" .
+
+<http://group17.project/madrid-parks/tree/Platanus_hispanica> a web:Species ;
+    web:scientificName "Platanus hispanica" .
+
+# Observación 3
+<http://group17.project/madrid-parks/treecount/Jardin_Botanico-Ginkgo_biloba> a web:TreeCount ;
+    web:inPark <http://group17.project/madrid-parks/park/Jardin_Botanico> ;
+    web:ofSpecies <http://group17.project/madrid-parks/tree/Ginkgo_biloba> ;
+    web:numberOfTrees "45"^^xsd:integer .
+
+<http://group17.project/madrid-parks/park/Jardin_Botanico> a web:Park ;
+    web:parkName "Jardín Botánico" .
+
+<http://group17.project/madrid-parks/tree/Ginkgo_biloba> a web:Species ;
+    web:scientificName "Ginkgo biloba" .

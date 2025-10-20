@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Requisitos de la aplicación - Accidentes de Tráfico</title>
+</head>
+<body>
+  <h1>Requisitos de la aplicación</h1>
+  <p>La aplicación se construirá sobre el dataset de <strong>accidentes de tráfico de la ciudad</strong>, cuyos campos incluyen: 
+  <em>num_expediente, fecha, hora, localización, distrito, tipo_accidente, estado_meteorológico, tipo_vehiculo, tipo_persona, rango_edad, sexo, lesividad, coordenadas, alcohol, droga</em>.</p>
+
+  <h2>1. Requisitos funcionales</h2>
+  <ul>
+    <li>Visualización de accidentes en un mapa interactivo con detalles al hacer clic.</li>
+    <li>Filtros por fecha, distrito, tipo de accidente, estado meteorológico y resultados positivos en alcohol/drogas.</li>
+    <li>Estadísticas descriptivas:
+      <ul>
+        <li>Número total de accidentes en un rango temporal.</li>
+        <li>Distribución por distrito y tipo de accidente.</li>
+        <li>Lesividad de las personas implicadas.</li>
+      </ul>
+    </li>
+    <li>Análisis temporal con gráficas (por mes, año, franja horaria).</li>
+    <li>Estadísticas por perfil de víctimas y conductores (sexo, rango de edad, tipo de persona).</li>
+    <li>Exportación de resultados filtrados en CSV o Excel.</li>
+  </ul>
+
+  <h2>2. Requisitos no funcionales</h2>
+  <ul>
+    <li><strong>Usabilidad:</strong> Interfaz clara con menús y filtros fáciles de usar.</li>
+    <li><strong>Rendimiento:</strong> Respuesta en menos de 2 segundos para datasets medianos (~50k registros).</li>
+    <li><strong>Compatibilidad:</strong> Acceso desde navegadores modernos y diseño responsive.</li>
+    <li><strong>Mantenibilidad:</strong> Código modular para permitir añadir nuevas visualizaciones.</li>
+    <li><strong>Seguridad:</strong> Cumplir normativa de protección de datos.</li>
+  </ul>
+
+  <h2>3. Mock-ups esperados</h2>
+  <h3>Pantalla principal</h3>
+  <p>Mapa interactivo con panel de filtros (fecha, distrito, tipo de accidente, etc.).</p>
+  <img src="mockup-mapa.png" alt="Mockup pantalla principal con mapa" width="400">
+
+  <h3>Pantalla de estadísticas</h3>
+  <p>Gráficas de barras y líneas para evolución temporal, y gráficos circulares para distribución por sexo, edad y tipo de accidente.</p>
+  <img src="mockup-estadisticas.png" alt="Mockup pantalla estadísticas" width="400">
+
+  <h3>Pantalla de detalle de accidente</h3>
+  <p>Pop-up con información: fecha, hora, localización, tipo de accidente, estado meteorológico, tipo de vehículo/persona, alcohol/droga, nivel de lesividad.</p>
+  <img src="mockup-detalle.png" alt="Mockup detalle accidente" width="400">
+</body>
+</html>

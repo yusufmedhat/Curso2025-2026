@@ -1,0 +1,51 @@
+[
+    {
+        "@id": "http://example.org/Math",
+        "http://schema.org/description": [
+            {
+                "@value": "Learning the concepts of WebSem."
+            }
+        ],
+        "http://schema.org/name": [
+            {
+                "@value": "WebSem"
+            }
+        ],
+        "http://schema.org/teacher": [
+            {
+                "@value": " Raul Garcia Castro"
+            }
+        ]
+    },
+    {
+        "@id": "http://example.org/Myself",
+        "http://schema.org/addressLocality": [
+            {
+                "@value": "Madrid"
+            }
+        ],
+        "http://schema.org/almaMater": [
+            {
+                "@value": "Universidad Politecnica de Madrid"
+            }
+        ],
+        "http://schema.org/course": [
+            {
+                "@id": "http://example.org/Math"
+            }
+        ],
+        "http://schema.org/parent": [
+            {
+                "@value": "Javier"
+            },
+            {
+                "@value": "Belen"
+            }
+        ],
+        "http://www.w3.org/2001/vcard-rdf/3.0#FN": [
+            {
+                "@value": "Gabriel Olmedilla Barrientos"
+            }
+        ]
+    }
+]
