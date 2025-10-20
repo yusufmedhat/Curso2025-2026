@@ -1,18 +1,35 @@
 ############################################################
 # Query 1 – Accidentes por distrito y positivos en alcohol #
 ############################################################
-PREFIX schema: <http://schema.org/>
-PREFIX ex: <http://example.org/traffic#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX schema: http://schema.org/
+PREFIX ex: http://example.org/traffic
+PREFIX xsd: http://www.w3.org/2001/XMLSchema
 
-SELECT ?districtName 
-       (COUNT(?e) AS ?accidents) 
-       (SUM(IF(?alcohol = "S", 1, 0)) AS ?positivesAlcohol)
+SELECT ?districtName
+       (COUNT(?e) AS ?accidents)
+       (SUM(IF(?alBool, 1, 0)) AS ?positivesAlcohol)
 WHERE {
   ?e a schema:Event ;
      schema:areaServed ?d .
-  OPTIONAL { ?e ex:positiveAlcohol ?alcohol }
   OPTIONAL { ?d schema:name ?districtName }
+
+  OPTIONAL { ?e ex:positiveAlcohol ?alcoholRaw }
+
+  # Normalizamos a booleano:
+  BIND(
+    IF(
+      DATATYPE(?alcoholRaw) = xsd:boolean,
+      ?alcoholRaw,
+      IF(
+        isLiteral(?alcoholRaw) && LCASE(STR(?alcoholRaw)) IN ("s","si","sí","true","1"),
+        true,
+        false
+      )
+    ) 
+  AS ?alBoolTmp)
+
+  # Si no hay dato, lo tratamos como false para que SUM(IF(...)) no falle:
+  BIND( COALESCE(?alBoolTmp, false) AS ?alBool )
 }
 GROUP BY ?districtName ?d
 ORDER BY DESC(?accidents)
