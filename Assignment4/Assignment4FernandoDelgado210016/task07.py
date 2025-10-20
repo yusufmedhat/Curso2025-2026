@@ -114,39 +114,36 @@ from rdflib import Namespace
 p = Namespace("http://oeg.fi.upm.es/def/people#")
 
 query = prepareQuery('''
-SELECT DISTINCT ?name ?type WHERE {
+SELECT ?name (SAMPLE(?t) AS ?type) WHERE {
   # 1) "knows" en 1 salto (no dirigido) con Oscar -> Fantasma
-  {
-    ?ind (p:knows|^p:knows) p:Oscar .
-  }
+  { ?ind (p:knows|^p:knows) p:Oscar . }
   UNION
-  # 2) "hasColleague" en >=1 saltos (no dirigido) con Oscar -> Asun y Raul
-  {
-    ?ind (p:hasColleague|^p:hasColleague)+ p:Oscar .
-  }
+  # 2) "hasColleague" en >=1 saltos (no dirigido) con Oscar -> Asun y Raul (vía Asun)
+  { ?ind (p:hasColleague|^p:hasColleague)+ p:Oscar . }
   UNION
-  {
-    p:Oscar (p:hasColleague|^p:hasColleague)+ ?ind .
-  }
+  { p:Oscar (p:hasColleague|^p:hasColleague)+ ?ind . }
 
-  # Tipo del individuo
-  ?ind rdf:type ?type .
+  # Tipo(s) del individuo (puede haber más de uno; luego hacemos SAMPLE para 1 fila por individuo)
+  OPTIONAL { ?ind rdf:type ?t . }
 
-  # Nombre: hasName o, en su defecto, rdfs:label
+  # Nombre preferido: hasName o, si no existe, rdfs:label
   OPTIONAL { ?ind p:hasName ?n . }
   OPTIONAL { ?ind rdfs:label ?l . }
   BIND (COALESCE(?n, ?l) AS ?name)
+
+  # Asegura que tenemos nombre (el validador lo usa)
+  FILTER(BOUND(?name))
 }
+GROUP BY ?ind ?name
 ''', initNs={"p": p, "rdf": RDF, "rdfs": RDFS})
 
-# Mostrar resultados
+# Mostrar resultados (útil si lo ejecutas localmente)
 for r in g.query(query):
     print(r.name, r.type)
 
 # Validación
 report.validate_07_03(g, query)
 
-# ----------------------------
 # ----------------------------
 # TASK 7.4: List the name of those entities who have a colleague or a colleague-of-colleague
 # ----------------------------
