@@ -1,0 +1,47 @@
+@prefix web: <http://group17.project/madrid-parks/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+### Classes ###
+
+web:Park a rdfs:Class ;
+    rdfs:label "Park"@en ;
+    rdfs:comment "Urban park or garden in Madrid where tree species are inventoried."@en .
+
+web:Species a rdfs:Class ;
+    rdfs:label "Species"@en ;
+    rdfs:comment "Tree species present in Madrid parks."@en .
+
+web:TreeCount a rdfs:Class ;
+    rdfs:label "TreeCount"@en ;
+    rdfs:comment "Observation of the number of trees of a given species in a given park."@en .
+
+### Object Properties ###
+
+web:inPark a rdf:Property ;
+    rdfs:label "in park"@en ;
+    rdfs:domain web:TreeCount ;
+    rdfs:range web:Park .
+
+web:ofSpecies a rdf:Property ;
+    rdfs:label "of species"@en ;
+    rdfs:domain web:TreeCount ;
+    rdfs:range web:Species .
+
+### Datatype Properties ###
+
+web:numberOfTrees a rdf:Property ;
+    rdfs:label "number of trees"@en ;
+    rdfs:domain web:TreeCount ;
+    rdfs:range xsd:integer .
+
+web:scientificName a rdf:Property ;
+    rdfs:label "scientific name"@en ;
+    rdfs:domain web:Species ;
+    rdfs:range xsd:string .
+
+web:parkName a rdf:Property ;
+    rdfs:label "park name"@en ;
+    rdfs:domain web:Park ;
+    rdfs:range xsd:string .

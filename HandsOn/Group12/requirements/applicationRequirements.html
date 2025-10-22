@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Proposed Application — GreenZones Madrid</title>
+<style>
+  :root{--ink:#0b2e4e;--muted:#4d6273;--bg:#f7fafc}
+  html,body{margin:0;padding:0;background:var(--bg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;color:#1f2937}
+  .wrap{max-width:960px;margin:40px auto;padding:24px;background:#fff;border-radius:12px;box-shadow:0 6px 24px rgba(16,24,40,.08)}
+  h1{color:var(--ink);margin:0 0 6px;font-size:28px}
+  h2{color:var(--ink);margin:20px 0 8px;font-size:20px}
+  ul{margin:6px 0 16px 22px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .card{border:1px solid #e5e7eb;border-radius:12px;padding:14px}
+  .muted{color:var(--muted)}
+  code{background:#f3f4f6;padding:2px 6px;border-radius:6px}
+  .mock{display:flex;align-items:center;justify-content:center;height:200px;border:2px dashed #d1d5db;border-radius:10px;color:#6b7280}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Proposed Application: <em>GreenZones Madrid</em></h1>
+  <p class="muted">Explore, filter and export the city's green areas using Linked Open Data.</p>
+
+  <h2>General Description</h2>
+  <p><strong>GreenZones Madrid</strong> lets users browse municipal green areas (parks, gardens and other public green spaces), filter by district and category, and export selections to <code>CSV</code> and <code>RDF (Turtle)</code>.</p>
+
+  <div class="grid">
+    <div class="card">
+      <h2>Objectives</h2>
+      <ul>
+        <li>Show a searchable list of green zones (by <em>Distrito</em>, <em>Subepígrafe</em>, and <em>Destino</em>).</li>
+        <li>Provide details for each record (Apartado, Nº de archivo, Naturaleza del inmueble, Situación Destino, Solar...).</li>
+        <li>Allow export to CSV/RDF following the <code>gz:</code> ontology.</li>
+        <li>Enable links to related datasets (tree inventory, land‑use, air quality nearby).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Functional Requirements</h2>
+      <ul>
+        <li><strong>FR1:</strong> List + search + filters by district/category.</li>
+        <li><strong>FR2:</strong> Detail page per green zone.</li>
+        <li><strong>FR3:</strong> Export selected items to CSV and RDF (Turtle).</li>
+        <li><strong>FR4:</strong> Basic analytics (count per district, category).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>Non‑functional Requirements</h2>
+      <ul>
+        <li><strong>NFR1:</strong> Responsive and accessible UI.</li>
+        <li><strong>NFR2:</strong> Reproducible pipeline (OpenRefine → RDFLib).</li>
+        <li><strong>NFR3:</strong> License and attribution shown in the app.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Conceptual Mockup</h2>
+      <div class="mock">[Map/list mockup goes here]</div>
+      <p class="muted" style="margin-top:8px">Illustrative placeholder — suitable for uploading to GitHub.</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

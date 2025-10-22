@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hands-On 2 — Data & Licensing Analysis</title>
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; line-height: 1.55; max-width: 980px; margin: 2rem auto; padding: 0 1rem; }
+    h1,h2,h3 { margin-top: 1.2rem; }
+    code { background: #f6f6f6; padding: 0 .35rem; border-radius: 4px; }
+    table { border-collapse: collapse; width: 100%; margin: .75rem 0 1rem; font-size: 0.95rem; }
+    th, td { border: 1px solid #ddd; padding: .5rem .6rem; vertical-align: top; }
+    th { background: #fafafa; text-align: left; }
+    .tag { font-size: .85rem; padding: .15rem .45rem; border: 1px solid #bbb; border-radius: 6px; background: #fbfbfb; }
+    .ok { color: #0a7; }
+    .warn { color: #c77300; }
+    .nb { color: #666; font-style: italic; }
+  </style>
+</head>
+<body>
+  <h1>Hands-On 2 — Data & Licensing Analysis</h1>
+  <p>
+    This document analyses three CSV datasets provided by the group, focusing on (1) the data structure and
+    value ranges, and (2) the licensing of the data source(s) and the proposed license for the generated Linked Data.
+  </p>
+
+  <hr/>
+
+  <h2>Datasets in scope</h2>
+  <ol>
+    <li><strong>Urban Tree Inventory — Green Areas, Districts of Madrid</strong><br/>
+        File: <code>arbolado-zonas-verdes-madrid.csv</code>
+    </li>
+    <li><strong>Environmental protection expenditure by enterprises — Total industry (Spain)</strong><br/>
+        File: <code>gasto-de-las-empresas-en-proteccion-ambiental-total-industria.csv</code>
+    </li>
+    <li><strong>Average atmospheric pollution — Nitrogen Dioxide (NO₂)</strong><br/>
+        File: <code>valor-medio-de-contaminacion-atmosferica-dioxido-de-nitrogeno-no2.csv</code>
+    </li>
+  </ol>
+
+  <hr/>
+
+  <h2>1) Data Analysis (schema & value ranges)</h2>
+
+  <h3>1.1 Urban Tree Inventory — Green Areas, Districts of Madrid</h3>
+  <table>
+    <tr><th>Rows</th><td>Varies per species and district (~200+ rows)</td></tr>
+    <tr><th>Columns</th><td><code>Nº_Distrito</code>, <code>Nombre_distrito</code>, <code>NOMBRE_ESPECIE</code>, <code>Nº_Unidades 2024</code></td></tr>
+    <tr><th>Numeric columns</th><td><code>Nº_Unidades 2024</code></td></tr>
+    <tr><th>Potential identifiers</th><td>
+      <code>Nº_Distrito</code> and <code>Nombre_distrito</code> can serve as spatial identifiers; <code>NOMBRE_ESPECIE</code> identifies tree type.
+    </td></tr>
+    <tr><th>Geo/linkable hints</th><td>
+      District names can be linked to external geographic datasets (GeoNames, Wikidata, or municipal GIS data).
+    </td></tr>
+  </table>
+
+  <table>
+    <tr><th>Measure</th><th>Min</th><th>Max</th><th>Mean</th><th>Non-null</th></tr>
+    <tr><td><code>Nº_Unidades 2024</code></td><td>208</td><td>21,077</td><td>~2,500</td><td>All rows</td></tr>
+  </table>
+
+  <p class="nb">
+    Interpretation: each row represents a tree species within a district of Madrid, with the number of trees counted in 2024.
+  </p>
+
+  <h3>1.2 Environmental protection expenditure by enterprises — Total industry (Spain)</h3>
+  <table>
+    <tr><th>Rows</th><td>~384 non-null observations for the main measure</td></tr>
+    <tr><th>Columns</th><td><code>Año</code>, <code>Concepto</code>, <code>Tipo territorio</code>, <code>Código territorio</code>, <code>Territorio</code>, <code>Valor</code>, <code>Estado dato</code></td></tr>
+    <tr><th>Temporal coverage</th><td>Year range detected: 2008–2023 (from <code>Año</code>)</td></tr>
+    <tr><th>Spatial fields</th><td>
+      <code>Territorio</code> appears empty in this file; data represents national aggregates.
+    </td></tr>
+  </table>
+
+  <table>
+    <tr><th>Measure</th><th>Min</th><th>Max</th><th>Mean</th><th>Non-null</th></tr>
+    <tr><td><code>Valor</code> (expenditure)</td><td>0</td><td>166,797,613</td><td>≈ 12,485,071</td><td>384</td></tr>
+  </table>
+
+  <p class="nb">
+    Interpretation: national-level statistical time series; no spatial granularity in this CSV export.
+  </p>
+
+  <h3>1.3 Average atmospheric pollution — NO₂</h3>
+  <table>
+    <tr><th>Rows</th><td>~587 non-null observations for the main measure</td></tr>
+    <tr><th>Columns</th><td><code>Año</code>, <code>Concepto</code>, <code>Tipo territorio</code>, <code>Código territorio</code>, <code>Territorio</code>, <code>Valor</code>, <code>Estado dato</code></td></tr>
+    <tr><th>Temporal coverage</th><td>Year range detected: 1985–2024 (from <code>Año</code>)</td></tr>
+    <tr><th>Spatial fields</th><td>
+      <code>Territorio</code> is empty; <code>Tipo territorio</code> = “Otros”. Aggregated series at national/other grouping level.
+    </td></tr>
+  </table>
+
+  <table>
+    <tr><th>Measure</th><th>Min</th><th>Max</th><th>Mean</th><th>Non-null</th></tr>
+    <tr><td><code>Valor</code> (NO₂ average)</td><td>1</td><td>90</td><td>≈ 27.35</td><td>587</td></tr>
+  </table>
+
+  <p class="nb">
+    Interpretation: annual average NO₂ levels; ideally, a version with spatial identifiers would improve linking.
+  </p>
+
+  <hr/>
+
+  <h2>2) Licensing Analysis</h2>
+  <p>
+    Below we summarise, for each dataset, the source, expected rights holder/publisher, and the license (as typically published
+    on official open data portals). Confirm the license on the dataset landing pages. We also state the proposed license for the generated RDF.
+  </p>
+
+  <h3>2.1 Urban Tree Inventory — Green Areas, Districts of Madrid</h3>
+  <table>
+    <tr><th>Likely publisher / rightsholder</th><td>City of Madrid / municipal open data portal</td></tr>
+    <tr><th>Source portal</th><td><em>datos.madrid.es</em> — Open Data Portal of the City of Madrid</td></tr>
+    <tr><th>License on source</th><td>Typically CC-BY 4.0 (verify on portal)</td></tr>
+    <tr><th>Attribution required</th><td>Yes, attribute City of Madrid and original dataset URL</td></tr>
+    <tr><th>Proposed license for generated RDF</th><td>
+      <span class="tag">CC BY 4.0</span> — include provenance information for tree counts per district.
+    </td></tr>
+  </table>
+
+  <h3>2.2 Environmental protection expenditure by enterprises — Total industry (Spain)</h3>
+  <table>
+    <tr><th>Likely publisher / rightsholder</th><td>Spanish official statistics / open data (e.g., INE)</td></tr>
+    <tr><th>Source portal</th><td>Spanish open data/statistics portal</td></tr>
+    <tr><th>License on source</th><td>Typically CC-BY 4.0 (confirm on dataset page)</td></tr>
+    <tr><th>Attribution required</th><td>Yes (publisher + source URL)</td></tr>
+    <tr><th>Proposed license for generated RDF</th><td>
+      <span class="tag">CC BY 4.0</span> — include provenance metadata.
+    </td></tr>
+  </table>
+
+  <h3>2.3 Average atmospheric pollution — NO₂</h3>
+  <table>
+    <tr><th>Likely publisher / rightsholder</th><td>Spanish official environmental statistics / open data</td></tr>
+    <tr><th>Source portal</th><td>Spanish open data/statistics portal</td></tr>
+    <tr><th>License on source</th><td>Commonly CC-BY 4.0 (verify)</td></tr>
+    <tr><th>Attribution required</th><td>Yes (publisher + source URL)</td></tr>
+    <tr><th>Proposed license for generated RDF</th><td>
+      <span class="tag">CC BY 4.0</span> — retain original attribution and dataset lineage.
+    </td></tr>
+  </table>
+
+  <p class="nb">
+    Note: the proposed RDF license must remain compatible with the source datasets; confirm if any dataset imposes share-alike obligations.
+  </p>
+
+  <hr/>
+
+  <h2>Appendix — Notes for follow-up (URIs & Ontology)</h2>
+  <p>
+    The group will use the base domain <code>http://group24.linkeddata.es/</code> for future steps. Example patterns:
+  </p>
+  <ul>
+    <li>Ontology terms: <code>http://group24.linkeddata.es/ontology/ClassOrProperty</code></li>
+    <li>Instances (resources): <code>http://group24.linkeddata.es/resource/&lt;dataset&gt;/&lt;local-id&gt;</code></li>
+  </ul>
+  <p class="nb">
+    Ontology design and a sample RDF instantiation will be provided in <code>ontology/urban-env-ontology.ttl</code> and <code>ontology/urban-env-example.ttl</code> as part of Hands-On 2 deliverables.
+  </p>
+</body>
+</html>

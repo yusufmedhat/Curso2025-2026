@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>applicationRequirements</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.5; max-width: 900px; margin: 2rem auto; }
+    h1, h2, h3 { margin-top: 1.2rem; }
+    ul { margin-bottom: 0.8rem; }
+    img { max-width: 100%; height: auto; border: 1px solid #ccc; padding: 4px; }
+    code { background: #f6f6f6; padding: 2px 4px; }
+  </style>
+</head>
+<body>
+  <h1>Application Requirements — “Urban Environmental Insights”</h1>
+
+  <p>
+    The application integrates three datasets: 
+    (1) tree inventory in green areas across districts of Madrid, 
+    (2) environmental protection expenditure by enterprises in Spain, and 
+    (3) nitrogen dioxide (NO₂) levels in urban areas. 
+    The objective is to provide an integrated view to analyze the relationship between urban greenery, pollution levels, and environmental investment.
+  </p>
+
+  <h2>Target Users</h2>
+  <ul>
+    <li>City planners and municipal technicians interested in urban sustainability.</li>
+    <li>Researchers and students analyzing urban ecology or environmental policy.</li>
+    <li>Citizens interested in air quality and urban green spaces.</li>
+  </ul>
+
+  <h2>User Stories</h2>
+  <ul>
+    <li>As a city planner, I want to visualize a <b>map</b> showing green areas and tree distributions across districts.</li>
+    <li>As a researcher, I want to filter by district and year to extract subsets of the data for analysis.</li>
+    <li>As a citizen, I want to compare <b>NO₂ pollution trends</b> with green coverage in different areas.</li>
+  </ul>
+
+  <h2>Functional Requirements</h2>
+  <ul>
+    <li>F1. Interactive map displaying tree counts per district, green areas, and air quality stations.</li>
+    <li>F2. Filtering panel by district, year, and environmental indicator.</li>
+    <li>F3. Time series graphs and key performance indicators (KPIs) for pollution, tree coverage, and environmental expenditure.</li>
+    <li>F4. Detailed profile pages for districts or green areas, showing trees, NO₂ levels, and expenditure data.</li>
+    <li>F5. CSV export of filtered datasets for further analysis.</li>
+  </ul>
+
+  <h2>Non-Functional Requirements</h2>
+  <ul>
+    <li>NF1. RDF publication linking to GeoNames, Wikidata, and OSM.</li>
+    <li>NF2. Open licensing (CC-BY 4.0) with proper attribution.</li>
+    <li>NF3. Performance acceptable for large datasets, including Madrid-wide tree inventory.</li>
+    <li>NF4. Accessibility compliance (WCAG 2.1 AA minimum).</li>
+  </ul>
+
+  <h2>Data and RDF Linking</h2>
+  <ul>
+    <li>Vocabs: <code>DCAT</code>, <code>GeoSPARQL</code>/<code>WGS84</code>, <code>SOSA/SSN</code>, <code>QB</code>.</li>
+    <li>Stable URIs for trees, green areas, districts, and pollution monitoring stations.</li>
+    <li>External links: GeoNames, Wikidata, NUTS/LAU.</li>
+  </ul>
+
+  <h2>Mockups</h2>
+  <p>Interface prototypes:</p>
+  <img src="mockup-dashboard.png" alt="Mockup Dashboard">
+  <img src="mockup-greenarea.png" alt="Mockup Green Area Profile">
+
+  <h2>Key Metrics</h2>
+  <ul>
+    <li>Number of trees per district and green area.</li>
+    <li>Distribution of tree species.</li>
+    <li>Average NO₂ levels per district and year.</li>
+    <li>Evolution of environmental protection expenditure over time.</li>
+  </ul>
+
+  <h2>Roadmap</h2>
+  <ol>
+    <li>Data cleaning and normalization of CSVs.</li>
+    <li>Preliminary publication and validation of RDF schemas.</li>
+    <li>Transformation to RDF and linking with external vocabularies.</li>
+    <li>Prototype of interactive dashboard and user testing.</li>
+  </ol>
+</body>
+</html>

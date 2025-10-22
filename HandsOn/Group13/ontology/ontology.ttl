@@ -1,0 +1,104 @@
+@prefix : <http://example.org/def/base#> .
+@prefix mod: <https://w3id.org/mod#> .
+@prefix ns: <http://www.owl-ontologies.com/ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+: a owl:Ontology ;
+    mod:createdWith <https://chowlk.linkeddata.es/> .
+
+ns:Alcohol a owl:DatatypeProperty ;
+    rdfs:label "alcohol" ;
+    rdfs:domain ns:TipoPersona ;
+    rdfs:range xsd:boolean .
+
+ns:hasAge a owl:DatatypeProperty ;
+    rdfs:label "has age" ;
+    rdfs:domain ns:TipoPersona ;
+    rdfs:range xsd:string .
+
+ns:hasCode a owl:DatatypeProperty ;
+    rdfs:label "has code" ;
+    rdfs:domain ns:District,
+        ns:Street ;
+    rdfs:range xsd:integer .
+
+ns:hasDate a owl:DatatypeProperty ;
+    rdfs:label "has date" ;
+    rdfs:domain ns:Accident ;
+    rdfs:range xsd:date .
+
+ns:hasExNum a owl:DatatypeProperty ;
+    rdfs:label "has ex num" ;
+    rdfs:domain ns:Accident ;
+    rdfs:range xsd:string .
+
+ns:hasLocation a owl:DatatypeProperty ;
+    rdfs:label "has location" ;
+    rdfs:domain ns:Accident ;
+    rdfs:range xsd:string .
+
+ns:hasName a owl:DatatypeProperty ;
+    rdfs:label "has name" ;
+    rdfs:domain ns:District,
+        ns:Street ;
+    rdfs:range xsd:string .
+
+ns:hasSex a owl:DatatypeProperty ;
+    rdfs:label "has sex" ;
+    rdfs:domain ns:TipoPersona ;
+    rdfs:range xsd:string .
+
+ns:hasTime a owl:DatatypeProperty ;
+    rdfs:label "has time" ;
+    rdfs:domain ns:Accident ;
+    rdfs:range xsd:time .
+
+ns:hasType a owl:DatatypeProperty ;
+    rdfs:label "has type" ;
+    rdfs:domain ns:TipoPersona,
+        ns:TipoVehículo ;
+    rdfs:range xsd:string .
+
+ns:hasXCoord a owl:DatatypeProperty ;
+    rdfs:label "has x coord" ;
+    rdfs:domain ns:Accident ;
+    rdfs:range xsd:double .
+
+ns:hasYCoord a owl:DatatypeProperty ;
+    rdfs:label "has y coord" ;
+    rdfs:domain ns:Accident ;
+    rdfs:range xsd:double .
+
+ns:involves a owl:ObjectProperty ;
+    rdfs:label "involves" ;
+    rdfs:domain ns:Accident ;
+    rdfs:range ns:TipoPersona .
+
+ns:participates a owl:ObjectProperty ;
+    rdfs:label "participates" ;
+    rdfs:domain ns:Accident ;
+    rdfs:range ns:TipoVehículo .
+
+ns:takesPlace a owl:ObjectProperty ;
+    rdfs:label "takes place" ;
+    rdfs:domain ns:Accident ;
+    rdfs:range ns:District .
+
+ns:Street a owl:Class ;
+    rdfs:label "Street" ;
+    rdfs:subClassOf ns:District .
+
+ns:TipoVehículo a owl:Class ;
+    rdfs:label "Tipo Vehículo" .
+
+ns:District a owl:Class ;
+    rdfs:label "District" .
+
+ns:TipoPersona a owl:Class ;
+    rdfs:label "Tipo Persona" .
+
+ns:Accident a owl:Class ;
+    rdfs:label "Accident" .
+

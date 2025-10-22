@@ -1,0 +1,75 @@
+@prefix mm: <http://movemadrid.org/ontology/movilidad#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# District
+mm:district-CARABANCHEL rdf:type mm:District ;
+    rdfs:label "District: Carabanchel" .
+
+# Neighborhood
+mm:neighborhood-PUERTA_BONITA rdf:type mm:Neighborhood ;
+    mm:inDistrict mm:district-CARABANCHEL ;
+    rdfs:label "Neighborhood: Puerta Bonita" .
+
+# Facility
+mm:facility-SanFranciscoLaPrensa rdf:type mm:Facility ;
+    mm:facilityName "Centro Cultural San Francisco La Prensa (Carabanchel)"^^xsd:string ;
+    mm:facilityAddress "Calle San Francisco La Prensa 4"^^xsd:string ;
+    mm:facilityLatitude "40.37691447788016"^^xsd:decimal ;
+    mm:facilityLongitude "-3.7416256113806847"^^xsd:decimal ;
+    mm:facilityPostalCode "28025"^^xsd:string ;
+    mm:facilityNeighborhood mm:neighborhood-PUERTA_BONITA ;
+    rdfs:label "Facility: Centro Cultural San Francisco La Prensa" .
+
+# Event
+mm:event-50066046 rdf:type mm:Event ;
+    mm:eventTitle "100 Libros juntas"^^xsd:string ;
+    mm:eventDescription "Dirigida por Marga Melià. Tras compartir la lectura de casi cien libros a lo largo de una década..."^^xsd:string ;
+    mm:freeEvent "true"^^xsd:boolean ;
+    mm:startsOnDate "2025-10-25"^^xsd:date ;
+    mm:endsOnDate "2025-10-25"^^xsd:date ;
+    mm:startsAtTime "19:00"^^xsd:time ;
+    mm:eventLink "http://www.madrid.es/sites/v/index.jsp?vgnextoid=dce145cbf9a79910VgnVCM100000891ecb1aRCRD"^^xsd:anyURI ;
+    mm:eventFacility mm:facility-SanFranciscoLaPrensa ;
+    rdfs:label "Event: 100 Libros juntas" .
+
+# Car Parking
+mm:carParking-11483771 rdf:type mm:CarParking ;
+    mm:carParkingName "Aparcamiento disuasorio Aviación Española"^^xsd:string ;
+    mm:carParkingSchedule "Abierto 24 horas"^^xsd:string ;
+    mm:carParkingDescription "Plazas: para automóviles: 344..."^^xsd:string ;
+    mm:carParkingAddress "Aviación Española 5"^^xsd:string ;
+    mm:carParkingLatitude "40.38323792632855"^^xsd:decimal ;
+    mm:carParkingLongitude "-3.783621006318095"^^xsd:decimal ;
+    mm:carParkingLink "http://www.madrid.es/sites/v/index.jsp?vgnextoid=1ec084bc6763c710VgnVCM1000001d4a900aRCRD"^^xsd:anyURI ;
+    mm:carParkingNeighborhood mm:neighborhood-LAS_AGUILAS ;
+    rdfs:label "Car Parking: Aviación Española" .
+
+# Neighborhood
+mm:neighborhood-LAS_AGUILAS rdf:type mm:Neighborhood ;
+    mm:inDistrict mm:district-LATINA ;
+    rdfs:label "Neighborhood: Las Águilas" .
+
+# District
+mm:district-LATINA rdf:type mm:District ;
+    rdfs:label "District: Latina" .
+
+# Bicycle Parking
+mm:bicycleParking-101532 rdf:type mm:BicycleParking ;
+    mm:bicycleParkingLatitude "40.43652188"^^xsd:decimal ;
+    mm:bicycleParkingLongitude "-3.65079129"^^xsd:decimal ;
+    mm:bicycleParkingState "OPERATIVO"^^xsd:string ;
+    mm:bicycleParkingModel "MU-51"^^xsd:string ;
+    mm:bicycleParkingNeighborhood mm:neighborhood-LA_CONCEPCION ;
+    rdfs:label "Bicycle Parking: 101532" .
+
+# Neighborhood
+mm:neighborhood-LA_CONCEPCION rdf:type mm:Neighborhood ;
+    mm:inDistrict mm:district-CIUDAD_LINEAL ;
+    rdfs:label "Neighborhood: La Concepción" .
+
+# District
+mm:district-CIUDAD_LINEAL rdf:type mm:District ;
+    rdfs:label "District: Ciudad Lineal" .

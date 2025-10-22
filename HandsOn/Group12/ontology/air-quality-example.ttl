@@ -1,0 +1,37 @@
+@prefix aq:  <http://linkeddata.airqualitymadrid.org/ontology/airquality#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# ---------- Stations ----------
+<http://linkeddata.airqualitymadrid.org/resource/station/28079004>
+    a aq:Station ;
+    aq:stationCode "28079004" ;
+    aq:stationName "Madrid - Retiro" ;
+    aq:latitude "40.4167"^^xsd:float ;
+    aq:longitude "-3.7038"^^xsd:float .
+
+<http://linkeddata.airqualitymadrid.org/resource/station/28079008>
+    a aq:Station ;
+    aq:stationCode "28079008" ;
+    aq:stationName "Madrid - Plaza del Carmen" ;
+    aq:latitude "40.4203"^^xsd:float ;
+    aq:longitude "-3.7039"^^xsd:float .
+
+# ---------- Measurements ----------
+# NO2 at station 28079004
+<http://linkeddata.airqualitymadrid.org/resource/measurement/28079004_2025-09-30T12:00:00>
+    a aq:Measurement ;
+    aq:pollutant "NO2" ;
+    aq:value "45.0"^^xsd:float ;
+    aq:unit "µg/m³" ;
+    aq:timestamp "2025-09-30T12:00:00"^^xsd:dateTime ;
+    aq:hasStation <http://linkeddata.airqualitymadrid.org/resource/station/28079004> .
+
+# PM10 at station 28079008
+<http://linkeddata.airqualitymadrid.org/resource/measurement/28079008_2025-09-30T12:05:00>
+    a aq:Measurement ;
+    aq:pollutant "PM10" ;
+    aq:value "28.0"^^xsd:float ;
+    aq:unit "µg/m³" ;
+    aq:timestamp "2025-09-30T12:05:00"^^xsd:dateTime ;
+    aq:hasStation <http://linkeddata.airqualitymadrid.org/resource/station/28079008> .
+

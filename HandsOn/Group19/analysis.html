@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analysis and Naming Strategy - Madrid Fluye</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; margin: 2em; }
+        h1, h2, h3 { color: #333; }
+        code { background-color: #f4f4f4; padding: 2px 6px; border-radius: 4px; }
+        strong { color: #000000; }
+    </style>
+</head>
+<body>
+
+    <h1>Analysis and Design for "Madrid Fluye"</h1>
+
+    <h2>1. Dataset Analysis</h2>
+    <p>The three provided CSV datasets have been analyzed to understand their structure, data types, and content.</p>
+
+    <h3>Dataset 1: Municipal Public Parking (<code>202625-0-aparcamientos-publicos.csv</code>)</h3>
+    <ul>
+        <li><strong>Description:</strong> Contains information about public parking lots managed by the Madrid City Council.</li>
+        <li><strong>Schema and Data:</strong> Each row represents a unique parking lot. The most relevant columns for our project are:
+            <ul>
+                <li><code>PK</code>: A unique numeric identifier for each parking lot. <strong>Example:</strong> <code>13468</code>.</li>
+                <li><code>NOMBRE</code>: The name of the parking lot. <strong>Example:</strong> <code>"Aparcamiento público. Velázquez - Juan Bravo"</code>.</li>
+                <li><code>LATITUD</code>: Latitude coordinate in decimal format. <strong>Example:</strong> <code>40.431752322...</code>.</li>
+                <li><code>LONGITUD</code>: Longitude coordinate in decimal format. <strong>Example:</strong> <code>-3.706308104...</code>.</li>
+                <li><code>DISTRITO</code>, <code>BARRIO</code>, <code>NOMBRE-VIA</code>: Address information.</li>
+            </ul>
+        </li>
+        <li><strong>Quantitative analysis:</strong> The dataset contains a list of geolocated entities with static descriptive attributes.</li>
+    </ul>
+
+    <h3>Dataset 2: BiciMAD Stations (<code>bikestationbicimad_csv.csv</code>)</h3>
+    <ul>
+        <li><strong>Description:</strong> Provides near real-time information from the BiciMAD public bicycle service stations.</li>
+        <li><strong>Schema and Data:</strong> Each row represents a station. The key columns are:
+            <ul>
+                <li><code>number</code>: The unique identifier number of the station. <strong>Example:</strong> <code>2</code>.</li>
+                <li><code>Name</code>: The descriptive name of the station. <strong>Example:</strong> <code>"2 - Metro Callao"</code>.</li>
+                <li><code>Address</code>: The postal address of the station. <strong>Example:</strong> <code>"Calle Miguel Moya nº 1"</code>.</li>
+                <li><code>TotalBases</code>: The total number of docks at the station (capacity). <strong>Example:</strong> <code>27</code>.</li>
+                <li><code>DockBikes</code>: The number of bikes currently docked.</li>
+                <li><code>FreeBases</code>: The number of free docks currently available.</li>
+                <li><code>POINT_Y</code>: Latitude coordinate. <strong>Example:</strong> <code>40,4204</code>.</li>
+                <li><code>POINT_X</code>: Longitude coordinate. <strong>Example:</strong> <code>-3,70569</code>.</li>
+            </ul>
+        </li>
+         <li><strong>Quantitative analysis:</strong> Similar to the parking lots, it is a list of geolocated entities, but with attributes that can change over time (<code>DockBikes</code>, <code>FreeBases</code>).</li>
+    </ul>
+
+    <h3>Dataset 3: Average Daily Traffic (ADT) on Weekdays (<code>I.M.D. LABORABLES 2024 -2025.csv</code>)</h3>
+    <ul>
+        <li><strong>Description:</strong> It offers aggregated data on traffic intensity in different areas of Madrid, by month and year.</li>
+        <li><strong>Schema and Data:</strong> The structure is different; it does not represent individual entities but aggregated measurements.
+            <ul>
+                <li><code>Año</code> and <code>Mes</code>: The measurement period.</li>
+                <li><code>Interior 1er cinturón</code>, <code>En el 1er cinturón</code>, etc.: Columns representing different geographical areas of the city.</li>
+                <li><strong>Values:</strong> The values in the cells represent the average vehicle intensity. <strong>Example:</strong> <code>103.019</code> (the period is a thousand separator).</li>
+            </ul>
+        </li>
+        <li><strong>Quantitative analysis:</strong> This dataset is a time series of measurements. There are no unique identifiers per row; the key is the combination of <strong>Year, Month, and Zone (column)</strong>. To use it, we must transform its structure from wide (zones in columns) to long (one column for the zone, another for the value).</li>
+    </ul>
+
+    <hr>
+
+    <h2>2. Data Source License Analysis</h2>
+    <ul>
+        <li><strong>Editor (Publisher):</strong> The data comes from two main sources from the Madrid City Council:
+            <ul>
+                <li><strong>Madrid City Council's Open Data Portal</strong> (datos.madrid.es) for parking and traffic.</li>
+                <li><strong>EMT's Open Data Portal</strong> (datos.emtmadrid.es) for BiciMAD stations.</li>
+            </ul>
+        </li>
+        <li><strong>Rights Holder:</strong> The Madrid City Council and the Municipal Transport Company of Madrid.</li>
+        <li><strong>Original License:</strong> As indicated in `datasetRequirements.html`, the license for the City Council's data is the <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal Public Domain Dedication</a>. The EMT data is also published under open licenses that allow for its reuse.</li>
+        <li><strong>Proposed License for the Generated Dataset:</strong> For the RDF data we will generate, we will propose the <strong>Creative Commons Attribution 4.0 International (CC BY 4.0)</strong> license. This license is ideal because:
+            <ul>
+                <li>It allows for maximum reuse, modification, and distribution.</li>
+                <li>It only requires attribution to the original source, which is good practice and respects the original data publishers.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <hr>
+
+    <h2>3. Resource Naming Strategy (URI)</h2>
+    <p>We define a clear and persistent URI strategy, separating the ontology from the data resources.</p>
+
+    <h3>Base Domain</h3>
+    <p>We will use a fictional but descriptive domain for the project:</p>
+    <code>http://madridfluye.oeg-upm.net/</code>
+
+    <h3>Prefixes</h3>
+    <ul>
+        <li><strong>Ontology (vocabulary):</strong> <code>mf: <http://madridfluye.oeg-upm.net/ontology/></code></li>
+        <li><strong>Resources (data):</strong> <code>mf-resource: <http://madridfluye.oeg-upm.net/resource/></code></li>
+        <li><strong>External vocabularies:</strong>
+            <ul>
+                <li><code>schema: <http://schema.org/></code> (for common properties like name, address).</li>
+                <li><code>geo: <http://www.w3.org/2003/01/geo/wgs84_pos#></code> (for geographic coordinates).</li>
+                <li><code>xsd: <http://www.w3.org/2001/XMLSchema#></code> (for literal data types).</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>URI Patterns for Resources</h3>
+    <ul>
+        <li><strong>Parking:</strong> We will use the unique identifier from the <code>PK</code> column.
+            <ul><li>Pattern: <code>mf-resource:Parking/{PK}</code></li>
+            <li>Example: <code><http://madridfluye.oeg-upm.net/resource/Parking/13468></code></li></ul>
+        </li>
+        <li><strong>BiciMAD Stations:</strong> We will use the identifier from the <code>number</code> column.
+            <ul><li>Pattern: <code>mf-resource:BikeStation/{number}</code></li>
+            <li>Example: <code><http://madridfluye.oeg-upm.net/resource/BikeStation/2></code></li></ul>
+        </li>
+         <li><strong>Traffic Measurements:</strong> Since they do not have an ID, we will create one by combining the zone, year, and month to ensure uniqueness.
+            <ul><li>Pattern: <code>mf-resource:TrafficMeasurement/{ZoneName}-{Year}-{Month}</code></li>
+            <li>Example: <code><http://madridfluye.oeg-upm.net/resource/TrafficMeasurement/Interior1erCinturon-2024-January></code></li></ul>
+        </li>
+    </ul>
+
+</body>
+</html>

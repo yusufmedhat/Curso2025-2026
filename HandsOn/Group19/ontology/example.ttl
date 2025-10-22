@@ -1,0 +1,53 @@
+@prefix mf: <http://madridfluye.oeg-upm.net/ontology/> .
+@prefix mf-resource: <http://madridfluye.oeg-upm.net/resource/> .
+@prefix schema: <http://schema.org/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+#
+# Ejemplo de un Aparcamiento (extraído de 202625-0-aparcamientos-publicos.csv)
+#
+
+mf-resource:Parking/13468 a mf:Parking ;
+    rdfs:label "Aparcamiento público Velázquez - Juan Bravo" ;
+    schema:name "Aparcamiento público. Velázquez - Juan Bravo" ;
+    schema:openingHours "Abierto 24 horas" ; # <-- LINEA ANADIDA
+    schema:geo [
+        a schema:GeoCoordinates ;
+        schema:latitude "40.431752322"^^xsd:decimal ;
+        schema:longitude "-3.68222955"^^xsd:decimal
+    ] ;
+    geo:lat "40.431752322"^^xsd:decimal ;
+    geo:long "-3.68222955"^^xsd:decimal .
+
+#
+# Ejemplo de una Estación BiciMAD (extraído de bikestationbicimad_csv.csv)
+#
+
+mf-resource:BikeStation/2 a mf:BikeStation ;
+    rdfs:label "Estación BiciMAD 2 - Metro Callao" ;
+    schema:name "2 - Metro Callao" ;
+    schema:address "Calle Miguel Moya nº 1" ;
+    mf:totalDocks "27"^^xsd:integer ;
+    mf:availableDocks "12"^^xsd:integer ; # Valor de ejemplo, puede variar
+    schema:geo [
+        a schema:GeoCoordinates ;
+        schema:latitude "40.4204"^^xsd:decimal ;
+        schema:longitude "-3.70569"^^xsd:decimal
+    ] ;
+    geo:lat "40.4204"^^xsd:decimal ;
+    geo:long "-3.70569"^^xsd:decimal .
+
+
+#
+# Ejemplo de una Medición de Tráfico (extraído de I.M.D. LABORABLES 2024 -2025.csv)
+#
+
+mf-resource:TrafficMeasurement/Interior1erCinturon-2024-Enero a mf:TrafficMeasurement ;
+    rdfs:label "Medición de tráfico para Interior 1er cinturón en Enero de 2024" ;
+    mf:forZone "Interior 1er cinturón" ;
+    mf:forYear "2024"^^xsd:gYear ;
+    mf:forMonth "Enero" ;
+    mf:trafficIntensity "103019"^^xsd:integer .
