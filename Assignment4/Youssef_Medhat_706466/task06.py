@@ -1,14 +1,13 @@
-# Task 06: Modifying RDF(s) — Complete solution aligned with validation-1.py
+# Task 06: Modifying RDF(s) — Complete solution aligned with validation.py
 
-# 0) Imports and validator loader (uses the attached validation-1.py file)
-#!pip install rdflib -q
+# 0) Imports and validator loader (uses the attached validation.py file)
 
 from rdflib import Graph, Namespace, Literal, XSD
 from rdflib.namespace import RDF, RDFS
 
 import importlib.util, sys, os
 
-validator_path = "validation-1.py"  # ensure this file is in the same folder
+validator_path = "validation.py"  # ensure this file is in the same folder
 spec = importlib.util.spec_from_file_location("validation", validator_path)
 validation = importlib.util.module_from_spec(spec)
 sys.modules["validation"] = validation
